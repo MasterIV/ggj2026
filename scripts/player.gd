@@ -87,7 +87,17 @@ func spawn_nova():
 	
 	active_nova = nova_scene.instantiate()
 	get_parent().add_child(active_nova)
+	update_nova_position()
 
+func update_nova_position():
+	if not active_nova:
+		return
+	
+	var mouse_pos = get_global_mouse_position()
+	var direction = (mouse_pos - global_position).normalized()
+	
+	active_nova.global_position = global_position
+	
 func spawn_cone():
 	if not cone_scene:
 		return
@@ -103,10 +113,8 @@ func update_cone_position():
 	var mouse_pos = get_global_mouse_position()
 	var direction = (mouse_pos - global_position).normalized()
 	
-	# Position blast at distance from player in mouse direction
 	active_cone.global_position = global_position + direction * cone_distance
 	
-	# Rotate blast to face the mouse direction
 	active_cone.rotation = direction.angle()
 
 func destroy_cone():
