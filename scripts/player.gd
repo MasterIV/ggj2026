@@ -1,12 +1,12 @@
 extends CharacterBody2D
-
 @export var speed: float = 300
 @export var dash_speed: float = 800
 @export var dash_duration: float = 0.2
-
 var is_dashing = false
 var dash_timer = 0.0
 var dash_direction = Vector2.ZERO
+
+@onready var sprite = $Sprite2D  # Reference to the sprite
 
 func _physics_process(delta):
 	if is_dashing:
@@ -23,5 +23,11 @@ func _physics_process(delta):
 			dash_direction = direction.normalized()
 		
 		velocity = direction * speed
+		
+		# Flip sprite based on horizontal movement
+		if direction.x > 0:
+			sprite.flip_h = false  # Facing right (normal)
+		elif direction.x < 0:
+			sprite.flip_h = true   # Facing left (flipped)
 	
 	move_and_slide()
