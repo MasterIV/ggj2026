@@ -7,6 +7,8 @@ extends Area2D
 @export var sprite: Sprite2D
 @export var collision_shape: CollisionShape2D
 
+signal nova_finished
+
 var elapsed_time: float = 0.0
 var is_growing: bool = true
 
@@ -29,6 +31,7 @@ func _process(delta):
 			scale = Vector2(current_scale, current_scale)
 	else:
 		if elapsed_time >= dissolve_time:
+			nova_finished.emit()
 			queue_free()
 		else:
 			var fade_progress = elapsed_time / dissolve_time

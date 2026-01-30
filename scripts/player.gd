@@ -65,6 +65,9 @@ func _input(event):
 	elif active_cone:
 		destroy_cone()
 
+func _process(delta: float) -> void:
+	update_nova_position()
+
 func shoot_projectile():
 	if not projectile_scene:
 		return
@@ -82,12 +85,16 @@ func shoot_projectile():
 	get_parent().add_child(projectile)
 
 func spawn_nova():
-	if not nova_scene:
+	if not nova_scene || active_nova != null:
 		return
 	
 	active_nova = nova_scene.instantiate()
+	active_nova.nova_finished.connect(_on_nova_finished)
 	get_parent().add_child(active_nova)
 	update_nova_position()
+	
+func _on_nova_finished():
+	active_nova = null	
 
 func update_nova_position():
 	if not active_nova:
