@@ -5,8 +5,9 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_6aapk"]
 radius = 33.06055
 
-[node name="Projectile" type="Area2D" unique_id=1353746272]
+[node name="Projectile" type="Area2D" unique_id=1353746272 node_paths=PackedStringArray("lifetime_timer")]
 script = ExtResource("1_c8fcr")
+lifetime_timer = NodePath("LifetimeTimer")
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=2028979278]
 offset_left = -32.0
@@ -17,3 +18,5 @@ color = Color(1, 0, 0, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=503715403]
 shape = SubResource("CircleShape2D_6aapk")
+
+[node name="LifetimeTimer" type="Timer" parent="." unique_id=923001922]
