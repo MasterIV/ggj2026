@@ -3,10 +3,13 @@ extends CharacterBody2D
 @export var dash_speed: float = 800
 @export var dash_duration: float = 0.2
 @export var projectile_scene: PackedScene  # Drag projectile.tscn here
+@export var cone_scene: PackedScene
+@export var cone_distance: float = 60.0  # How far from player
 
 var is_dashing = false
 var dash_timer = 0.0
 var dash_direction = Vector2.ZERO
+var active_cone = null
 
 @onready var sprite = $Sprite2D
 
@@ -37,6 +40,13 @@ func _physics_process(delta):
 func _input(event):
 	if event.is_action_pressed("shoot"):
 		shoot_projectile()
+		
+	if Input.is_action_pressed("cone"):
+		if not active_cone:
+			spawn_cone()
+		update_blast_position()
+	elif active_cone:
+		destroy_cone()
 
 func shoot_projectile():
 	if not projectile_scene:
@@ -53,3 +63,29 @@ func shoot_projectile():
 	
 	# Add to scene tree (same level as player)
 	get_parent().add_child(projectile)
+
+func spawn_cone():
+	if not cone_scene:
+		return
+	
+	active_cone = cone_scene.instantiate()
+	get_parent().add_child(active_cone)
+	update_blast_position()
+
+func update_blast_position():
+	if not active_cone:
+		return
+	
+	var mouse_pos = get_global_mouse_position()
+	var direction = (mouse_pos - global_position).normalized()
+	
+	# Position blast at distance from player in mouse direction
+	active_cone.global_position = global_position + direction * cone_distance
+	
+	# Rotate blast to face the mouse direction
+	active_cone.rotation = direction.angle()
+
+func destroy_cone():
+	if active_cone:
+		active_cone.queue_free()
+		active_cone = null

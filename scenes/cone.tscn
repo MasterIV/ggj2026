@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://dqmbny5mh003a"]
+
+[ext_resource type="Script" uid="uid://b5nmon3e85h6t" path="res://scripts/cone.gd" id="1_sp0cc"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xh4jf"]
+
+[node name="Blast" type="Area2D" unique_id=2037452025]
+script = ExtResource("1_sp0cc")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1642072570]
+shape = SubResource("RectangleShape2D_xh4jf")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1474838457]
+offset_top = -16.0
+offset_right = 512.0
+offset_bottom = 16.0
+color = Color(0.7745618, 0.4381702, 0.1014828, 1)
