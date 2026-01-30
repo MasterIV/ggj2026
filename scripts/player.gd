@@ -5,13 +5,15 @@ extends CharacterBody2D
 @export var projectile_scene: PackedScene  # Drag projectile.tscn here
 @export var cone_scene: PackedScene
 @export var cone_distance: float = 60.0  # How far from player
+@export var nova_scene: PackedScene
 @export var animated_sprite: AnimatedSprite2D
 
 var is_dashing = false
 var dash_timer = 0.0
 var dash_direction = Vector2.ZERO
 var active_cone = null
-var current_direction = "down"  # Track current facing direction
+var active_nova = null
+var current_direction = "down"
 
 func _physics_process(delta):
 	if is_dashing:
@@ -53,10 +55,13 @@ func _input(event):
 	if event.is_action_pressed("shoot"):
 		shoot_projectile()
 		
+	if Input.is_action_pressed("nova"):
+		spawn_nova()
+
 	if Input.is_action_pressed("cone"):
 		if not active_cone:
 			spawn_cone()
-		update_blast_position()
+		update_cone_position()
 	elif active_cone:
 		destroy_cone()
 
@@ -76,15 +81,22 @@ func shoot_projectile():
 	# Add to scene tree (same level as player)
 	get_parent().add_child(projectile)
 
+func spawn_nova():
+	if not nova_scene:
+		return
+	
+	active_nova = nova_scene.instantiate()
+	get_parent().add_child(active_nova)
+
 func spawn_cone():
 	if not cone_scene:
 		return
 	
 	active_cone = cone_scene.instantiate()
 	get_parent().add_child(active_cone)
-	update_blast_position()
+	update_cone_position()
 
-func update_blast_position():
+func update_cone_position():
 	if not active_cone:
 		return
 	

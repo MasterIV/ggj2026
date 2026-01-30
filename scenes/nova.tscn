@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://curw1gpcd3pwt"]
+
+[ext_resource type="Script" uid="uid://lg4wl4bdxobt" path="res://scripts/nova.gd" id="1_0pujv"]
+[ext_resource type="Texture2D" uid="uid://c36k1bqdu0k3w" path="res://graphics/nova.png" id="1_4ip47"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0pujv"]
+radius = 289.02768
+
+[node name="Nova" type="Area2D" unique_id=1516169784 node_paths=PackedStringArray("sprite", "collision_shape")]
+script = ExtResource("1_0pujv")
+sprite = NodePath("Sprite2D")
+collision_shape = NodePath("CollisionShape2D")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1306035989]
+shape = SubResource("CircleShape2D_0pujv")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1033198244]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_4ip47")

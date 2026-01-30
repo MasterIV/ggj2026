@@ -1,0 +1,35 @@
+extends Area2D
+
+@export var start_scale: float = 0.2
+@export var end_scale: float = 3.0
+@export var growth_time: float = 1.0
+@export var dissolve_time: float = 0.3
+@export var sprite: Sprite2D
+@export var collision_shape: CollisionShape2D
+
+var elapsed_time: float = 0.0
+var is_growing: bool = true
+
+func _ready():
+	scale = Vector2(start_scale, start_scale)
+	
+	if collision_shape.shape:
+		collision_shape.shape = collision_shape.shape.duplicate()
+
+func _process(delta):
+	elapsed_time += delta
+	
+	if is_growing:
+		if elapsed_time >= growth_time:
+			is_growing = false
+			elapsed_time = 0.0
+		else:
+			var progress = elapsed_time / growth_time
+			var current_scale = lerp(start_scale, end_scale, progress)
+			scale = Vector2(current_scale, current_scale)
+	else:
+		if elapsed_time >= dissolve_time:
+			queue_free()
+		else:
+			var fade_progress = elapsed_time / dissolve_time
+			modulate.a = 1.0 - fade_progress

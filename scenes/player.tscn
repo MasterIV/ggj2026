@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://qd1eb7cl0wc4" path="res://scenes/projectile.tscn" id="2_qhqgy"]
 [ext_resource type="PackedScene" uid="uid://dqmbny5mh003a" path="res://scenes/cone.tscn" id="3_dqkch"]
 [ext_resource type="Texture2D" uid="uid://d1hf4by42kksh" path="res://graphics/player.png" id="4_dqkch"]
+[ext_resource type="PackedScene" uid="uid://curw1gpcd3pwt" path="res://scenes/nova.tscn" id="4_qlg0r"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7dm0k"]
 size = Vector2(93, 189)
@@ -61,8 +62,13 @@ animations = [{
 
 [node name="Player" type="CharacterBody2D" unique_id=477181902 node_paths=PackedStringArray("animated_sprite")]
 script = ExtResource("1_3vyb7")
+speed = null
+dash_speed = null
+dash_duration = null
 projectile_scene = ExtResource("2_qhqgy")
 cone_scene = ExtResource("3_dqkch")
+cone_distance = null
+nova_scene = ExtResource("4_qlg0r")
 animated_sprite = NodePath("AnimatedSprite2D")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1406526680]
