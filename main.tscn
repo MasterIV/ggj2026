@@ -1,21 +1,7 @@
 [gd_scene format=3 uid="uid://dt6ifrvrfadv2"]
 
-[ext_resource type="Script" uid="uid://cgpmd3ddefte4" path="res://scripts/player.gd" id="1_ig7tw"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_7dm0k"]
-size = Vector2(256, 257)
+[ext_resource type="PackedScene" uid="uid://bsfa1tlsh7fwr" path="res://scenes/player.tscn" id="1_ig7tw"]
 
 [node name="Node2D" type="Node2D" unique_id=1385162834]
 
-[node name="Player" type="CharacterBody2D" parent="." unique_id=1192271319]
-script = ExtResource("1_ig7tw")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Player" unique_id=84224320]
-shape = SubResource("RectangleShape2D_7dm0k")
-
-[node name="ColorRect" type="ColorRect" parent="Player" unique_id=1388720809]
-offset_left = -128.0
-offset_top = -128.0
-offset_right = 128.0
-offset_bottom = 128.0
-color = Color(0.16862746, 1, 1, 1)
+[node name="Player" parent="." unique_id=477181902 instance=ExtResource("1_ig7tw")]
