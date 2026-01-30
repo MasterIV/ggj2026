@@ -5,13 +5,13 @@ extends CharacterBody2D
 @export var projectile_scene: PackedScene  # Drag projectile.tscn here
 @export var cone_scene: PackedScene
 @export var cone_distance: float = 60.0  # How far from player
+@export var animated_sprite: AnimatedSprite2D
 
 var is_dashing = false
 var dash_timer = 0.0
 var dash_direction = Vector2.ZERO
 var active_cone = null
-
-@onready var sprite = $Sprite2D
+var current_direction = "down"  # Track current facing direction
 
 func _physics_process(delta):
 	if is_dashing:
@@ -30,13 +30,25 @@ func _physics_process(delta):
 		velocity = direction * speed
 		
 		# Flip sprite based on horizontal movement
-		if direction.x > 0:
-			sprite.flip_h = false
-		elif direction.x < 0:
-			sprite.flip_h = true
+		if direction.length() > 0:
+			update_sprite_direction(direction)
 	
 	move_and_slide()
 
+func update_sprite_direction(direction: Vector2):
+	if abs(direction.x) > abs(direction.y):
+		if direction.x > 0:
+			current_direction = "right"
+		else:
+			current_direction = "left"
+	else:
+		if direction.y > 0:
+			current_direction = "down"
+		else:
+			current_direction = "up"
+			
+	animated_sprite.play("idle_" + current_direction)			
+			
 func _input(event):
 	if event.is_action_pressed("shoot"):
 		shoot_projectile()

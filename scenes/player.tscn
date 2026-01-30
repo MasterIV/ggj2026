@@ -1,17 +1,69 @@
 [gd_scene format=3 uid="uid://bsfa1tlsh7fwr"]
 
 [ext_resource type="Script" uid="uid://cgpmd3ddefte4" path="res://scripts/player.gd" id="1_3vyb7"]
-[ext_resource type="Texture2D" uid="uid://d1hf4by42kksh" path="res://graphics/player.png" id="2_g2els"]
 [ext_resource type="PackedScene" uid="uid://qd1eb7cl0wc4" path="res://scenes/projectile.tscn" id="2_qhqgy"]
 [ext_resource type="PackedScene" uid="uid://dqmbny5mh003a" path="res://scenes/cone.tscn" id="3_dqkch"]
+[ext_resource type="Texture2D" uid="uid://d1hf4by42kksh" path="res://graphics/player.png" id="4_dqkch"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7dm0k"]
 size = Vector2(93, 189)
 
-[node name="Player" type="CharacterBody2D" unique_id=477181902]
+[sub_resource type="AtlasTexture" id="AtlasTexture_qlg0r"]
+atlas = ExtResource("4_dqkch")
+region = Rect2(0, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tuyoq"]
+atlas = ExtResource("4_dqkch")
+region = Rect2(0, 512, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fjrip"]
+atlas = ExtResource("4_dqkch")
+region = Rect2(0, 256, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_smehm"]
+atlas = ExtResource("4_dqkch")
+region = Rect2(0, 768, 256, 256)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ur7pv"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qlg0r")
+}],
+"loop": true,
+"name": &"idle_down",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tuyoq")
+}],
+"loop": true,
+"name": &"idle_left",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fjrip")
+}],
+"loop": true,
+"name": &"idle_right",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_smehm")
+}],
+"loop": true,
+"name": &"idle_up",
+"speed": 5.0
+}]
+
+[node name="Player" type="CharacterBody2D" unique_id=477181902 node_paths=PackedStringArray("animated_sprite")]
 script = ExtResource("1_3vyb7")
 projectile_scene = ExtResource("2_qhqgy")
 cone_scene = ExtResource("3_dqkch")
+animated_sprite = NodePath("AnimatedSprite2D")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1406526680]
 position = Vector2(1.5, 2.5)
@@ -25,7 +77,6 @@ offset_right = 128.0
 offset_bottom = 128.0
 color = Color(0.45490196, 0.33333334, 1, 1)
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=721536131]
-position = Vector2(5.499998, -6.1249847)
-scale = Vector2(1.05, 1)
-texture = ExtResource("2_g2els")
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1142777043]
+sprite_frames = SubResource("SpriteFrames_ur7pv")
+animation = &"idle_up"
