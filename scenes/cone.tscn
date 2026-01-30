@@ -6,8 +6,9 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xh4jf"]
 size = Vector2(502, 95)
 
-[node name="Blast" type="Area2D" unique_id=2037452025]
+[node name="Cone" type="Area2D" unique_id=2037452025 node_paths=PackedStringArray("damage_timer")]
 script = ExtResource("1_sp0cc")
+damage_timer = NodePath("DoTTimer")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1642072570]
 position = Vector2(412, -0.5)
@@ -16,3 +17,5 @@ shape = SubResource("RectangleShape2D_xh4jf")
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1036383350]
 position = Vector2(355, -1)
 texture = ExtResource("2_1pvhk")
+
+[node name="DoTTimer" type="Timer" parent="." unique_id=598627272]

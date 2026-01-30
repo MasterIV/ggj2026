@@ -3,6 +3,7 @@ extends Area2D
 @export var speed: float = 600.0
 @export var lifetime: float = 2.0
 @export var lifetime_timer: Timer
+@export var damage: float
 
 var direction: Vector2 = Vector2.ZERO
 
@@ -22,6 +23,11 @@ func set_direction(dir: Vector2):
 
 func _on_body_entered(body):
 	if body.is_in_group("obstacle"):
+		print("Obstacle found")
+		on_destroy()
+	elif body.is_in_group("enemy"):
+		print("Enemy found")
+		# apply damage to enemy
 		on_destroy()
 	
 func _on_lifetime_timeout():

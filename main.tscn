@@ -9,10 +9,6 @@
 script = ExtResource("1_1bvp3")
 
 [node name="Player" parent="." unique_id=477181902 groups=["player"] instance=ExtResource("1_ig7tw")]
-speed = 300.0
-dash_speed = 800.0
-dash_duration = 0.2
-cone_distance = 60.0
 
 [node name="Camera2D" parent="." unique_id=469061046 instance=ExtResource("2_0xm2m")]
 
