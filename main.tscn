@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://c0akh8foqvjmh" path="res://scenes/camera_2d.tscn" id="2_0xm2m"]
 [ext_resource type="PackedScene" uid="uid://kc1hm77p8qmq" path="res://scenes/obstacle.tscn" id="3_h2yge"]
 
-[node name="Node2D" type="Node2D" unique_id=1385162834]
+[node name="Main" type="Node2D" unique_id=1385162834]
 
 [node name="Player" parent="." unique_id=477181902 groups=["player"] instance=ExtResource("1_ig7tw")]
 

@@ -2,12 +2,14 @@
 
 [ext_resource type="Script" uid="uid://cgpmd3ddefte4" path="res://scripts/player.gd" id="1_3vyb7"]
 [ext_resource type="Texture2D" uid="uid://d1hf4by42kksh" path="res://graphics/player.png" id="2_g2els"]
+[ext_resource type="PackedScene" uid="uid://qd1eb7cl0wc4" path="res://scenes/projectile.tscn" id="2_qhqgy"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7dm0k"]
 size = Vector2(93, 189)
 
 [node name="Player" type="CharacterBody2D" unique_id=477181902]
 script = ExtResource("1_3vyb7")
+projectile_scene = ExtResource("2_qhqgy")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1406526680]
 position = Vector2(1.5, 2.5)
