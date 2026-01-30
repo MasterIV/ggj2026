@@ -2,6 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://bsfa1tlsh7fwr" path="res://scenes/player.tscn" id="1_ig7tw"]
 [ext_resource type="PackedScene" uid="uid://c0akh8foqvjmh" path="res://scenes/camera_2d.tscn" id="2_0xm2m"]
+[ext_resource type="PackedScene" uid="uid://kc1hm77p8qmq" path="res://scenes/obstacle.tscn" id="3_h2yge"]
 
 [node name="Node2D" type="Node2D" unique_id=1385162834]
 
@@ -9,44 +10,26 @@
 
 [node name="Camera2D" parent="." unique_id=469061046 instance=ExtResource("2_0xm2m")]
 
-[node name="ColorRect" type="ColorRect" parent="." unique_id=1587542817]
-offset_left = 684.0
-offset_top = -410.0
-offset_right = 860.0
-offset_bottom = -223.0
-color = Color(0.6101006, 0.13257605, 0.46708804, 1)
+[node name="Obstacle" parent="." unique_id=1626646518 instance=ExtResource("3_h2yge")]
+position = Vector2(1163, -28)
 
-[node name="ColorRect2" type="ColorRect" parent="." unique_id=1141449503]
-offset_left = 684.0
-offset_top = -410.0
-offset_right = 860.0
-offset_bottom = -223.0
-color = Color(0.6101006, 0.13257605, 0.46708804, 1)
+[node name="Obstacle2" parent="." unique_id=334194159 instance=ExtResource("3_h2yge")]
+position = Vector2(-1036, 0)
 
-[node name="ColorRect3" type="ColorRect" parent="." unique_id=393525918]
-offset_left = 205.0
-offset_top = -541.0
-offset_right = 381.0
-offset_bottom = -354.0
-color = Color(0.6101006, 0.13257605, 0.46708804, 1)
+[node name="Obstacle3" parent="." unique_id=228851102 instance=ExtResource("3_h2yge")]
+position = Vector2(-3, 828)
 
-[node name="ColorRect4" type="ColorRect" parent="." unique_id=347254645]
-offset_left = -773.0
-offset_top = 315.0
-offset_right = -597.0
-offset_bottom = 502.0
-color = Color(0.6101006, 0.13257605, 0.46708804, 1)
+[node name="Obstacle4" parent="." unique_id=1775677517 instance=ExtResource("3_h2yge")]
+position = Vector2(769, 561)
 
-[node name="ColorRect5" type="ColorRect" parent="." unique_id=524756940]
-offset_left = 555.0
-offset_top = 333.0
-offset_right = 731.0
-offset_bottom = 520.0
-color = Color(0.6101006, 0.13257605, 0.46708804, 1)
+[node name="Obstacle5" parent="." unique_id=134246701 instance=ExtResource("3_h2yge")]
+position = Vector2(766, -601)
 
-[node name="ColorRect6" type="ColorRect" parent="." unique_id=2081111076]
-offset_left = -847.0
-offset_top = -509.0
-offset_right = -671.0
-offset_bottom = -322.0
-color = Color(0.6101006, 0.13257605, 0.46708804, 1)
+[node name="Obstacle6" parent="." unique_id=1463151573 instance=ExtResource("3_h2yge")]
+position = Vector2(-704, 542)
+
+[node name="Obstacle7" parent="." unique_id=95526345 instance=ExtResource("3_h2yge")]
+position = Vector2(-631, -649)
+
+[node name="Obstacle8" parent="." unique_id=956778870 instance=ExtResource("3_h2yge")]
+position = Vector2(49, -897)
