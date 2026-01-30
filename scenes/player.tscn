@@ -23,5 +23,5 @@ color = Color(0.45490196, 0.33333334, 1, 1)
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=721536131]
 position = Vector2(5.499998, -6.1249847)
-scale = Vector2(0.2504146, 0.23848842)
+scale = Vector2(1.05, 1)
 texture = ExtResource("2_g2els")
