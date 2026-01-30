@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://bq1ajlf2pff83"]
+
+[ext_resource type="Script" uid="uid://b1g75xaacbkm2" path="res://scripts/enemy.gd" id="1_7p1mj"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_md0e3"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4ra3w"]
+radius = 128.0
+
+[node name="Enemy" type="CharacterBody2D" unique_id=1240766988]
+motion_mode = 1
+script = ExtResource("1_7p1mj")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=2130683439]
+offset_left = -128.0
+offset_top = -128.0
+offset_right = 128.0
+offset_bottom = 128.0
+color = Color(1, 0.13725491, 0.14117648, 1)
+
+[node name="HitBox" type="CollisionShape2D" parent="." unique_id=1879025441]
+shape = SubResource("CircleShape2D_md0e3")
+
+[node name="HurtBox" type="Area2D" parent="." unique_id=1906841683]
+position = Vector2(0, -3)
+collision_layer = 2
+collision_mask = 2
+
+[node name="HurtBoxShape" type="CollisionShape2D" parent="HurtBox" unique_id=1835542098]
+shape = SubResource("CircleShape2D_4ra3w")
+debug_color = Color(0.8558423, 0.33294305, 0.41434643, 0.41960785)
