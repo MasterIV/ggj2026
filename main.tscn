@@ -1,7 +1,52 @@
 [gd_scene format=3 uid="uid://dt6ifrvrfadv2"]
 
 [ext_resource type="PackedScene" uid="uid://bsfa1tlsh7fwr" path="res://scenes/player.tscn" id="1_ig7tw"]
+[ext_resource type="PackedScene" uid="uid://c0akh8foqvjmh" path="res://scenes/camera_2d.tscn" id="2_0xm2m"]
 
 [node name="Node2D" type="Node2D" unique_id=1385162834]
 
-[node name="Player" parent="." unique_id=477181902 instance=ExtResource("1_ig7tw")]
+[node name="Player" parent="." unique_id=477181902 groups=["player"] instance=ExtResource("1_ig7tw")]
+
+[node name="Camera2D" parent="." unique_id=469061046 instance=ExtResource("2_0xm2m")]
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1587542817]
+offset_left = 684.0
+offset_top = -410.0
+offset_right = 860.0
+offset_bottom = -223.0
+color = Color(0.6101006, 0.13257605, 0.46708804, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="." unique_id=1141449503]
+offset_left = 684.0
+offset_top = -410.0
+offset_right = 860.0
+offset_bottom = -223.0
+color = Color(0.6101006, 0.13257605, 0.46708804, 1)
+
+[node name="ColorRect3" type="ColorRect" parent="." unique_id=393525918]
+offset_left = 205.0
+offset_top = -541.0
+offset_right = 381.0
+offset_bottom = -354.0
+color = Color(0.6101006, 0.13257605, 0.46708804, 1)
+
+[node name="ColorRect4" type="ColorRect" parent="." unique_id=347254645]
+offset_left = -773.0
+offset_top = 315.0
+offset_right = -597.0
+offset_bottom = 502.0
+color = Color(0.6101006, 0.13257605, 0.46708804, 1)
+
+[node name="ColorRect5" type="ColorRect" parent="." unique_id=524756940]
+offset_left = 555.0
+offset_top = 333.0
+offset_right = 731.0
+offset_bottom = 520.0
+color = Color(0.6101006, 0.13257605, 0.46708804, 1)
+
+[node name="ColorRect6" type="ColorRect" parent="." unique_id=2081111076]
+offset_left = -847.0
+offset_top = -509.0
+offset_right = -671.0
+offset_bottom = -322.0
+color = Color(0.6101006, 0.13257605, 0.46708804, 1)
