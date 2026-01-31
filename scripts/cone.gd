@@ -39,6 +39,6 @@ func _on_damage_timer_timeout():
 
 func apply_damage(body):
 	if body.has_method("take_damage"):
-		body.take_damage(damage)
+		(body as Enemy).take_damage(damage, damage_type)
 	else:
 		print("Applying %s damage to %s" % [damage, body.name])

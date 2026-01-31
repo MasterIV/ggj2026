@@ -25,6 +25,7 @@ var audio_loop_manager: AudioLoopManager
 func _ready() -> void:
 	audio_loop_manager = get_tree().get_first_node_in_group("audio_loop_manager")
 
+
 func _physics_process(delta):
 	if is_dashing:
 		dash_timer -= delta
@@ -75,11 +76,11 @@ func _input(event):
 
 		audio_loop_manager.mask_changed.emit(get_active_mask())
 
-	#if Input.is_action_pressed("cone"):
-	#	if not active_cone:
-#			spawn_cone()
-	#elif active_cone:
-	#	destroy_cone()
+	if Input.is_action_pressed("cone_attack"):
+		if not active_cone:
+			spawn_cone()
+	elif active_cone:
+		destroy_cone()
 
 func _process(delta: float) -> void:
 	update_nova_position()
@@ -129,12 +130,15 @@ func update_nova_position() -> void:
 	active_nova.global_position = global_position
 
 func spawn_cone() -> void:
+	print("Try spawn cone")
 	if not cone_scene:
 		return
+		
+	print("Spawn cone")		
 
 	active_cone = cone_scene.instantiate() as Cone
 	active_cone.damage_type = get_active_mask()
-	#get_parent().add_child(active_cone)
+	get_parent().add_child(active_cone)
 	update_cone_position()
 
 func update_cone_position() -> void:

@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cgpmd3ddefte4" path="res://scripts/player.gd" id="1_3vyb7"]
 [ext_resource type="PackedScene" uid="uid://qd1eb7cl0wc4" path="res://scenes/ice_lance.tscn" id="2_qhqgy"]
-[ext_resource type="PackedScene" uid="uid://dqmbny5mh003a" path="res://scenes/cone.tscn" id="3_dqkch"]
+[ext_resource type="PackedScene" uid="uid://dqmbny5mh003a" path="res://scenes/fire_cone.tscn" id="3_dqkch"]
 [ext_resource type="PackedScene" uid="uid://curw1gpcd3pwt" path="res://scenes/fire_nova.tscn" id="4_qlg0r"]
 [ext_resource type="Texture2D" uid="uid://cy2w7qaoaj22g" path="res://graphics/player_aqua.png" id="5_qlg0r"]
 [ext_resource type="Texture2D" uid="uid://d23xhpaamh3rs" path="res://graphics/player_fire.png" id="6_tuyoq"]
