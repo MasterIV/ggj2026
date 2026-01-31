@@ -13,6 +13,9 @@ extends CharacterBody2D
 @export var cone_scene: PackedScene
 @export var cone_distance: float = 60.0
 
+# Nature Cone
+@export var nature_cone_scene: PackedScene
+
 # Fire Nova
 @export var nova_scene: PackedScene
 
@@ -140,6 +143,15 @@ func spawn_cone() -> void:
 	get_parent().add_child(active_cone)
 	update_cone_position()
 
+func spawn_nature_cone() -> void:
+	if not nature_cone_scene || active_cone != null:
+		return
+
+	active_cone = nature_cone_scene.instantiate() as Cone
+	active_cone.damage_type = get_active_mask()
+	get_parent().add_child(active_cone)
+	update_cone_position()
+
 func update_cone_position() -> void:
 	if not active_cone:
 		return
@@ -166,6 +178,7 @@ func trigger_primary_attack(delta):
 		Enums.Element.FIRE:
 			spawn_cone()
 		Enums.Element.NATURE:
+			spawn_nature_cone()
 			pass
 
 func trigger_secondaydary_attack(delta):
@@ -180,4 +193,6 @@ func trigger_secondaydary_attack(delta):
 func stop_primary_attack():
 	match get_active_mask():
 		Enums.Element.FIRE:
+			destroy_cone()
+		Enums.Element.NATURE:
 			destroy_cone()

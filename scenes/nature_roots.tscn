@@ -1,0 +1,62 @@
+[gd_scene format=3 uid="uid://ct7g32uopxm4j"]
+
+[ext_resource type="Script" uid="uid://b5nmon3e85h6t" path="res://scripts/cone.gd" id="1_h0yxu"]
+[ext_resource type="Texture2D" uid="uid://dnue8jkirgjj8" path="res://graphics/vfx_roots_01.png" id="2_xgd82"]
+[ext_resource type="Texture2D" uid="uid://3i8a6ym6tpyg" path="res://graphics/vfx_roots_02.png" id="3_dar8y"]
+[ext_resource type="Texture2D" uid="uid://b33vq3y1ppf16" path="res://graphics/vfx_roots_03.png" id="4_h0yxu"]
+[ext_resource type="Texture2D" uid="uid://bk0ux6t0kcbqv" path="res://graphics/vfx_roots_04.png" id="5_sq6rg"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xh4jf"]
+size = Vector2(502, 95)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ytsf3"]
+atlas = ExtResource("2_xgd82")
+region = Rect2(0, 0, 908, 310)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5vwos"]
+atlas = ExtResource("3_dar8y")
+region = Rect2(0, 0, 908, 310)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yppls"]
+atlas = ExtResource("4_h0yxu")
+region = Rect2(0, 0, 908, 310)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pft4i"]
+atlas = ExtResource("5_sq6rg")
+region = Rect2(0, 0, 908, 310)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ovmlc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ytsf3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5vwos")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yppls")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pft4i")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Cone" type="Area2D" unique_id=2037452025 node_paths=PackedStringArray("damage_timer", "sprite")]
+script = ExtResource("1_h0yxu")
+damage_timer = NodePath("DoTTimer")
+sprite = NodePath("AnimatedSprite2D")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1642072570]
+position = Vector2(412, -0.5)
+shape = SubResource("RectangleShape2D_xh4jf")
+
+[node name="DoTTimer" type="Timer" parent="." unique_id=598627272]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1113456526]
+position = Vector2(334, 18.000015)
+scale = Vector2(0.6077441, 0.6077441)
+sprite_frames = SubResource("SpriteFrames_ovmlc")
