@@ -5,7 +5,7 @@ extends TileMapLayer
 @export var view_distance: int = 2
 @export var tile_size: float = 256.0
 @export var world_size: Vector2i
-@export var map_border_block: StaticBody2D
+@export var map_border_block: PackedScene
 @export var map_obstacles: Array[PackedScene]
 @export var obstacles_per_chunk: int = 3
 
@@ -45,6 +45,10 @@ func generate_chunk(chunk_pos: Vector2i):
 	var start_x = chunk_pos.x * chunk_size
 	var start_y = chunk_pos.y * chunk_size
 
+	var end_of_world_chunk = false
+	if abs(chunk_pos.x) >= world_size.x or abs(chunk_pos.y) >= world_size.y:
+		end_of_world_chunk = true
+
 	var obstacles: Array[int] = []
 	while obstacles.size() < obstacles_per_chunk:
 		var random_tile = randf() * (chunk_size * 2 - 1)
@@ -56,7 +60,12 @@ func generate_chunk(chunk_pos: Vector2i):
 		for y in range(chunk_size):
 			var tile_pos = Vector2i(start_x + x, start_y + y)
 			set_cell(tile_pos, 0, Vector2i(0, 0))  # coords, source_id, atlas_coords
-			if obstacles.has(x * y + y):
+			if end_of_world_chunk:
+				var new_block = map_border_block.instantiate()
+				new_block.position.x = (start_x + x) * tile_size
+				new_block.position.y = (start_y + y) * tile_size
+				add_child(new_block)
+			elif obstacles.has(x * chunk_size + y):
 				map_obstacles.shuffle()
 				var new_obstacle = map_obstacles[0].instantiate()
 				new_obstacle.position.x = (start_x + x) * tile_size

@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://c0akh8foqvjmh" path="res://scenes/camera_2d.tscn" id="2_0xm2m"]
 [ext_resource type="PackedScene" uid="uid://cdxw8c6arh4id" path="res://scenes/floor.tscn" id="2_lquwl"]
 [ext_resource type="PackedScene" uid="uid://rwnf6skw0yvg" path="res://scenes/map_bg/ugly_face.tscn" id="3_272bh"]
+[ext_resource type="PackedScene" uid="uid://bmty6q4omnkaq" path="res://scenes/map_bg/palms.tscn" id="3_efxa6"]
 [ext_resource type="PackedScene" uid="uid://c2a4hegya6l0b" path="res://scenes/map_bg/pagode.tscn" id="4_4c57u"]
 [ext_resource type="PackedScene" uid="uid://cdqrqoi83mfhw" path="res://scenes/map_bg/plant_red.tscn" id="5_efxa6"]
 [ext_resource type="PackedScene" uid="uid://cf40ul6qbcclu" path="res://scenes/audio_loop_manager.tscn" id="6_7mycd"]
@@ -16,6 +17,8 @@ script = ExtResource("1_7mycd")
 
 [node name="Floor" parent="." unique_id=366801639 instance=ExtResource("2_lquwl")]
 chunk_size = 8
+world_size = Vector2i(4, 4)
+map_border_block = ExtResource("3_efxa6")
 map_obstacles = Array[PackedScene]([ExtResource("3_272bh"), ExtResource("4_4c57u"), ExtResource("5_efxa6"), ExtResource("6_dg77c"), ExtResource("7_ycdy4")])
 obstacles_per_chunk = 2
 
