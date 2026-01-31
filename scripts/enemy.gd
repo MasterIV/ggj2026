@@ -9,6 +9,7 @@ enum Movement_pattern {
 
 @export var animated_sprite: AnimatedSprite2D
 @export var hurt_box: Area2D
+@export var damage_timer: Timer
 
 var health: float = 100
 var speed: float
@@ -23,6 +24,9 @@ var multipliers: Dictionary = {
 	"fire": 1.0,
 	"nature": 1.0
 }
+var deal_damage_cooldown: float = 1.0
+
+var has_player_in_range: bool = false
 
 @onready var enemy_sprite = $AnimatedSprite2D
 
@@ -42,11 +46,24 @@ static func spawn(position: Vector2, player: CharacterBody2D, speed, health, dam
 
 func _ready() -> void:
 	hurt_box.body_entered.connect(_on_body_entered)
+	hurt_box.body_exited.connect(_on_body_exited)
+
+	damage_timer.timeout.connect(_on_damage_timer_timeout)
+	damage_timer.wait_time = deal_damage_cooldown
+	damage_timer.one_shot = false
+	damage_timer.start()
+
+func _on_damage_timer_timeout() -> void:
+	if has_player_in_range:
+		player.take_damage(damage, damage_type)
 
 func _on_body_entered(body: Node) -> void:
 	if body.is_in_group("player"):
-		if body.has_method("take_damage"):
-			(body as Player).take_damage(damage, damage_type)
+		has_player_in_range = true
+
+func _on_body_exited(body: Node) -> void:
+	if body.is_in_group("player"):
+		has_player_in_range = false
 
 func _physics_process(delta: float) -> void:
 	match movement_pattern:

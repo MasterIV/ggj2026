@@ -271,6 +271,10 @@ func take_damage(damage: float, element: Enums.Element):
 	player_took_damage.emit(damage, current_health, base_health)
 	print("Player took %f damage, current health: %f" % [damage, current_health])
 
+	var text = Floating_Number.spawn(position)
+	get_parent().add_child(text)
+	text.set_text(str(roundi(damage)), Color.GREEN)
+
 	if (current_health <= 0):
 		player_died.emit(killed_enemies)
 		die()

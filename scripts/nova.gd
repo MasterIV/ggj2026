@@ -22,8 +22,8 @@ func _ready():
 	player = get_tree().get_first_node_in_group("player")
 
 	body_entered.connect(_on_body_entered)
-	for body in get_overlapping_bodies():
-		_on_body_entered(body)  # Manually trigger for existing overlaps
+	#for body in get_overlapping_bodies():
+	#	_on_body_entered(body)  # Manually trigger for existing overlaps
 
 	scale = Vector2(start_scale, start_scale)
 
