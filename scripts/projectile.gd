@@ -50,6 +50,7 @@ func on_hit():
 
 func set_direction(dir: Vector2):
 	direction = dir.normalized()
+	rotation = direction.angle()
 
 func on_destroy():
 	queue_free()
