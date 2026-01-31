@@ -17,11 +17,16 @@ var current_direction: String = "down"
 var damage_type: Enums.Element = Enums.Element.AQUA
 
 static func spawn(position: Vector2, player: CharacterBody2D, speed := 100.0, health := 100, movement_pattern := Movement_pattern.STRAIGHT) -> Enemy:
-	var new_enemy: Enemy = ENEMY_SCENE.instantiate()
+	var new_enemy: Enemy = ENEMY_SCENE.instantiate() as Enemy
 	new_enemy.position = position
 	new_enemy.player = player
 	new_enemy.speed = speed
 	new_enemy.movement_pattern = movement_pattern
+
+	# assign random element from fire, aqua, nature
+	var elements: Array = [Enums.Element.FIRE, Enums.Element.AQUA, Enums.Element.NATURE]
+	new_enemy.damage_type = elements[randi() % elements.size()]
+
 	return new_enemy
 
 func _physics_process(delta: float) -> void:
