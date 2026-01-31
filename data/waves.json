@@ -42,6 +42,20 @@
     "boss": false
   },
   {
+    "delay": 10,
+    "enemies": 1,
+    "health": 500,
+    "speed": 500,
+    "damage": 25,
+    "multiplyer": {
+      "fire": 1.0,
+      "water": 1.0,
+      "nature": 1.0
+    },
+    "damage_type": "fire",
+    "boss": true
+  },
+  {
     "delay": 15,
     "enemies": 20,
     "health": 12,
@@ -54,6 +68,20 @@
     },
     "damage_type": "aqua",
     "boss": false
+  },
+  {
+    "delay": 17,
+    "enemies": 1,
+    "health": 500,
+    "speed": 500,
+    "damage": 25,
+    "multiplyer": {
+      "fire": 1.0,
+      "water": 1.0,
+      "nature": 1.0
+    },
+    "damage_type": "aqua",
+    "boss": true
   },
   {
     "delay": 22,
