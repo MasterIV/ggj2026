@@ -19,6 +19,8 @@ var damage_type: Enums.Element = Enums.Element.NONE
 
 func _ready():
 	body_entered.connect(_on_body_entered)
+	for body in get_overlapping_bodies():
+		_on_body_entered(body)  # Manually trigger for existing overlaps
 
 	scale = Vector2(start_scale, start_scale)
 
@@ -42,7 +44,7 @@ func _process(delta):
 			var progress: float = elapsed_time / growth_time
 			var current_scale = lerp(start_scale, end_scale, progress)
 			scale = Vector2(current_scale, current_scale)
-			
+
 			# Update collision shape size
 			if collision_shape and collision_shape.shape is CircleShape2D:
 				var base_radius = collision_shape.shape.radius / scale.x  # Get unscaled radius
