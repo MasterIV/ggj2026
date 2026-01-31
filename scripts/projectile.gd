@@ -9,6 +9,7 @@ extends Area2D
 @export var hit_sound: AudioStreamPlayer2D
 
 var direction: Vector2 = Vector2.ZERO
+var damage_type: Enums.Element = Enums.Element.NONE
 
 func _ready():
 	body_entered.connect(_on_body_entered)

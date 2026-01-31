@@ -15,6 +15,7 @@ signal nova_finished
 
 var elapsed_time: float = 0.0
 var is_growing: bool = true
+var damage_type: Enums.Element = Enums.Element.NONE
 
 func _ready():
 	body_entered.connect(_on_body_entered)

@@ -101,6 +101,7 @@ func shoot_projectile(delta: float) -> void:
 	var shoot_direction: Vector2 = (mouse_pos - global_position).normalized()
 
 	var projectile: Projectile = projectile_scene.instantiate() as Projectile
+	projectile.damage_type = get_active_mask()
 	projectile.global_position = global_position
 	projectile.set_direction(shoot_direction)
 
@@ -112,7 +113,8 @@ func spawn_nova() -> void:
 	if not nova_scene || active_nova != null:
 		return
 
-	active_nova = nova_scene.instantiate()
+	active_nova = nova_scene.instantiate() as Nova
+	active_nova.damage_type = get_active_mask()
 	active_nova.nova_finished.connect(_on_nova_finished)
 	get_parent().add_child(active_nova)
 	update_nova_position()
@@ -130,7 +132,8 @@ func spawn_cone() -> void:
 	if not cone_scene:
 		return
 
-	active_cone = cone_scene.instantiate()
+	active_cone = cone_scene.instantiate() as Cone
+	active_cone.damage_type = get_active_mask()
 	#get_parent().add_child(active_cone)
 	update_cone_position()
 

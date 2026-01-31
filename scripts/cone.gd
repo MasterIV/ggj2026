@@ -8,6 +8,7 @@ extends Area2D
 @export var effect_sound: AudioStreamPlayer2D
 
 var bodies_in_range: Array = []
+var damage_type: Enums.Element = Enums.Element.NONE
 
 func _ready():
 	body_entered.connect(_on_body_entered)
