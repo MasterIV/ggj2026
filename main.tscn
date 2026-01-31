@@ -11,7 +11,10 @@
 [ext_resource type="PackedScene" uid="uid://cf40ul6qbcclu" path="res://scenes/audio_loop_manager.tscn" id="6_7mycd"]
 [ext_resource type="PackedScene" uid="uid://ckr5hojm1lyls" path="res://scenes/map_bg/plant_leaf.tscn" id="6_dg77c"]
 [ext_resource type="PackedScene" uid="uid://t7wjknqont6s" path="res://scenes/map_bg/plant_plant.tscn" id="7_ycdy4"]
+[ext_resource type="PackedScene" uid="uid://cak5espxhxgyj" path="res://scenes/map_bg/stone1.tscn" id="9_vivmo"]
+[ext_resource type="PackedScene" uid="uid://bjfsikv8s7h0s" path="res://scenes/map_bg/stone2.tscn" id="10_2cqfq"]
 [ext_resource type="PackedScene" uid="uid://dkr3ohy8l8mta" path="res://scenes/game_ui.tscn" id="11_dg77c"]
+[ext_resource type="PackedScene" uid="uid://b50pubjpq16i5" path="res://scenes/map_bg/stone3.tscn" id="11_yaehf"]
 
 [node name="Main" type="Node2D" unique_id=1385162834]
 script = ExtResource("1_7mycd")
@@ -20,7 +23,7 @@ script = ExtResource("1_7mycd")
 chunk_size = 8
 world_size = Vector2i(4, 4)
 map_border_block = ExtResource("3_efxa6")
-map_obstacles = Array[PackedScene]([ExtResource("3_272bh"), ExtResource("4_4c57u"), ExtResource("5_efxa6"), ExtResource("6_dg77c"), ExtResource("7_ycdy4")])
+map_obstacles = Array[PackedScene]([ExtResource("3_272bh"), ExtResource("4_4c57u"), ExtResource("5_efxa6"), ExtResource("6_dg77c"), ExtResource("7_ycdy4"), ExtResource("9_vivmo"), ExtResource("10_2cqfq"), ExtResource("11_yaehf")])
 obstacles_per_chunk = 2
 
 [node name="Player" parent="." unique_id=477181902 groups=["player"] instance=ExtResource("1_ig7tw")]
