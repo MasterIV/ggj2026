@@ -31,6 +31,12 @@ func _on_body_entered(body):
 		on_destroy()
 	elif body.is_in_group("enemy"):
 		print("Enemy found")
+
+		if body.has_method("take_damage"):
+			body.take_damage(damage, Enums.Element.AQUA) # TODO: Change element as needed
+		else:
+			print("Dealing %s damage to %s" % [damage, body.name])
+
 		on_hit()
 		on_destroy()
 

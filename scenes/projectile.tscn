@@ -9,6 +9,7 @@ radius = 33.06055
 script = ExtResource("1_c8fcr")
 speed = 2400.0
 lifetime_timer = NodePath("LifetimeTimer")
+damage = 25.0
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=2028979278]
 offset_left = -32.0

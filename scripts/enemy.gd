@@ -7,7 +7,7 @@ enum Movement_pattern {
 	STRAIGHT
 }
 
-var health: int
+var health: float = 100
 var speed: float
 var movement_pattern: Movement_pattern
 var player: CharacterBody2D
@@ -30,3 +30,11 @@ func move_straight(delta: float) -> void:
 	var direction: Vector2 = player.position - position
 	direction = direction.normalized()
 	velocity = direction * speed
+
+func take_damage(amount: float, element: Enums.Element) -> void:
+	health -= amount
+	if health <= 0:
+		die()
+
+func die() -> void:
+	queue_free()
