@@ -43,7 +43,7 @@ func _process(delta):
 			nova_finished.emit()
 			queue_free()
 		else:
-			var fade_progress = elapsed_time / dissolve_time
+			var fade_progress: float = elapsed_time / dissolve_time
 			modulate.a = 1.0 - fade_progress
 
 func play_sound(sound: AudioStream):

@@ -4,10 +4,14 @@ extends CharacterBody2D
 @export var speed: float = 300
 @export var dash_speed: float = 800
 @export var dash_duration: float = 0.2
-@export var projectile_scene: PackedScene  # Drag projectile.tscn here
+
+@export var projectile_scene: PackedScene
+
 @export var cone_scene: PackedScene
-@export var cone_distance: float = 60.0  # How far from player
+@export var cone_distance: float = 60.0
+
 @export var nova_scene: PackedScene
+
 @export var animated_sprite: AnimatedSprite2D
 
 var is_dashing: bool = false
@@ -69,12 +73,12 @@ func _input(event):
 func _process(delta: float) -> void:
 	update_nova_position()
 
-func shoot_projectile():
+func shoot_projectile() -> void:
 	if not projectile_scene:
 		return
 
-	var mouse_pos = get_global_mouse_position()
-	var shoot_direction = (mouse_pos - global_position).normalized()
+	var mouse_pos: Vector2 = get_global_mouse_position()
+	var shoot_direction: Vector2 = (mouse_pos - global_position).normalized()
 
 	var projectile: Projectile = projectile_scene.instantiate() as Projectile
 	projectile.global_position = global_position
