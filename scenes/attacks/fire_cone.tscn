@@ -1,34 +1,34 @@
 [gd_scene format=3 uid="uid://dqmbny5mh003a"]
 
-[ext_resource type="Script" uid="uid://b5nmon3e85h6t" path="res://scripts/cone.gd" id="1_sp0cc"]
-[ext_resource type="Texture2D" uid="uid://bkk884crjxvdp" path="res://graphics/cone.png" id="2_1pvhk"]
-[ext_resource type="Texture2D" uid="uid://nfjiq4hyiuo1" path="res://graphics/vfx_fire_01.PNG" id="3_ygf47"]
-[ext_resource type="Texture2D" uid="uid://cwvqlky5iitvr" path="res://graphics/vfx_fire_02.PNG" id="4_nguqj"]
-[ext_resource type="Texture2D" uid="uid://cp251ou0yryk3" path="res://graphics/vfx_fire_03.PNG" id="5_dfqmf"]
-[ext_resource type="Texture2D" uid="uid://bso8jauk5akxp" path="res://graphics/vfx_fire_04.PNG" id="6_7gxum"]
-[ext_resource type="Texture2D" uid="uid://dl1oh0xj4kckj" path="res://graphics/vfx_fire_05.PNG" id="7_oi4el"]
+[ext_resource type="Script" uid="uid://b5nmon3e85h6t" path="res://scripts/cone.gd" id="1_8s5pe"]
+[ext_resource type="Texture2D" uid="uid://bkk884crjxvdp" path="res://graphics/cone.png" id="2_6aela"]
+[ext_resource type="Texture2D" uid="uid://nfjiq4hyiuo1" path="res://graphics/vfx_fire_01.PNG" id="3_hhfvd"]
+[ext_resource type="Texture2D" uid="uid://cwvqlky5iitvr" path="res://graphics/vfx_fire_02.PNG" id="4_771vm"]
+[ext_resource type="Texture2D" uid="uid://cp251ou0yryk3" path="res://graphics/vfx_fire_03.PNG" id="5_bj48k"]
+[ext_resource type="Texture2D" uid="uid://bso8jauk5akxp" path="res://graphics/vfx_fire_04.PNG" id="6_mr0fs"]
+[ext_resource type="Texture2D" uid="uid://dl1oh0xj4kckj" path="res://graphics/vfx_fire_05.PNG" id="7_xac47"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xh4jf"]
 size = Vector2(502, 95)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mn76j"]
-atlas = ExtResource("3_ygf47")
+atlas = ExtResource("3_hhfvd")
 region = Rect2(0, 0, 1101, 891)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_po1x3"]
-atlas = ExtResource("4_nguqj")
+atlas = ExtResource("4_771vm")
 region = Rect2(0, 0, 1101, 891)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0mrlf"]
-atlas = ExtResource("5_dfqmf")
+atlas = ExtResource("5_bj48k")
 region = Rect2(0, 0, 1101, 891)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_flhyx"]
-atlas = ExtResource("6_7gxum")
+atlas = ExtResource("6_mr0fs")
 region = Rect2(0, 0, 1101, 891)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_16lba"]
-atlas = ExtResource("7_oi4el")
+atlas = ExtResource("7_xac47")
 region = Rect2(0, 0, 1101, 891)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_lbw11"]
@@ -55,7 +55,8 @@ animations = [{
 }]
 
 [node name="Cone" type="Area2D" unique_id=2037452025 node_paths=PackedStringArray("damage_timer", "sprite")]
-script = ExtResource("1_sp0cc")
+script = ExtResource("1_8s5pe")
+damage = 15.0
 damage_timer = NodePath("DoTTimer")
 sprite = NodePath("AnimatedSprite2D")
 
@@ -66,7 +67,7 @@ shape = SubResource("RectangleShape2D_xh4jf")
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1036383350]
 visible = false
 position = Vector2(355, -1)
-texture = ExtResource("2_1pvhk")
+texture = ExtResource("2_6aela")
 
 [node name="DoTTimer" type="Timer" parent="." unique_id=598627272]
 

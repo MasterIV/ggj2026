@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://fswlq711f0j"]
+
+[ext_resource type="Script" uid="uid://ciiywsrdcode1" path="res://scripts/projectile.gd" id="1_dqnpl"]
+[ext_resource type="Texture2D" uid="uid://n0jk6o6js2rl" path="res://graphics/vfx_waterwall.PNG" id="2_mel5u"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_6aapk"]
+radius = 33.06055
+
+[node name="Projectile" type="Area2D" unique_id=1353746272 node_paths=PackedStringArray("lifetime_timer")]
+collision_layer = 5
+collision_mask = 5
+script = ExtResource("1_dqnpl")
+speed = 2400.0
+lifetime = 2.065
+lifetime_timer = NodePath("LifetimeTimer")
+damage = 100.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=503715403]
+shape = SubResource("CircleShape2D_6aapk")
+
+[node name="LifetimeTimer" type="Timer" parent="." unique_id=923001922]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=88659414]
+rotation = 1.5707964
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("2_mel5u")

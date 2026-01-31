@@ -10,6 +10,7 @@ extends Area2D
 
 var direction: Vector2 = Vector2.ZERO
 var damage_type: Enums.Element = Enums.Element.NONE
+var is_piercing: bool = false
 
 func _ready():
 	body_entered.connect(_on_body_entered)
@@ -26,7 +27,7 @@ func _physics_process(delta):
 	position += direction * speed * delta
 
 func _on_body_entered(body):
-	if body.is_in_group("obstacle"):
+	if body.is_in_group("obstacle") && !is_piercing:
 		print("Obstacle found")
 		on_hit()
 		on_destroy()
@@ -38,7 +39,9 @@ func _on_body_entered(body):
 			print("Dealing %s damage to %s" % [damage, body.name])
 
 		on_hit()
-		on_destroy()
+		
+		if !is_piercing:
+			on_destroy()
 
 func _on_lifetime_timeout():
 	on_destroy()

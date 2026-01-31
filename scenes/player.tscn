@@ -1,10 +1,11 @@
 [gd_scene format=3 uid="uid://bsfa1tlsh7fwr"]
 
 [ext_resource type="Script" uid="uid://cgpmd3ddefte4" path="res://scripts/player.gd" id="1_3vyb7"]
-[ext_resource type="PackedScene" uid="uid://qd1eb7cl0wc4" path="res://scenes/aqua_lance.tscn" id="2_qhqgy"]
-[ext_resource type="PackedScene" uid="uid://dqmbny5mh003a" path="res://scenes/fire_cone.tscn" id="3_dqkch"]
-[ext_resource type="PackedScene" uid="uid://curw1gpcd3pwt" path="res://scenes/fire_nova.tscn" id="4_qlg0r"]
-[ext_resource type="PackedScene" uid="uid://ct7g32uopxm4j" path="res://scenes/nature_roots.tscn" id="4_smehm"]
+[ext_resource type="PackedScene" uid="uid://qd1eb7cl0wc4" path="res://scenes/attacks/aqua_lance.tscn" id="2_qhqgy"]
+[ext_resource type="PackedScene" uid="uid://dqmbny5mh003a" path="res://scenes/attacks/fire_cone.tscn" id="3_dqkch"]
+[ext_resource type="PackedScene" uid="uid://fswlq711f0j" path="res://scenes/attacks/aqua_waterwall.tscn" id="3_ur7pv"]
+[ext_resource type="PackedScene" uid="uid://curw1gpcd3pwt" path="res://scenes/attacks/fire_nova.tscn" id="4_qlg0r"]
+[ext_resource type="PackedScene" uid="uid://ct7g32uopxm4j" path="res://scenes/attacks/nature_roots.tscn" id="4_smehm"]
 [ext_resource type="Texture2D" uid="uid://cy2w7qaoaj22g" path="res://graphics/player_aqua.png" id="5_qlg0r"]
 [ext_resource type="Texture2D" uid="uid://d23xhpaamh3rs" path="res://graphics/player_fire.png" id="6_tuyoq"]
 [ext_resource type="Texture2D" uid="uid://bacjm4lq5usow" path="res://graphics/player_nature.png" id="7_fjrip"]
@@ -418,6 +419,7 @@ script = ExtResource("1_3vyb7")
 speed = 500.0
 dash_duration = 0.4
 projectile_scene = ExtResource("2_qhqgy")
+waterwall_projectile_scene = ExtResource("3_ur7pv")
 cone_scene = ExtResource("3_dqkch")
 nature_cone_scene = ExtResource("4_smehm")
 nova_scene = ExtResource("4_qlg0r")

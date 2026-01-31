@@ -9,6 +9,9 @@ extends CharacterBody2D
 # Ice Lance
 @export var projectile_scene: PackedScene
 
+# Waterwall
+@export var waterwall_projectile_scene: PackedScene
+
 # Fire Cone
 @export var cone_scene: PackedScene
 @export var cone_distance: float = 60.0
@@ -21,6 +24,7 @@ extends CharacterBody2D
 
 @export var animated_sprite: AnimatedSprite2D
 @export var projectile_spawn_cooldown: float = 1.0
+@export var waterwall_spawn_cooldown: float = 2.0
 
 var is_dashing: bool = false
 var dash_timer: float = 0.0
@@ -29,6 +33,7 @@ var active_cone: Area2D = null
 var active_nova: Area2D = null
 var current_direction: String = "down"
 var current_projectile_spawn_cooldown: float = 0
+var current_waterwall_spawn_cooldown: float = 0
 
 var audio_loop_manager: AudioLoopManager
 
@@ -92,6 +97,10 @@ func _process(delta: float) -> void:
 	update_nova_position()
 	update_cone_position()
 	trigger_primary_attack(delta)
+	
+	if current_waterwall_spawn_cooldown > 0:
+		current_waterwall_spawn_cooldown -= delta
+		return
 
 	animated_sprite.play(get_animation_name(current_direction, get_active_mask()))
 
@@ -114,6 +123,26 @@ func shoot_projectile(delta: float) -> void:
 	get_parent().add_child(projectile)
 
 	current_projectile_spawn_cooldown = projectile_spawn_cooldown
+
+func shoot_waterwall_projectile(delta: float) -> void:
+	if not waterwall_projectile_scene:
+		return
+		
+	if current_waterwall_spawn_cooldown > 0:
+		return
+
+	var shoot_directions = [Vector2.UP, Vector2.RIGHT, Vector2.DOWN, Vector2.LEFT]
+
+	for shoot_direction in shoot_directions:
+		var projectile: Projectile = waterwall_projectile_scene.instantiate() as Projectile
+		projectile.damage_type = get_active_mask()
+		projectile.global_position = global_position
+		projectile.is_piercing = true
+		projectile.set_direction(shoot_direction)
+
+		get_parent().add_child(projectile)
+
+	current_waterwall_spawn_cooldown = waterwall_spawn_cooldown
 
 func spawn_nova() -> void:
 	if not nova_scene || active_nova != null:
@@ -184,7 +213,7 @@ func trigger_primary_attack(delta):
 func trigger_secondaydary_attack(delta):
 	match get_active_mask():
 		Enums.Element.AQUA:
-			pass
+			shoot_waterwall_projectile(delta)
 		Enums.Element.FIRE:
 			spawn_nova()
 		Enums.Element.NATURE:
