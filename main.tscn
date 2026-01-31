@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://c0akh8foqvjmh" path="res://scenes/camera_2d.tscn" id="2_0xm2m"]
 [ext_resource type="PackedScene" uid="uid://cdxw8c6arh4id" path="res://scenes/floor.tscn" id="2_lquwl"]
 [ext_resource type="PackedScene" uid="uid://kc1hm77p8qmq" path="res://scenes/obstacle.tscn" id="3_h2yge"]
+[ext_resource type="PackedScene" uid="uid://cf40ul6qbcclu" path="res://scenes/audio_loop_manager.tscn" id="6_7mycd"]
 
 [node name="Main" type="Node2D" unique_id=1385162834]
 script = ExtResource("1_1bvp3")
@@ -40,3 +41,5 @@ position = Vector2(-631, -649)
 
 [node name="Obstacle8" parent="." unique_id=956778870 instance=ExtResource("3_h2yge")]
 position = Vector2(49, -897)
+
+[node name="AudioLoopManager" parent="." unique_id=281250674 instance=ExtResource("6_7mycd")]
