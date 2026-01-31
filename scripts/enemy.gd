@@ -8,6 +8,7 @@ enum Movement_pattern {
 }
 
 @export var animated_sprite: AnimatedSprite2D
+@export var hurt_box: Area2D
 
 var health: float = 100
 var speed: float
@@ -16,7 +17,7 @@ var player: Player
 var current_direction: String = "down"
 var damage_type: Enums.Element = Enums.Element.AQUA
 var boss: bool = false
-
+var damage: float = 1
 var multipliers: Dictionary = {
 	"aqua": 1.0,
 	"fire": 1.0,
@@ -25,7 +26,7 @@ var multipliers: Dictionary = {
 
 @onready var enemy_sprite = $AnimatedSprite2D
 
-static func spawn(position: Vector2, player: CharacterBody2D, speed, health, boss, damage_type, multipliers, movement_pattern := Movement_pattern.STRAIGHT) -> Enemy:
+static func spawn(position: Vector2, player: CharacterBody2D, speed, health, damage, boss, damage_type, multipliers, movement_pattern := Movement_pattern.STRAIGHT) -> Enemy:
 	var new_enemy: Enemy = ENEMY_SCENE.instantiate() as Enemy
 	new_enemy.position = position
 	new_enemy.player = player
@@ -33,10 +34,19 @@ static func spawn(position: Vector2, player: CharacterBody2D, speed, health, bos
 	new_enemy.movement_pattern = movement_pattern
 	new_enemy.boss = boss
 	new_enemy.health = health
+	new_enemy.damage = damage
 	new_enemy.damage_type = Enums.string_to_element(damage_type);
 	new_enemy.multipliers = multipliers
 
 	return new_enemy
+
+func _ready() -> void:
+	hurt_box.body_entered.connect(_on_body_entered)
+
+func _on_body_entered(body: Node) -> void:
+	if body.is_in_group("player"):
+		if body.has_method("take_damage"):
+			(body as Player).take_damage(damage, damage_type)
 
 func _physics_process(delta: float) -> void:
 	match movement_pattern:

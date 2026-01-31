@@ -39,16 +39,20 @@ var current_direction: String = "down"
 var current_projectile_spawn_cooldown: float = 0
 var current_waterwall_spawn_cooldown: float = 0
 var current_seed_bomb_spawn_cooldown: float = 0
+var current_health: float
 
 var audio_loop_manager: AudioLoopManager
 
 var killed_enemies: Array[Enemy] = []
 
 signal enemy_killed(enemy: Enemy)
+signal player_took_damage(damage: float, health_current: float, health_max: float)
+signal player_died(killed_enemies: Array[Enemy])
 
 func _ready() -> void:
 	audio_loop_manager = get_tree().get_first_node_in_group("audio_loop_manager")
 	enemy_killed.connect(_on_enemy_killed)
+	current_health = base_health
 
 func _on_enemy_killed(enemy: Enemy):
 	killed_enemies.append(enemy)
@@ -261,3 +265,11 @@ func stop_primary_attack():
 			destroy_cone()
 		Enums.Element.NATURE:
 			destroy_cone()
+
+func take_damage(damage: float, element: Enums.Element):
+	current_health -= damage
+	player_took_damage.emit(damage, current_health, base_health)
+	print("Player took %f damage, current health: %f" % [damage, current_health])
+
+	if (current_health <= 0):
+		player_died.emit(killed_enemies)s

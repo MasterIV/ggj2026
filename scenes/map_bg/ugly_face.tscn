@@ -6,8 +6,8 @@
 size = Vector2(250, 326)
 
 [node name="UglyFace" type="StaticBody2D" unique_id=282115239 groups=["obstacle"]]
-collision_layer = 4
-collision_mask = 4
+collision_layer = 140
+collision_mask = 12
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=2069026905]
 texture = ExtResource("1_6pbfv")

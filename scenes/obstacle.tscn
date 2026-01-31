@@ -4,8 +4,8 @@
 radius = 103.030334
 
 [node name="Obstacle" type="StaticBody2D" unique_id=1626646518 groups=["obstacle"]]
-collision_layer = 4
-collision_mask = 4
+collision_layer = 12
+collision_mask = 12
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=338536548]
 position = Vector2(2, -2.5)

@@ -7,8 +7,8 @@ radius = 47.0
 height = 142.0
 
 [node name="PlantRed" type="StaticBody2D" unique_id=282115239 groups=["obstacle"]]
-collision_layer = 4
-collision_mask = 4
+collision_layer = 12
+collision_mask = 12
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=2069026905]
 scale = Vector2(0.2, 0.2)
