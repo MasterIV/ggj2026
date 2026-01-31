@@ -62,12 +62,16 @@ animations = [{
 
 [node name="Player" type="CharacterBody2D" unique_id=477181902 node_paths=PackedStringArray("animated_sprite")]
 script = ExtResource("1_3vyb7")
+base_health = null
 speed = 500.0
+dash_speed = null
 dash_duration = 0.4
 projectile_scene = ExtResource("2_qhqgy")
 cone_scene = ExtResource("3_dqkch")
+cone_distance = null
 nova_scene = ExtResource("4_qlg0r")
 animated_sprite = NodePath("AnimatedSprite2D")
+projectile_spawn_cooldown = null
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1406526680]
 position = Vector2(1.5, 2.5)

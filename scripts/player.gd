@@ -10,6 +10,7 @@ extends CharacterBody2D
 @export var cone_distance: float = 60.0
 @export var nova_scene: PackedScene
 @export var animated_sprite: AnimatedSprite2D
+@export var projectile_spawn_cooldown: float = 1.0
 
 var is_dashing: bool = false
 var dash_timer: float = 0.0
@@ -17,6 +18,12 @@ var dash_direction: Vector2 = Vector2.ZERO
 var active_cone: Area2D = null
 var active_nova: Area2D = null
 var current_direction: String = "down"
+var current_projectile_spawn_cooldown: float = 0
+
+var audio_loop_manager: AudioLoopManager
+
+func _ready() -> void:
+	audio_loop_manager = get_tree().get_first_node_in_group("audio_loop_manager")
 
 func _physics_process(delta):
 	if is_dashing:
@@ -53,25 +60,40 @@ func update_sprite_direction(direction: Vector2):
 
 	animated_sprite.play("idle_" + current_direction)
 
-func _input(event):
-	if event.is_action_pressed("shoot"):
-		shoot_projectile()
+var current_mask: int = 0
+var available_masks = [Enums.Element.AQUA, Enums.Element.FIRE, Enums.Element.NATURE]
 
-	if Input.is_action_pressed("nova"):
+func get_active_mask():
+	return available_masks[current_mask]
+
+func _input(event):
+	if Input.is_action_pressed("secondary_attack"):
 		spawn_nova()
 
-	if Input.is_action_pressed("cone"):
-		if not active_cone:
-			spawn_cone()
-	elif active_cone:
-		destroy_cone()
+	if Input.is_action_just_pressed("mask_switch"):
+		current_mask += 1
+		if current_mask >= available_masks.size():
+			current_mask = 0
+
+		audio_loop_manager.mask_changed.emit(get_active_mask())
+
+	#if Input.is_action_pressed("cone"):
+	#	if not active_cone:
+#			spawn_cone()
+	#elif active_cone:
+	#	destroy_cone()
 
 func _process(delta: float) -> void:
 	update_nova_position()
 	update_cone_position()
+	shoot_projectile(delta)
 
-func shoot_projectile() -> void:
+func shoot_projectile(delta: float) -> void:
 	if not projectile_scene:
+		return
+
+	if current_projectile_spawn_cooldown > 0:
+		current_projectile_spawn_cooldown -= delta
 		return
 
 	var mouse_pos: Vector2 = get_global_mouse_position()
@@ -82,6 +104,8 @@ func shoot_projectile() -> void:
 	projectile.set_direction(shoot_direction)
 
 	get_parent().add_child(projectile)
+
+	current_projectile_spawn_cooldown = projectile_spawn_cooldown
 
 func spawn_nova() -> void:
 	if not nova_scene || active_nova != null:

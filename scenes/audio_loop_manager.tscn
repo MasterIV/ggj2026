@@ -6,7 +6,7 @@
 [ext_resource type="AudioStream" uid="uid://dyyc5uv1mj10t" path="res://sound/FireLoop.mp3" id="4_mc0uh"]
 [ext_resource type="AudioStream" uid="uid://cy780cilbhjpg" path="res://sound/NatureLoop.mp3" id="5_r5h1r"]
 
-[node name="AudioLoopManager" type="Node" unique_id=281250674 node_paths=PackedStringArray("standard_loop", "aqua_loop", "fire_loop", "nature_loop")]
+[node name="AudioLoopManager" type="Node" unique_id=281250674 node_paths=PackedStringArray("standard_loop", "aqua_loop", "fire_loop", "nature_loop") groups=["audio_loop_manager"]]
 script = ExtResource("1_2o83d")
 standard_loop = NodePath("StandardLoop")
 aqua_loop = NodePath("AquaLoop")
