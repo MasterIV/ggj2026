@@ -1,8 +1,18 @@
 [gd_resource type="Theme" format=3 uid="uid://crrpqjxyqtyb7"]
 
 [ext_resource type="FontFile" uid="uid://mgsbkinlwmsh" path="res://misc_assets/impact.ttf" id="1_whnnb"]
+[ext_resource type="StyleBox" uid="uid://dxdnlrepc3rdn" path="res://misc_assets/button_theme_flat.tres" id="2_8x2as"]
 
 [resource]
+Button/colors/font_color = Color(1, 1, 1, 1)
+Button/colors/font_outline_color = Color(0, 0, 0, 1)
+Button/constants/outline_size = 4
+Button/font_sizes/font_size = 20
+Button/fonts/font = ExtResource("1_whnnb")
+Button/styles/normal = ExtResource("2_8x2as")
+HBoxContainer/constants/separation = 10
+HSlider/styles/grabber_area = ExtResource("2_8x2as")
+HSlider/styles/grabber_area_highlight = ExtResource("2_8x2as")
 Label/constants/outline_size = 1
 Label/font_sizes/font_size = 20
 Label/fonts/font = ExtResource("1_whnnb")

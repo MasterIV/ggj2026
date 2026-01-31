@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://cf40ul6qbcclu" path="res://scenes/audio_loop_manager.tscn" id="6_7mycd"]
 [ext_resource type="PackedScene" uid="uid://ckr5hojm1lyls" path="res://scenes/map_bg/plant_leaf.tscn" id="6_dg77c"]
 [ext_resource type="PackedScene" uid="uid://t7wjknqont6s" path="res://scenes/map_bg/plant_plant.tscn" id="7_ycdy4"]
+[ext_resource type="PackedScene" uid="uid://dkr3ohy8l8mta" path="res://scenes/game_ui.tscn" id="11_dg77c"]
 
 [node name="Main" type="Node2D" unique_id=1385162834]
 script = ExtResource("1_7mycd")
@@ -29,3 +30,7 @@ speed = 600.0
 dead_zone_radius = 500.0
 
 [node name="AudioLoopManager" parent="." unique_id=281250674 instance=ExtResource("6_7mycd")]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=2042211497]
+
+[node name="GameUi" parent="CanvasLayer" unique_id=31394455 instance=ExtResource("11_dg77c")]
