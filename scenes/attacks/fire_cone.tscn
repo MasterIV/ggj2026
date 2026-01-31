@@ -1,11 +1,11 @@
 [gd_scene format=3 uid="uid://dqmbny5mh003a"]
 
 [ext_resource type="Script" uid="uid://b5nmon3e85h6t" path="res://scripts/cone.gd" id="1_8s5pe"]
-[ext_resource type="Texture2D" uid="uid://nfjiq4hyiuo1" path="res://graphics/vfx_fire_01.PNG" id="3_hhfvd"]
-[ext_resource type="Texture2D" uid="uid://cwvqlky5iitvr" path="res://graphics/vfx_fire_02.PNG" id="4_771vm"]
-[ext_resource type="Texture2D" uid="uid://cp251ou0yryk3" path="res://graphics/vfx_fire_03.PNG" id="5_bj48k"]
-[ext_resource type="Texture2D" uid="uid://bso8jauk5akxp" path="res://graphics/vfx_fire_04.PNG" id="6_mr0fs"]
-[ext_resource type="Texture2D" uid="uid://dl1oh0xj4kckj" path="res://graphics/vfx_fire_05.PNG" id="7_xac47"]
+[ext_resource type="Texture2D" uid="uid://nfjiq4hyiuo1" path="res://graphics/attacks/vfx_fire_01.PNG" id="3_hhfvd"]
+[ext_resource type="Texture2D" uid="uid://cwvqlky5iitvr" path="res://graphics/attacks/vfx_fire_02.PNG" id="4_771vm"]
+[ext_resource type="Texture2D" uid="uid://cp251ou0yryk3" path="res://graphics/attacks/vfx_fire_03.PNG" id="5_bj48k"]
+[ext_resource type="Texture2D" uid="uid://bso8jauk5akxp" path="res://graphics/attacks/vfx_fire_04.PNG" id="6_mr0fs"]
+[ext_resource type="Texture2D" uid="uid://dl1oh0xj4kckj" path="res://graphics/attacks/vfx_fire_05.PNG" id="7_xac47"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xh4jf"]
 size = Vector2(502, 95)

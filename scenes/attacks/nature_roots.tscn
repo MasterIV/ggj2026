@@ -1,10 +1,10 @@
 [gd_scene format=3 uid="uid://ct7g32uopxm4j"]
 
 [ext_resource type="Script" uid="uid://b5nmon3e85h6t" path="res://scripts/cone.gd" id="1_8b3cx"]
-[ext_resource type="Texture2D" uid="uid://dnue8jkirgjj8" path="res://graphics/vfx_roots_01.png" id="2_hd34k"]
-[ext_resource type="Texture2D" uid="uid://3i8a6ym6tpyg" path="res://graphics/vfx_roots_02.png" id="3_lptpo"]
-[ext_resource type="Texture2D" uid="uid://b33vq3y1ppf16" path="res://graphics/vfx_roots_03.png" id="4_bv6b7"]
-[ext_resource type="Texture2D" uid="uid://bk0ux6t0kcbqv" path="res://graphics/vfx_roots_04.png" id="5_nah3q"]
+[ext_resource type="Texture2D" uid="uid://dnue8jkirgjj8" path="res://graphics/attacks/vfx_roots_01.png" id="2_hd34k"]
+[ext_resource type="Texture2D" uid="uid://3i8a6ym6tpyg" path="res://graphics/attacks/vfx_roots_02.png" id="3_lptpo"]
+[ext_resource type="Texture2D" uid="uid://b33vq3y1ppf16" path="res://graphics/attacks/vfx_roots_03.png" id="4_bv6b7"]
+[ext_resource type="Texture2D" uid="uid://bk0ux6t0kcbqv" path="res://graphics/attacks/vfx_roots_04.png" id="5_nah3q"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xh4jf"]
 size = Vector2(502, 95)

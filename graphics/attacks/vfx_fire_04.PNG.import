@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cjywjcuih67yv"
-path="res://.godot/imported/vfx_fire_nova.PNG-d56752731d2f00a435c5c2d460c1a473.ctex"
+uid="uid://bso8jauk5akxp"
+path="res://.godot/imported/vfx_fire_04.PNG-5ec5902607c0687c37857e11bdcf8033.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://graphics/vfx_fire_nova.PNG"
-dest_files=["res://.godot/imported/vfx_fire_nova.PNG-d56752731d2f00a435c5c2d460c1a473.ctex"]
+source_file="res://graphics/attacks/vfx_fire_04.PNG"
+dest_files=["res://.godot/imported/vfx_fire_04.PNG-5ec5902607c0687c37857e11bdcf8033.ctex"]
 
 [params]
 

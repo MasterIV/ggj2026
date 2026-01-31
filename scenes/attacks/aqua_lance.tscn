@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://qd1eb7cl0wc4"]
 
-[ext_resource type="Script" uid="uid://ciiywsrdcode1" path="res://scripts/projectile.gd" id="1_vbieh"]
-[ext_resource type="Texture2D" uid="uid://15v13blxvoj7" path="res://graphics/vfx_ice_lance.PNG" id="2_ymkak"]
+[ext_resource type="Script" uid="uid://ciiywsrdcode1" path="res://scripts/projectile.gd" id="1_d0roq"]
+[ext_resource type="Texture2D" uid="uid://15v13blxvoj7" path="res://graphics/attacks/vfx_ice_lance.PNG" id="2_tnoqp"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_6aapk"]
 radius = 33.06055
@@ -9,7 +9,7 @@ radius = 33.06055
 [node name="Projectile" type="Area2D" unique_id=1353746272 node_paths=PackedStringArray("lifetime_timer")]
 collision_layer = 5
 collision_mask = 5
-script = ExtResource("1_vbieh")
+script = ExtResource("1_d0roq")
 speed = 2400.0
 lifetime = 2.065
 lifetime_timer = NodePath("LifetimeTimer")
@@ -22,4 +22,4 @@ shape = SubResource("CircleShape2D_6aapk")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=88659414]
 scale = Vector2(0.25, 0.25)
-texture = ExtResource("2_ymkak")
+texture = ExtResource("2_tnoqp")

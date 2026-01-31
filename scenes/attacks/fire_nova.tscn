@@ -1,13 +1,13 @@
 [gd_scene format=3 uid="uid://curw1gpcd3pwt"]
 
-[ext_resource type="Script" uid="uid://lg4wl4bdxobt" path="res://scripts/nova.gd" id="1_0pujv"]
-[ext_resource type="Texture2D" uid="uid://cjywjcuih67yv" path="res://graphics/vfx_fire_nova.PNG" id="2_0pujv"]
+[ext_resource type="Script" uid="uid://lg4wl4bdxobt" path="res://scripts/nova.gd" id="1_csfx1"]
+[ext_resource type="Texture2D" uid="uid://cjywjcuih67yv" path="res://graphics/attacks/vfx_fire_nova.PNG" id="2_0ilpj"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_0pujv"]
 radius = 187.13097
 
 [node name="Nova" type="Area2D" unique_id=1516169784 node_paths=PackedStringArray("sprite", "collision_shape")]
-script = ExtResource("1_0pujv")
+script = ExtResource("1_csfx1")
 end_scale = 4.0
 growth_time = 0.4
 sprite = NodePath("Sprite2D")
@@ -18,4 +18,4 @@ shape = SubResource("CircleShape2D_0pujv")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1033198244]
 scale = Vector2(0.25, 0.24)
-texture = ExtResource("2_0pujv")
+texture = ExtResource("2_0ilpj")

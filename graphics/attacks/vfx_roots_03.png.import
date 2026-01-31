@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dnue8jkirgjj8"
-path="res://.godot/imported/vfx_roots_01.png-d2ac8b641683b16b80174ec9b4f43f54.ctex"
+uid="uid://b33vq3y1ppf16"
+path="res://.godot/imported/vfx_roots_03.png-e8a972c3d2f3637bda6cea1334916916.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://graphics/vfx_roots_01.png"
-dest_files=["res://.godot/imported/vfx_roots_01.png-d2ac8b641683b16b80174ec9b4f43f54.ctex"]
+source_file="res://graphics/attacks/vfx_roots_03.png"
+dest_files=["res://.godot/imported/vfx_roots_03.png-e8a972c3d2f3637bda6cea1334916916.ctex"]
 
 [params]
 

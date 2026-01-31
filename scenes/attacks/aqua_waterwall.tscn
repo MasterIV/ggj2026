@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://fswlq711f0j"]
 
 [ext_resource type="Script" uid="uid://ciiywsrdcode1" path="res://scripts/projectile.gd" id="1_dqnpl"]
-[ext_resource type="Texture2D" uid="uid://n0jk6o6js2rl" path="res://graphics/vfx_waterwall.PNG" id="2_mel5u"]
+[ext_resource type="Texture2D" uid="uid://n0jk6o6js2rl" path="res://graphics/attacks/vfx_waterwall.PNG" id="2_mel5u"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_6aapk"]
 radius = 33.06055
