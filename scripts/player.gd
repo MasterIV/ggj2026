@@ -74,7 +74,7 @@ func shoot_projectile():
 	var mouse_pos = get_global_mouse_position()
 	var shoot_direction = (mouse_pos - global_position).normalized()
 
-	var projectile = projectile_scene.instantiate()
+	var projectile: Projectile = projectile_scene.instantiate() as Projectile
 	projectile.global_position = global_position
 	projectile.set_direction(shoot_direction)
 

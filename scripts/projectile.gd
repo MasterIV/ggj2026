@@ -1,3 +1,4 @@
+class_name Projectile
 extends Area2D
 
 @export var speed: float = 600.0
@@ -39,6 +40,9 @@ func _on_lifetime_timeout():
 func on_hit():
 	if hit_sound:
 		play_sound(hit_sound)
+
+func set_direction(dir: Vector2):
+	direction = dir.normalized()
 
 func on_destroy():
 	queue_free()
