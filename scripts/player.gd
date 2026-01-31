@@ -66,12 +66,12 @@ func _input(event):
 	if Input.is_action_pressed("cone"):
 		if not active_cone:
 			spawn_cone()
-		update_cone_position()
 	elif active_cone:
 		destroy_cone()
 
 func _process(delta: float) -> void:
 	update_nova_position()
+	update_cone_position()
 
 func shoot_projectile() -> void:
 	if not projectile_scene:
