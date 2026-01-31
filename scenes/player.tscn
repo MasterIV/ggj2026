@@ -63,6 +63,7 @@ animations = [{
 [node name="Player" type="CharacterBody2D" unique_id=477181902 node_paths=PackedStringArray("animated_sprite")]
 script = ExtResource("1_3vyb7")
 speed = 500.0
+dash_duration = 0.4
 projectile_scene = ExtResource("2_qhqgy")
 cone_scene = ExtResource("3_dqkch")
 nova_scene = ExtResource("4_qlg0r")

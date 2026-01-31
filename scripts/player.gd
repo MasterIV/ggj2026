@@ -1,17 +1,14 @@
 class_name Player
 extends CharacterBody2D
 
+@export var base_health: float = 1000
 @export var speed: float = 300
 @export var dash_speed: float = 800
 @export var dash_duration: float = 0.2
-
 @export var projectile_scene: PackedScene
-
 @export var cone_scene: PackedScene
 @export var cone_distance: float = 60.0
-
 @export var nova_scene: PackedScene
-
 @export var animated_sprite: AnimatedSprite2D
 
 var is_dashing: bool = false

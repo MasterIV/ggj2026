@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://cdxw8c6arh4id"]
+
+[ext_resource type="Texture2D" uid="uid://bksctpjh6mn4m" path="res://graphics/tile_dark.png" id="1_kuqtn"]
+[ext_resource type="Script" uid="uid://0wllew26a4e7" path="res://scripts/floor.gd" id="2_whr1e"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lquwl"]
+texture = ExtResource("1_kuqtn")
+texture_region_size = Vector2i(256, 256)
+0:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_7mycd"]
+tile_size = Vector2i(256, 256)
+sources/0 = SubResource("TileSetAtlasSource_lquwl")
+
+[node name="Floor" type="TileMapLayer" unique_id=366801639]
+tile_set = SubResource("TileSet_7mycd")
+script = ExtResource("2_whr1e")
+chunk_size = 4
+view_distance = 4
