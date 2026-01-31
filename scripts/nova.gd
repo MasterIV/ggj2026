@@ -7,8 +7,8 @@ extends Area2D
 @export var dissolve_time: float = 0.3
 @export var sprite: Sprite2D
 @export var collision_shape: CollisionShape2D
-@export var spawn_sound: AudioStream
-@export var effect_sound: AudioStream
+@export var spawn_sound: AudioStreamPlayer2D
+@export var effect_sound: AudioStreamPlayer2D
 
 signal nova_finished
 
@@ -22,10 +22,10 @@ func _ready():
 		collision_shape.shape = collision_shape.shape.duplicate()
 
 	if spawn_sound:
-		play_sound(spawn_sound)
+		spawn_sound.play()
 
 	if effect_sound:
-		play_sound(effect_sound)
+		effect_sound.play()
 
 func _process(delta):
 	elapsed_time += delta
@@ -45,10 +45,3 @@ func _process(delta):
 		else:
 			var fade_progress: float = elapsed_time / dissolve_time
 			modulate.a = 1.0 - fade_progress
-
-func play_sound(sound: AudioStream):
-	var audio_player = AudioStreamPlayer2D.new()
-	audio_player.stream = sound
-	audio_player.finished.connect(audio_player.queue_free)
-	get_tree().root.add_child(audio_player)
-	audio_player.play()

@@ -5,8 +5,8 @@ extends Area2D
 @export var lifetime: float = 2.0
 @export var lifetime_timer: Timer
 @export var damage: float
-@export var spawn_sound: AudioStream
-@export var hit_sound: AudioStream
+@export var spawn_sound: AudioStreamPlayer2D
+@export var hit_sound: AudioStreamPlayer2D
 
 var direction: Vector2 = Vector2.ZERO
 
@@ -19,7 +19,7 @@ func _ready():
 	lifetime_timer.start()
 
 	if spawn_sound:
-		play_sound(spawn_sound)
+		spawn_sound.play()
 
 func _physics_process(delta):
 	position += direction * speed * delta
@@ -39,17 +39,10 @@ func _on_lifetime_timeout():
 
 func on_hit():
 	if hit_sound:
-		play_sound(hit_sound)
+		hit_sound.play()
 
 func set_direction(dir: Vector2):
 	direction = dir.normalized()
 
 func on_destroy():
 	queue_free()
-
-func play_sound(sound: AudioStream):
-	var audio_player = AudioStreamPlayer2D.new()
-	audio_player.stream = sound
-	audio_player.finished.connect(audio_player.queue_free)
-	get_tree().root.add_child(audio_player)
-	audio_player.play()

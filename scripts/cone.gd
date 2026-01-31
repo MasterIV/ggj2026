@@ -19,10 +19,10 @@ func _ready():
 	damage_timer.start()
 
 	if spawn_sound:
-		play_sound(spawn_sound)
+		spawn_sound.play()
 
 	if effect_sound:
-		play_sound(effect_sound)
+		effect_sound.play()
 
 func _on_body_entered(body):
 	if body.is_in_group("enemy") and body not in bodies_in_range:
@@ -41,10 +41,3 @@ func apply_damage(body):
 		body.take_damage(damage)
 	else:
 		print("Applying %s damage to %s" % [damage, body.name])
-
-func play_sound(sound: AudioStream):
-	var audio_player = AudioStreamPlayer2D.new()
-	audio_player.stream = sound
-	audio_player.finished.connect(audio_player.queue_free)
-	get_tree().root.add_child(audio_player)
-	audio_player.play()
