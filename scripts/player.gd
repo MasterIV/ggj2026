@@ -57,9 +57,7 @@ func update_sprite_direction(direction: Vector2):
 			current_direction = "down"
 		else:
 			current_direction = "up"
-
-	animated_sprite.play("idle_" + current_direction)
-
+			
 var current_mask: int = 0
 var available_masks = [Enums.Element.AQUA, Enums.Element.FIRE, Enums.Element.NATURE]
 
@@ -87,6 +85,9 @@ func _process(delta: float) -> void:
 	update_nova_position()
 	update_cone_position()
 	shoot_projectile(delta)
+
+	animated_sprite.play(get_animation_name(current_direction, get_active_mask()))
+
 
 func shoot_projectile(delta: float) -> void:
 	if not projectile_scene:
@@ -148,3 +149,12 @@ func destroy_cone():
 	if active_cone:
 		active_cone.queue_free()
 		active_cone = null
+
+func get_animation_name(current_direction: String, element: Enums.Element):
+	var element_type = {
+		Enums.Element.AQUA: "aqua",
+		Enums.Element.FIRE: "fire",
+		Enums.Element.NATURE: "nature"
+	}[element]
+	
+	return element_type + "_" + current_direction
