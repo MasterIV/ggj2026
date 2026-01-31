@@ -1,0 +1,38 @@
+[
+	{
+		"delay": 1,
+		"enemies": 5,
+		"health": 10,
+		"speed": 5,
+		"damage": 1,
+		"multiplyer": { "fire": 1.0, "water": 1.0, "nature": 1.0 }, 
+		"type": "default"
+	},
+	{
+		"delay": 8,
+		"enemies": 12,
+		"health": 5,
+		"speed": 8,
+		"damage": 1,
+		"multiplyer": { "fire": 1.0, "water": 1.0, "nature": 1.0 }, 
+		"type": "default"
+	},
+	{
+		"delay": 15,
+		"enemies": 20,
+		"health": 12,
+		"speed": 5,
+		"damage": 1,
+		"multiplyer": { "fire": 1.0, "water": 1.0, "nature": 1.0 }, 
+		"type": "default"
+	},
+	{
+		"delay": 22,
+		"enemies": 8,
+		"health": 30,
+		"speed": 5,
+		"damage": 1,
+		"multiplyer": { "fire": 1.0, "water": 1.0, "nature": 1.0 }, 
+		"type": "default"
+	}
+]
