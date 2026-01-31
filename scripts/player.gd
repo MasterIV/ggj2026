@@ -57,7 +57,7 @@ func update_sprite_direction(direction: Vector2):
 			current_direction = "down"
 		else:
 			current_direction = "up"
-			
+
 var current_mask: int = 0
 var available_masks = [Enums.Element.AQUA, Enums.Element.FIRE, Enums.Element.NATURE]
 
@@ -154,4 +154,4 @@ func destroy_cone():
 		active_cone = null
 
 func get_animation_name(current_direction: String, element: Enums.Element):
-	return Enums.element_to_string(element) + "_" + current_direction
+	return Enums.element_to_string(get_active_mask()) + "_" + current_direction
