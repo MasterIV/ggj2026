@@ -3,18 +3,26 @@ extends Area2D
 @export var damage: float = 10.0
 @export var damage_interval: float = 0.5
 @export var damage_timer: Timer
+@export var spawn_sound: AudioStream
+@export var effect_sound: AudioStream
 
 var bodies_in_range: Array = []
 
 func _ready():
 	body_entered.connect(_on_body_entered)
 	body_exited.connect(_on_body_exited)
-	
+
 	add_child(damage_timer)
 	damage_timer.wait_time = damage_interval
 	damage_timer.timeout.connect(_on_damage_timer_timeout)
 	damage_timer.start()
-	
+
+	if spawn_sound:
+		play_sound(spawn_sound)
+
+	if effect_sound:
+		play_sound(effect_sound)
+
 func _on_body_entered(body):
 	if body.is_in_group("enemy") and body not in bodies_in_range:
 		bodies_in_range.append(body)
@@ -31,4 +39,11 @@ func apply_damage(body):
 	if body.has_method("take_damage"):
 		body.take_damage(damage)
 	else:
-		print("Applying %s damage to %s" % [damage, body.name])	
+		print("Applying %s damage to %s" % [damage, body.name])
+
+func play_sound(sound: AudioStream):
+	var audio_player = AudioStreamPlayer2D.new()
+	audio_player.stream = sound
+	audio_player.finished.connect(audio_player.queue_free)
+	get_tree().root.add_child(audio_player)
+	audio_player.play()
