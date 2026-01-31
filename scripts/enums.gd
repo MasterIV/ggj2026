@@ -32,7 +32,13 @@ class ProjectileBuff:
 	var damage_multiplier: float
 	var cooldown_multiplier: float
 	var damage_type: Element
-
+	
+	func _init(new_speed_multiplier: float, new_damage_multiplier: float, new_cooldown_multiplier: float, new_damage_type: Element):
+		speed_multiplier = new_speed_multiplier
+		damage_multiplier = new_damage_multiplier
+		cooldown_multiplier = new_cooldown_multiplier
+		damage_type = new_damage_type
+	
 class ConeBuff:
 	var damage_multiplier: float
 	var damage_interval_multiplier: float
