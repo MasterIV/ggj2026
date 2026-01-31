@@ -154,10 +154,4 @@ func destroy_cone():
 		active_cone = null
 
 func get_animation_name(current_direction: String, element: Enums.Element):
-	var element_type = {
-		Enums.Element.AQUA: "aqua",
-		Enums.Element.FIRE: "fire",
-		Enums.Element.NATURE: "nature"
-	}[element]
-	
-	return element_type + "_" + current_direction
+	return Enums.element_to_string(element) + "_" + current_direction
