@@ -1,3 +1,4 @@
+class_name Nova
 extends Area2D
 
 @export var start_scale: float = 0.2
