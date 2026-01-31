@@ -24,7 +24,7 @@ func _physics_process(delta: float) -> void:
 	match movement_pattern:
 		Movement_pattern.STRAIGHT:
 			move_straight(delta)
-	move_and_collide(velocity * delta)
+	move_and_slide()
 
 func move_straight(delta: float) -> void:
 	var direction: Vector2 = player.position - position

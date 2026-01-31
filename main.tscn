@@ -17,7 +17,7 @@ base_health = 1000.0
 speed = 600.0
 dash_speed = 800.0
 cone_distance = 60.0
-projectile_spawn_cooldown = 1.0
+projectile_spawn_cooldown = 0.2
 
 [node name="Camera2D" parent="." unique_id=469061046 instance=ExtResource("2_0xm2m")]
 dead_zone_radius = 500.0

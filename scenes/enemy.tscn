@@ -1,11 +1,12 @@
 [gd_scene format=3 uid="uid://bq1ajlf2pff83"]
 
-[ext_resource type="Script" path="res://scripts/enemy.gd" id="1_7p1mj"]
+[ext_resource type="Script" uid="uid://b1g75xaacbkm2" path="res://scripts/enemy.gd" id="1_7p1mj"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_md0e3"]
+radius = 128.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4ra3w"]
-radius = 128.0
+radius = 100.0
 
 [node name="Enemy" type="CharacterBody2D" unique_id=1240766988 groups=["enemy"]]
 motion_mode = 1

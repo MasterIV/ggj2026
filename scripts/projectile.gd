@@ -33,7 +33,7 @@ func _on_body_entered(body):
 		print("Enemy found")
 
 		if body.has_method("take_damage"):
-			body.take_damage(damage, Enums.Element.AQUA) # TODO: Change element as needed
+			(body as Enemy).take_damage(damage, Enums.Element.AQUA) # TODO: Change element as needed
 		else:
 			print("Dealing %s damage to %s" % [damage, body.name])
 
