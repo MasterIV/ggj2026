@@ -23,7 +23,7 @@ func spawn_wave(wave):
 	for n in wave.enemies:
 		var random_angle: float = deg_to_rad(randf() * 360.0)
 		var enemy_pos := Vector2(cos(random_angle)*spawn_distance, sin(random_angle)*spawn_distance)
-		var enemy := Enemy.spawn($Player.position + enemy_pos, $Player)
+		var enemy := Enemy.spawn($Player.position + enemy_pos, $Player, wave.speed, wave.health)
 		add_child(enemy)
 
 func _input(event):
