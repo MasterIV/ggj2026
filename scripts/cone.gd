@@ -4,8 +4,8 @@ extends Area2D
 @export var damage: float = 10.0
 @export var damage_interval: float = 0.5
 @export var damage_timer: Timer
-@export var spawn_sound: AudioStream
-@export var effect_sound: AudioStream
+@export var spawn_sound: AudioStreamPlayer2D
+@export var effect_sound: AudioStreamPlayer2D
 
 var bodies_in_range: Array = []
 
