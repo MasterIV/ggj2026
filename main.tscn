@@ -11,6 +11,7 @@ script = ExtResource("1_1bvp3")
 [node name="Player" parent="." unique_id=477181902 groups=["player"] instance=ExtResource("1_ig7tw")]
 
 [node name="Camera2D" parent="." unique_id=469061046 instance=ExtResource("2_0xm2m")]
+dead_zone_radius = 500.0
 
 [node name="Obstacle" parent="." unique_id=1626646518 instance=ExtResource("3_h2yge")]
 position = Vector2(1163, -28)
