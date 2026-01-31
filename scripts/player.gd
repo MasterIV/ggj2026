@@ -9,6 +9,9 @@ extends CharacterBody2D
 # Ice Lance
 @export var projectile_scene: PackedScene
 
+# Ice Lance
+@export var nature_seed_bomb_scene: PackedScene
+
 # Waterwall
 @export var waterwall_projectile_scene: PackedScene
 
@@ -25,6 +28,7 @@ extends CharacterBody2D
 @export var animated_sprite: AnimatedSprite2D
 @export var projectile_spawn_cooldown: float = 1.0
 @export var waterwall_spawn_cooldown: float = 2.0
+@export var seed_bomb_spawn_cooldown: float = 2.0
 
 var is_dashing: bool = false
 var dash_timer: float = 0.0
@@ -34,6 +38,7 @@ var active_nova: Area2D = null
 var current_direction: String = "down"
 var current_projectile_spawn_cooldown: float = 0
 var current_waterwall_spawn_cooldown: float = 0
+var current_seed_bomb_spawn_cooldown: float = 0
 
 var audio_loop_manager: AudioLoopManager
 
@@ -97,9 +102,13 @@ func _process(delta: float) -> void:
 	update_nova_position()
 	update_cone_position()
 	trigger_primary_attack(delta)
-	
+
 	if current_waterwall_spawn_cooldown > 0:
 		current_waterwall_spawn_cooldown -= delta
+		return
+
+	if current_seed_bomb_spawn_cooldown > 0:
+		current_seed_bomb_spawn_cooldown -= delta
 		return
 
 	animated_sprite.play(get_animation_name(current_direction, get_active_mask()))
@@ -127,7 +136,7 @@ func shoot_projectile(delta: float) -> void:
 func shoot_waterwall_projectile(delta: float) -> void:
 	if not waterwall_projectile_scene:
 		return
-		
+
 	if current_waterwall_spawn_cooldown > 0:
 		return
 
@@ -137,12 +146,30 @@ func shoot_waterwall_projectile(delta: float) -> void:
 		var projectile: Projectile = waterwall_projectile_scene.instantiate() as Projectile
 		projectile.damage_type = get_active_mask()
 		projectile.global_position = global_position
-		projectile.is_piercing = true
 		projectile.set_direction(shoot_direction)
 
 		get_parent().add_child(projectile)
 
 	current_waterwall_spawn_cooldown = waterwall_spawn_cooldown
+
+func shoot_seed_bomb_projectile(delta: float) -> void:
+	if not nature_seed_bomb_scene:
+		return
+
+	if current_seed_bomb_spawn_cooldown > 0:
+		return
+
+	var shoot_directions = [Vector2.UP, Vector2.RIGHT, Vector2.DOWN, Vector2.LEFT]
+
+	for shoot_direction in shoot_directions:
+		var projectile: Projectile = nature_seed_bomb_scene.instantiate() as Projectile
+		projectile.damage_type = get_active_mask()
+		projectile.global_position = global_position
+		projectile.set_direction(shoot_direction)
+
+		get_parent().add_child(projectile)
+
+	current_seed_bomb_spawn_cooldown = seed_bomb_spawn_cooldown
 
 func spawn_nova() -> void:
 	if not nova_scene || active_nova != null:
@@ -217,7 +244,7 @@ func trigger_secondaydary_attack(delta):
 		Enums.Element.FIRE:
 			spawn_nova()
 		Enums.Element.NATURE:
-			pass
+			shoot_seed_bomb_projectile(delta)
 
 func stop_primary_attack():
 	match get_active_mask():

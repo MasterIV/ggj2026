@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://dkugv6qs0gnk4"]
+
+[ext_resource type="Script" uid="uid://lg4wl4bdxobt" path="res://scripts/nova.gd" id="1_v155t"]
+[ext_resource type="Texture2D" uid="uid://dupi406ujfk4k" path="res://graphics/attacks/vfx_poisonfog.png" id="2_v155t"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0pujv"]
+radius = 187.13097
+
+[node name="Nova" type="Area2D" unique_id=1516169784 node_paths=PackedStringArray("sprite", "collision_shape")]
+script = ExtResource("1_v155t")
+start_scale = 0.01
+end_scale = 2.0
+growth_time = 0.4
+sprite = NodePath("Sprite2D")
+collision_shape = NodePath("CollisionShape2D")
+damage = 33.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1306035989]
+shape = SubResource("CircleShape2D_0pujv")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1033198244]
+scale = Vector2(0.25, 0.24)
+texture = ExtResource("2_v155t")

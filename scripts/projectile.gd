@@ -7,10 +7,13 @@ extends Area2D
 @export var damage: float
 @export var spawn_sound: AudioStreamPlayer2D
 @export var hit_sound: AudioStreamPlayer2D
+@export var is_piercing: bool = false
+
+# triggered before primary attack dissolves
+@export var secondary_effect_scene: PackedScene
 
 var direction: Vector2 = Vector2.ZERO
 var damage_type: Enums.Element = Enums.Element.NONE
-var is_piercing: bool = false
 
 func _ready():
 	body_entered.connect(_on_body_entered)
@@ -39,7 +42,7 @@ func _on_body_entered(body):
 			print("Dealing %s damage to %s" % [damage, body.name])
 
 		on_hit()
-		
+
 		if !is_piercing:
 			on_destroy()
 
@@ -55,4 +58,16 @@ func set_direction(dir: Vector2):
 	rotation = direction.angle()
 
 func on_destroy():
+	if secondary_effect_scene:
+		for i in range(3):
+			var random_angle = randf() * TAU
+			var effect_instance = secondary_effect_scene.instantiate()
+			
+			if (effect_instance is Projectile):
+				effect_instance.set_direction(Vector2(cos(random_angle), sin(random_angle)))
+			
+			effect_instance.global_position = global_position
+			effect_instance.damage_type = damage_type
+			get_parent().add_child(effect_instance)
+
 	queue_free()
