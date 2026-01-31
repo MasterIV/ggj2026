@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cy2w7qaoaj22g"
-path="res://.godot/imported/player_aqua.png-fa8e457790372f18620ed2737f7fb139.ctex"
+uid="uid://d1hf4by42kksh"
+path="res://.godot/imported/player.png-e4437c4145437b871280b7b3efe90850.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://graphics/player_aqua.png"
-dest_files=["res://.godot/imported/player_aqua.png-fa8e457790372f18620ed2737f7fb139.ctex"]
+source_file="res://graphics/player/player.png"
+dest_files=["res://.godot/imported/player.png-e4437c4145437b871280b7b3efe90850.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://enjd7wfhki5t"
-path="res://.godot/imported/enemy_aqua.png-9538eb7b96bac9dcf95e40b62edc4733.ctex"
+uid="uid://d23xhpaamh3rs"
+path="res://.godot/imported/player_fire.png-9d619c1c04985dbec0e3b3b8ecd90611.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://graphics/enemy_aqua.png"
-dest_files=["res://.godot/imported/enemy_aqua.png-9538eb7b96bac9dcf95e40b62edc4733.ctex"]
+source_file="res://graphics/player/player_fire.png"
+dest_files=["res://.godot/imported/player_fire.png-9d619c1c04985dbec0e3b3b8ecd90611.ctex"]
 
 [params]
 

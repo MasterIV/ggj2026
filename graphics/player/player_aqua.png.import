@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bp43s244ut4bp"
-path="res://.godot/imported/boss_fire.png-c786a0d7a228ce87b29ecd1b2cbc8c7e.ctex"
+uid="uid://cy2w7qaoaj22g"
+path="res://.godot/imported/player_aqua.png-2050f74dd571c4f482c1b531f1b7b0ff.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://graphics/boss_fire.png"
-dest_files=["res://.godot/imported/boss_fire.png-c786a0d7a228ce87b29ecd1b2cbc8c7e.ctex"]
+source_file="res://graphics/player/player_aqua.png"
+dest_files=["res://.godot/imported/player_aqua.png-2050f74dd571c4f482c1b531f1b7b0ff.ctex"]
 
 [params]
 
