@@ -9,10 +9,7 @@
 script = ExtResource("1_1bvp3")
 
 [node name="Player" parent="." unique_id=477181902 groups=["player"] instance=ExtResource("1_ig7tw")]
-speed = null
-dash_speed = null
-dash_duration = null
-cone_distance = null
+speed = 300.0
 
 [node name="Camera2D" parent="." unique_id=469061046 instance=ExtResource("2_0xm2m")]
 dead_zone_radius = 500.0
