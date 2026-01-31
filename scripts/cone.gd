@@ -11,7 +11,7 @@ extends Area2D
 var bodies_in_range: Array = []
 var damage_type: Enums.Element = Enums.Element.NONE
 var player: Player
-var buffs: Array[Enums.ConeBuff] = []
+var buffs: Array = []
 
 func _ready():
 	player = get_tree().get_first_node_in_group("player")

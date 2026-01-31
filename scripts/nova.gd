@@ -17,7 +17,7 @@ var elapsed_time: float = 0.0
 var is_growing: bool = true
 var damage_type: Enums.Element = Enums.Element.NONE
 var player: Player
-var buffs: Array[Enums.NovaBuff] = []
+var buffs: Array = []
 
 func _ready():
 	player = get_tree().get_first_node_in_group("player")
