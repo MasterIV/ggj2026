@@ -6,6 +6,7 @@ extends Area2D
 @export var damage_timer: Timer
 @export var spawn_sound: AudioStreamPlayer2D
 @export var effect_sound: AudioStreamPlayer2D
+@export var sprite: AnimatedSprite2D
 
 var bodies_in_range: Array = []
 var damage_type: Enums.Element = Enums.Element.NONE
@@ -13,6 +14,8 @@ var damage_type: Enums.Element = Enums.Element.NONE
 func _ready():
 	body_entered.connect(_on_body_entered)
 	body_exited.connect(_on_body_exited)
+
+	sprite.play("default")
 
 	add_child(damage_timer)
 	damage_timer.wait_time = damage_interval
