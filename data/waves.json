@@ -11,7 +11,8 @@
       "nature": 0.5
     },
     "damage_type": "nature",
-    "boss": false
+    "boss": false,
+    "deal_damage_cooldown": 1.0
   },
   {
     "delay": 2,
@@ -25,7 +26,8 @@
       "nature": 0.5
     },
     "damage_type": "nature",
-    "boss": true
+    "boss": true,
+    "deal_damage_cooldown": 1.0
   },
   {
     "delay": 8,
@@ -39,7 +41,8 @@
       "nature": 1.0
     },
     "damage_type": "fire",
-    "boss": false
+    "boss": false,
+    "deal_damage_cooldown": 1.0
   },
   {
     "delay": 10,
@@ -53,7 +56,8 @@
       "nature": 1.0
     },
     "damage_type": "fire",
-    "boss": true
+    "boss": true,
+    "deal_damage_cooldown": 1.0
   },
   {
     "delay": 15,
@@ -67,7 +71,8 @@
       "nature": 2.0
     },
     "damage_type": "aqua",
-    "boss": false
+    "boss": false,
+    "deal_damage_cooldown": 1.0
   },
   {
     "delay": 17,
@@ -81,7 +86,8 @@
       "nature": 2.0
     },
     "damage_type": "aqua",
-    "boss": true
+    "boss": true,
+    "deal_damage_cooldown": 1.0
   },
   {
     "delay": 22,
@@ -95,7 +101,8 @@
       "nature": 0.5
     },
     "damage_type": "nature",
-    "boss": false
+    "boss": false,
+    "deal_damage_cooldown": 1.0
   },
   {
     "delay": 25,
@@ -109,6 +116,7 @@
       "nature": 0.5
     },
     "damage_type": "nature",
-    "boss": true
+    "boss": true,
+    "deal_damage_cooldown": 1.0
   }
 ]

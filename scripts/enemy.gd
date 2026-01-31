@@ -30,7 +30,7 @@ var has_player_in_range: bool = false
 
 @onready var enemy_sprite = $AnimatedSprite2D
 
-static func spawn(position: Vector2, player: CharacterBody2D, speed, health, damage, boss, damage_type, multipliers, movement_pattern := Movement_pattern.STRAIGHT) -> Enemy:
+static func spawn(position: Vector2, player: CharacterBody2D, speed, health, damage, deal_damage_cooldown, boss, damage_type, multipliers, movement_pattern := Movement_pattern.STRAIGHT) -> Enemy:
 	var new_enemy: Enemy = ENEMY_SCENE.instantiate() as Enemy
 	new_enemy.position = position
 	new_enemy.player = player
@@ -39,6 +39,7 @@ static func spawn(position: Vector2, player: CharacterBody2D, speed, health, dam
 	new_enemy.boss = boss
 	new_enemy.health = health
 	new_enemy.damage = damage
+	new_enemy.deal_damage_cooldown = deal_damage_cooldown
 	new_enemy.damage_type = Enums.string_to_element(damage_type);
 	new_enemy.multipliers = multipliers
 
