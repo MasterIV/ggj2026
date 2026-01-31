@@ -109,7 +109,7 @@ func spawn_cone() -> void:
 		return
 
 	active_cone = cone_scene.instantiate()
-	get_parent().add_child(active_cone)
+	#get_parent().add_child(active_cone)
 	update_cone_position()
 
 func update_cone_position() -> void:

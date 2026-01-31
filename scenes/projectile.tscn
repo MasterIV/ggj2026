@@ -7,6 +7,7 @@ radius = 33.06055
 
 [node name="Projectile" type="Area2D" unique_id=1353746272 node_paths=PackedStringArray("lifetime_timer")]
 script = ExtResource("1_c8fcr")
+speed = 2400.0
 lifetime_timer = NodePath("LifetimeTimer")
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=2028979278]
