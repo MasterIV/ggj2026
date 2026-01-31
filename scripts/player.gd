@@ -133,8 +133,8 @@ func spawn_cone() -> void:
 	print("Try spawn cone")
 	if not cone_scene:
 		return
-		
-	print("Spawn cone")		
+
+	print("Spawn cone")
 
 	active_cone = cone_scene.instantiate() as Cone
 	active_cone.damage_type = get_active_mask()
@@ -157,5 +157,5 @@ func destroy_cone():
 		active_cone.queue_free()
 		active_cone = null
 
-func get_animation_name(current_direction: String, element: Enums.Element):
-	return Enums.element_to_string(get_active_mask()) + "_" + current_direction
+func get_animation_name(direction: String, element: Enums.Element):
+	return Enums.element_to_string(get_active_mask()) + "_" + direction

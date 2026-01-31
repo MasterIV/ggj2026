@@ -7,10 +7,14 @@ enum Movement_pattern {
 	STRAIGHT
 }
 
+@export var animated_sprite: AnimatedSprite2D
+
 var health: float = 100
 var speed: float
 var movement_pattern: Movement_pattern
 var player: CharacterBody2D
+var current_direction: String = "down"
+var damage_type: Enums.Element = Enums.Element.AQUA
 
 static func spawn(position: Vector2, player: CharacterBody2D, speed := 100.0, health := 100, movement_pattern := Movement_pattern.STRAIGHT) -> Enemy:
 	var new_enemy: Enemy = ENEMY_SCENE.instantiate()
@@ -30,6 +34,7 @@ func move_straight(delta: float) -> void:
 	var direction: Vector2 = player.position - position
 	direction = direction.normalized()
 	velocity = direction * speed
+	update_sprite_direction(direction)
 
 func take_damage(amount: float, element: Enums.Element) -> void:
 	health -= amount
@@ -38,3 +43,22 @@ func take_damage(amount: float, element: Enums.Element) -> void:
 
 func die() -> void:
 	queue_free()
+
+func update_sprite_direction(direction: Vector2):
+	if abs(direction.x) > abs(direction.y):
+		if direction.x > 0:
+			current_direction = "right"
+		else:
+			current_direction = "left"
+	else:
+		if direction.y > 0:
+			current_direction = "down"
+		else:
+			current_direction = "up"
+
+func _process(delta: float) -> void:
+	animated_sprite.play(get_animation_name(current_direction, damage_type))
+	pass
+
+func get_animation_name(current_direction: String, element: Enums.Element):
+	return Enums.element_to_string(element) + "_" + current_direction
