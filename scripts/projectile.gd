@@ -14,8 +14,11 @@ extends Area2D
 
 var direction: Vector2 = Vector2.ZERO
 var damage_type: Enums.Element = Enums.Element.NONE
+var player: Player
 
 func _ready():
+	player = get_tree().get_first_node_in_group("player")
+
 	body_entered.connect(_on_body_entered)
 
 	lifetime_timer.timeout.connect(_on_lifetime_timeout)
@@ -37,7 +40,8 @@ func _on_body_entered(body):
 	elif body.is_in_group("enemy"):
 
 		if body.has_method("take_damage"):
-			(body as Enemy).take_damage(damage, Enums.Element.AQUA) # TODO: Change element as needed
+			if (body as Enemy).take_damage(damage, damage_type):
+				player.enemy_killed.emit(body as Enemy)
 		else:
 			print("Dealing %s damage to %s" % [damage, body.name])
 
@@ -62,10 +66,10 @@ func on_destroy():
 		for i in range(3):
 			var random_angle = randf() * TAU
 			var effect_instance = secondary_effect_scene.instantiate()
-			
+
 			if (effect_instance is Projectile):
 				effect_instance.set_direction(Vector2(cos(random_angle), sin(random_angle)))
-			
+
 			effect_instance.global_position = global_position
 			effect_instance.damage_type = damage_type
 			get_parent().add_child(effect_instance)

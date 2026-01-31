@@ -10,8 +10,11 @@ extends Area2D
 
 var bodies_in_range: Array = []
 var damage_type: Enums.Element = Enums.Element.NONE
+var player: Player
 
 func _ready():
+	player = get_tree().get_first_node_in_group("player")
+
 	body_entered.connect(_on_body_entered)
 	body_exited.connect(_on_body_exited)
 
@@ -42,6 +45,7 @@ func _on_damage_timer_timeout():
 
 func apply_damage(body):
 	if body.has_method("take_damage"):
-		(body as Enemy).take_damage(damage, damage_type)
+		if (body as Enemy).take_damage(damage, damage_type):
+			player.enemy_killed.emit(body as Enemy)
 	else:
 		print("Applying %s damage to %s" % [damage, body.name])

@@ -16,8 +16,11 @@ signal nova_finished
 var elapsed_time: float = 0.0
 var is_growing: bool = true
 var damage_type: Enums.Element = Enums.Element.NONE
+var player: Player
 
 func _ready():
+	player = get_tree().get_first_node_in_group("player")
+
 	body_entered.connect(_on_body_entered)
 	for body in get_overlapping_bodies():
 		_on_body_entered(body)  # Manually trigger for existing overlaps
@@ -61,11 +64,6 @@ func _process(delta):
 
 func _on_body_entered(body):
 	if body.is_in_group("enemy"):
-		print("Nova Enemy found")
-
 		if body.has_method("take_damage"):
-			(body as Enemy).take_damage(damage, Enums.Element.AQUA) # TODO: Change element as needed
-		else:
-			print("Dealing %s damage to %s" % [damage, body.name])
-	else:
-		print("Found ", body)
+			if (body as Enemy).take_damage(damage, damage_type):
+				player.enemy_killed.emit(body as Enemy)

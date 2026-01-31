@@ -12,7 +12,7 @@ enum Movement_pattern {
 var health: float = 100
 var speed: float
 var movement_pattern: Movement_pattern
-var player: CharacterBody2D
+var player: Player
 var current_direction: String = "down"
 var damage_type: Enums.Element = Enums.Element.AQUA
 var boss: bool = false
@@ -50,7 +50,7 @@ func move_straight(delta: float) -> void:
 	velocity = direction * speed
 	update_sprite_direction(direction)
 
-func take_damage(amount: float, element: Enums.Element) -> void:
+func take_damage(amount: float, element: Enums.Element) -> bool:
 	amount = amount * multipliers[Enums.element_to_string(element)]
 
 	health -= amount
@@ -59,6 +59,8 @@ func take_damage(amount: float, element: Enums.Element) -> void:
 	text.set_text(str(roundi(amount)), Color.RED)
 	if health <= 0:
 		die()
+		return true
+	return false
 
 func die() -> void:
 	queue_free()

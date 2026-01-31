@@ -42,9 +42,18 @@ var current_seed_bomb_spawn_cooldown: float = 0
 
 var audio_loop_manager: AudioLoopManager
 
+var killed_enemies: Array[Enemy] = []
+
+signal enemy_killed(enemy: Enemy)
+
 func _ready() -> void:
 	audio_loop_manager = get_tree().get_first_node_in_group("audio_loop_manager")
+	enemy_killed.connect(_on_enemy_killed)
 
+func _on_enemy_killed(enemy: Enemy):
+	killed_enemies.append(enemy)
+	print("Player killed enemy, is boss: %s" % enemy.boss)
+	print("Total killed enemies: %d" % killed_enemies.size())
 
 func _physics_process(delta):
 	if is_dashing:
