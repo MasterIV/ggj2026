@@ -58,8 +58,6 @@ func update_sprite_direction(direction: Vector2):
 		else:
 			current_direction = "up"
 
-	animated_sprite.play("idle_" + current_direction)
-
 var current_mask: int = 0
 var available_masks = [Enums.Element.AQUA, Enums.Element.FIRE, Enums.Element.NATURE]
 
@@ -88,6 +86,9 @@ func _process(delta: float) -> void:
 	update_cone_position()
 	shoot_projectile(delta)
 
+	animated_sprite.play(get_animation_name(current_direction, get_active_mask()))
+
+
 func shoot_projectile(delta: float) -> void:
 	if not projectile_scene:
 		return
@@ -100,6 +101,7 @@ func shoot_projectile(delta: float) -> void:
 	var shoot_direction: Vector2 = (mouse_pos - global_position).normalized()
 
 	var projectile: Projectile = projectile_scene.instantiate() as Projectile
+	projectile.damage_type = get_active_mask()
 	projectile.global_position = global_position
 	projectile.set_direction(shoot_direction)
 
@@ -111,7 +113,8 @@ func spawn_nova() -> void:
 	if not nova_scene || active_nova != null:
 		return
 
-	active_nova = nova_scene.instantiate()
+	active_nova = nova_scene.instantiate() as Nova
+	active_nova.damage_type = get_active_mask()
 	active_nova.nova_finished.connect(_on_nova_finished)
 	get_parent().add_child(active_nova)
 	update_nova_position()
@@ -129,7 +132,8 @@ func spawn_cone() -> void:
 	if not cone_scene:
 		return
 
-	active_cone = cone_scene.instantiate()
+	active_cone = cone_scene.instantiate() as Cone
+	active_cone.damage_type = get_active_mask()
 	#get_parent().add_child(active_cone)
 	update_cone_position()
 
@@ -148,3 +152,6 @@ func destroy_cone():
 	if active_cone:
 		active_cone.queue_free()
 		active_cone = null
+
+func get_animation_name(current_direction: String, element: Enums.Element):
+	return Enums.element_to_string(get_active_mask()) + "_" + current_direction
