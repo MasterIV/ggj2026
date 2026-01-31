@@ -17,9 +17,15 @@ var current_direction: String = "down"
 var damage_type: Enums.Element = Enums.Element.AQUA
 var boss: bool = false
 
+var multipliers: Dictionary = {
+	"aqua": 1.0,
+	"fire": 1.0,
+	"nature": 1.0
+}
+
 @onready var enemy_sprite = $AnimatedSprite2D
 
-static func spawn(position: Vector2, player: CharacterBody2D, speed, health, boss, damage_type, movement_pattern := Movement_pattern.STRAIGHT) -> Enemy:
+static func spawn(position: Vector2, player: CharacterBody2D, speed, health, boss, damage_type, multipliers, movement_pattern := Movement_pattern.STRAIGHT) -> Enemy:
 	var new_enemy: Enemy = ENEMY_SCENE.instantiate() as Enemy
 	new_enemy.position = position
 	new_enemy.player = player
@@ -28,6 +34,7 @@ static func spawn(position: Vector2, player: CharacterBody2D, speed, health, bos
 	new_enemy.boss = boss
 	new_enemy.health = health
 	new_enemy.damage_type = Enums.string_to_element(damage_type);
+	new_enemy.multipliers = multipliers
 
 	return new_enemy
 
@@ -44,6 +51,8 @@ func move_straight(delta: float) -> void:
 	update_sprite_direction(direction)
 
 func take_damage(amount: float, element: Enums.Element) -> void:
+	amount = amount * multipliers[Enums.element_to_string(element)]
+
 	health -= amount
 	var text = Floating_Number.spawn(position)
 	get_parent().add_child(text)
