@@ -9,6 +9,7 @@ extends Area2D
 @export var collision_shape: CollisionShape2D
 @export var spawn_sound: AudioStreamPlayer2D
 @export var effect_sound: AudioStreamPlayer2D
+@export var damage: float = 100
 
 signal nova_finished
 
@@ -16,6 +17,8 @@ var elapsed_time: float = 0.0
 var is_growing: bool = true
 
 func _ready():
+	body_entered.connect(_on_body_entered)
+
 	scale = Vector2(start_scale, start_scale)
 
 	if collision_shape.shape:
@@ -38,6 +41,13 @@ func _process(delta):
 			var progress: float = elapsed_time / growth_time
 			var current_scale = lerp(start_scale, end_scale, progress)
 			scale = Vector2(current_scale, current_scale)
+			
+			# Update collision shape size
+			if collision_shape and collision_shape.shape is CircleShape2D:
+				var base_radius = collision_shape.shape.radius / scale.x  # Get unscaled radius
+				collision_shape.shape.radius = base_radius * current_scale
+			else:
+				print("Collision shape not found")
 	else:
 		if elapsed_time >= dissolve_time:
 			nova_finished.emit()
@@ -45,3 +55,14 @@ func _process(delta):
 		else:
 			var fade_progress: float = elapsed_time / dissolve_time
 			modulate.a = 1.0 - fade_progress
+
+func _on_body_entered(body):
+	if body.is_in_group("enemy"):
+		print("Nova Enemy found")
+
+		if body.has_method("take_damage"):
+			(body as Enemy).take_damage(damage, Enums.Element.AQUA) # TODO: Change element as needed
+		else:
+			print("Dealing %s damage to %s" % [damage, body.name])
+	else:
+		print("Found ", body)
