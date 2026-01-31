@@ -5,7 +5,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2hx4n"]
 size = Vector2(256, 256)
 
-[node name="PlantRed" type="StaticBody2D" unique_id=282115239]
+[node name="PlantRed" type="StaticBody2D" unique_id=282115239 groups=["obstacle"]]
 collision_layer = 4
 collision_mask = 4
 
