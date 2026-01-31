@@ -3,6 +3,11 @@ extends TileMapLayer
 @export var player: Player
 @export var chunk_size: int = 8
 @export var view_distance: int = 2
+@export var tile_size: float = 256.0
+@export var world_size: Vector2i
+@export var map_border_block: StaticBody2D
+@export var map_obstacles: Array[PackedScene]
+@export var obstacles_per_chunk: int = 3
 
 var loaded_chunks: Dictionary = {}
 
@@ -40,7 +45,20 @@ func generate_chunk(chunk_pos: Vector2i):
 	var start_x = chunk_pos.x * chunk_size
 	var start_y = chunk_pos.y * chunk_size
 
+	var obstacles: Array[int] = []
+	while obstacles.size() < obstacles_per_chunk:
+		var random_tile = randf() * (chunk_size * 2 - 1)
+		if obstacles.has(random_tile):
+			continue
+		obstacles.append(random_tile)
+
 	for x in range(chunk_size):
 		for y in range(chunk_size):
 			var tile_pos = Vector2i(start_x + x, start_y + y)
 			set_cell(tile_pos, 0, Vector2i(0, 0))  # coords, source_id, atlas_coords
+			if obstacles.has(x * y + y):
+				map_obstacles.shuffle()
+				var new_obstacle = map_obstacles[0].instantiate()
+				new_obstacle.position.x = (start_x + x) * tile_size
+				new_obstacle.position.y = (start_y + y) * tile_size
+				add_child(new_obstacle)

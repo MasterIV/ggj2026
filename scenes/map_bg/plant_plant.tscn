@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://t7wjknqont6s"]
+
+[ext_resource type="Texture2D" uid="uid://toumdmy4yhx8" path="res://graphics/bg_rpop_plant_plant.PNG" id="1_qg55j"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_sdagj"]
+radius = 50.01
+
+[node name="PlantPlant" type="StaticBody2D" unique_id=282115239]
+collision_layer = 4
+collision_mask = 4
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2069026905]
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("1_qg55j")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1671882219]
+position = Vector2(1, 4)
+shape = SubResource("CircleShape2D_sdagj")

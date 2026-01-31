@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://cdqrqoi83mfhw"]
+
+[ext_resource type="Texture2D" uid="uid://c1s46ll4g5ayu" path="res://graphics/bg_rpop_plant_red.PNG" id="1_tun3e"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_pofbf"]
+radius = 47.0
+height = 142.0
+
+[node name="PlantRed" type="StaticBody2D" unique_id=282115239]
+collision_layer = 4
+collision_mask = 4
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2069026905]
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("1_tun3e")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1671882219]
+position = Vector2(1, 4)
+shape = SubResource("CapsuleShape2D_pofbf")
