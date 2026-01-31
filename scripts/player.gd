@@ -5,10 +5,17 @@ extends CharacterBody2D
 @export var speed: float = 300
 @export var dash_speed: float = 800
 @export var dash_duration: float = 0.2
+
+# Ice Lance
 @export var projectile_scene: PackedScene
+
+# Fire Cone
 @export var cone_scene: PackedScene
 @export var cone_distance: float = 60.0
+
+# Fire Nova
 @export var nova_scene: PackedScene
+
 @export var animated_sprite: AnimatedSprite2D
 @export var projectile_spawn_cooldown: float = 1.0
 
@@ -66,29 +73,24 @@ func get_active_mask():
 	return available_masks[current_mask]
 
 func _input(event):
-	if Input.is_action_pressed("secondary_attack"):
-		spawn_nova()
-
 	if Input.is_action_just_pressed("mask_switch"):
+		stop_primary_attack()
+
 		current_mask += 1
 		if current_mask >= available_masks.size():
 			current_mask = 0
 
 		audio_loop_manager.mask_changed.emit(get_active_mask())
 
-	if Input.is_action_pressed("cone_attack"):
-		if not active_cone:
-			spawn_cone()
-	elif active_cone:
-		destroy_cone()
+	if Input.is_action_pressed("secondary_attack"):
+		trigger_secondaydary_attack(get_process_delta_time())
 
 func _process(delta: float) -> void:
 	update_nova_position()
 	update_cone_position()
-	shoot_projectile(delta)
+	trigger_primary_attack(delta)
 
 	animated_sprite.play(get_animation_name(current_direction, get_active_mask()))
-
 
 func shoot_projectile(delta: float) -> void:
 	if not projectile_scene:
@@ -130,11 +132,8 @@ func update_nova_position() -> void:
 	active_nova.global_position = global_position
 
 func spawn_cone() -> void:
-	print("Try spawn cone")
-	if not cone_scene:
+	if not cone_scene || active_cone != null:
 		return
-
-	print("Spawn cone")
 
 	active_cone = cone_scene.instantiate() as Cone
 	active_cone.damage_type = get_active_mask()
@@ -159,3 +158,26 @@ func destroy_cone():
 
 func get_animation_name(direction: String, element: Enums.Element):
 	return Enums.element_to_string(get_active_mask()) + "_" + direction
+
+func trigger_primary_attack(delta):
+	match get_active_mask():
+		Enums.Element.AQUA:
+			shoot_projectile(delta)
+		Enums.Element.FIRE:
+			spawn_cone()
+		Enums.Element.NATURE:
+			pass
+
+func trigger_secondaydary_attack(delta):
+	match get_active_mask():
+		Enums.Element.AQUA:
+			pass
+		Enums.Element.FIRE:
+			spawn_nova()
+		Enums.Element.NATURE:
+			pass
+
+func stop_primary_attack():
+	match get_active_mask():
+		Enums.Element.FIRE:
+			destroy_cone()
