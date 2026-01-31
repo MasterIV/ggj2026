@@ -1,7 +1,6 @@
 [gd_scene format=3 uid="uid://dqmbny5mh003a"]
 
 [ext_resource type="Script" uid="uid://b5nmon3e85h6t" path="res://scripts/cone.gd" id="1_8s5pe"]
-[ext_resource type="Texture2D" uid="uid://bkk884crjxvdp" path="res://graphics/cone.png" id="2_6aela"]
 [ext_resource type="Texture2D" uid="uid://nfjiq4hyiuo1" path="res://graphics/vfx_fire_01.PNG" id="3_hhfvd"]
 [ext_resource type="Texture2D" uid="uid://cwvqlky5iitvr" path="res://graphics/vfx_fire_02.PNG" id="4_771vm"]
 [ext_resource type="Texture2D" uid="uid://cp251ou0yryk3" path="res://graphics/vfx_fire_03.PNG" id="5_bj48k"]
@@ -63,11 +62,6 @@ sprite = NodePath("AnimatedSprite2D")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1642072570]
 position = Vector2(412, -0.5)
 shape = SubResource("RectangleShape2D_xh4jf")
-
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1036383350]
-visible = false
-position = Vector2(355, -1)
-texture = ExtResource("2_6aela")
 
 [node name="DoTTimer" type="Timer" parent="." unique_id=598627272]
 
