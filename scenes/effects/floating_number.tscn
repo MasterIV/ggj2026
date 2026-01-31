@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://du2so44rcj70o"]
+
+[ext_resource type="Script" uid="uid://b2rhu4metslfo" path="res://scripts/effects/floating_number.gd" id="1_k22r6"]
+[ext_resource type="Theme" uid="uid://crrpqjxyqtyb7" path="res://misc_assets/ui_theme.tres" id="1_qg02v"]
+
+[node name="FloatingNumber" type="Node2D" unique_id=190574731]
+script = ExtResource("1_k22r6")
+
+[node name="Label" type="Label" parent="." unique_id=1613382501]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -30.0
+offset_top = -26.0
+offset_right = 30.0
+grow_horizontal = 2
+grow_vertical = 0
+pivot_offset = Vector2(30, 13)
+theme = ExtResource("1_qg02v")
+theme_override_font_sizes/font_size = 30
+horizontal_alignment = 1
+vertical_alignment = 1
+max_lines_visible = 1

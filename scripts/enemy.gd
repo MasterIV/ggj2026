@@ -16,6 +16,8 @@ var player: CharacterBody2D
 var current_direction: String = "down"
 var damage_type: Enums.Element = Enums.Element.AQUA
 
+@onready var enemy_sprite = $AnimatedSprite2D
+
 static func spawn(position: Vector2, player: CharacterBody2D, speed := 100.0, health := 100, movement_pattern := Movement_pattern.STRAIGHT) -> Enemy:
 	var new_enemy: Enemy = ENEMY_SCENE.instantiate() as Enemy
 	new_enemy.position = position
@@ -43,6 +45,9 @@ func move_straight(delta: float) -> void:
 
 func take_damage(amount: float, element: Enums.Element) -> void:
 	health -= amount
+	var text = Floating_Number.spawn(position)
+	get_parent().add_child(text)
+	text.set_text(str(roundi(amount)), Color.RED)
 	if health <= 0:
 		die()
 

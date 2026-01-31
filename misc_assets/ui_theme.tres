@@ -1,0 +1,8 @@
+[gd_resource type="Theme" format=3 uid="uid://crrpqjxyqtyb7"]
+
+[ext_resource type="FontFile" uid="uid://mgsbkinlwmsh" path="res://misc_assets/impact.ttf" id="1_whnnb"]
+
+[resource]
+Label/constants/outline_size = 1
+Label/font_sizes/font_size = 20
+Label/fonts/font = ExtResource("1_whnnb")
