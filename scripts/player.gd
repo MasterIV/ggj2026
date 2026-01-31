@@ -272,4 +272,18 @@ func take_damage(damage: float, element: Enums.Element):
 	print("Player took %f damage, current health: %f" % [damage, current_health])
 
 	if (current_health <= 0):
-		player_died.emit(killed_enemies)s
+		player_died.emit(killed_enemies)
+		die()
+
+
+func die():
+	var quit_dialog = ConfirmationDialog.new()
+	quit_dialog.dialog_text = "You died, there is nothing you can do about it."
+	quit_dialog.title = "Life is precious"
+	quit_dialog.confirmed.connect(_on_quit_confirmed)
+	quit_dialog.canceled.connect(_on_quit_confirmed)
+	add_child(quit_dialog)
+	quit_dialog.popup_centered()
+
+func _on_quit_confirmed():
+	get_tree().quit()
