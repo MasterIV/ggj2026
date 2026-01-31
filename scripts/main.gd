@@ -9,7 +9,7 @@ var waves = []
 
 func _ready() -> void:
 	init_quit_game_dialog()
-	
+
 	var file = FileAccess.open("data/waves.json", FileAccess.READ)
 	waves = JSON.parse_string(file.get_as_text())
 
@@ -18,12 +18,12 @@ func _process(delta: float) -> void:
 	if current_wave < len(waves) && spawn_timer > waves[current_wave].delay:
 		spawn_wave(waves[current_wave])
 		current_wave += 1
-		
+
 func spawn_wave(wave):
 	for n in wave.enemies:
 		var random_angle: float = deg_to_rad(randf() * 360.0)
 		var enemy_pos := Vector2(cos(random_angle)*spawn_distance, sin(random_angle)*spawn_distance)
-		var enemy := Enemy.spawn($Player.position + enemy_pos, $Player, wave.speed, wave.health)
+		var enemy := Enemy.spawn($Player.position + enemy_pos, $Player, wave.speed, wave.health, wave.boss)
 		add_child(enemy)
 
 func _input(event):

@@ -15,19 +15,22 @@ var movement_pattern: Movement_pattern
 var player: CharacterBody2D
 var current_direction: String = "down"
 var damage_type: Enums.Element = Enums.Element.AQUA
+var boss: bool = false
 
 @onready var enemy_sprite = $AnimatedSprite2D
 
-static func spawn(position: Vector2, player: CharacterBody2D, speed := 100.0, health := 100, movement_pattern := Movement_pattern.STRAIGHT) -> Enemy:
+static func spawn(position: Vector2, player: CharacterBody2D, speed := 100.0, health := 100, boss := false, movement_pattern := Movement_pattern.STRAIGHT) -> Enemy:
 	var new_enemy: Enemy = ENEMY_SCENE.instantiate() as Enemy
 	new_enemy.position = position
 	new_enemy.player = player
 	new_enemy.speed = speed
 	new_enemy.movement_pattern = movement_pattern
+	new_enemy.boss = boss
+	new_enemy.health = health
 
 	# assign random element from fire, aqua, nature
 	var elements: Array = [Enums.Element.FIRE, Enums.Element.AQUA, Enums.Element.NATURE]
-	new_enemy.damage_type = elements[randi() % elements.size()]
+	new_enemy.damage_type = Enums.Element.NATURE if boss else elements[randi() % elements.size()]
 
 	return new_enemy
 
@@ -71,4 +74,5 @@ func _process(delta: float) -> void:
 	pass
 
 func get_animation_name(current_direction: String, element: Enums.Element):
-	return Enums.element_to_string(element) + "_" + current_direction
+	var prefix: String = "boss_" if boss else ""
+	return prefix + Enums.element_to_string(element) + "_" + current_direction

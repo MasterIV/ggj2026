@@ -6,8 +6,19 @@
 		"speed": 300,
 		"damage": 1,
 		"multiplyer": { "fire": 1.0, "water": 1.0, "nature": 1.0 }, 
-		"type": "default"
+		"type": "default",
+      "boss": false
 	},
+  {
+    "delay": 2,
+    "enemies": 1,
+    "health": 500,
+    "speed": 500,
+    "damage": 25,
+    "multiplyer": { "fire": 1.0, "water": 1.0, "nature": 1.0 },
+    "type": "default",
+    "boss": true
+  },
 	{
 		"delay": 8,
 		"enemies": 12,
@@ -15,7 +26,8 @@
 		"speed": 500,
 		"damage": 1,
 		"multiplyer": { "fire": 1.0, "water": 1.0, "nature": 1.0 }, 
-		"type": "default"
+		"type": "default",
+      "boss": false
 	},
 	{
 		"delay": 15,
@@ -24,7 +36,8 @@
 		"speed": 300,
 		"damage": 1,
 		"multiplyer": { "fire": 1.0, "water": 1.0, "nature": 1.0 }, 
-		"type": "default"
+		"type": "default",
+      "boss": false
 	},
 	{
 		"delay": 22,
@@ -33,6 +46,7 @@
 		"speed": 300,
 		"damage": 1,
 		"multiplyer": { "fire": 1.0, "water": 1.0, "nature": 1.0 }, 
-		"type": "default"
+		"type": "default",
+      "boss": false
 	}
 ]
