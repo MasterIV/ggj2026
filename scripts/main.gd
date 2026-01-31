@@ -12,12 +12,15 @@ func _ready() -> void:
 
 	var file = FileAccess.open("data/waves.json", FileAccess.READ)
 	waves = JSON.parse_string(file.get_as_text())
+	spawn_timer = waves[0].delay
 
 func _process(delta: float) -> void:
-	spawn_timer = spawn_timer + delta
-	if current_wave < len(waves) && spawn_timer > waves[current_wave].delay:
+	spawn_timer = spawn_timer - delta
+	if current_wave < len(waves) && spawn_timer < 0:
 		spawn_wave(waves[current_wave])
 		current_wave += 1
+		if current_wave < len(waves):
+			spawn_timer = waves[current_wave].delay
 
 func spawn_wave(wave):
 	for n in wave.enemies:

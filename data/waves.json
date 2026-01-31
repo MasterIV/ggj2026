@@ -1,6 +1,6 @@
 [
   {
-    "delay": 1,
+    "delay": 5,
     "enemies": 5,
     "health": 10,
     "speed": 300,
@@ -15,7 +15,7 @@
     "deal_damage_cooldown": 1.0
   },
   {
-    "delay": 2,
+    "delay": 5,
     "enemies": 1,
     "health": 500,
     "speed": 500,
@@ -30,7 +30,7 @@
     "deal_damage_cooldown": 1.0
   },
   {
-    "delay": 8,
+    "delay": 10,
     "enemies": 12,
     "health": 5,
     "speed": 500,
@@ -45,7 +45,7 @@
     "deal_damage_cooldown": 1.0
   },
   {
-    "delay": 10,
+    "delay": 5,
     "enemies": 1,
     "health": 500,
     "speed": 500,
@@ -60,7 +60,7 @@
     "deal_damage_cooldown": 1.0
   },
   {
-    "delay": 15,
+    "delay": 10,
     "enemies": 20,
     "health": 12,
     "speed": 300,
@@ -75,7 +75,7 @@
     "deal_damage_cooldown": 1.0
   },
   {
-    "delay": 17,
+    "delay": 5,
     "enemies": 1,
     "health": 500,
     "speed": 500,
@@ -90,7 +90,7 @@
     "deal_damage_cooldown": 1.0
   },
   {
-    "delay": 22,
+    "delay": 10,
     "enemies": 8,
     "health": 30,
     "speed": 300,
@@ -105,7 +105,7 @@
     "deal_damage_cooldown": 1.0
   },
   {
-    "delay": 25,
+    "delay": 10,
     "enemies": 1,
     "health": 5000,
     "speed": 500,
