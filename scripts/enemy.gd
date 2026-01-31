@@ -12,6 +12,7 @@ enum Movement_pattern {
 @export var damage_timer: Timer
 
 var health: float = 100
+var damage_taken: float = 0.0
 var speed: float
 var movement_pattern: Movement_pattern
 var player: Player
@@ -81,11 +82,11 @@ func move_straight(delta: float) -> void:
 func take_damage(amount: float, element: Enums.Element) -> bool:
 	amount = amount * multipliers[Enums.element_to_string(element)]
 
-	health -= amount
+	damage_taken = damage_taken + amount
 	var text = Floating_Number.spawn(position)
 	get_parent().add_child(text)
 	text.set_text(str(roundi(amount)), Color.RED)
-	if health <= 0:
+	if damage_taken >= health:
 		die()
 		return true
 	return false

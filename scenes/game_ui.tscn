@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://bhi8psipnuxhj" path="res://graphics/ui/ExpMaskNature.png" id="2_bt76a"]
 [ext_resource type="Texture2D" uid="uid://coilg6ckdxi1y" path="res://graphics/ui/ExpFrame_fg.png" id="4_sjwyb"]
 [ext_resource type="Texture2D" uid="uid://t5mtguul3y8y" path="res://graphics/ui/ExpMaskNature_fg.png" id="5_5kh4o"]
+[ext_resource type="Texture2D" uid="uid://djj2vicr0hgi7" path="res://graphics/ui/ExpMaskwater_fg.png" id="7_s2npe"]
 
 [node name="GameUi" type="Control" unique_id=31394455]
 layout_mode = 3
@@ -30,6 +31,10 @@ layout_mode = 2
 theme = ExtResource("1_u2dgd")
 alignment = 1
 
+[node name="Label" type="Label" parent="2rows/3col_1" unique_id=1209121722]
+layout_mode = 2
+text = "XP:"
+
 [node name="XP" type="TextureProgressBar" parent="2rows/3col_1" unique_id=1288945619]
 custom_minimum_size = Vector2(584, 34)
 layout_mode = 2
@@ -49,3 +54,22 @@ tint_progress = Color(0.9764706, 0.81960785, 0.34117648, 1)
 layout_mode = 2
 theme = ExtResource("1_u2dgd")
 alignment = 1
+
+[node name="Label" type="Label" parent="2rows/3col_2" unique_id=2098362110]
+layout_mode = 2
+text = "HP:"
+
+[node name="HP" type="TextureProgressBar" parent="2rows/3col_2" unique_id=268921163]
+custom_minimum_size = Vector2(584, 34)
+layout_mode = 2
+theme = ExtResource("1_u2dgd")
+value = 50.0
+nine_patch_stretch = true
+stretch_margin_left = 4
+stretch_margin_top = 3
+stretch_margin_right = 4
+stretch_margin_bottom = 3
+texture_under = ExtResource("4_sjwyb")
+texture_over = ExtResource("4_sjwyb")
+texture_progress = ExtResource("7_s2npe")
+tint_progress = Color(0.9882353, 0.5058824, 0.36078432, 1)
