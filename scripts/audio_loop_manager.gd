@@ -15,8 +15,6 @@ func _on_mask_changed(mask_type: Enums.Element):
 	aqua_loop.volume_db = 0.0 if mask_type == Enums.Element.AQUA else -80.0
 	fire_loop.volume_db = 0.0 if mask_type == Enums.Element.FIRE else -80.0
 	nature_loop.volume_db = 0.0 if mask_type == Enums.Element.NATURE else -80.0
-	
-	print("Mask changed to: ", mask_type)
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("mask_aqua"):

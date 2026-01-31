@@ -41,7 +41,6 @@ func _physics_process(delta):
 
 func _on_body_entered(body):
 	if body.is_in_group("obstacle") && !is_piercing:
-		print("Obstacle found")
 		on_hit()
 		on_destroy()
 	elif body.is_in_group("enemy"):
@@ -49,8 +48,6 @@ func _on_body_entered(body):
 		if body.has_method("take_damage"):
 			if (body as Enemy).take_damage(damage * get_damage_multiplier(), damage_type):
 				player.enemy_killed.emit(body as Enemy)
-		else:
-			print("Dealing %s damage to %s" % [damage, body.name])
 
 		on_hit()
 
