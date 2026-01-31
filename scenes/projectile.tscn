@@ -6,8 +6,11 @@
 radius = 33.06055
 
 [node name="Projectile" type="Area2D" unique_id=1353746272 node_paths=PackedStringArray("lifetime_timer")]
+collision_layer = 5
+collision_mask = 5
 script = ExtResource("1_c8fcr")
 speed = 2400.0
+lifetime = 2.065
 lifetime_timer = NodePath("LifetimeTimer")
 damage = 25.0
 
