@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dupi406ujfk4k"
-path="res://.godot/imported/sfx_poisonfog.png-d6912ceea6c0b17a204678b6e0db11e0.ctex"
+uid="uid://bjtf05ehm3w6"
+path="res://.godot/imported/vfx_poison_seed.png-ccc8e59e547a54505388251b77551c03.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://graphics/sfx_poisonfog.png"
-dest_files=["res://.godot/imported/sfx_poisonfog.png-d6912ceea6c0b17a204678b6e0db11e0.ctex"]
+source_file="res://graphics/attacks/vfx_poison_seed.png"
+dest_files=["res://.godot/imported/vfx_poison_seed.png-ccc8e59e547a54505388251b77551c03.ctex"]
 
 [params]
 
