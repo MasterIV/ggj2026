@@ -45,13 +45,31 @@ var audio_loop_manager: AudioLoopManager
 
 var killed_enemies: Array[Enemy] = []
 
+var buffs: Dictionary = {
+	Enums.AttackType.PROJECTILE: [],
+	Enums.AttackType.CONE: [],
+	Enums.AttackType.NOVA: [],
+}
+
+func _on_add_buff(attack_type: Enums.AttackType, buff) -> void:
+	buffs[attack_type].append(buff)
+
+func get_buffs_by_type_and_element(attack_type: Enums.AttackType, element: Enums.Element) -> Array:
+	var result: Array = []
+	for buff in buffs[attack_type]:
+		if buff.damage_type == element:
+			result.append(buff)
+	return result
+
 signal enemy_killed(enemy: Enemy)
 signal player_took_damage(damage: float, health_current: float, health_max: float)
 signal player_died(killed_enemies: Array[Enemy])
+signal add_buff(attack_type: Enums.AttackType, buff)
 
 func _ready() -> void:
 	audio_loop_manager = get_tree().get_first_node_in_group("audio_loop_manager")
 	enemy_killed.connect(_on_enemy_killed)
+	add_buff.connect(_on_add_buff)
 	current_health = base_health
 
 func _on_enemy_killed(enemy: Enemy):
@@ -141,6 +159,9 @@ func shoot_projectile(delta: float) -> void:
 	projectile.damage_type = get_active_mask()
 	projectile.global_position = global_position
 	projectile.set_direction(shoot_direction)
+	projectile.buffs[Enums.AttackType.PROJECTILE] = get_buffs_by_type_and_element(Enums.AttackType.PROJECTILE, get_active_mask())
+	projectile.buffs[Enums.AttackType.NOVA] = get_buffs_by_type_and_element(Enums.AttackType.NOVA, get_active_mask())
+	projectile.buffs[Enums.AttackType.CONE] = get_buffs_by_type_and_element(Enums.AttackType.CONE, get_active_mask())
 
 	get_parent().add_child(projectile)
 
@@ -160,6 +181,9 @@ func shoot_waterwall_projectile(delta: float) -> void:
 		projectile.damage_type = get_active_mask()
 		projectile.global_position = global_position
 		projectile.set_direction(shoot_direction)
+		projectile.buffs[Enums.AttackType.PROJECTILE] = get_buffs_by_type_and_element(Enums.AttackType.PROJECTILE, get_active_mask())
+		projectile.buffs[Enums.AttackType.NOVA] = get_buffs_by_type_and_element(Enums.AttackType.NOVA, get_active_mask())
+		projectile.buffs[Enums.AttackType.CONE] = get_buffs_by_type_and_element(Enums.AttackType.CONE, get_active_mask())
 
 		get_parent().add_child(projectile)
 
@@ -179,6 +203,9 @@ func shoot_seed_bomb_projectile(delta: float) -> void:
 		projectile.damage_type = get_active_mask()
 		projectile.global_position = global_position
 		projectile.set_direction(shoot_direction)
+		projectile.buffs[Enums.AttackType.PROJECTILE] = get_buffs_by_type_and_element(Enums.AttackType.PROJECTILE, get_active_mask())
+		projectile.buffs[Enums.AttackType.NOVA] = get_buffs_by_type_and_element(Enums.AttackType.NOVA, get_active_mask())
+		projectile.buffs[Enums.AttackType.CONE] = get_buffs_by_type_and_element(Enums.AttackType.CONE, get_active_mask())
 
 		get_parent().add_child(projectile)
 
@@ -191,6 +218,8 @@ func spawn_nova() -> void:
 	active_nova = nova_scene.instantiate() as Nova
 	active_nova.damage_type = get_active_mask()
 	active_nova.nova_finished.connect(_on_nova_finished)
+	active_nova.buffs.append(get_buffs_by_type_and_element(Enums.AttackType.NOVA, get_active_mask()))
+
 	get_parent().add_child(active_nova)
 	update_nova_position()
 
@@ -209,6 +238,8 @@ func spawn_cone() -> void:
 
 	active_cone = cone_scene.instantiate() as Cone
 	active_cone.damage_type = get_active_mask()
+	active_cone.buffs.append(get_buffs_by_type_and_element(Enums.AttackType.CONE, get_active_mask()))
+
 	get_parent().add_child(active_cone)
 	update_cone_position()
 
@@ -218,6 +249,8 @@ func spawn_nature_cone() -> void:
 
 	active_cone = nature_cone_scene.instantiate() as Cone
 	active_cone.damage_type = get_active_mask()
+	active_cone.buffs.append(get_buffs_by_type_and_element(Enums.AttackType.CONE, get_active_mask()))
+
 	get_parent().add_child(active_cone)
 	update_cone_position()
 
@@ -229,7 +262,6 @@ func update_cone_position() -> void:
 	var direction: Vector2 = (mouse_pos - global_position).normalized()
 
 	active_cone.global_position = global_position + direction * cone_distance
-
 	active_cone.rotation = direction.angle()
 
 func destroy_cone():
@@ -278,7 +310,6 @@ func take_damage(damage: float, element: Enums.Element):
 	if (current_health <= 0):
 		player_died.emit(killed_enemies)
 		die()
-
 
 func die():
 	var quit_dialog = ConfirmationDialog.new()

@@ -11,6 +11,7 @@ extends Area2D
 var bodies_in_range: Array = []
 var damage_type: Enums.Element = Enums.Element.NONE
 var player: Player
+var buffs: Array[Enums.ConeBuff] = []
 
 func _ready():
 	player = get_tree().get_first_node_in_group("player")
@@ -45,7 +46,12 @@ func _on_damage_timer_timeout():
 
 func apply_damage(body):
 	if body.has_method("take_damage"):
-		if (body as Enemy).take_damage(damage, damage_type):
+		if (body as Enemy).take_damage(damage * get_damage_multiplier(), damage_type):
 			player.enemy_killed.emit(body as Enemy)
 	else:
 		print("Applying %s damage to %s" % [damage, body.name])
+
+func get_damage_multiplier() -> float:
+	return buffs.reduce(func(sum, obj):
+		return sum + obj.damage_multiplier
+	, 1.0)

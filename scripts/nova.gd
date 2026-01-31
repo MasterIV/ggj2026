@@ -17,6 +17,7 @@ var elapsed_time: float = 0.0
 var is_growing: bool = true
 var damage_type: Enums.Element = Enums.Element.NONE
 var player: Player
+var buffs: Array[Enums.NovaBuff] = []
 
 func _ready():
 	player = get_tree().get_first_node_in_group("player")
@@ -65,5 +66,10 @@ func _process(delta):
 func _on_body_entered(body):
 	if body.is_in_group("enemy"):
 		if body.has_method("take_damage"):
-			if (body as Enemy).take_damage(damage, damage_type):
+			if (body as Enemy).take_damage(damage * get_damage_multiplier(), damage_type):
 				player.enemy_killed.emit(body as Enemy)
+
+func get_damage_multiplier() -> float:
+	return buffs.reduce(func(sum, obj):
+		return sum + obj.damage_multiplier
+	, 1.0)
