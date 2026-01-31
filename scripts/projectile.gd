@@ -90,6 +90,9 @@ func on_destroy():
 	queue_free()
 
 func get_damage_multiplier() -> float:
-	return buffs[Enums.AttackType.PROJECTILE].reduce(func(sum, obj):
-		return sum + obj.damage_multiplier
-	, 1.0)
+	var multiplier: float = 1.0
+
+	for buff in buffs[Enums.AttackType.PROJECTILE]:
+		multiplier += (buff as Enums.ProjectileBuff).damage_multiplier
+
+	return multiplier

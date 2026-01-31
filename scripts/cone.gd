@@ -52,6 +52,9 @@ func apply_damage(body):
 		print("Applying %s damage to %s" % [damage, body.name])
 
 func get_damage_multiplier() -> float:
-	return buffs.reduce(func(sum, obj):
-		return sum + obj.damage_multiplier
-	, 1.0)
+	var multiplier: float = 1.0
+
+	for buff in buffs:
+		multiplier += (buff as Enums.ConeBuff).damage_multiplier
+
+	return multiplier

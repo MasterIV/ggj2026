@@ -70,6 +70,9 @@ func _on_body_entered(body):
 				player.enemy_killed.emit(body as Enemy)
 
 func get_damage_multiplier() -> float:
-	return buffs.reduce(func(sum, obj):
-		return sum + obj.damage_multiplier
-	, 1.0)
+	var multiplier: float = 1.0
+
+	for buff in buffs:
+		multiplier += (buff as Enums.NovaBuff).damage_multiplier
+
+	return multiplier
