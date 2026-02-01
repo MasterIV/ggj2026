@@ -3,6 +3,7 @@ extends Area2D
 
 @export var start_scale: float = 0.2
 @export var end_scale: float = 3.0
+@export var cooldown: float = 2.0
 @export var growth_time: float = 1.0
 @export var dissolve_time: float = 0.3
 @export var sprite: Sprite2D
@@ -46,7 +47,7 @@ func _process(delta):
 			elapsed_time = 0.0
 		else:
 			var progress: float = elapsed_time / growth_time
-			var current_scale = lerp(start_scale, end_scale, progress)
+			var current_scale = lerp(start_scale, (end_scale + get_radius_modifier()), progress)
 			scale = Vector2(current_scale, current_scale)
 
 			# Update collision shape size
@@ -64,13 +65,29 @@ func _process(delta):
 func _on_body_entered(body):
 	if body.is_in_group("enemy"):
 		if body.has_method("take_damage"):
-			if (body as Enemy).take_damage(damage * get_damage_multiplier(), damage_type):
+			if (body as Enemy).take_damage(damage + get_damage_modifier(), damage_type):
 				player.enemy_killed.emit(body as Enemy)
 
-func get_damage_multiplier() -> float:
-	var multiplier: float = 1.0
+func get_cooldown_modifier() -> float:
+	var modifier: float = 0.0
 
 	for buff in buffs:
-		multiplier += (buff as Enums.NovaBuff).damage_multiplier
+		modifier += (buff as Enums.NovaBuff).cooldown_multiplier
 
-	return multiplier
+	return modifier
+
+func get_radius_modifier() -> float:
+	var modifier: float = 0.0
+
+	for buff in buffs:
+		modifier += (buff as Enums.NovaBuff).radius_multiplier
+
+	return modifier
+
+func get_damage_modifier() -> float:
+	var modifier: float = 0.0
+
+	for buff in buffs:
+		modifier += (buff as Enums.NovaBuff).damage_multiplier
+
+	return modifier

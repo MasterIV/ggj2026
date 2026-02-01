@@ -16,6 +16,7 @@ lifetime = 1.0
 lifetime_timer = NodePath("LifetimeTimer")
 cooldown = 2.0
 is_piercing = true
+piercing_number = 999
 secondary_effect_scene = ExtResource("2_d321o")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=503715403]

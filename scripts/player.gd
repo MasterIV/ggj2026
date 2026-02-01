@@ -36,6 +36,7 @@ var current_direction: String = "down"
 var current_projectile_spawn_cooldown: float = 0
 var current_waterwall_spawn_cooldown: float = 0
 var current_seed_bomb_spawn_cooldown: float = 0
+var current_nova_spawn_cooldown: float = 0
 var current_health: float
 
 var audio_loop_manager: AudioLoopManager
@@ -138,6 +139,10 @@ func _process(delta: float) -> void:
 		current_seed_bomb_spawn_cooldown -= delta
 		return
 
+	if current_nova_spawn_cooldown > 0:
+		current_nova_spawn_cooldown -= delta
+		return
+
 	animated_sprite.play(get_animation_name(current_direction, get_active_mask()))
 
 func shoot_projectile(delta: float) -> void:
@@ -212,6 +217,9 @@ func spawn_nova() -> void:
 	if not nova_scene || active_nova != null:
 		return
 
+	if current_nova_spawn_cooldown > 0:
+		return
+
 	active_nova = nova_scene.instantiate() as Nova
 	active_nova.damage_type = get_active_mask()
 	active_nova.nova_finished.connect(_on_nova_finished)
@@ -219,6 +227,8 @@ func spawn_nova() -> void:
 
 	get_parent().add_child(active_nova)
 	update_nova_position()
+
+	current_nova_spawn_cooldown = active_nova.cooldown + active_nova.get_cooldown_modifier()
 
 func _on_nova_finished():
 	active_nova = null
