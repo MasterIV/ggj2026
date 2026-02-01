@@ -27,14 +27,17 @@ func setup():
 				panel_instance.name_label.text = left_buff.name
 				panel_instance.description_label.text = left_buff.get_description()
 				panel_instance.pressed.connect(_on_upgrade_left)
+				panel_instance.texture_normal = panel_instance.aqua_panel
 			1:
 				panel_instance.name_label.text = center_buff.name
 				panel_instance.description_label.text = center_buff.get_description()
 				panel_instance.pressed.connect(_on_upgrade_center)
+				panel_instance.texture_normal = panel_instance.fire_panel
 			2:
 				panel_instance.name_label.text = right_buff.name
 				panel_instance.description_label.text = right_buff.get_description()
 				panel_instance.pressed.connect(_on_upgrade_right)
+				panel_instance.texture_normal = panel_instance.nature_panel
 
 func _on_upgrade_left() -> void:
 	player.add_buff.emit(

@@ -15,7 +15,7 @@
     "deal_damage_cooldown": 0.2
   },
   {
-    "delay": 5,
+    "delay": 9,
     "enemies": 24,
     "health": 18,
     "speed": 300,
@@ -45,7 +45,7 @@
     "deal_damage_cooldown": 0.2
   },
   {
-    "delay": 4,
+    "delay": 8,
     "enemies": 13,
     "health": 40,
     "speed": 300,
