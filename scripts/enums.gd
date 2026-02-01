@@ -102,11 +102,11 @@ class ProjectileBuff:
 		piercing = new_piercing
 
 	func get_description() -> String:
-		var desc = "Increases damage by " + str(int(damage_multiplier)) + ".\n"
+		var desc = "Increases damage by " + str((damage_multiplier)) + ".\n"
 		if speed_multiplier != 0:
-			desc += "Increases speed by " + str(int(speed_multiplier)) + ".\n"
+			desc += "Increases speed by " + str((speed_multiplier)) + ".\n"
 		if cooldown_multiplier != 0:
-			desc += "Decreases cooldown by " + str(int(cooldown_multiplier)) + ".\n"
+			desc += "Decreases cooldown by " + str((cooldown_multiplier)) + ".\n"
 		if piercing > 0:
 			desc += "Grants piercing through " + str(piercing) + " enemies.\n"
 		return desc.strip_edges()
@@ -125,9 +125,9 @@ class ConeBuff:
 		damage_type = new_damage_type
 
 	func get_description() -> String:
-		var desc = "Increases damage by " + str(int(damage_multiplier)) + ".\n"
+		var desc = "Increases damage by " + str((damage_multiplier)) + ".\n"
 		if damage_interval_multiplier != 0:
-			desc += "Decreases damage interval by " + str(int(damage_interval_multiplier)) + ".\n"
+			desc += "Decreases damage interval by " + str((damage_interval_multiplier)) + ".\n"
 		return desc.strip_edges()
 
 class NovaBuff:
@@ -146,9 +146,9 @@ class NovaBuff:
 		damage_type = new_damage_type
 
 	func get_description() -> String:
-		var desc = "Increases damage by " + str(int(damage_multiplier)) + ".\n"
+		var desc = "Increases damage by " + str((damage_multiplier)) + ".\n"
 		if radius_multiplier != 0:
-			desc += "Increases radius by " + str(int(radius_multiplier)) + ".\n"
+			desc += "Increases radius by " + str((radius_multiplier)) + ".\n"
 		if cooldown_multiplier != 0:
-			desc += "Decreases cooldown by " + str(int(cooldown_multiplier)) + ".\n"
+			desc += "Decreases cooldown by " + str((cooldown_multiplier)) + ".\n"
 		return desc.strip_edges()
