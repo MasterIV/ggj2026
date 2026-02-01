@@ -308,20 +308,20 @@ func shoot_seed_bomb_projectile(delta: float) -> void:
 	if current_seed_bomb_spawn_cooldown > 0:
 		return
 
-	var shoot_directions = [Vector2.UP, Vector2.RIGHT, Vector2.DOWN, Vector2.LEFT]
+	var mouse_pos: Vector2 = get_global_mouse_position()
+	var shoot_direction: Vector2 = (mouse_pos - global_position).normalized()
 
-	for shoot_direction in shoot_directions:
-		var projectile: Projectile = nature_seed_bomb_scene.instantiate() as Projectile
-		projectile.damage_type = get_active_mask()
-		projectile.global_position = global_position
-		projectile.set_direction(shoot_direction)
-		projectile.buffs[Enums.AttackType.PROJECTILE] = get_buffs_by_type_and_element(Enums.AttackType.PROJECTILE, get_active_mask())
-		projectile.buffs[Enums.AttackType.NOVA] = get_buffs_by_type_and_element(Enums.AttackType.NOVA, get_active_mask())
-		projectile.buffs[Enums.AttackType.CONE] = get_buffs_by_type_and_element(Enums.AttackType.CONE, get_active_mask())
+	var projectile: Projectile = nature_seed_bomb_scene.instantiate() as Projectile
+	projectile.damage_type = get_active_mask()
+	projectile.global_position = global_position
+	projectile.set_direction(shoot_direction)
+	projectile.buffs[Enums.AttackType.PROJECTILE] = get_buffs_by_type_and_element(Enums.AttackType.PROJECTILE, get_active_mask())
+	projectile.buffs[Enums.AttackType.NOVA] = get_buffs_by_type_and_element(Enums.AttackType.NOVA, get_active_mask())
+	projectile.buffs[Enums.AttackType.CONE] = get_buffs_by_type_and_element(Enums.AttackType.CONE, get_active_mask())
 
-		get_parent().add_child(projectile)
+	get_parent().add_child(projectile)
 
-		current_seed_bomb_spawn_cooldown = projectile.cooldown + projectile.get_cooldown_modifier()
+	current_seed_bomb_spawn_cooldown = projectile.cooldown + projectile.get_cooldown_modifier()
 
 
 func spawn_nova() -> void:
