@@ -1,0 +1,29 @@
+﻿[
+  {
+    "type": "PROJECTILE",
+    "name": "Aqua Lance Buff",
+    "speed_multiplier":  1.2,
+    "damage_multiplier": 1.5,
+    "cooldown_multiplier":  0.9,
+    "damage_type": "AQUA"
+  }
+]
+
+
+
+
+
+[
+#Ice Lance (Projectile)
+ProjectileBuff.new(1.2, 1.5, 0.9, Element.AQUA),
+# Aqua Wave (Projectile
+ProjectileBuff.new(1.0, 2.0, 0.8, Element.AQUA),
+# Fire Blast (Cone)
+ConeBuff.new(1.5, 0.9, Element.FIRE),
+# Fire Nova (Nova)
+NovaBuff.new(2.0, 1.2, 0.85, Element.FIRE),
+# Roots (Cone)
+ConeBuff.new(1.3, 0.8, Element.NATURE),
+# Nature Seed Bomb (Nova)
+NovaBuff.new(1.8, 1.1, 0.9, Element.NATURE),
+]

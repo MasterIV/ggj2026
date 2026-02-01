@@ -47,24 +47,23 @@ func level_up() -> void:
 	level_up_ui.show()
 
 func _on_upgrade_left() -> void:
-	var attack_type = Enums.get_random_attack_type()
-	var buff = Enums.get_random_buff(attack_type)
+	var element = Enums.get_random_element()
+	var buff = Enums.get_random_buff_for_element(element)
 
 	player.add_buff.emit(
-		attack_type,
+		buff.attack_type,
 		buff
 	)
 
 	level_up_ui.hide()
 	get_tree().paused = false
 
-
 func _on_upgrade_center() -> void:
-	var attack_type = Enums.get_random_attack_type()
-	var buff = Enums.get_random_buff(attack_type)
+	var element = Enums.get_random_element()
+	var buff = Enums.get_random_buff_for_element(element)
 
 	player.add_buff.emit(
-		attack_type,
+		buff.attack_type,
 		buff
 	)
 
@@ -72,11 +71,11 @@ func _on_upgrade_center() -> void:
 	get_tree().paused = false
 
 func _on_upgrade_right() -> void:
-	var attack_type = Enums.get_random_attack_type()
-	var buff = Enums.get_random_buff(attack_type)
+	var element = Enums.get_random_element()
+	var buff = Enums.get_random_buff_for_element(element)
 
 	player.add_buff.emit(
-		attack_type,
+		buff.attack_type,
 		buff
 	)
 
