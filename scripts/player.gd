@@ -134,15 +134,12 @@ func _process(delta: float) -> void:
 
 	if current_waterwall_spawn_cooldown > 0:
 		current_waterwall_spawn_cooldown -= delta
-		return
 
 	if current_seed_bomb_spawn_cooldown > 0:
 		current_seed_bomb_spawn_cooldown -= delta
-		return
 
 	if current_nova_spawn_cooldown > 0:
 		current_nova_spawn_cooldown -= delta
-		return
 
 	animated_sprite.play(get_animation_name(current_direction, get_active_mask()))
 
