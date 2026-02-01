@@ -1,8 +1,8 @@
 extends Control
 
 var xp: float = 0.0
-var xp_till_next: float = 100.0
-var xp_progression_multiplier: float = 2.5
+var xp_till_next: float = 400.0
+var xp_progression_multiplier: float = 1.1
 var player: Player
 
 @onready var xp_bar = $"2rows/3col_1/XP"
