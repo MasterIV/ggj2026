@@ -26,9 +26,6 @@ extends CharacterBody2D
 @export var nova_scene: PackedScene
 
 @export var animated_sprite: AnimatedSprite2D
-@export var projectile_spawn_cooldown: float = 1.0
-@export var waterwall_spawn_cooldown: float = 2.0
-@export var seed_bomb_spawn_cooldown: float = 2.0
 
 var is_dashing: bool = false
 var dash_timer: float = 0.0
@@ -164,7 +161,7 @@ func shoot_projectile(delta: float) -> void:
 
 	get_parent().add_child(projectile)
 
-	current_projectile_spawn_cooldown = projectile_spawn_cooldown
+	current_projectile_spawn_cooldown = projectile.cooldown
 
 func shoot_waterwall_projectile(delta: float) -> void:
 	if not waterwall_projectile_scene:
@@ -185,8 +182,8 @@ func shoot_waterwall_projectile(delta: float) -> void:
 		projectile.buffs[Enums.AttackType.CONE] = get_buffs_by_type_and_element(Enums.AttackType.CONE, get_active_mask())
 
 		get_parent().add_child(projectile)
+		current_waterwall_spawn_cooldown = projectile.cooldown
 
-	current_waterwall_spawn_cooldown = waterwall_spawn_cooldown
 
 func shoot_seed_bomb_projectile(delta: float) -> void:
 	if not nature_seed_bomb_scene:
@@ -208,7 +205,8 @@ func shoot_seed_bomb_projectile(delta: float) -> void:
 
 		get_parent().add_child(projectile)
 
-	current_seed_bomb_spawn_cooldown = seed_bomb_spawn_cooldown
+		current_seed_bomb_spawn_cooldown = projectile.cooldown
+
 
 func spawn_nova() -> void:
 	if not nova_scene || active_nova != null:

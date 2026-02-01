@@ -1,14 +1,15 @@
 class_name Projectile
 extends Area2D
 
+@export var damage: float
 @export var speed: float = 600.0
 @export var lifetime: float = 2.0
 @export var lifetime_timer: Timer
-@export var damage: float
-@export var spawn_sound: AudioStreamPlayer2D
-@export var hit_sound: AudioStreamPlayer2D
+@export var cooldown: float = 1
 @export var is_piercing: bool = false
 @export var piercing_number: int = 0
+@export var spawn_sound: AudioStreamPlayer2D
+@export var hit_sound: AudioStreamPlayer2D
 
 # triggered before primary attack dissolves
 @export var secondary_effect_scene: PackedScene
