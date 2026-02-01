@@ -426,14 +426,8 @@ func take_damage(damage: float, element: Enums.Element):
 		player_died.emit(killed_enemies)
 		die()
 
-func die():
-	var quit_dialog = ConfirmationDialog.new()
-	quit_dialog.dialog_text = "You died, there is nothing you can do about it."
-	quit_dialog.title = "Life is precious"
-	quit_dialog.confirmed.connect(_on_quit_confirmed)
-	quit_dialog.canceled.connect(_on_quit_confirmed)
-	add_child(quit_dialog)
-	quit_dialog.popup_centered()
+func win():
+	get_tree().change_scene_to_file("res://scenes/win.tscn")
 
-func _on_quit_confirmed():
-	get_tree().quit()
+func die():
+	get_tree().change_scene_to_file("res://scenes/game_over.tscn")
