@@ -1,5 +1,10 @@
 extends Node
 
+enum ProjectileDirection {
+	MOUSE,
+	RANDOM
+}
+
 enum ProjectileShotType {
 	LINE,
 	ARC
