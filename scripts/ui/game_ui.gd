@@ -45,39 +45,4 @@ func level_up() -> void:
 
 	get_tree().paused = true
 	level_up_ui.show()
-
-func _on_upgrade_left() -> void:
-	var element = Enums.get_random_element()
-	var buff = Enums.get_random_buff_for_element(element)
-
-	player.add_buff.emit(
-		buff.attack_type,
-		buff
-	)
-
-	level_up_ui.hide()
-	get_tree().paused = false
-
-func _on_upgrade_center() -> void:
-	var element = Enums.get_random_element()
-	var buff = Enums.get_random_buff_for_element(element)
-
-	player.add_buff.emit(
-		buff.attack_type,
-		buff
-	)
-
-	level_up_ui.hide()
-	get_tree().paused = false
-
-func _on_upgrade_right() -> void:
-	var element = Enums.get_random_element()
-	var buff = Enums.get_random_buff_for_element(element)
-
-	player.add_buff.emit(
-		buff.attack_type,
-		buff
-	)
-
-	level_up_ui.hide()
-	get_tree().paused = false
+	level_up_ui.setup()

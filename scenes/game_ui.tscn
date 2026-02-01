@@ -5,8 +5,9 @@
 [ext_resource type="Texture2D" uid="uid://bhi8psipnuxhj" path="res://graphics/ui/ExpMaskNature.png" id="2_bt76a"]
 [ext_resource type="Texture2D" uid="uid://coilg6ckdxi1y" path="res://graphics/ui/ExpFrame_fg.png" id="4_sjwyb"]
 [ext_resource type="Texture2D" uid="uid://t5mtguul3y8y" path="res://graphics/ui/ExpMaskNature_fg.png" id="5_5kh4o"]
-[ext_resource type="Texture2D" uid="uid://bfgtn63v7h8uu" path="res://graphics/ui/Frame_LevelUp_Cards.png" id="7_e0pfi"]
+[ext_resource type="Script" uid="uid://ddkadc411d2so" path="res://scripts/level_up_ui_container.gd" id="7_o3bws"]
 [ext_resource type="Texture2D" uid="uid://djj2vicr0hgi7" path="res://graphics/ui/ExpMaskwater_fg.png" id="7_s2npe"]
+[ext_resource type="PackedScene" uid="uid://nts3mhd0w4n3" path="res://scenes/ui/upgrade_panel.tscn" id="8_o3bws"]
 
 [node name="GameUi" type="Control" unique_id=31394455]
 process_mode = 3
@@ -86,19 +87,5 @@ offset_top = 100.0
 offset_right = 616.0
 offset_bottom = 800.0
 grow_horizontal = 2
-
-[node name="TextureButton" type="TextureButton" parent="LevelUpUiContainer" unique_id=1997634437]
-layout_mode = 2
-texture_normal = ExtResource("7_e0pfi")
-
-[node name="TextureButton2" type="TextureButton" parent="LevelUpUiContainer" unique_id=404890332]
-layout_mode = 2
-texture_normal = ExtResource("7_e0pfi")
-
-[node name="TextureButton3" type="TextureButton" parent="LevelUpUiContainer" unique_id=1297404663]
-layout_mode = 2
-texture_normal = ExtResource("7_e0pfi")
-
-[connection signal="button_down" from="LevelUpUiContainer/TextureButton" to="." method="_on_upgrade_left"]
-[connection signal="button_down" from="LevelUpUiContainer/TextureButton2" to="." method="_on_upgrade_center"]
-[connection signal="button_down" from="LevelUpUiContainer/TextureButton3" to="." method="_on_upgrade_right"]
+script = ExtResource("7_o3bws")
+upgrade_panel = ExtResource("8_o3bws")
