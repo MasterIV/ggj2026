@@ -426,4 +426,5 @@ bus = &"Music"
 parameters/looping = true
 
 [connection signal="pressed" from="CanvasLayer/Buttons/NewGame" to="." method="_on_new_game_pressed"]
+[connection signal="pressed" from="CanvasLayer/Buttons/Credits" to="." method="_on_credits_pressed"]
 [connection signal="pressed" from="CanvasLayer/Buttons/Exit" to="." method="_on_exit_pressed"]
