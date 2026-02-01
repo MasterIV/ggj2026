@@ -12,6 +12,15 @@
 [ext_resource type="PackedScene" uid="uid://bqohmcx0nthpg" path="res://scenes/attacks/nature_roots_shot.tscn" id="7_d2wvv"]
 [ext_resource type="Texture2D" uid="uid://bacjm4lq5usow" path="res://graphics/player/player_nature.png" id="7_fjrip"]
 
+[sub_resource type="Gradient" id="Gradient_d2wvv"]
+offsets = PackedFloat32Array(0, 0.39545456, 1)
+colors = PackedColorArray(0, 0, 0, 0.627451, 0, 0, 0, 0.42352942, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_3v2ag"]
+gradient = SubResource("Gradient_d2wvv")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7dm0k"]
 size = Vector2(93, 189)
 
@@ -429,6 +438,11 @@ nature_cone_scene = ExtResource("4_smehm")
 nature_cone_shot = ExtResource("7_d2wvv")
 nova_scene = ExtResource("4_qlg0r")
 animated_sprite = NodePath("AnimatedSprite2D")
+
+[node name="Shadow" type="Sprite2D" parent="." unique_id=1026676182]
+position = Vector2(-2, 119)
+scale = Vector2(2.03125, 0.84375)
+texture = SubResource("GradientTexture2D_3v2ag")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1406526680]
 position = Vector2(1.5, 2.5)
