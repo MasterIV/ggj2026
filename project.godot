@@ -35,6 +35,7 @@ player=""
 obstacle=""
 enemy=""
 audio_loop_manager=""
+wave_counter=""
 
 [input]
 

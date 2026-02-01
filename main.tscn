@@ -33,7 +33,6 @@ speed = 600.0
 dead_zone_radius = 500.0
 
 [node name="AudioLoopManager" parent="." unique_id=281250674 instance=ExtResource("6_7mycd")]
-process_mode = 3
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=2042211497]
 
