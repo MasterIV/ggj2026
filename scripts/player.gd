@@ -158,7 +158,7 @@ func shoot_projectile(delta: float, projectile_prefab: PackedScene) -> void:
 	var shoot_direction: Vector2 = (mouse_pos - global_position).normalized()
 
 	var config_projectile: Projectile = projectile_prefab.instantiate() as Projectile
-	var number_shots: int = config_projectile.number_of_projectiles
+	var number_shots: int = config_projectile.number_of_projectiles + config_projectile.get_shots_added_modifier()
 	var shot_type: Enums.ProjectileShotType = config_projectile.shot_type
 	var spacing: float = config_projectile.spacing
 	config_projectile.queue_free()
@@ -209,7 +209,7 @@ func spawn_nature_roots(delta: float, projectile_prefab: PackedScene) -> void:
 	var shoot_direction: Vector2 = (mouse_pos - global_position).normalized()
 
 	var config_projectile: Projectile = projectile_prefab.instantiate() as Projectile
-	var number_shots: int = config_projectile.number_of_projectiles
+	var number_shots: int = config_projectile.number_of_projectiles + config_projectile.get_shots_added_modifier()
 	var shot_type: Enums.ProjectileShotType = config_projectile.shot_type
 	var spacing: float = config_projectile.spacing
 	config_projectile.queue_free()
@@ -261,7 +261,7 @@ func shoot_waterwall_projectile(delta: float, projectile_prefab: PackedScene) ->
 	var shoot_direction: Vector2 = (mouse_pos - global_position).normalized()
 
 	var config_projectile: Projectile = projectile_prefab.instantiate() as Projectile
-	var number_shots: int = config_projectile.number_of_projectiles
+	var number_shots: int = config_projectile.number_of_projectiles + config_projectile.get_shots_added_modifier()
 	var shot_type: Enums.ProjectileShotType = config_projectile.shot_type
 	var spacing: float = config_projectile.spacing
 	var cooldown = config_projectile.cooldown + config_projectile.get_cooldown_modifier()

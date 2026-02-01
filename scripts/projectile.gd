@@ -105,6 +105,14 @@ func get_speed_modifier() -> float:
 
 	return modifier
 
+func get_shots_added_modifier() -> int:
+	var modifier: int = 0
+
+	for buff in buffs[Enums.AttackType.PROJECTILE]:
+		modifier += (buff as Enums.ProjectileBuff).shots_added
+
+	return modifier
+
 func get_cooldown_modifier() -> float:
 	var modifier: float = 0.0
 
