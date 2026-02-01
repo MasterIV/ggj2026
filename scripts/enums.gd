@@ -63,24 +63,39 @@ func get_random_buff_for_attack_type(attack_type: AttackType):
 					filtered_buffs.append(buff)
 	return filtered_buffs[randi() % filtered_buffs.size()]
 
-# TODO replace with buffs.json
 func get_all_buffs():
 	return [
-		# PRIMARY
-		# Ice Lance (Projectile)
-		ProjectileBuff.new("Aqua Lance Boost", .2, .5, .2, Element.AQUA, 1),
-		# Fire Blast (Cone)
-		ConeBuff.new("Fire Blast Boost", .5, .2, Element.FIRE),
-		# Roots (Cone)
-		ProjectileBuff.new("Nature Roots Boost", .2, .5, .2, Element.NATURE),
+		# Speed, Damage, Cooldown, Piercing, Projectile
+		ProjectileBuff.new("Aqua Lance Damage Boost", 0, 0.15, 0, Element.AQUA, 0, 0),
+		ProjectileBuff.new("Aqua Lance Speed Boost", 0.15, 0, 0, Element.AQUA, 0, 0),
+		ProjectileBuff.new("Aqua Lance Piercing Boost", 0, 0, 0, Element.AQUA, 1, 0),
+		ProjectileBuff.new("Aqua Lance Shots Boost", 0, 0, 0, Element.AQUA, 0, 1),
 
-		# SECONDARY
-		# Aqua Wave (Projectile
-		ProjectileBuff.new("Aqua Wave Boost", .2, .5, .2, Element.AQUA),
-		# Fire Nova (Nova)
-		NovaBuff.new("Fire Nova Boost", .5, .2, 0.2, Element.FIRE),
-		# Nature Seed Bomb (Nova)
-		NovaBuff.new("Nature Seed Bomb Boost", .8, .2, 0.2, Element.NATURE),
+		# Speed, Damage, Cooldown, Piercing, Projectile
+		ProjectileBuff.new("Aqua Wave Damage Boost", 0, 0.2, 0, Element.AQUA, 0, 0),
+		ProjectileBuff.new("Aqua Wave Speed Boost", 0.2, 0, 0, Element.AQUA, 0, 0),
+
+		# Damage, Speed
+		ConeBuff.new("Fire Blast Damage, Boost", 0.15, 0, Element.FIRE),
+		ConeBuff.new("Fire Blast Speed, Boost", 0, 0.15, Element.FIRE),
+
+		# Damage, Radius, Speed
+		NovaBuff.new("Fire Nova Damage Boost", 0.2, 0, 0, Element.FIRE),
+		NovaBuff.new("Fire Nova Speed Boost", 0, 0, 0.2, Element.FIRE),
+		NovaBuff.new("Fire Nova Range Boost", 0, 0.2, 0, Element.FIRE),
+
+		# Speed, Damage, Cooldown, Piercing, Projectile
+		ProjectileBuff.new("Nature Roots Damage Boost", 0, 0.15, 0, Element.NATURE, 0, 0),
+		ProjectileBuff.new("Nature Roots Speed Boost", 0.15, 0, 0, Element.NATURE, 0, 0),
+		ProjectileBuff.new("Nature Roots Piercing Boost", 0, 0, 0, Element.NATURE, 1, 0),
+		ProjectileBuff.new("Nature Roots Shots Boost", 0, 0, 0, Element.NATURE, 0, 1),
+
+
+		# Damage, Radius, Speed
+		NovaBuff.new("Nature Seed Bomb Boost", 0.2, 0, 0, Element.NATURE),
+		NovaBuff.new("Nature Seed Bomb Boost", 0, 0, 0.2, Element.NATURE),
+		# Fragments + 1
+		# NovaBuff.new("Nature Seed Bomb Boost", 0, 0, 0, Element.NATURE),
 	]
 
 func element_to_string(element: Element):
