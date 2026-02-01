@@ -47,7 +47,7 @@ func _process(delta):
 			elapsed_time = 0.0
 		else:
 			var progress: float = elapsed_time / growth_time
-			var current_scale = lerp(start_scale, (end_scale + get_radius_modifier()), progress)
+			var current_scale = lerp(start_scale, (end_scale * get_radius_modifier()), progress)
 			scale = Vector2(current_scale, current_scale)
 
 			# Update collision shape size
@@ -65,19 +65,19 @@ func _process(delta):
 func _on_body_entered(body):
 	if body.is_in_group("enemy"):
 		if body.has_method("take_damage"):
-			if (body as Enemy).take_damage(damage + get_damage_modifier(), damage_type):
+			if (body as Enemy).take_damage(damage * get_damage_modifier(), damage_type):
 				player.enemy_killed.emit(body as Enemy)
 
 func get_cooldown_modifier() -> float:
-	var modifier: float = 0.0
+	var modifier: float = 1.0
 
 	for buff in buffs:
-		modifier += (buff as Enums.NovaBuff).cooldown_multiplier
+		modifier -= (buff as Enums.NovaBuff).cooldown_multiplier
 
 	return modifier
 
 func get_radius_modifier() -> float:
-	var modifier: float = 0.0
+	var modifier: float = 1.0
 
 	for buff in buffs:
 		modifier += (buff as Enums.NovaBuff).radius_multiplier
@@ -85,7 +85,7 @@ func get_radius_modifier() -> float:
 	return modifier
 
 func get_damage_modifier() -> float:
-	var modifier: float = 0.0
+	var modifier: float = 1.0
 
 	for buff in buffs:
 		modifier += (buff as Enums.NovaBuff).damage_multiplier

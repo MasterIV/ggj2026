@@ -22,7 +22,7 @@ func _ready():
 	sprite.play("default")
 
 	add_child(damage_timer)
-	damage_timer.wait_time = damage_interval - get_interval_modifier()
+	damage_timer.wait_time = damage_interval * get_interval_modifier()
 	damage_timer.timeout.connect(_on_damage_timer_timeout)
 	damage_timer.start()
 
@@ -46,19 +46,19 @@ func _on_damage_timer_timeout():
 
 func apply_damage(body):
 	if body.has_method("take_damage"):
-		if (body as Enemy).take_damage(damage + get_damage_modifier(), damage_type):
+		if (body as Enemy).take_damage(damage * get_damage_modifier(), damage_type):
 			player.enemy_killed.emit(body as Enemy)
 
 func get_interval_modifier() -> float:
-	var modifier: float = 0.0
+	var modifier: float = 1.0
 
 	for buff in buffs:
-		modifier += (buff as Enums.ConeBuff).damage_interval_multiplier
+		modifier -= (buff as Enums.ConeBuff).damage_interval_multiplier
 
 	return modifier
 
 func get_damage_modifier() -> float:
-	var modifier: float = 0.0
+	var modifier: float = 1.0
 
 	for buff in buffs:
 		modifier += (buff as Enums.ConeBuff).damage_multiplier

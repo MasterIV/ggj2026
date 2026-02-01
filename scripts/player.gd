@@ -176,7 +176,7 @@ func shoot_projectile(delta: float, projectile_prefab: PackedScene) -> void:
 			projectile.buffs[Enums.AttackType.NOVA] = get_buffs_by_type_and_element(Enums.AttackType.NOVA, get_active_mask())
 			projectile.buffs[Enums.AttackType.CONE] = get_buffs_by_type_and_element(Enums.AttackType.CONE, get_active_mask())
 			get_parent().add_child(projectile)
-			current_projectile_spawn_cooldown = projectile.cooldown + projectile.get_cooldown_modifier()
+			current_projectile_spawn_cooldown = projectile.cooldown * projectile.get_cooldown_modifier()
 	elif shot_type == Enums.ProjectileShotType.LINE:
 		for i in range(number_shots):
 			var projectile: Projectile = projectile_prefab.instantiate() as Projectile
@@ -195,7 +195,7 @@ func shoot_projectile(delta: float, projectile_prefab: PackedScene) -> void:
 			projectile.buffs[Enums.AttackType.CONE] = get_buffs_by_type_and_element(Enums.AttackType.CONE, get_active_mask())
 			get_parent().add_child(projectile)
 
-			current_projectile_spawn_cooldown = projectile.cooldown + projectile.get_cooldown_modifier()
+			current_projectile_spawn_cooldown = projectile.cooldown * projectile.get_cooldown_modifier()
 
 func spawn_nature_roots(delta: float, projectile_prefab: PackedScene) -> void:
 	if not projectile_prefab:
@@ -227,7 +227,7 @@ func spawn_nature_roots(delta: float, projectile_prefab: PackedScene) -> void:
 			projectile.buffs[Enums.AttackType.NOVA] = get_buffs_by_type_and_element(Enums.AttackType.NOVA, get_active_mask())
 			projectile.buffs[Enums.AttackType.CONE] = get_buffs_by_type_and_element(Enums.AttackType.CONE, get_active_mask())
 			get_parent().add_child(projectile)
-			current_projectile_spawn_cooldown = projectile.cooldown + projectile.get_cooldown_modifier()
+			current_projectile_spawn_cooldown = projectile.cooldown * projectile.get_cooldown_modifier()
 	elif shot_type == Enums.ProjectileShotType.LINE:
 		for i in range(number_shots):
 			var projectile: Projectile = projectile_prefab.instantiate() as Projectile
@@ -246,7 +246,7 @@ func spawn_nature_roots(delta: float, projectile_prefab: PackedScene) -> void:
 			projectile.buffs[Enums.AttackType.CONE] = get_buffs_by_type_and_element(Enums.AttackType.CONE, get_active_mask())
 			get_parent().add_child(projectile)
 
-			current_projectile_spawn_cooldown = projectile.cooldown + projectile.get_cooldown_modifier()
+			current_projectile_spawn_cooldown = projectile.cooldown * projectile.get_cooldown_modifier()
 
 func shoot_waterwall_projectile(delta: float, projectile_prefab: PackedScene) -> void:
 	if not projectile_prefab:
@@ -264,7 +264,7 @@ func shoot_waterwall_projectile(delta: float, projectile_prefab: PackedScene) ->
 	var number_shots: int = config_projectile.number_of_projectiles + config_projectile.get_shots_added_modifier()
 	var shot_type: Enums.ProjectileShotType = config_projectile.shot_type
 	var spacing: float = config_projectile.spacing
-	var cooldown = config_projectile.cooldown + config_projectile.get_cooldown_modifier()
+	var cooldown = config_projectile.cooldown * config_projectile.get_cooldown_modifier()
 	config_projectile.queue_free()
 
 	if shot_type == Enums.ProjectileShotType.ARC:
@@ -321,7 +321,7 @@ func shoot_seed_bomb_projectile(delta: float) -> void:
 
 	get_parent().add_child(projectile)
 
-	current_seed_bomb_spawn_cooldown = projectile.cooldown + projectile.get_cooldown_modifier()
+	current_seed_bomb_spawn_cooldown = projectile.cooldown * projectile.get_cooldown_modifier()
 
 
 func spawn_nova() -> void:
@@ -339,7 +339,7 @@ func spawn_nova() -> void:
 	get_parent().add_child(active_nova)
 	update_nova_position()
 
-	current_nova_spawn_cooldown = active_nova.cooldown + active_nova.get_cooldown_modifier()
+	current_nova_spawn_cooldown = active_nova.cooldown * active_nova.get_cooldown_modifier()
 
 func _on_nova_finished():
 	active_nova = null
