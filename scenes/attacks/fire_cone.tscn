@@ -56,6 +56,7 @@ animations = [{
 [node name="Cone" type="Area2D" unique_id=2037452025 node_paths=PackedStringArray("damage_timer", "sprite")]
 script = ExtResource("1_8s5pe")
 damage = 15.0
+damage_interval = 0.4
 damage_timer = NodePath("DoTTimer")
 sprite = NodePath("AnimatedSprite2D")
 
