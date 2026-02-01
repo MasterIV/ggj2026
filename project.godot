@@ -11,9 +11,13 @@ config_version=5
 [application]
 
 config/name="ggj2026"
-run/main_scene="uid://dt6ifrvrfadv2"
+run/main_scene="uid://bjb5bakkts5wl"
 config/features=PackedStringArray("4.6", "GL Compatibility")
 config/icon="res://icon.svg"
+
+[audio]
+
+buses/default_bus_layout="uid://brkwp064felre"
 
 [autoload]
 

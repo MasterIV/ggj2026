@@ -2,6 +2,10 @@
 
 [ext_resource type="FontFile" uid="uid://mgsbkinlwmsh" path="res://misc_assets/impact.ttf" id="1_whnnb"]
 [ext_resource type="StyleBox" uid="uid://dxdnlrepc3rdn" path="res://misc_assets/button_theme_flat.tres" id="2_8x2as"]
+[ext_resource type="Texture2D" uid="uid://cn5ycaxu3polb" path="res://graphics/ui/StartScreen_Settingsslider_Point.png" id="3_qp8lw"]
+[ext_resource type="Texture2D" uid="uid://c2tpum2rkiqim" path="res://graphics/ui/StartScreen_Settingsslider_Point_HL.png" id="4_y5657"]
+[ext_resource type="StyleBox" uid="uid://dvxsny0555qlg" path="res://misc_assets/slider_theme.tres" id="5_rcwle"]
+[ext_resource type="StyleBox" uid="uid://b87xflyachyc4" path="res://misc_assets/slider_theme_HL.tres" id="5_wdlw3"]
 
 [resource]
 Button/colors/font_color = Color(1, 1, 1, 1)
@@ -11,8 +15,11 @@ Button/font_sizes/font_size = 20
 Button/fonts/font = ExtResource("1_whnnb")
 Button/styles/normal = ExtResource("2_8x2as")
 HBoxContainer/constants/separation = 10
-HSlider/styles/grabber_area = ExtResource("2_8x2as")
-HSlider/styles/grabber_area_highlight = ExtResource("2_8x2as")
+HSlider/icons/grabber = ExtResource("3_qp8lw")
+HSlider/icons/grabber_highlight = ExtResource("4_y5657")
+HSlider/styles/grabber_area = ExtResource("5_wdlw3")
+HSlider/styles/grabber_area_highlight = ExtResource("5_wdlw3")
+HSlider/styles/slider = ExtResource("5_rcwle")
 Label/constants/outline_size = 1
 Label/font_sizes/font_size = 20
 Label/fonts/font = ExtResource("1_whnnb")
