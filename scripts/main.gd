@@ -21,6 +21,8 @@ func _process(delta: float) -> void:
 		current_wave += 1
 		if current_wave < len(waves):
 			spawn_timer = waves[current_wave].delay
+		else:
+			$Player.last_wave_spawned.emit()
 
 func spawn_wave(wave):
 	for n in wave.enemies:

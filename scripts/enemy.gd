@@ -28,6 +28,7 @@ var multipliers: Dictionary = {
 var deal_damage_cooldown: float = 1.0
 
 var has_player_in_range: bool = false
+var is_final_boss: bool = false
 
 @onready var enemy_sprite = $AnimatedSprite2D
 
@@ -39,6 +40,10 @@ static func spawn(position: Vector2, player: CharacterBody2D, speed, health, dam
 	new_enemy.movement_pattern = movement_pattern
 	new_enemy.boss = boss
 	new_enemy.health = health
+
+	if (health >= 5000):
+		new_enemy.is_final_boss = true
+
 	new_enemy.damage = damage
 	new_enemy.deal_damage_cooldown = deal_damage_cooldown
 	new_enemy.damage_type = Enums.string_to_element(damage_type);

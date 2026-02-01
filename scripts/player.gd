@@ -40,6 +40,8 @@ var current_seed_bomb_spawn_cooldown: float = 0
 var current_nova_spawn_cooldown: float = 0
 var current_health: float
 
+var is_last_wave = false
+
 var audio_loop_manager: AudioLoopManager
 
 var killed_enemies: Array[Enemy] = []
@@ -61,6 +63,7 @@ func get_buffs_by_type_and_element(attack_type: Enums.AttackType, element: Enums
 			result.append(buff)
 	return result
 
+signal last_wave_spawned()
 signal enemy_killed(enemy: Enemy)
 signal player_took_damage(damage: float, health_current: float, health_max: float)
 signal player_died(killed_enemies: Array[Enemy])
@@ -70,10 +73,20 @@ func _ready() -> void:
 	audio_loop_manager = get_tree().get_first_node_in_group("audio_loop_manager")
 	enemy_killed.connect(_on_enemy_killed)
 	add_buff.connect(_on_add_buff)
+	last_wave_spawned.connect(_on_last_wave_spawned)
 	current_health = base_health
+
+func _on_last_wave_spawned():
+	is_last_wave = true
 
 func _on_enemy_killed(enemy: Enemy):
 	killed_enemies.append(enemy)
+
+	var remaining_enemies = get_tree().get_nodes_in_group("enemy")
+	if is_last_wave && enemy.is_final_boss:
+		#if remaining_enemies.size() == 0:
+		win()
+
 
 func _physics_process(delta):
 	if is_dashing:

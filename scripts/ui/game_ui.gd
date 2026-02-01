@@ -43,6 +43,8 @@ func level_up() -> void:
 	xp = xp_overhang
 	xp_till_next = xp_till_next * xp_progression_multiplier
 
-	get_tree().paused = true
-	level_up_ui.show()
-	level_up_ui.setup()
+	var tree = get_tree()
+	if tree:
+		tree.paused = true
+		level_up_ui.show()
+		level_up_ui.setup()
