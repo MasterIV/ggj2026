@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://lg4wl4bdxobt" path="res://scripts/nova.gd" id="1_csfx1"]
 [ext_resource type="Texture2D" uid="uid://cjywjcuih67yv" path="res://graphics/attacks/vfx_fire_nova.PNG" id="2_0ilpj"]
+[ext_resource type="AudioStream" uid="uid://dlgnf2xgqxt67" path="res://sound/inferno.wav" id="3_0ilpj"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_0pujv"]
 radius = 187.13097
@@ -20,3 +21,8 @@ shape = SubResource("CircleShape2D_0pujv")
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1033198244]
 scale = Vector2(0.25, 0.24)
 texture = ExtResource("2_0ilpj")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1511215089]
+stream = ExtResource("3_0ilpj")
+autoplay = true
+bus = &"Sfx"

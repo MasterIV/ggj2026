@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://ciiywsrdcode1" path="res://scripts/projectile.gd" id="1_1t8v4"]
 [ext_resource type="PackedScene" uid="uid://cw1klnm6nfmmt" path="res://scenes/attacks/nature_seed_secondary.tscn" id="2_6flro"]
 [ext_resource type="Texture2D" uid="uid://bjtf05ehm3w6" path="res://graphics/attacks/vfx_poison_seed.png" id="3_6flro"]
+[ext_resource type="AudioStream" uid="uid://dnjd0wijdwkbr" path="res://sound/SeedBomb.wav" id="4_d321o"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_6aapk"]
 radius = 33.06055
@@ -28,3 +29,8 @@ shape = SubResource("CircleShape2D_6aapk")
 rotation = 1.5707964
 scale = Vector2(0.25, 0.25)
 texture = ExtResource("3_6flro")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1905520378]
+stream = ExtResource("4_d321o")
+autoplay = true
+bus = &"Sfx"

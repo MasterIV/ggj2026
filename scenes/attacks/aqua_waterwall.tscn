@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://ciiywsrdcode1" path="res://scripts/projectile.gd" id="1_dqnpl"]
 [ext_resource type="Texture2D" uid="uid://n0jk6o6js2rl" path="res://graphics/attacks/vfx_waterwall.PNG" id="2_mel5u"]
+[ext_resource type="AudioStream" uid="uid://by2fnsxd8gpmx" path="res://sound/IceCrack.wav" id="3_mel5u"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_6aapk"]
 radius = 33.06055
@@ -30,3 +31,9 @@ shape = SubResource("CircleShape2D_6aapk")
 rotation = 1.5707964
 scale = Vector2(0.25, 0.25)
 texture = ExtResource("2_mel5u")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=609831706]
+stream = ExtResource("3_mel5u")
+volume_db = -1.0
+autoplay = true
+bus = &"Sfx"
