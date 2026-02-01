@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bjb5bakkts5wl"]
 
-[ext_resource type="Script" uid="uid://csrb5ktg1ulmt" path="res://scripts/ui/main_menu.gd" id="1_5pajh"]
+[ext_resource type="Script" path="res://scripts/ui/main_menu.gd" id="1_5pajh"]
 [ext_resource type="Texture2D" uid="uid://j6o2vg2bh6p8" path="res://graphics/ui/StartScreen_BG_Base.png" id="1_wu84c"]
 [ext_resource type="Theme" uid="uid://crrpqjxyqtyb7" path="res://misc_assets/ui_theme.tres" id="2_8ln24"]
 [ext_resource type="Texture2D" uid="uid://yosjglku1ohf" path="res://graphics/ui/StartScreen_BG_TotemLeft_Movement.png" id="2_wu84c"]
@@ -12,10 +12,10 @@
 [ext_resource type="Texture2D" uid="uid://lamm62mjfwp4" path="res://graphics/ui/StartScreen_Button_Play.png" id="9_5dd4i"]
 [ext_resource type="Texture2D" uid="uid://dvb0rj7u6vsi7" path="res://graphics/ui/StartScreen_Button_Play_HL.png" id="10_flqon"]
 [ext_resource type="Texture2D" uid="uid://cby7v8scv67u1" path="res://graphics/ui/StartScreen_Button_Settings.png" id="10_lgwnu"]
-[ext_resource type="Script" uid="uid://dgfrkmjvtuqeg" path="res://scripts/ui/music_slider.gd" id="13_a8gd2"]
+[ext_resource type="Script" path="res://scripts/ui/music_slider.gd" id="13_a8gd2"]
 [ext_resource type="Texture2D" uid="uid://dbbgu6fy7h4mf" path="res://graphics/ui/StartScreen_Button_Credits.png" id="13_j7ex8"]
 [ext_resource type="Texture2D" uid="uid://d0f0cqm5q0q0p" path="res://graphics/ui/StartScreen_Button_Credits_HL.png" id="14_a8gd2"]
-[ext_resource type="Script" uid="uid://dn1gqldlimiu5" path="res://scripts/ui/sfx_slider.gd" id="14_hstxw"]
+[ext_resource type="Script" path="res://scripts/ui/sfx_slider.gd" id="14_hstxw"]
 [ext_resource type="Texture2D" uid="uid://2t1e3gg0dn13" path="res://graphics/ui/StartScreen_Button_Exit.png" id="15_hstxw"]
 [ext_resource type="Texture2D" uid="uid://c18lu2x1toccw" path="res://graphics/ui/StartScreen_Button_Exit_HL.png" id="16_8egab"]
 
@@ -246,9 +246,14 @@ offset_bottom = 3046.0
 color = Color(0, 0, 0, 1)
 
 [node name="Background" type="TextureRect" parent="CanvasLayer" unique_id=1903281212]
-offset_right = 40.0
-offset_bottom = 40.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 texture = ExtResource("1_wu84c")
+expand_mode = 3
+stretch_mode = 5
 
 [node name="BottomLeftPalm" type="TextureRect" parent="CanvasLayer" unique_id=2093544080]
 anchors_preset = 2
@@ -410,6 +415,8 @@ texture_hover = ExtResource("14_a8gd2")
 layout_mode = 2
 texture_normal = ExtResource("15_hstxw")
 texture_hover = ExtResource("16_8egab")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1305727213]
 
 [connection signal="pressed" from="CanvasLayer/Buttons/NewGame" to="." method="_on_new_game_pressed"]
 [connection signal="pressed" from="CanvasLayer/Buttons/Exit" to="." method="_on_exit_pressed"]
