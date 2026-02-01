@@ -42,7 +42,8 @@ func _ready():
 		spawn_sound.play()
 
 func _physics_process(delta):
-	position += direction * speed * delta
+	var calculated_speed: float =  speed + get_speed_modifier()
+	position += direction * calculated_speed * delta
 
 func _on_body_entered(body):
 	if body.is_in_group("obstacle") && !is_piercing:
@@ -51,7 +52,7 @@ func _on_body_entered(body):
 	elif body.is_in_group("enemy"):
 
 		if body.has_method("take_damage"):
-			if (body as Enemy).take_damage(damage * get_damage_multiplier(), damage_type):
+			if (body as Enemy).take_damage(damage + get_damage_modifier(), damage_type):
 				player.enemy_killed.emit(body as Enemy)
 
 		on_hit()
@@ -93,10 +94,26 @@ func on_destroy():
 
 	queue_free()
 
-func get_damage_multiplier() -> float:
-	var multiplier: float = 1.0
+func get_speed_modifier() -> float:
+	var modifier: float = 0.0
 
 	for buff in buffs[Enums.AttackType.PROJECTILE]:
-		multiplier += (buff as Enums.ProjectileBuff).damage_multiplier
+		modifier += (buff as Enums.ProjectileBuff).speed_multiplier
 
-	return multiplier
+	return modifier
+
+func get_cooldown_modifier() -> float:
+	var modifier: float = 0.0
+
+	for buff in buffs[Enums.AttackType.PROJECTILE]:
+		modifier -= (buff as Enums.ProjectileBuff).cooldown_multiplier
+
+	return modifier
+
+func get_damage_modifier() -> float:
+	var modifier: float = 0.0
+
+	for buff in buffs[Enums.AttackType.PROJECTILE]:
+		modifier += (buff as Enums.ProjectileBuff).damage_multiplier
+
+	return modifier

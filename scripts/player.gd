@@ -161,7 +161,7 @@ func shoot_projectile(delta: float) -> void:
 
 	get_parent().add_child(projectile)
 
-	current_projectile_spawn_cooldown = projectile.cooldown
+	current_projectile_spawn_cooldown = projectile.cooldown + projectile.get_cooldown_modifier()
 
 func shoot_waterwall_projectile(delta: float) -> void:
 	if not waterwall_projectile_scene:
@@ -182,7 +182,7 @@ func shoot_waterwall_projectile(delta: float) -> void:
 		projectile.buffs[Enums.AttackType.CONE] = get_buffs_by_type_and_element(Enums.AttackType.CONE, get_active_mask())
 
 		get_parent().add_child(projectile)
-		current_waterwall_spawn_cooldown = projectile.cooldown
+		current_waterwall_spawn_cooldown = projectile.cooldown + projectile.get_cooldown_modifier()
 
 
 func shoot_seed_bomb_projectile(delta: float) -> void:
@@ -205,7 +205,7 @@ func shoot_seed_bomb_projectile(delta: float) -> void:
 
 		get_parent().add_child(projectile)
 
-		current_seed_bomb_spawn_cooldown = projectile.cooldown
+		current_seed_bomb_spawn_cooldown = projectile.cooldown + projectile.get_cooldown_modifier()
 
 
 func spawn_nova() -> void:
