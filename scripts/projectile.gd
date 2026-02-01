@@ -8,6 +8,7 @@ extends Area2D
 @export var spawn_sound: AudioStreamPlayer2D
 @export var hit_sound: AudioStreamPlayer2D
 @export var is_piercing: bool = false
+@export var piercing_number: int = 0
 
 # triggered before primary attack dissolves
 @export var secondary_effect_scene: PackedScene
@@ -15,6 +16,7 @@ extends Area2D
 var direction: Vector2 = Vector2.ZERO
 var damage_type: Enums.Element = Enums.Element.NONE
 var player: Player
+var pierced_enemies_left: int = 0
 
 # special case, needsa all buffs since it can trigger secondary effects
 var buffs: Dictionary = {
@@ -33,6 +35,8 @@ func _ready():
 	lifetime_timer.one_shot = true
 	lifetime_timer.start()
 
+	pierced_enemies_left = piercing_number
+
 	if spawn_sound:
 		spawn_sound.play()
 
@@ -41,7 +45,6 @@ func _physics_process(delta):
 
 func _on_body_entered(body):
 	if body.is_in_group("obstacle") && !is_piercing:
-		print("Obstacle found")
 		on_hit()
 		on_destroy()
 	elif body.is_in_group("enemy"):
@@ -49,13 +52,13 @@ func _on_body_entered(body):
 		if body.has_method("take_damage"):
 			if (body as Enemy).take_damage(damage * get_damage_multiplier(), damage_type):
 				player.enemy_killed.emit(body as Enemy)
-		else:
-			print("Dealing %s damage to %s" % [damage, body.name])
 
 		on_hit()
 
-		if !is_piercing:
+		if !is_piercing || pierced_enemies_left <= 0:
 			on_destroy()
+		else:
+			pierced_enemies_left -= 1
 
 func _on_lifetime_timeout():
 	on_destroy()

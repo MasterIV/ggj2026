@@ -48,8 +48,6 @@ func apply_damage(body):
 	if body.has_method("take_damage"):
 		if (body as Enemy).take_damage(damage * get_damage_multiplier(), damage_type):
 			player.enemy_killed.emit(body as Enemy)
-	else:
-		print("Applying %s damage to %s" % [damage, body.name])
 
 func get_damage_multiplier() -> float:
 	var multiplier: float = 1.0

@@ -52,6 +52,7 @@ var buffs: Dictionary = {
 }
 
 func _on_add_buff(attack_type: Enums.AttackType, buff) -> void:
+	print("Buff received: ", buff.name, " for attack type: ", str(attack_type))
 	buffs[attack_type].append(buff)
 
 func get_buffs_by_type_and_element(attack_type: Enums.AttackType, element: Enums.Element) -> Array:
@@ -74,8 +75,6 @@ func _ready() -> void:
 
 func _on_enemy_killed(enemy: Enemy):
 	killed_enemies.append(enemy)
-	print("Player killed enemy, is boss: %s" % enemy.boss)
-	print("Total killed enemies: %d" % killed_enemies.size())
 
 func _physics_process(delta):
 	if is_dashing:
@@ -301,7 +300,6 @@ func stop_primary_attack():
 func take_damage(damage: float, element: Enums.Element):
 	current_health -= damage
 	player_took_damage.emit(damage, current_health, base_health)
-	print("Player took %f damage, current health: %f" % [damage, current_health])
 
 	var text = Floating_Number.spawn(position)
 	get_parent().add_child(text)

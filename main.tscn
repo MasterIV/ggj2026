@@ -13,7 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://t7wjknqont6s" path="res://scenes/map_bg/plant_plant.tscn" id="7_ycdy4"]
 [ext_resource type="PackedScene" uid="uid://cak5espxhxgyj" path="res://scenes/map_bg/stone1.tscn" id="9_vivmo"]
 [ext_resource type="PackedScene" uid="uid://bjfsikv8s7h0s" path="res://scenes/map_bg/stone2.tscn" id="10_2cqfq"]
-[ext_resource type="PackedScene" uid="uid://dkr3ohy8l8mta" path="res://scenes/game_ui.tscn" id="11_dg77c"]
+[ext_resource type="PackedScene" uid="uid://208nahbc37yj" path="res://scenes/game_ui.tscn" id="11_dg77c"]
 [ext_resource type="PackedScene" uid="uid://b50pubjpq16i5" path="res://scenes/map_bg/stone3.tscn" id="11_yaehf"]
 
 [node name="Main" type="Node2D" unique_id=1385162834]
@@ -33,6 +33,7 @@ speed = 600.0
 dead_zone_radius = 500.0
 
 [node name="AudioLoopManager" parent="." unique_id=281250674 instance=ExtResource("6_7mycd")]
+process_mode = 3
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=2042211497]
 

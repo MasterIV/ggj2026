@@ -53,8 +53,6 @@ func _process(delta):
 			if collision_shape and collision_shape.shape is CircleShape2D:
 				var base_radius = collision_shape.shape.radius / scale.x  # Get unscaled radius
 				collision_shape.shape.radius = base_radius * current_scale
-			else:
-				print("Collision shape not found")
 	else:
 		if elapsed_time >= dissolve_time:
 			nova_finished.emit()
