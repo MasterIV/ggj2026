@@ -17,6 +17,9 @@ lifetime_timer = NodePath("LifetimeTimer")
 cooldown = 2.0
 is_piercing = true
 piercing_number = 999
+number_of_projectiles = 5
+shot_type = 0
+spacing = 200.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=503715403]
 shape = SubResource("CircleShape2D_6aapk")

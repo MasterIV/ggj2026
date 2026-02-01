@@ -1,5 +1,10 @@
 extends Node
 
+enum ProjectileShotType {
+	LINE,
+	ARC
+}
+
 enum Element {
 	NONE,
 	AQUA,
@@ -152,3 +157,13 @@ class NovaBuff:
 		if cooldown_multiplier != 0:
 			desc += "Decreases cooldown by " + str((cooldown_multiplier)) + ".\n"
 		return desc.strip_edges()
+
+func get_projectile_wall_position(center_pos: Vector2, shoot_direction: Vector2, index: int, total_count: int, spacing: float) -> Vector2:
+	var perpendicular: Vector2 = Vector2(-shoot_direction.y, shoot_direction.x)
+	var total_width: float = (total_count - 1) * spacing
+	var start_offset: float = -total_width / 2.0
+	var offset: float = start_offset + (index * spacing)
+	return center_pos + (perpendicular * offset)
+
+func get_direction_rotation(direction: Vector2) -> float:
+	return direction.angle()

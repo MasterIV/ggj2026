@@ -1,7 +1,7 @@
-[gd_scene format=3 uid="uid://qd1eb7cl0wc4"]
+[gd_scene format=3 uid="uid://bqohmcx0nthpg"]
 
-[ext_resource type="Script" uid="uid://ciiywsrdcode1" path="res://scripts/projectile.gd" id="1_d0roq"]
-[ext_resource type="Texture2D" uid="uid://15v13blxvoj7" path="res://graphics/attacks/vfx_ice_lance.PNG" id="2_tnoqp"]
+[ext_resource type="Script" uid="uid://ciiywsrdcode1" path="res://scripts/projectile.gd" id="1_8ufqc"]
+[ext_resource type="Texture2D" uid="uid://bk0ux6t0kcbqv" path="res://graphics/attacks/vfx_roots_04.png" id="2_8ufqc"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_6aapk"]
 radius = 33.06055
@@ -9,12 +9,13 @@ radius = 33.06055
 [node name="Projectile" type="Area2D" unique_id=1353746272 node_paths=PackedStringArray("lifetime_timer")]
 collision_layer = 5
 collision_mask = 5
-script = ExtResource("1_d0roq")
+script = ExtResource("1_8ufqc")
 damage = 25.0
 speed = 2400.0
 lifetime = 2.065
 lifetime_timer = NodePath("LifetimeTimer")
 cooldown = 0.5
+number_of_projectiles = 3
 spacing = 5.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=503715403]
@@ -23,5 +24,6 @@ shape = SubResource("CircleShape2D_6aapk")
 [node name="LifetimeTimer" type="Timer" parent="." unique_id=923001922]
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=88659414]
-scale = Vector2(0.25, 0.25)
-texture = ExtResource("2_tnoqp")
+position = Vector2(4.132226, -0.55096376)
+scale = Vector2(-0.17227443, 0.14174666)
+texture = ExtResource("2_8ufqc")

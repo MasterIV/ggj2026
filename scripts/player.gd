@@ -9,7 +9,7 @@ extends CharacterBody2D
 # Ice Lance
 @export var projectile_scene: PackedScene
 
-# Ice Lance
+# Seed Bomb
 @export var nature_seed_bomb_scene: PackedScene
 
 # Waterwall
@@ -21,6 +21,7 @@ extends CharacterBody2D
 
 # Nature Cone
 @export var nature_cone_scene: PackedScene
+@export var nature_cone_shot: PackedScene
 
 # Fire Nova
 @export var nova_scene: PackedScene
@@ -145,8 +146,8 @@ func _process(delta: float) -> void:
 
 	animated_sprite.play(get_animation_name(current_direction, get_active_mask()))
 
-func shoot_projectile(delta: float) -> void:
-	if not projectile_scene:
+func shoot_projectile(delta: float, projectile_prefab: PackedScene) -> void:
+	if not projectile_prefab:
 		return
 
 	if current_projectile_spawn_cooldown > 0:
@@ -156,38 +157,148 @@ func shoot_projectile(delta: float) -> void:
 	var mouse_pos: Vector2 = get_global_mouse_position()
 	var shoot_direction: Vector2 = (mouse_pos - global_position).normalized()
 
-	var projectile: Projectile = projectile_scene.instantiate() as Projectile
-	projectile.damage_type = get_active_mask()
-	projectile.global_position = global_position
-	projectile.set_direction(shoot_direction)
-	projectile.buffs[Enums.AttackType.PROJECTILE] = get_buffs_by_type_and_element(Enums.AttackType.PROJECTILE, get_active_mask())
-	projectile.buffs[Enums.AttackType.NOVA] = get_buffs_by_type_and_element(Enums.AttackType.NOVA, get_active_mask())
-	projectile.buffs[Enums.AttackType.CONE] = get_buffs_by_type_and_element(Enums.AttackType.CONE, get_active_mask())
+	var config_projectile: Projectile = projectile_prefab.instantiate() as Projectile
+	var number_shots: int = config_projectile.number_of_projectiles
+	var shot_type: Enums.ProjectileShotType = config_projectile.shot_type
+	var spacing: float = config_projectile.spacing
+	config_projectile.queue_free()
 
-	get_parent().add_child(projectile)
+	if shot_type == Enums.ProjectileShotType.ARC:
+		shoot_direction = shoot_direction.rotated(deg_to_rad(spacing * (number_shots - 1) / (float)(number_shots)))
+		for i in range(number_shots):
+			shoot_direction = shoot_direction.rotated(deg_to_rad(spacing * i))
+			var rotated_direction: Vector2 = shoot_direction
+			var projectile: Projectile = projectile_prefab.instantiate() as Projectile
+			projectile.damage_type = get_active_mask()
+			projectile.global_position = global_position
+			projectile.set_direction(rotated_direction)
+			projectile.buffs[Enums.AttackType.PROJECTILE] = get_buffs_by_type_and_element(Enums.AttackType.PROJECTILE, get_active_mask())
+			projectile.buffs[Enums.AttackType.NOVA] = get_buffs_by_type_and_element(Enums.AttackType.NOVA, get_active_mask())
+			projectile.buffs[Enums.AttackType.CONE] = get_buffs_by_type_and_element(Enums.AttackType.CONE, get_active_mask())
+			get_parent().add_child(projectile)
+			current_projectile_spawn_cooldown = projectile.cooldown + projectile.get_cooldown_modifier()
+	elif shot_type == Enums.ProjectileShotType.LINE:
+		for i in range(number_shots):
+			var projectile: Projectile = projectile_prefab.instantiate() as Projectile
+			projectile.damage_type = get_active_mask()
+			projectile.rotation = Enums.get_direction_rotation(shoot_direction)
+			projectile.set_direction(shoot_direction)
+			projectile.global_position = Enums.get_projectile_wall_position(
+				global_position,
+				shoot_direction,
+				i,
+				number_shots,
+				spacing
+			)
+			projectile.buffs[Enums.AttackType.PROJECTILE] = get_buffs_by_type_and_element(Enums.AttackType.PROJECTILE, get_active_mask())
+			projectile.buffs[Enums.AttackType.NOVA] = get_buffs_by_type_and_element(Enums.AttackType.NOVA, get_active_mask())
+			projectile.buffs[Enums.AttackType.CONE] = get_buffs_by_type_and_element(Enums.AttackType.CONE, get_active_mask())
+			get_parent().add_child(projectile)
 
-	current_projectile_spawn_cooldown = projectile.cooldown + projectile.get_cooldown_modifier()
+			current_projectile_spawn_cooldown = projectile.cooldown + projectile.get_cooldown_modifier()
 
-func shoot_waterwall_projectile(delta: float) -> void:
-	if not waterwall_projectile_scene:
+func spawn_nature_roots(delta: float, projectile_prefab: PackedScene) -> void:
+	if not projectile_prefab:
+		return
+
+	if current_projectile_spawn_cooldown > 0:
+		current_projectile_spawn_cooldown -= delta
+		return
+
+	var mouse_pos: Vector2 = get_global_mouse_position()
+	var shoot_direction: Vector2 = (mouse_pos - global_position).normalized()
+
+	var config_projectile: Projectile = projectile_prefab.instantiate() as Projectile
+	var number_shots: int = config_projectile.number_of_projectiles
+	var shot_type: Enums.ProjectileShotType = config_projectile.shot_type
+	var spacing: float = config_projectile.spacing
+	config_projectile.queue_free()
+
+	if shot_type == Enums.ProjectileShotType.ARC:
+		shoot_direction = shoot_direction.rotated(deg_to_rad(spacing * (number_shots - 1) / (float)(number_shots)))
+		for i in range(number_shots):
+			shoot_direction = shoot_direction.rotated(deg_to_rad(spacing * i))
+			var rotated_direction: Vector2 = shoot_direction
+			var projectile: Projectile = projectile_prefab.instantiate() as Projectile
+			projectile.damage_type = get_active_mask()
+			projectile.global_position = global_position
+			projectile.set_direction(rotated_direction)
+			projectile.buffs[Enums.AttackType.PROJECTILE] = get_buffs_by_type_and_element(Enums.AttackType.PROJECTILE, get_active_mask())
+			projectile.buffs[Enums.AttackType.NOVA] = get_buffs_by_type_and_element(Enums.AttackType.NOVA, get_active_mask())
+			projectile.buffs[Enums.AttackType.CONE] = get_buffs_by_type_and_element(Enums.AttackType.CONE, get_active_mask())
+			get_parent().add_child(projectile)
+			current_projectile_spawn_cooldown = projectile.cooldown + projectile.get_cooldown_modifier()
+	elif shot_type == Enums.ProjectileShotType.LINE:
+		for i in range(number_shots):
+			var projectile: Projectile = projectile_prefab.instantiate() as Projectile
+			projectile.damage_type = get_active_mask()
+			projectile.rotation = Enums.get_direction_rotation(shoot_direction)
+			projectile.set_direction(shoot_direction)
+			projectile.global_position = Enums.get_projectile_wall_position(
+				global_position,
+				shoot_direction,
+				i,
+				number_shots,
+				spacing
+			)
+			projectile.buffs[Enums.AttackType.PROJECTILE] = get_buffs_by_type_and_element(Enums.AttackType.PROJECTILE, get_active_mask())
+			projectile.buffs[Enums.AttackType.NOVA] = get_buffs_by_type_and_element(Enums.AttackType.NOVA, get_active_mask())
+			projectile.buffs[Enums.AttackType.CONE] = get_buffs_by_type_and_element(Enums.AttackType.CONE, get_active_mask())
+			get_parent().add_child(projectile)
+
+			current_projectile_spawn_cooldown = projectile.cooldown + projectile.get_cooldown_modifier()
+
+func shoot_waterwall_projectile(delta: float, projectile_prefab: PackedScene) -> void:
+	if not projectile_prefab:
 		return
 
 	if current_waterwall_spawn_cooldown > 0:
 		return
 
-	var shoot_directions = [Vector2.UP, Vector2.RIGHT, Vector2.DOWN, Vector2.LEFT]
+	print("Shooting waterwall ", projectile_prefab)
 
-	for shoot_direction in shoot_directions:
-		var projectile: Projectile = waterwall_projectile_scene.instantiate() as Projectile
-		projectile.damage_type = get_active_mask()
-		projectile.global_position = global_position
-		projectile.set_direction(shoot_direction)
-		projectile.buffs[Enums.AttackType.PROJECTILE] = get_buffs_by_type_and_element(Enums.AttackType.PROJECTILE, get_active_mask())
-		projectile.buffs[Enums.AttackType.NOVA] = get_buffs_by_type_and_element(Enums.AttackType.NOVA, get_active_mask())
-		projectile.buffs[Enums.AttackType.CONE] = get_buffs_by_type_and_element(Enums.AttackType.CONE, get_active_mask())
+	var mouse_pos: Vector2 = get_global_mouse_position()
+	var shoot_direction: Vector2 = (mouse_pos - global_position).normalized()
 
-		get_parent().add_child(projectile)
-		current_waterwall_spawn_cooldown = projectile.cooldown + projectile.get_cooldown_modifier()
+	var config_projectile: Projectile = projectile_prefab.instantiate() as Projectile
+	var number_shots: int = config_projectile.number_of_projectiles
+	var shot_type: Enums.ProjectileShotType = config_projectile.shot_type
+	var spacing: float = config_projectile.spacing
+	var cooldown = config_projectile.cooldown + config_projectile.get_cooldown_modifier()
+	config_projectile.queue_free()
+
+	if shot_type == Enums.ProjectileShotType.ARC:
+		shoot_direction = shoot_direction.rotated(deg_to_rad(spacing * (number_shots - 1) / (float)(number_shots)))
+		for i in range(number_shots):
+			shoot_direction = shoot_direction.rotated(deg_to_rad(spacing * i))
+			var rotated_direction: Vector2 = shoot_direction
+			var projectile: Projectile = projectile_prefab.instantiate() as Projectile
+			projectile.damage_type = get_active_mask()
+			projectile.global_position = global_position
+			projectile.set_direction(rotated_direction)
+			projectile.buffs[Enums.AttackType.PROJECTILE] = get_buffs_by_type_and_element(Enums.AttackType.PROJECTILE, get_active_mask())
+			projectile.buffs[Enums.AttackType.NOVA] = get_buffs_by_type_and_element(Enums.AttackType.NOVA, get_active_mask())
+			projectile.buffs[Enums.AttackType.CONE] = get_buffs_by_type_and_element(Enums.AttackType.CONE, get_active_mask())
+			get_parent().add_child(projectile)
+	elif shot_type == Enums.ProjectileShotType.LINE:
+		for i in range(number_shots):
+			var projectile: Projectile = projectile_prefab.instantiate() as Projectile
+			projectile.damage_type = get_active_mask()
+			projectile.rotation = Enums.get_direction_rotation(shoot_direction)
+			projectile.set_direction(shoot_direction)
+			projectile.global_position = Enums.get_projectile_wall_position(
+				global_position,
+				shoot_direction,
+				i,
+				number_shots,
+				spacing
+			)
+			projectile.buffs[Enums.AttackType.PROJECTILE] = get_buffs_by_type_and_element(Enums.AttackType.PROJECTILE, get_active_mask())
+			projectile.buffs[Enums.AttackType.NOVA] = get_buffs_by_type_and_element(Enums.AttackType.NOVA, get_active_mask())
+			projectile.buffs[Enums.AttackType.CONE] = get_buffs_by_type_and_element(Enums.AttackType.CONE, get_active_mask())
+			get_parent().add_child(projectile)
+
+	current_waterwall_spawn_cooldown = cooldown
 
 
 func shoot_seed_bomb_projectile(delta: float) -> void:
@@ -282,17 +393,18 @@ func get_animation_name(direction: String, element: Enums.Element):
 func trigger_primary_attack(delta):
 	match get_active_mask():
 		Enums.Element.AQUA:
-			shoot_projectile(delta)
+			shoot_projectile(delta, projectile_scene)
 		Enums.Element.FIRE:
 			spawn_cone()
 		Enums.Element.NATURE:
-			spawn_nature_cone()
+			spawn_nature_roots(delta, nature_cone_shot)
+			#spawn_nature_cone()
 			pass
 
 func trigger_secondaydary_attack(delta):
 	match get_active_mask():
 		Enums.Element.AQUA:
-			shoot_waterwall_projectile(delta)
+			shoot_waterwall_projectile(delta, waterwall_projectile_scene)
 		Enums.Element.FIRE:
 			spawn_nova()
 		Enums.Element.NATURE:

@@ -10,6 +10,9 @@ extends Area2D
 @export var piercing_number: int = 0
 @export var spawn_sound: AudioStreamPlayer2D
 @export var hit_sound: AudioStreamPlayer2D
+@export var number_of_projectiles: int = 1
+@export var shot_type: Enums.ProjectileShotType = Enums.ProjectileShotType.ARC
+@export var spacing: float
 
 # triggered before primary attack dissolves
 @export var secondary_effect_scene: PackedScene
