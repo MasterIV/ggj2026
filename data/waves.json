@@ -1,122 +1,602 @@
 [
   {
+    "delay": 4,
+    "enemies": 14,
+    "health": 28,
+    "speed": 300,
+    "damage": 2,
+    "multipliers": {
+      "fire": 2,
+      "aqua": 1,
+      "nature": 0.5
+    },
+    "damage_type": "nature",
+    "boss": false,
+    "deal_damage_cooldown": 0.2
+  },
+  {
     "delay": 5,
-    "enemies": 5,
-    "health": 10,
+    "enemies": 24,
+    "health": 18,
     "speed": 300,
     "damage": 1,
     "multipliers": {
-      "fire": 2.0,
-      "aqua": 1.0,
+      "fire": 1,
+      "aqua": 0.5,
+      "nature": 2
+    },
+    "damage_type": "water",
+    "boss": false,
+    "deal_damage_cooldown": 0.2
+  },
+  {
+    "delay": 7,
+    "enemies": 15,
+    "health": 32,
+    "speed": 500,
+    "damage": 2,
+    "multipliers": {
+      "fire": 0.5,
+      "aqua": 2,
+      "nature": 1
+    },
+    "damage_type": "fire",
+    "boss": false,
+    "deal_damage_cooldown": 0.2
+  },
+  {
+    "delay": 4,
+    "enemies": 13,
+    "health": 40,
+    "speed": 300,
+    "damage": 2,
+    "multipliers": {
+      "fire": 0.5,
+      "aqua": 2,
+      "nature": 1
+    },
+    "damage_type": "fire",
+    "boss": false,
+    "deal_damage_cooldown": 0.2
+  },
+  {
+    "delay": 8,
+    "enemies": 1,
+    "health": 585,
+    "speed": 200,
+    "damage": 5,
+    "multipliers": {
+      "fire": 0.5,
+      "aqua": 2,
+      "nature": 1
+    },
+    "damage_type": "fire",
+    "boss": true,
+    "deal_damage_cooldown": 0.2
+  },
+  {
+    "delay": 5,
+    "enemies": 9,
+    "health": 71,
+    "speed": 300,
+    "damage": 2,
+    "multipliers": {
+      "fire": 1,
+      "aqua": 0.5,
+      "nature": 2
+    },
+    "damage_type": "water",
+    "boss": false,
+    "deal_damage_cooldown": 0.2
+  },
+  {
+    "delay": 6,
+    "enemies": 10,
+    "health": 70,
+    "speed": 300,
+    "damage": 2,
+    "multipliers": {
+      "fire": 1,
+      "aqua": 0.5,
+      "nature": 2
+    },
+    "damage_type": "water",
+    "boss": false,
+    "deal_damage_cooldown": 0.2
+  },
+  {
+    "delay": 6,
+    "enemies": 14,
+    "health": 55,
+    "speed": 300,
+    "damage": 2,
+    "multipliers": {
+      "fire": 2,
+      "aqua": 1,
       "nature": 0.5
     },
     "damage_type": "nature",
     "boss": false,
-    "deal_damage_cooldown": 1.0
+    "deal_damage_cooldown": 0.2
+  },
+  {
+    "delay": 8,
+    "enemies": 15,
+    "health": 57,
+    "speed": 300,
+    "damage": 2,
+    "multipliers": {
+      "fire": 0.5,
+      "aqua": 2,
+      "nature": 1
+    },
+    "damage_type": "fire",
+    "boss": false,
+    "deal_damage_cooldown": 0.2
   },
   {
     "delay": 5,
-    "enemies": 1,
-    "health": 500,
-    "speed": 500,
-    "damage": 25,
+    "enemies": 2,
+    "health": 471,
+    "speed": 200,
+    "damage": 5,
     "multipliers": {
-      "fire": 2.0,
-      "aqua": 1.0,
+      "fire": 2,
+      "aqua": 1,
       "nature": 0.5
     },
     "damage_type": "nature",
     "boss": true,
-    "deal_damage_cooldown": 1.0
+    "deal_damage_cooldown": 0.2
   },
   {
-    "delay": 10,
-    "enemies": 12,
-    "health": 5,
-    "speed": 500,
+    "delay": 5,
+    "enemies": 15,
+    "health": 69,
+    "speed": 300,
+    "damage": 2,
+    "multipliers": {
+      "fire": 2,
+      "aqua": 1,
+      "nature": 0.5
+    },
+    "damage_type": "nature",
+    "boss": false,
+    "deal_damage_cooldown": 0.2
+  },
+  {
+    "delay": 4,
+    "enemies": 14,
+    "health": 81,
+    "speed": 300,
     "damage": 1,
     "multipliers": {
-      "fire": 0.5,
-      "aqua": 2.0,
-      "nature": 1.0
+      "fire": 1,
+      "aqua": 0.5,
+      "nature": 2
     },
-    "damage_type": "fire",
+    "damage_type": "water",
     "boss": false,
-    "deal_damage_cooldown": 1.0
+    "deal_damage_cooldown": 0.2
+  },
+  {
+    "delay": 6,
+    "enemies": 14,
+    "health": 89,
+    "speed": 400,
+    "damage": 2,
+    "multipliers": {
+      "fire": 1,
+      "aqua": 0.5,
+      "nature": 2
+    },
+    "damage_type": "water",
+    "boss": false,
+    "deal_damage_cooldown": 0.2
   },
   {
     "delay": 5,
-    "enemies": 1,
-    "health": 500,
-    "speed": 500,
-    "damage": 25,
+    "enemies": 14,
+    "health": 98,
+    "speed": 300,
+    "damage": 2,
+    "multipliers": {
+      "fire": 1,
+      "aqua": 0.5,
+      "nature": 2
+    },
+    "damage_type": "water",
+    "boss": false,
+    "deal_damage_cooldown": 0.2
+  },
+  {
+    "delay": 8,
+    "enemies": 4,
+    "health": 379,
+    "speed": 300,
+    "damage": 5,
+    "multipliers": {
+      "fire": 2,
+      "aqua": 1,
+      "nature": 0.5
+    },
+    "damage_type": "nature",
+    "boss": true,
+    "deal_damage_cooldown": 0.2
+  },
+  {
+    "delay": 4,
+    "enemies": 15,
+    "health": 111,
+    "speed": 300,
+    "damage": 2,
+    "multipliers": {
+      "fire": 1,
+      "aqua": 0.5,
+      "nature": 2
+    },
+    "damage_type": "water",
+    "boss": false,
+    "deal_damage_cooldown": 0.2
+  },
+  {
+    "delay": 8,
+    "enemies": 15,
+    "health": 122,
+    "speed": 300,
+    "damage": 2,
+    "multipliers": {
+      "fire": 2,
+      "aqua": 1,
+      "nature": 0.5
+    },
+    "damage_type": "nature",
+    "boss": false,
+    "deal_damage_cooldown": 0.2
+  },
+  {
+    "delay": 5,
+    "enemies": 15,
+    "health": 134,
+    "speed": 300,
+    "damage": 2,
     "multipliers": {
       "fire": 0.5,
-      "aqua": 2.0,
-      "nature": 1.0
+      "aqua": 2,
+      "nature": 1
+    },
+    "damage_type": "fire",
+    "boss": false,
+    "deal_damage_cooldown": 0.2
+  },
+  {
+    "delay": 7,
+    "enemies": 19,
+    "health": 117,
+    "speed": 300,
+    "damage": 2,
+    "multipliers": {
+      "fire": 2,
+      "aqua": 1,
+      "nature": 0.5
+    },
+    "damage_type": "nature",
+    "boss": false,
+    "deal_damage_cooldown": 0.2
+  },
+  {
+    "delay": 8,
+    "enemies": 3,
+    "health": 815,
+    "speed": 300,
+    "damage": 5,
+    "multipliers": {
+      "fire": 0.5,
+      "aqua": 2,
+      "nature": 1
     },
     "damage_type": "fire",
     "boss": true,
-    "deal_damage_cooldown": 1.0
+    "deal_damage_cooldown": 0.2
   },
   {
-    "delay": 10,
+    "delay": 6,
+    "enemies": 21,
+    "health": 128,
+    "speed": 300,
+    "damage": 2,
+    "multipliers": {
+      "fire": 2,
+      "aqua": 1,
+      "nature": 0.5
+    },
+    "damage_type": "nature",
+    "boss": false,
+    "deal_damage_cooldown": 0.2
+  },
+  {
+    "delay": 7,
     "enemies": 20,
-    "health": 12,
+    "health": 148,
     "speed": 300,
     "damage": 1,
     "multipliers": {
-      "fire": 1.0,
-      "aqua": 0.5,
-      "nature": 2.0
+      "fire": 0.5,
+      "aqua": 2,
+      "nature": 1
     },
-    "damage_type": "aqua",
+    "damage_type": "fire",
     "boss": false,
-    "deal_damage_cooldown": 1.0
+    "deal_damage_cooldown": 0.2
   },
   {
     "delay": 5,
-    "enemies": 1,
-    "health": 500,
+    "enemies": 20,
+    "health": 162,
     "speed": 500,
-    "damage": 25,
+    "damage": 2,
     "multipliers": {
-      "fire": 1.0,
-      "aqua": 0.5,
-      "nature": 2.0
+      "fire": 0.5,
+      "aqua": 2,
+      "nature": 1
     },
-    "damage_type": "aqua",
-    "boss": true,
-    "deal_damage_cooldown": 1.0
+    "damage_type": "fire",
+    "boss": false,
+    "deal_damage_cooldown": 0.2
   },
   {
-    "delay": 10,
-    "enemies": 8,
-    "health": 30,
+    "delay": 7,
+    "enemies": 21,
+    "health": 170,
+    "speed": 300,
+    "damage": 2,
+    "multipliers": {
+      "fire": 0.5,
+      "aqua": 2,
+      "nature": 1
+    },
+    "damage_type": "fire",
+    "boss": false,
+    "deal_damage_cooldown": 0.2
+  },
+  {
+    "delay": 6,
+    "enemies": 2,
+    "health": 1970,
+    "speed": 300,
+    "damage": 5,
+    "multipliers": {
+      "fire": 1,
+      "aqua": 0.5,
+      "nature": 2
+    },
+    "damage_type": "water",
+    "boss": true,
+    "deal_damage_cooldown": 0.2
+  },
+  {
+    "delay": 4,
+    "enemies": 22,
+    "health": 197,
     "speed": 300,
     "damage": 1,
     "multipliers": {
-      "fire": 2.0,
-      "aqua": 1.0,
+      "fire": 2,
+      "aqua": 1,
       "nature": 0.5
     },
     "damage_type": "nature",
     "boss": false,
-    "deal_damage_cooldown": 1.0
+    "deal_damage_cooldown": 0.2
   },
   {
-    "delay": 10,
-    "enemies": 1,
-    "health": 5000,
+    "delay": 7,
+    "enemies": 23,
+    "health": 207,
     "speed": 500,
-    "damage": 25,
+    "damage": 2,
     "multipliers": {
-      "fire": 2.0,
-      "aqua": 1.0,
+      "fire": 2,
+      "aqua": 1,
+      "nature": 0.5
+    },
+    "damage_type": "nature",
+    "boss": false,
+    "deal_damage_cooldown": 0.2
+  },
+  {
+    "delay": 5,
+    "enemies": 20,
+    "health": 262,
+    "speed": 300,
+    "damage": 2,
+    "multipliers": {
+      "fire": 0.5,
+      "aqua": 2,
+      "nature": 1
+    },
+    "damage_type": "fire",
+    "boss": false,
+    "deal_damage_cooldown": 0.2
+  },
+  {
+    "delay": 8,
+    "enemies": 23,
+    "health": 250,
+    "speed": 300,
+    "damage": 2,
+    "multipliers": {
+      "fire": 1,
+      "aqua": 0.5,
+      "nature": 2
+    },
+    "damage_type": "water",
+    "boss": false,
+    "deal_damage_cooldown": 0.2
+  },
+  {
+    "delay": 5,
+    "enemies": 4,
+    "health": 1586,
+    "speed": 300,
+    "damage": 5,
+    "multipliers": {
+      "fire": 0.5,
+      "aqua": 2,
+      "nature": 1
+    },
+    "damage_type": "fire",
+    "boss": true,
+    "deal_damage_cooldown": 0.2
+  },
+  {
+    "delay": 4,
+    "enemies": 24,
+    "health": 290,
+    "speed": 300,
+    "damage": 2,
+    "multipliers": {
+      "fire": 0.5,
+      "aqua": 2,
+      "nature": 1
+    },
+    "damage_type": "fire",
+    "boss": false,
+    "deal_damage_cooldown": 0.2
+  },
+  {
+    "delay": 6,
+    "enemies": 26,
+    "health": 295,
+    "speed": 300,
+    "damage": 2,
+    "multipliers": {
+      "fire": 2,
+      "aqua": 1,
+      "nature": 0.5
+    },
+    "damage_type": "nature",
+    "boss": false,
+    "deal_damage_cooldown": 0.2
+  },
+  {
+    "delay": 7,
+    "enemies": 26,
+    "health": 324,
+    "speed": 300,
+    "damage": 2,
+    "multipliers": {
+      "fire": 0.5,
+      "aqua": 2,
+      "nature": 1
+    },
+    "damage_type": "fire",
+    "boss": false,
+    "deal_damage_cooldown": 0.2
+  },
+  {
+    "delay": 6,
+    "enemies": 22,
+    "health": 422,
+    "speed": 300,
+    "damage": 2,
+    "multipliers": {
+      "fire": 2,
+      "aqua": 1,
+      "nature": 0.5
+    },
+    "damage_type": "nature",
+    "boss": false,
+    "deal_damage_cooldown": 0.2
+  },
+  {
+    "delay": 6,
+    "enemies": 6,
+    "health": 1703,
+    "speed": 300,
+    "damage": 5,
+    "multipliers": {
+      "fire": 2,
+      "aqua": 1,
       "nature": 0.5
     },
     "damage_type": "nature",
     "boss": true,
-    "deal_damage_cooldown": 1.0
+    "deal_damage_cooldown": 0.2
+  },
+  {
+    "delay": 6,
+    "enemies": 28,
+    "health": 401,
+    "speed": 500,
+    "damage": 2,
+    "multipliers": {
+      "fire": 1,
+      "aqua": 0.5,
+      "nature": 2
+    },
+    "damage_type": "water",
+    "boss": false,
+    "deal_damage_cooldown": 0.2
+  },
+  {
+    "delay": 8,
+    "enemies": 29,
+    "health": 426,
+    "speed": 300,
+    "damage": 2,
+    "multipliers": {
+      "fire": 0.5,
+      "aqua": 2,
+      "nature": 1
+    },
+    "damage_type": "fire",
+    "boss": false,
+    "deal_damage_cooldown": 0.2
+  },
+  {
+    "delay": 5,
+    "enemies": 24,
+    "health": 566,
+    "speed": 300,
+    "damage": 2,
+    "multipliers": {
+      "fire": 0.5,
+      "aqua": 2,
+      "nature": 1
+    },
+    "damage_type": "fire",
+    "boss": false,
+    "deal_damage_cooldown": 0.2
+  },
+  {
+    "delay": 8,
+    "enemies": 28,
+    "health": 534,
+    "speed": 300,
+    "damage": 1,
+    "multipliers": {
+      "fire": 0.5,
+      "aqua": 2,
+      "nature": 1
+    },
+    "damage_type": "fire",
+    "boss": false,
+    "deal_damage_cooldown": 0.2
+  },
+  {
+    "delay": 10,
+    "enemies": 1,
+    "health": 10000,
+    "speed": 400,
+    "damage": 10,
+    "multipliers": {
+      "fire": 2,
+      "aqua": 1,
+      "nature": 0.5
+    },
+    "damage_type": "nature",
+    "boss": true,
+    "deal_damage_cooldown": 0.2
   }
 ]
