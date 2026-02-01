@@ -1,16 +1,44 @@
 [gd_scene format=3 uid="uid://cdxw8c6arh4id"]
 
 [ext_resource type="Texture2D" uid="uid://bksctpjh6mn4m" path="res://graphics/tile_dark.png" id="1_kuqtn"]
+[ext_resource type="Texture2D" uid="uid://c0neeqbmoyb50" path="res://graphics/tile_02.PNG" id="2_3lc0u"]
 [ext_resource type="Script" uid="uid://0wllew26a4e7" path="res://scripts/floor.gd" id="2_whr1e"]
+[ext_resource type="Texture2D" uid="uid://c7kjo0wu2ihyi" path="res://graphics/tile_03.PNG" id="3_7525o"]
+[ext_resource type="Texture2D" uid="uid://vpxr302csdy2" path="res://graphics/Bottom_02_BG.PNG" id="4_poy5y"]
+[ext_resource type="Texture2D" uid="uid://d32y86lfr0el4" path="res://graphics/Bottom_01_BG.PNG" id="5_1bx2v"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lquwl"]
 texture = ExtResource("1_kuqtn")
 texture_region_size = Vector2i(256, 256)
 0:0/0 = 0
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_poy5y"]
+texture = ExtResource("2_3lc0u")
+texture_region_size = Vector2i(256, 256)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1bx2v"]
+texture = ExtResource("3_7525o")
+texture_region_size = Vector2i(256, 256)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wc2lb"]
+texture = ExtResource("4_poy5y")
+texture_region_size = Vector2i(256, 256)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_hl37q"]
+texture = ExtResource("5_1bx2v")
+texture_region_size = Vector2i(256, 256)
+0:0/0 = 0
+
 [sub_resource type="TileSet" id="TileSet_7mycd"]
 tile_size = Vector2i(256, 256)
 sources/0 = SubResource("TileSetAtlasSource_lquwl")
+sources/1 = SubResource("TileSetAtlasSource_poy5y")
+sources/2 = SubResource("TileSetAtlasSource_1bx2v")
+sources/3 = SubResource("TileSetAtlasSource_wc2lb")
+sources/4 = SubResource("TileSetAtlasSource_hl37q")
 
 [node name="Floor" type="TileMapLayer" unique_id=366801639]
 tile_set = SubResource("TileSet_7mycd")

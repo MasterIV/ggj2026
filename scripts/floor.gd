@@ -59,7 +59,12 @@ func generate_chunk(chunk_pos: Vector2i):
 	for x in range(chunk_size):
 		for y in range(chunk_size):
 			var tile_pos = Vector2i(start_x + x, start_y + y)
-			set_cell(tile_pos, 0, Vector2i(0, 0))  # coords, source_id, atlas_coords
+			var tile_id = round(randf() * 2.0)
+			if randf() < 0.01:
+				tile_id = 3
+			if randf() < 0.01:
+				tile_id = 4
+			set_cell(tile_pos, tile_id, Vector2i(0, 0))  # coords, source_id, atlas_coords
 			if end_of_world_chunk:
 				var new_block = map_border_block.instantiate()
 				new_block.position.x = (start_x + x) * tile_size
