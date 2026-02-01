@@ -1,0 +1,46 @@
+[gd_scene format=3 uid="uid://uyxl1g1v8ac0"]
+
+[ext_resource type="Texture2D" uid="uid://blo50nhkv7ixs" path="res://graphics/enemy_death_1.png" id="1_lbglv"]
+[ext_resource type="Script" uid="uid://bpn3lda58438t" path="res://scripts/effects/enemy_death.gd" id="1_xqmji"]
+[ext_resource type="Texture2D" uid="uid://twb7n80at2f2" path="res://graphics/enemy_death_2.png" id="2_xqmji"]
+[ext_resource type="Texture2D" uid="uid://rxj762p7sla0" path="res://graphics/enemy_death_3.png" id="3_14rhf"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_j8673"]
+particle_flag_disable_z = true
+angle_min = -408.0
+angle_max = 366.00003
+spread = 180.0
+initial_velocity_min = 350.0
+initial_velocity_max = 545.83
+gravity = Vector3(0, 98, 0)
+scale_min = 0.099999994
+scale_max = 0.29999998
+hue_variation_min = -1.0
+hue_variation_max = 0.99999994
+
+[node name="EnemyDeath" type="Node2D" unique_id=872310623]
+script = ExtResource("1_xqmji")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="." unique_id=390819456]
+amount = 2
+texture = ExtResource("1_lbglv")
+lifetime = 0.5
+speed_scale = 0.5
+randomness = 0.48
+process_material = SubResource("ParticleProcessMaterial_j8673")
+
+[node name="GPUParticles2D2" type="GPUParticles2D" parent="." unique_id=1586994535]
+amount = 2
+texture = ExtResource("2_xqmji")
+lifetime = 0.5
+speed_scale = 0.5
+randomness = 0.48
+process_material = SubResource("ParticleProcessMaterial_j8673")
+
+[node name="GPUParticles2D3" type="GPUParticles2D" parent="." unique_id=682307427]
+amount = 2
+texture = ExtResource("3_14rhf")
+lifetime = 0.5
+speed_scale = 0.5
+randomness = 0.48
+process_material = SubResource("ParticleProcessMaterial_j8673")

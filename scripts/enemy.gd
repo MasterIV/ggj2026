@@ -97,6 +97,8 @@ func take_damage(amount: float, element: Enums.Element) -> bool:
 	return false
 
 func die() -> void:
+	var effect = DeathEffect.spawn(position)
+	get_parent().add_child(effect)
 	queue_free()
 
 func update_sprite_direction(direction: Vector2):
