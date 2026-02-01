@@ -78,7 +78,15 @@ func set_direction(dir: Vector2):
 
 func on_destroy():
 	if secondary_effect_scene:
-		for i in range(3):
+		var effect_instance_config = secondary_effect_scene.instantiate()
+		var num_shots = 1
+
+		if (effect_instance_config is Projectile):
+			num_shots = effect_instance_config.number_of_projectiles + get_shots_added_modifier()
+
+		effect_instance_config.queue_free()
+
+		for i in range(num_shots):
 			var random_angle = randf() * TAU
 			var effect_instance = secondary_effect_scene.instantiate()
 

@@ -15,9 +15,9 @@ func setup():
 	for child in get_children():
 		child.queue_free()
 
-	left_buff = Enums.get_random_buff_for_element(Enums.get_random_element())
-	center_buff = Enums.get_random_buff_for_element(Enums.get_random_element())
-	right_buff = Enums.get_random_buff_for_element(Enums.get_random_element())
+	left_buff = Enums.get_random_buff_for_element(Enums.Element.AQUA)
+	center_buff = Enums.get_random_buff_for_element(Enums.Element.FIRE)
+	right_buff = Enums.get_random_buff_for_element(Enums.Element.NATURE)
 
 	for i in range(3):
 		var panel_instance = upgrade_panel.instantiate() as UpgradePanel
