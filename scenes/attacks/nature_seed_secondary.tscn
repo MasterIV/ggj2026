@@ -17,6 +17,7 @@ lifetime = 0.3
 lifetime_timer = NodePath("LifetimeTimer")
 is_piercing = true
 piercing_number = 999
+number_of_projectiles = 3
 secondary_effect_scene = ExtResource("2_7wjsj")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=503715403]
