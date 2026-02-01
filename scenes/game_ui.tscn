@@ -139,3 +139,18 @@ theme_override_font_sizes/font_size = 36
 text = "40"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="HowToPanel" type="VBoxContainer" parent="." unique_id=926515156]
+layout_mode = 1
+offset_left = 25.0
+offset_top = 25.0
+offset_right = 340.0
+offset_bottom = 170.0
+
+[node name="Label" type="Label" parent="HowToPanel" unique_id=1202335987]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "WASD : Move
+LMB : Ultimate (Cooldown!)
+RMB : Switch Mask
+SPACE : Dash"
