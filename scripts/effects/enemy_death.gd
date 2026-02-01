@@ -8,7 +8,6 @@ var lifetime: float = 0
 
 func _process(delta: float) -> void:
 	lifetime = lifetime + delta
-	print(lifetime, delta)
 	if lifetime > 0.4:
 		queue_free()
 

@@ -53,7 +53,6 @@ var buffs: Dictionary = {
 }
 
 func _on_add_buff(attack_type: Enums.AttackType, buff) -> void:
-	print("Buff received: ", buff.name, " for attack type: ", str(attack_type))
 	buffs[attack_type].append(buff)
 
 func get_buffs_by_type_and_element(attack_type: Enums.AttackType, element: Enums.Element) -> Array:
@@ -264,8 +263,6 @@ func shoot_waterwall_projectile(delta: float, projectile_prefab: PackedScene) ->
 
 	if current_waterwall_spawn_cooldown > 0:
 		return
-
-	print("Shooting waterwall ", projectile_prefab)
 
 	var mouse_pos: Vector2 = get_global_mouse_position()
 	var shoot_direction: Vector2 = (mouse_pos - global_position).normalized()
