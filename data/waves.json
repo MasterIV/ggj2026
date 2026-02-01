@@ -25,7 +25,7 @@
       "aqua": 0.5,
       "nature": 2
     },
-    "damage_type": "water",
+    "damage_type": "aqua",
     "boss": false,
     "deal_damage_cooldown": 0.2
   },
@@ -85,7 +85,7 @@
       "aqua": 0.5,
       "nature": 2
     },
-    "damage_type": "water",
+    "damage_type": "aqua",
     "boss": false,
     "deal_damage_cooldown": 0.2
   },
@@ -100,7 +100,7 @@
       "aqua": 0.5,
       "nature": 2
     },
-    "damage_type": "water",
+    "damage_type": "aqua",
     "boss": false,
     "deal_damage_cooldown": 0.2
   },
@@ -175,7 +175,7 @@
       "aqua": 0.5,
       "nature": 2
     },
-    "damage_type": "water",
+    "damage_type": "aqua",
     "boss": false,
     "deal_damage_cooldown": 0.2
   },
@@ -190,7 +190,7 @@
       "aqua": 0.5,
       "nature": 2
     },
-    "damage_type": "water",
+    "damage_type": "aqua",
     "boss": false,
     "deal_damage_cooldown": 0.2
   },
@@ -205,7 +205,7 @@
       "aqua": 0.5,
       "nature": 2
     },
-    "damage_type": "water",
+    "damage_type": "aqua",
     "boss": false,
     "deal_damage_cooldown": 0.2
   },
@@ -235,7 +235,7 @@
       "aqua": 0.5,
       "nature": 2
     },
-    "damage_type": "water",
+    "damage_type": "aqua",
     "boss": false,
     "deal_damage_cooldown": 0.2
   },
@@ -370,7 +370,7 @@
       "aqua": 0.5,
       "nature": 2
     },
-    "damage_type": "water",
+    "damage_type": "aqua",
     "boss": true,
     "deal_damage_cooldown": 0.2
   },
@@ -430,7 +430,7 @@
       "aqua": 0.5,
       "nature": 2
     },
-    "damage_type": "water",
+    "damage_type": "aqua",
     "boss": false,
     "deal_damage_cooldown": 0.2
   },
@@ -535,7 +535,7 @@
       "aqua": 0.5,
       "nature": 2
     },
-    "damage_type": "water",
+    "damage_type": "aqua",
     "boss": false,
     "deal_damage_cooldown": 0.2
   },
