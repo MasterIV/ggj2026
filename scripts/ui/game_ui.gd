@@ -47,28 +47,37 @@ func level_up() -> void:
 	level_up_ui.show()
 
 func _on_upgrade_left() -> void:
+	var attack_type = Enums.get_random_attack_type()
+	var buff = Enums.get_random_buff(attack_type)
+
 	player.add_buff.emit(
-		Enums.AttackType.PROJECTILE,
-		Enums.ProjectileBuff.new(1, 1, 0, Enums.Element.AQUA)
+		attack_type,
+		buff
 	)
-	
+
 	level_up_ui.hide()
 	get_tree().paused = false
-	
+
 
 func _on_upgrade_center() -> void:
+	var attack_type = Enums.get_random_attack_type()
+	var buff = Enums.get_random_buff(attack_type)
+
 	player.add_buff.emit(
-		Enums.AttackType.PROJECTILE,
-		Enums.ProjectileBuff.new(1, 1, 0, Enums.Element.AQUA)
+		attack_type,
+		buff
 	)
 
 	level_up_ui.hide()
 	get_tree().paused = false
 
 func _on_upgrade_right() -> void:
+	var attack_type = Enums.get_random_attack_type()
+	var buff = Enums.get_random_buff(attack_type)
+
 	player.add_buff.emit(
-		Enums.AttackType.PROJECTILE,
-		Enums.ProjectileBuff.new(1, 1, 0, Enums.Element.AQUA)
+		attack_type,
+		buff
 	)
 
 	level_up_ui.hide()

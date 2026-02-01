@@ -15,6 +15,7 @@ lifetime = 2.065
 lifetime_timer = NodePath("LifetimeTimer")
 damage = 100.0
 is_piercing = true
+piercing_number = 999
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=503715403]
 shape = SubResource("CircleShape2D_6aapk")
