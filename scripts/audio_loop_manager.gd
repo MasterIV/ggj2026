@@ -9,17 +9,19 @@ extends Node
 signal mask_changed(mask_type: Enums.Element)
 
 func _ready() -> void:
+	standard_loop.play()
+	aqua_loop.play()
+	fire_loop.play()
+	nature_loop.play()
+	
 	mask_changed.connect(_on_mask_changed)
+	
+	_on_mask_changed(Enums.Element.AQUA)
 
 func _on_mask_changed(mask_type: Enums.Element):
-	aqua_loop.volume_db = 0.0 if mask_type == Enums.Element.AQUA else -80.0
-	fire_loop.volume_db = 0.0 if mask_type == Enums.Element.FIRE else -80.0
-	nature_loop.volume_db = 0.0 if mask_type == Enums.Element.NATURE else -80.0
+	AudioServer.set_bus_volume_db(get_audio_bus_index("Aqua"), 0.0 if mask_type == Enums.Element.AQUA else -80.0)
+	AudioServer.set_bus_volume_db(get_audio_bus_index("Fire"), 0.0 if mask_type == Enums.Element.FIRE else -80.0)
+	AudioServer.set_bus_volume_db(get_audio_bus_index("Nature"), 0.0 if mask_type == Enums.Element.NATURE else -80.0)
 
-func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("mask_aqua"):
-		mask_changed.emit(Enums.Element.AQUA)
-	if event.is_action_pressed("mask_fire"):
-		mask_changed.emit(Enums.Element.FIRE)
-	if event.is_action_pressed("mask_nature"):
-		mask_changed.emit(Enums.Element.NATURE)
+func get_audio_bus_index(audio_bus_name: String):
+	return AudioServer.get_bus_index(audio_bus_name)

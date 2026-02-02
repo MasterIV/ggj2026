@@ -24,23 +24,20 @@ parameters/looping = true
 [node name="AquaLoop" type="AudioStreamPlayer2D" parent="." unique_id=1591641881]
 process_mode = 3
 stream = ExtResource("3_k4fkv")
-volume_db = -80.0
 autoplay = true
-bus = &"Music"
+bus = &"Aqua"
 parameters/looping = true
 
 [node name="FireLoop" type="AudioStreamPlayer2D" parent="." unique_id=1208850851]
 process_mode = 3
 stream = ExtResource("4_mc0uh")
-volume_db = -80.0
 autoplay = true
-bus = &"Music"
+bus = &"Fire"
 parameters/looping = true
 
 [node name="NatureLoop" type="AudioStreamPlayer2D" parent="." unique_id=1357160580]
 process_mode = 3
 stream = ExtResource("5_r5h1r")
-volume_db = -80.0
 autoplay = true
-bus = &"Music"
+bus = &"Nature"
 parameters/looping = true
