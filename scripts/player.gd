@@ -75,7 +75,7 @@ func _ready() -> void:
 	add_buff.connect(_on_add_buff)
 	last_wave_spawned.connect(_on_last_wave_spawned)
 	current_health = base_health
-	
+
 	var wave_counter = get_tree().get_first_node_in_group("wave_counter")
 	wave_counter.wave_spawned.connect(_on_wave_spawned)
 
@@ -443,11 +443,11 @@ func take_damage(damage: float, _element: Enums.Element):
 
 func win():
 	Global.global_state.post_result(current_wave)
-	get_tree().change_scene_to_file("res://scenes/win.tscn")
+	get_tree().change_scene_to_file("res://scenes/ui/win.tscn")
 
 func _on_wave_spawned(current: int, _max: int):
 	current_wave = current
 
 func die():
 	Global.global_state.post_result(current_wave)
-	get_tree().change_scene_to_file("res://scenes/game_over.tscn")
+	get_tree().change_scene_to_file("res://scenes/ui/game_over.tscn")
