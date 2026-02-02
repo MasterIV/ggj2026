@@ -233,8 +233,9 @@ _data = {
 &"Wiggle": SubResource("Animation_5dd4i")
 }
 
-[node name="MainMenu" type="Node2D" unique_id=972036287]
+[node name="MainMenu" type="Node2D" unique_id=972036287 node_paths=PackedStringArray("web_incompatible")]
 script = ExtResource("1_5pajh")
+web_incompatible = [NodePath("CanvasLayer/Buttons/Exit")]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1026410419]
 
