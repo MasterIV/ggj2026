@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://qd1eb7cl0wc4"]
 
-[ext_resource type="Script" uid="uid://ciiywsrdcode1" path="res://scripts/projectile.gd" id="1_d0roq"]
+[ext_resource type="Script" uid="uid://ciiywsrdcode1" path="res://scripts/attacks/projectile.gd" id="1_d0roq"]
 [ext_resource type="Texture2D" uid="uid://15v13blxvoj7" path="res://graphics/attacks/vfx_ice_lance.PNG" id="2_tnoqp"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_6aapk"]

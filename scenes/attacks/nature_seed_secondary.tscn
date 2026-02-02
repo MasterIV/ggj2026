@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://cw1klnm6nfmmt"]
 
-[ext_resource type="Script" uid="uid://ciiywsrdcode1" path="res://scripts/projectile.gd" id="1_kjudk"]
+[ext_resource type="Script" uid="uid://ciiywsrdcode1" path="res://scripts/attacks/projectile.gd" id="1_kjudk"]
 [ext_resource type="PackedScene" uid="uid://dkugv6qs0gnk4" path="res://scenes/attacks/nature_nova.tscn" id="2_7wjsj"]
 [ext_resource type="Texture2D" uid="uid://bjtf05ehm3w6" path="res://graphics/attacks/vfx_poison_seed.png" id="3_kjudk"]
 [ext_resource type="AudioStream" uid="uid://dnjd0wijdwkbr" path="res://sound/SeedBomb.wav" id="4_7wjsj"]

@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://curw1gpcd3pwt"]
 
-[ext_resource type="Script" uid="uid://lg4wl4bdxobt" path="res://scripts/nova.gd" id="1_csfx1"]
+[ext_resource type="Script" uid="uid://lg4wl4bdxobt" path="res://scripts/attacks/nova.gd" id="1_csfx1"]
 [ext_resource type="Texture2D" uid="uid://cjywjcuih67yv" path="res://graphics/attacks/vfx_fire_nova.PNG" id="2_0ilpj"]
 [ext_resource type="AudioStream" uid="uid://dlgnf2xgqxt67" path="res://sound/inferno.wav" id="3_0ilpj"]
 

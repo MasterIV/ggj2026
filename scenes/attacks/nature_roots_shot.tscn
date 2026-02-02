@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bqohmcx0nthpg"]
 
-[ext_resource type="Script" uid="uid://ciiywsrdcode1" path="res://scripts/projectile.gd" id="1_8ufqc"]
+[ext_resource type="Script" uid="uid://ciiywsrdcode1" path="res://scripts/attacks/projectile.gd" id="1_8ufqc"]
 [ext_resource type="Texture2D" uid="uid://bk0ux6t0kcbqv" path="res://graphics/attacks/vfx_roots_04.png" id="2_8ufqc"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_6aapk"]

@@ -1,12 +1,12 @@
-[gd_scene format=3 uid="uid://cus8c2uu76qp1"]
+[gd_scene format=3 uid="uid://bqev78tij7kyi"]
 
-[ext_resource type="Script" uid="uid://cx3agsye861ik" path="res://scripts/game_over.gd" id="1_tbwuq"]
-[ext_resource type="Texture2D" uid="uid://dmlqvvcr08rdv" path="res://graphics/ui/LoseScreen_BG_OneElement.jpg" id="2_tbwuq"]
-[ext_resource type="Theme" uid="uid://crrpqjxyqtyb7" path="res://misc_assets/ui_theme.tres" id="3_7m3ot"]
-[ext_resource type="AudioStream" uid="uid://b47e1d28scpy3" path="res://sound/StandardLoop.mp3" id="4_racf3"]
+[ext_resource type="Script" uid="uid://cx3agsye861ik" path="res://scripts/ui/game_over.gd" id="1_vfrx6"]
+[ext_resource type="Texture2D" uid="uid://dmlqvvcr08rdv" path="res://graphics/ui/LoseScreen_BG_OneElement.jpg" id="2_o6b8n"]
+[ext_resource type="Theme" uid="uid://crrpqjxyqtyb7" path="res://misc_assets/ui_theme.tres" id="3_4583b"]
+[ext_resource type="AudioStream" uid="uid://b47e1d28scpy3" path="res://sound/StandardLoop.mp3" id="4_b6337"]
 
 [node name="Lost" type="Node2D" unique_id=1937525899 node_paths=PackedStringArray("label_last_wave_result", "label_best_wave_result")]
-script = ExtResource("1_tbwuq")
+script = ExtResource("1_vfrx6")
 label_last_wave_result = NodePath("CanvasLayer/VBoxContainer/Label2")
 label_best_wave_result = NodePath("CanvasLayer/VBoxContainer/Label4")
 
@@ -18,7 +18,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("2_tbwuq")
+texture = ExtResource("2_o6b8n")
 expand_mode = 3
 
 [node name="Button" type="Button" parent="CanvasLayer" unique_id=1590065051]
@@ -34,7 +34,7 @@ offset_right = 186.0
 offset_bottom = -45.0
 grow_horizontal = 2
 grow_vertical = 0
-theme = ExtResource("3_7m3ot")
+theme = ExtResource("3_4583b")
 theme_override_font_sizes/font_size = 64
 text = "REPLAY"
 
@@ -66,11 +66,11 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-theme = ExtResource("3_7m3ot")
+theme = ExtResource("3_4583b")
 
 [node name="Label" type="Label" parent="CanvasLayer/VBoxContainer" unique_id=1554520526]
 layout_mode = 2
-theme = ExtResource("3_7m3ot")
+theme = ExtResource("3_4583b")
 theme_override_font_sizes/font_size = 48
 text = "Waves survived"
 horizontal_alignment = 1
@@ -78,7 +78,7 @@ vertical_alignment = 1
 
 [node name="Label2" type="Label" parent="CanvasLayer/VBoxContainer" unique_id=1234084330]
 layout_mode = 2
-theme = ExtResource("3_7m3ot")
+theme = ExtResource("3_4583b")
 theme_override_font_sizes/font_size = 48
 text = "0"
 horizontal_alignment = 1
@@ -86,7 +86,7 @@ vertical_alignment = 1
 
 [node name="Label3" type="Label" parent="CanvasLayer/VBoxContainer" unique_id=1108779280]
 layout_mode = 2
-theme = ExtResource("3_7m3ot")
+theme = ExtResource("3_4583b")
 theme_override_font_sizes/font_size = 48
 text = "Best result"
 horizontal_alignment = 1
@@ -94,14 +94,14 @@ vertical_alignment = 1
 
 [node name="Label4" type="Label" parent="CanvasLayer/VBoxContainer" unique_id=309179910]
 layout_mode = 2
-theme = ExtResource("3_7m3ot")
+theme = ExtResource("3_4583b")
 theme_override_font_sizes/font_size = 48
 text = "10"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=412552514]
-stream = ExtResource("4_racf3")
+stream = ExtResource("4_b6337")
 volume_db = -6.0
 autoplay = true
 bus = &"Music"
