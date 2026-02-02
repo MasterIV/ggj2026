@@ -21,7 +21,6 @@ func _ready():
 
 	sprite.play("default")
 
-	add_child(damage_timer)
 	damage_timer.wait_time = damage_interval * get_interval_modifier()
 	damage_timer.timeout.connect(_on_damage_timer_timeout)
 	damage_timer.start()
