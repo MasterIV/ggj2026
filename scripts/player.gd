@@ -41,6 +41,7 @@ var current_nova_spawn_cooldown: float = 0
 var current_health: float
 
 var is_last_wave = false
+var current_wave: int
 
 var audio_loop_manager: AudioLoopManager
 
@@ -74,6 +75,9 @@ func _ready() -> void:
 	add_buff.connect(_on_add_buff)
 	last_wave_spawned.connect(_on_last_wave_spawned)
 	current_health = base_health
+	
+	var wave_counter = get_tree().get_first_node_in_group("wave_counter")
+	wave_counter.wave_spawned.connect(_on_wave_spawned)
 
 func _on_last_wave_spawned():
 	is_last_wave = true
@@ -439,5 +443,9 @@ func take_damage(damage: float, element: Enums.Element):
 func win():
 	get_tree().change_scene_to_file("res://scenes/win.tscn")
 
+func _on_wave_spawned(current: int, max: int):
+	current_wave = current
+
 func die():
+	Global.global_state.post_result(current_wave)
 	get_tree().change_scene_to_file("res://scenes/game_over.tscn")

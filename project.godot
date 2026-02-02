@@ -22,6 +22,7 @@ buses/default_bus_layout="uid://brkwp064felre"
 [autoload]
 
 Enums="*uid://bjhivqphb2q3s"
+Global="*uid://p683ivrabh1w"
 
 [display]
 
