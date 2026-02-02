@@ -363,6 +363,7 @@ offset_right = 20.0
 offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("2_8ln24")
 
 [node name="NewGame" type="TextureButton" parent="CanvasLayer/Buttons" unique_id=223175120]
 layout_mode = 2
@@ -372,10 +373,12 @@ texture_hover = ExtResource("10_flqon")
 
 [node name="SettingsTexture" type="TextureRect" parent="CanvasLayer/Buttons" unique_id=98933726]
 layout_mode = 2
+theme = ExtResource("2_8ln24")
 texture = ExtResource("10_lgwnu")
 
 [node name="Sliders" type="GridContainer" parent="CanvasLayer/Buttons" unique_id=1987229192]
 layout_mode = 2
+theme = ExtResource("2_8ln24")
 columns = 2
 
 [node name="Music" type="Label" parent="CanvasLayer/Buttons/Sliders" unique_id=1727844991]
@@ -409,11 +412,13 @@ audio_bus_name = "Sfx"
 
 [node name="Credits" type="TextureButton" parent="CanvasLayer/Buttons" unique_id=1867416519]
 layout_mode = 2
+theme = ExtResource("2_8ln24")
 texture_normal = ExtResource("13_j7ex8")
 texture_hover = ExtResource("14_a8gd2")
 
 [node name="Exit" type="TextureButton" parent="CanvasLayer/Buttons" unique_id=1611387943]
 layout_mode = 2
+theme = ExtResource("2_8ln24")
 texture_normal = ExtResource("15_hstxw")
 texture_hover = ExtResource("16_8egab")
 
