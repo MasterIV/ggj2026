@@ -441,6 +441,7 @@ func take_damage(damage: float, element: Enums.Element):
 		die()
 
 func win():
+	Global.global_state.post_result(current_wave)
 	get_tree().change_scene_to_file("res://scenes/win.tscn")
 
 func _on_wave_spawned(current: int, max: int):
