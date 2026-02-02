@@ -4,8 +4,8 @@ extends Node2D
 @export var label_best_wave_result: Label
 
 func _ready() -> void:
-	label_last_wave_result.text = str(Global.global_state.last_wave_result)
-	label_best_wave_result.text = str(Global.global_state.best_wave_result)
+	label_last_wave_result.text = str(Global.global_state.get_last_result())
+	label_best_wave_result.text = str(Global.global_state.get_best_result())
 
 
 func _on_button_pressed() -> void:

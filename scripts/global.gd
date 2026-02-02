@@ -1,13 +1,18 @@
 extends Node
 
 class GlobalState:
-	var last_wave_result: int
-	var best_wave_result: int
+	
+	func get_best_result():
+		SaveManager.load_data()
+		return SaveManager.get_best_score()
+		
+	func get_last_result():
+		SaveManager.load_data()
+		return SaveManager.get_last_score()
 	
 	func post_result(wave_count: int):
-		last_wave_result = wave_count
-		if (last_wave_result > best_wave_result):
-			best_wave_result = last_wave_result
+		SaveManager.load_data()
+		SaveManager.set_score(wave_count)
 	
 	
 var global_state: GlobalState = GlobalState.new()

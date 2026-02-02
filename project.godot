@@ -23,11 +23,13 @@ buses/default_bus_layout="uid://brkwp064felre"
 
 Enums="*uid://bjhivqphb2q3s"
 Global="*uid://p683ivrabh1w"
+SaveManager="*uid://i3uomo0eeypq"
 
 [display]
 
 window/size/viewport_width=1920
 window/size/viewport_height=1080
+window/size/mode=3
 
 [global_group]
 
