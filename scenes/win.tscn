@@ -1,8 +1,9 @@
 [gd_scene format=3 uid="uid://b16pn551i56bt"]
 
-[ext_resource type="Script" path="res://scripts/ui/credits.gd" id="1_iiocm"]
+[ext_resource type="Script" uid="uid://c4sqb25g07mpa" path="res://scripts/ui/credits.gd" id="1_iiocm"]
 [ext_resource type="Texture2D" uid="uid://i3o8mbs5vpnj" path="res://graphics/ui/WinScreen_BG_OneElement.jpg" id="2_iiocm"]
 [ext_resource type="Theme" uid="uid://crrpqjxyqtyb7" path="res://misc_assets/ui_theme.tres" id="3_tylv2"]
+[ext_resource type="AudioStream" uid="uid://b47e1d28scpy3" path="res://sound/StandardLoop.mp3" id="4_yxbqr"]
 
 [node name="Lost" type="Node2D" unique_id=1937525899]
 script = ExtResource("1_iiocm")
@@ -34,5 +35,12 @@ grow_vertical = 0
 theme = ExtResource("3_tylv2")
 theme_override_font_sizes/font_size = 64
 text = "REPLAY"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=187843861]
+stream = ExtResource("4_yxbqr")
+volume_db = -6.0
+autoplay = true
+bus = &"Music"
+parameters/looping = true
 
 [connection signal="pressed" from="CanvasLayer/Button" to="." method="_on_button_pressed"]

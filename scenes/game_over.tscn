@@ -1,8 +1,9 @@
 [gd_scene format=3 uid="uid://bqev78tij7kyi"]
 
-[ext_resource type="Script" uid="uid://cx3agsye861ik" path="res://scenes/game_over.gd" id="1_tbwuq"]
+[ext_resource type="Script" uid="uid://cx3agsye861ik" path="res://scripts/game_over.gd" id="1_tbwuq"]
 [ext_resource type="Texture2D" uid="uid://dmlqvvcr08rdv" path="res://graphics/ui/LoseScreen_BG_OneElement.jpg" id="2_tbwuq"]
 [ext_resource type="Theme" uid="uid://crrpqjxyqtyb7" path="res://misc_assets/ui_theme.tres" id="3_7m3ot"]
+[ext_resource type="AudioStream" uid="uid://b47e1d28scpy3" path="res://sound/StandardLoop.mp3" id="4_racf3"]
 
 [node name="Lost" type="Node2D" unique_id=1937525899 node_paths=PackedStringArray("label_last_wave_result", "label_best_wave_result")]
 script = ExtResource("1_tbwuq")
@@ -98,5 +99,12 @@ theme_override_font_sizes/font_size = 48
 text = "10"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=412552514]
+stream = ExtResource("4_racf3")
+volume_db = -6.0
+autoplay = true
+bus = &"Music"
+parameters/looping = true
 
 [connection signal="pressed" from="CanvasLayer/Button" to="." method="_on_button_pressed"]

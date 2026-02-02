@@ -141,6 +141,7 @@ color_ramp = SubResource("Gradient_ih6pn")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1200152662]
 stream = ExtResource("7_kyhnv")
+volume_db = -6.0
 autoplay = true
 bus = &"Music"
 parameters/looping = true
