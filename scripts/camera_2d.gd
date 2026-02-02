@@ -7,6 +7,6 @@ func _ready():
 	if not target:
 		target = get_tree().get_first_node_in_group("player")
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	if target:
 		global_position = target.global_position
