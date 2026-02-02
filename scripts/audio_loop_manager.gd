@@ -9,6 +9,7 @@ extends Node
 signal mask_changed(mask_type: Enums.Element)
 
 func _ready() -> void:
+	print("Start audio looper")
 	standard_loop.play()
 	aqua_loop.play()
 	fire_loop.play()

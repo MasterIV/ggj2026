@@ -143,5 +143,6 @@ color_ramp = SubResource("Gradient_ih6pn")
 stream = ExtResource("7_kyhnv")
 autoplay = true
 bus = &"Music"
+parameters/looping = true
 
 [connection signal="pressed" from="CanvasLayer/Button" to="." method="_on_button_pressed"]
