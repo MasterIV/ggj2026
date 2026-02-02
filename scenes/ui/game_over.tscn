@@ -7,8 +7,8 @@
 
 [node name="Lost" type="Node2D" unique_id=1937525899 node_paths=PackedStringArray("label_last_wave_result", "label_best_wave_result")]
 script = ExtResource("1_vfrx6")
-label_last_wave_result = NodePath("CanvasLayer/VBoxContainer/Label2")
-label_best_wave_result = NodePath("CanvasLayer/VBoxContainer/Label4")
+label_last_wave_result = NodePath("CanvasLayer/VBoxContainer/LabelLastResult")
+label_best_wave_result = NodePath("CanvasLayer/VBoxContainer/LabelBestResult")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=207741611]
 
@@ -76,7 +76,7 @@ text = "Waves survived"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Label2" type="Label" parent="CanvasLayer/VBoxContainer" unique_id=1234084330]
+[node name="LabelLastResult" type="Label" parent="CanvasLayer/VBoxContainer" unique_id=1234084330]
 layout_mode = 2
 theme = ExtResource("3_4583b")
 theme_override_font_sizes/font_size = 48
@@ -92,7 +92,7 @@ text = "Best result"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Label4" type="Label" parent="CanvasLayer/VBoxContainer" unique_id=309179910]
+[node name="LabelBestResult" type="Label" parent="CanvasLayer/VBoxContainer" unique_id=309179910]
 layout_mode = 2
 theme = ExtResource("3_4583b")
 theme_override_font_sizes/font_size = 48
