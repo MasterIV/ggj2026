@@ -8,8 +8,6 @@ extends Area2D
 @export var cooldown: float = 1
 @export var is_piercing: bool = false
 @export var piercing_number: int = 0
-@export var spawn_sound: AudioStreamPlayer2D
-@export var hit_sound: AudioStreamPlayer2D
 @export var number_of_projectiles: int = 1
 @export var shot_type: Enums.ProjectileShotType = Enums.ProjectileShotType.ARC
 @export var spacing: float
@@ -41,24 +39,18 @@ func _ready():
 
 	pierced_enemies_left = piercing_number + get_piercing_modifier()
 
-	if spawn_sound:
-		spawn_sound.play()
-
 func _physics_process(delta):
 	var calculated_speed: float =  speed * get_speed_modifier()
 	position += direction * calculated_speed * delta
 
 func _on_body_entered(body):
 	if body.is_in_group("obstacle") && !is_piercing:
-		on_hit()
 		on_destroy()
 	elif body.is_in_group("enemy"):
 
 		if body.has_method("take_damage"):
 			if (body as Enemy).take_damage(damage * get_damage_modifier(), damage_type):
 				player.enemy_killed.emit(body as Enemy)
-
-		on_hit()
 
 		if !is_piercing || pierced_enemies_left <= 0:
 			on_destroy()
@@ -67,10 +59,6 @@ func _on_body_entered(body):
 
 func _on_lifetime_timeout():
 	on_destroy()
-
-func on_hit():
-	if hit_sound:
-		hit_sound.play()
 
 func set_direction(dir: Vector2):
 	direction = dir.normalized()

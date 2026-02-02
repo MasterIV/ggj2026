@@ -4,8 +4,6 @@ extends Area2D
 @export var damage: float = 10.0
 @export var damage_interval: float = 0.5
 @export var damage_timer: Timer
-@export var spawn_sound: AudioStreamPlayer2D
-@export var effect_sound: AudioStreamPlayer2D
 @export var sprite: AnimatedSprite2D
 
 var bodies_in_range: Array = []
@@ -24,12 +22,6 @@ func _ready():
 	damage_timer.wait_time = damage_interval * get_interval_modifier()
 	damage_timer.timeout.connect(_on_damage_timer_timeout)
 	damage_timer.start()
-
-	if spawn_sound:
-		spawn_sound.play()
-
-	if effect_sound:
-		effect_sound.play()
 
 func _on_body_entered(body):
 	if body.is_in_group("enemy") and body not in bodies_in_range:
