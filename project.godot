@@ -13,7 +13,10 @@ config_version=5
 config/name="ggj2026"
 run/main_scene="uid://bjb5bakkts5wl"
 config/features=PackedStringArray("4.6", "GL Compatibility")
-config/icon="res://icon.svg"
+boot_splash/bg_color=Color(0, 0, 0, 1)
+boot_splash/stretch_mode=0
+boot_splash/image="uid://c6dqstsaxb83f"
+config/icon="uid://6cd454njqdct"
 
 [audio]
 
