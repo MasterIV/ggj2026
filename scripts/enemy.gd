@@ -32,22 +32,22 @@ var is_final_boss: bool = false
 
 @onready var enemy_sprite = $AnimatedSprite2D
 
-static func spawn(position: Vector2, player: CharacterBody2D, speed, health, damage, deal_damage_cooldown, boss, damage_type, multipliers, movement_pattern := Movement_pattern.STRAIGHT) -> Enemy:
+static func spawn(spawn_position: Vector2, target_player: CharacterBody2D, new_speed, new_health, new_damage, new_deal_damage_cooldown, new_boss, new_damage_type, new_multipliers, new_movement_pattern := Movement_pattern.STRAIGHT) -> Enemy:
 	var new_enemy: Enemy = ENEMY_SCENE.instantiate() as Enemy
-	new_enemy.position = position
-	new_enemy.player = player
-	new_enemy.speed = speed
-	new_enemy.movement_pattern = movement_pattern
-	new_enemy.boss = boss
-	new_enemy.health = health
+	new_enemy.position = spawn_position
+	new_enemy.player = target_player
+	new_enemy.speed = new_speed
+	new_enemy.movement_pattern = new_movement_pattern
+	new_enemy.boss = new_boss
+	new_enemy.health = new_health
 
-	if (health >= 5000):
+	if (new_health >= 5000):
 		new_enemy.is_final_boss = true
 
-	new_enemy.damage = damage
-	new_enemy.deal_damage_cooldown = deal_damage_cooldown
-	new_enemy.damage_type = Enums.string_to_element(damage_type);
-	new_enemy.multipliers = multipliers
+	new_enemy.damage = new_damage
+	new_enemy.deal_damage_cooldown = new_deal_damage_cooldown
+	new_enemy.damage_type = Enums.string_to_element(new_damage_type);
+	new_enemy.multipliers = new_multipliers
 
 	return new_enemy
 
@@ -78,7 +78,7 @@ func _physics_process(delta: float) -> void:
 			move_straight(delta)
 	move_and_slide()
 
-func move_straight(delta: float) -> void:
+func move_straight(_delta: float) -> void:
 	var direction: Vector2 = player.position - position
 	direction = direction.normalized()
 	velocity = direction * speed
@@ -113,10 +113,10 @@ func update_sprite_direction(direction: Vector2):
 		else:
 			current_direction = "up"
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	animated_sprite.play(get_animation_name(current_direction, damage_type))
 	pass
 
-func get_animation_name(current_direction: String, element: Enums.Element):
+func get_animation_name(new_current_direction: String, element: Enums.Element):
 	var prefix: String = "boss_" if boss else ""
-	return prefix + Enums.element_to_string(element) + "_" + current_direction
+	return prefix + Enums.element_to_string(element) + "_" + new_current_direction

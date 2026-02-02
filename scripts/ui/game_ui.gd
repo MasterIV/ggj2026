@@ -20,7 +20,7 @@ func _ready() -> void:
 func _on_enemy_killed(enemy: Enemy) -> void:
 	add_xp(int(enemy.health))
 
-func _on_player_health_change(damage: float, health_current: float, health_max: float) -> void:
+func _on_player_health_change(_damage: float, health_current: float, health_max: float) -> void:
 	update_health_bar(health_current / health_max * 100.0)
 
 func update_health_bar(percentage: float) -> void:

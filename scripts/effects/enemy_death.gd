@@ -11,7 +11,7 @@ func _process(delta: float) -> void:
 	if lifetime > 0.4:
 		queue_free()
 
-static func spawn(position: Vector2) -> DeathEffect:
+static func spawn(spawn_position: Vector2) -> DeathEffect:
 	var new_effect: DeathEffect = ENEMY_DEATH_SCENE.instantiate() as DeathEffect
-	new_effect.position = position
+	new_effect.position = spawn_position
 	return new_effect

@@ -85,7 +85,7 @@ func _on_last_wave_spawned():
 func _on_enemy_killed(enemy: Enemy):
 	killed_enemies.append(enemy)
 
-	var remaining_enemies = get_tree().get_nodes_in_group("enemy")
+	#var remaining_enemies = get_tree().get_nodes_in_group("enemy")
 	if is_last_wave && enemy.is_final_boss:
 		#if remaining_enemies.size() == 0:
 		win()
@@ -130,7 +130,7 @@ var available_masks = [Enums.Element.AQUA, Enums.Element.FIRE, Enums.Element.NAT
 func get_active_mask():
 	return available_masks[current_mask]
 
-func _input(event):
+func _input(_event):
 	if Input.is_action_just_pressed("mask_switch"):
 		stop_primary_attack()
 
@@ -261,7 +261,7 @@ func spawn_nature_roots(delta: float, projectile_prefab: PackedScene) -> void:
 
 			current_projectile_spawn_cooldown = projectile.cooldown * projectile.get_cooldown_modifier()
 
-func shoot_waterwall_projectile(delta: float, projectile_prefab: PackedScene) -> void:
+func shoot_waterwall_projectile(_delta: float, projectile_prefab: PackedScene) -> void:
 	if not projectile_prefab:
 		return
 
@@ -312,7 +312,7 @@ func shoot_waterwall_projectile(delta: float, projectile_prefab: PackedScene) ->
 	current_waterwall_spawn_cooldown = cooldown
 
 
-func shoot_seed_bomb_projectile(delta: float) -> void:
+func shoot_seed_bomb_projectile(_delta: float) -> void:
 	if not nature_seed_bomb_scene:
 		return
 
@@ -398,7 +398,7 @@ func destroy_cone():
 		active_cone.queue_free()
 		active_cone = null
 
-func get_animation_name(direction: String, element: Enums.Element):
+func get_animation_name(direction: String, _element: Enums.Element):
 	return Enums.element_to_string(get_active_mask()) + "_" + direction
 
 func trigger_primary_attack(delta):
@@ -428,7 +428,7 @@ func stop_primary_attack():
 		Enums.Element.NATURE:
 			destroy_cone()
 
-func take_damage(damage: float, element: Enums.Element):
+func take_damage(damage: float, _element: Enums.Element):
 	current_health -= damage
 	player_took_damage.emit(damage, current_health, base_health)
 
@@ -444,7 +444,7 @@ func win():
 	Global.global_state.post_result(current_wave)
 	get_tree().change_scene_to_file("res://scenes/win.tscn")
 
-func _on_wave_spawned(current: int, max: int):
+func _on_wave_spawned(current: int, _max: int):
 	current_wave = current
 
 func die():

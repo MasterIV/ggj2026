@@ -6,6 +6,6 @@ signal wave_spawned(current: int, max: int)
 func _ready() -> void:
 	wave_spawned.connect(_on_wave_spawned)
 	
-func _on_wave_spawned(current: int, max: int):
+func _on_wave_spawned(current: int, _max: int):
 	$LabelCurrentWave.text = str(current)
-	$LabelMaxWave.text = str(max)
+	$LabelMaxWave.text = str(_max)

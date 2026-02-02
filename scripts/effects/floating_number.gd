@@ -5,9 +5,9 @@ const FLOATING_NUMBER_SCENE: PackedScene = preload("res://scenes/effects/floatin
 
 @onready var label: Label = $Label
 
-static func spawn(position: Vector2) -> Floating_Number:
+static func spawn(new_position: Vector2) -> Floating_Number:
 	var new_text = FLOATING_NUMBER_SCENE.instantiate()
-	new_text.position = position
+	new_text.position = new_position
 	return new_text
 
 func set_text(text: String, text_color: Color) -> void:
