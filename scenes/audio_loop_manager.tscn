@@ -14,30 +14,25 @@ aqua_loop = NodePath("AquaLoop")
 fire_loop = NodePath("FireLoop")
 nature_loop = NodePath("NatureLoop")
 
-[node name="StandardLoop" type="AudioStreamPlayer2D" parent="." unique_id=2029545943]
-process_mode = 3
+[node name="StandardLoop" type="AudioStreamPlayer" parent="." unique_id=1669860893]
 stream = ExtResource("2_gye6c")
-autoplay = true
+volume_db = -6.0
 bus = &"Music"
+playback_type = 1
 parameters/looping = true
 
-[node name="AquaLoop" type="AudioStreamPlayer2D" parent="." unique_id=1591641881]
-process_mode = 3
+[node name="AquaLoop" type="AudioStreamPlayer" parent="." unique_id=217116796]
 stream = ExtResource("3_k4fkv")
-autoplay = true
 bus = &"Aqua"
+playback_type = 1
 parameters/looping = true
 
-[node name="FireLoop" type="AudioStreamPlayer2D" parent="." unique_id=1208850851]
-process_mode = 3
+[node name="FireLoop" type="AudioStreamPlayer" parent="." unique_id=1835330143]
 stream = ExtResource("4_mc0uh")
-autoplay = true
 bus = &"Fire"
-parameters/looping = true
+playback_type = 1
 
-[node name="NatureLoop" type="AudioStreamPlayer2D" parent="." unique_id=1357160580]
-process_mode = 3
+[node name="NatureLoop" type="AudioStreamPlayer" parent="." unique_id=387939713]
 stream = ExtResource("5_r5h1r")
-autoplay = true
-bus = &"Nature"
+bus = &"Fire"
 parameters/looping = true
