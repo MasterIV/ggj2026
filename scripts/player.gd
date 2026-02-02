@@ -130,7 +130,7 @@ var available_masks = [Enums.Element.AQUA, Enums.Element.FIRE, Enums.Element.NAT
 func get_active_mask():
 	return available_masks[current_mask]
 
-func _input(_event):
+func check_input():
 	if Input.is_action_just_pressed("mask_switch"):
 		stop_primary_attack()
 
@@ -144,6 +144,7 @@ func _input(_event):
 		trigger_secondaydary_attack(get_process_delta_time())
 
 func _process(delta: float) -> void:
+	check_input()
 	update_nova_position()
 	update_cone_position()
 	trigger_primary_attack(delta)
