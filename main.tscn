@@ -15,6 +15,13 @@
 [ext_resource type="PackedScene" uid="uid://bjfsikv8s7h0s" path="res://scenes/map_bg/stone2.tscn" id="10_2cqfq"]
 [ext_resource type="PackedScene" uid="uid://0bcoiiqyibm6" path="res://scenes/ui/game_ui.tscn" id="11_dg77c"]
 [ext_resource type="PackedScene" uid="uid://b50pubjpq16i5" path="res://scenes/map_bg/stone3.tscn" id="11_yaehf"]
+[ext_resource type="PackedScene" uid="uid://7qyccgxgnipe" path="res://scenes/map_bg/palms_big.tscn" id="12_yaehf"]
+[ext_resource type="PackedScene" uid="uid://d0v10cj2eyled" path="res://scenes/map_bg/plant_red_big.tscn" id="13_074og"]
+[ext_resource type="PackedScene" uid="uid://bu7i3lehn0jq8" path="res://scenes/map_bg/stone1_small.tscn" id="14_82xsv"]
+[ext_resource type="PackedScene" uid="uid://cfu1vgcr1wrda" path="res://scenes/map_bg/stone2_small.tscn" id="15_getpj"]
+[ext_resource type="PackedScene" uid="uid://bk5ckww227ujy" path="res://scenes/map_bg/stone3_small.tscn" id="16_ryguw"]
+[ext_resource type="PackedScene" uid="uid://bjwimdqslbxil" path="res://scenes/map_bg/plant_leaf_small.tscn" id="17_ryguw"]
+[ext_resource type="PackedScene" uid="uid://euek8qhgq80b" path="res://scenes/map_bg/plant_plant_small.tscn" id="18_d13ii"]
 
 [node name="Main" type="Node2D" unique_id=1385162834]
 script = ExtResource("1_7mycd")
@@ -23,8 +30,9 @@ script = ExtResource("1_7mycd")
 chunk_size = 8
 world_size = Vector2i(4, 4)
 map_border_block = ExtResource("3_efxa6")
-map_obstacles = Array[PackedScene]([ExtResource("3_272bh"), ExtResource("4_4c57u"), ExtResource("5_efxa6"), ExtResource("6_dg77c"), ExtResource("7_ycdy4"), ExtResource("9_vivmo"), ExtResource("10_2cqfq"), ExtResource("11_yaehf")])
-obstacles_per_chunk = 2
+obstacles_1x1 = Array[PackedScene]([ExtResource("3_efxa6"), ExtResource("6_dg77c"), ExtResource("7_ycdy4"), ExtResource("5_efxa6"), ExtResource("9_vivmo"), ExtResource("10_2cqfq"), ExtResource("11_yaehf"), ExtResource("3_272bh")])
+obstacles_2x2 = Array[PackedScene]([ExtResource("4_4c57u"), ExtResource("12_yaehf"), ExtResource("13_074og")])
+decorations = Array[PackedScene]([ExtResource("14_82xsv"), ExtResource("15_getpj"), ExtResource("16_ryguw"), ExtResource("17_ryguw"), ExtResource("18_d13ii")])
 
 [node name="Player" parent="." unique_id=477181902 groups=["player"] instance=ExtResource("1_ig7tw")]
 speed = 600.0

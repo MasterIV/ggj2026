@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://7qyccgxgnipe"]
+
+[ext_resource type="Texture2D" uid="uid://dnbiluls0xlnt" path="res://graphics/bg_rpop_palms.PNG" id="1_cj1ij"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2hx4n"]
+size = Vector2(256, 256)
+
+[node name="PlantRed" type="StaticBody2D" unique_id=282115239 groups=["obstacle"]]
+scale = Vector2(2, 2)
+collision_layer = 12
+collision_mask = 12
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2069026905]
+scale = Vector2(0.31, 0.31)
+texture = ExtResource("1_cj1ij")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1671882219]
+position = Vector2(1, 4)
+shape = SubResource("RectangleShape2D_2hx4n")

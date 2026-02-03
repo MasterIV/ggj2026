@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://cfu1vgcr1wrda"]
+
+[ext_resource type="Texture2D" uid="uid://bdlvnloendpc0" path="res://graphics/Stone_02.PNG" id="1_8k883"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_tncty"]
+radius = 114.0
+height = 246.0
+
+[node name="Stone2" type="StaticBody2D" unique_id=282115239 groups=["obstacle"]]
+scale = Vector2(0.25, 0.25)
+collision_layer = 0
+collision_mask = 0
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2069026905]
+texture = ExtResource("1_8k883")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1671882219]
+position = Vector2(1, 4)
+shape = SubResource("CapsuleShape2D_tncty")
