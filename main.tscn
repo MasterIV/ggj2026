@@ -28,6 +28,7 @@ script = ExtResource("1_7mycd")
 
 [node name="Floor" parent="." unique_id=366801639 instance=ExtResource("2_lquwl")]
 chunk_size = 8
+unload_distance = 7
 world_size = Vector2i(4, 4)
 map_border_block = ExtResource("3_efxa6")
 obstacles_1x1 = Array[PackedScene]([ExtResource("3_efxa6"), ExtResource("6_dg77c"), ExtResource("7_ycdy4"), ExtResource("5_efxa6"), ExtResource("9_vivmo"), ExtResource("10_2cqfq"), ExtResource("11_yaehf"), ExtResource("3_272bh")])
