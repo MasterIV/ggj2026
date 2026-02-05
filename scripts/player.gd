@@ -47,6 +47,9 @@ var audio_loop_manager: AudioLoopManager
 
 var killed_enemies: Array[Enemy] = []
 
+@export var mask_switch_cooldown: float = 0.3  # Minimum time between switches
+var mask_switch_timer: float = 0.0
+
 var buffs: Dictionary = {
 	Enums.AttackType.PROJECTILE: [],
 	Enums.AttackType.CONE: [],
@@ -131,17 +134,24 @@ func get_active_mask():
 	return available_masks[current_mask]
 
 func check_input():
-	if Input.is_action_just_pressed("mask_switch"):
-		stop_primary_attack()
-
-		current_mask += 1
-		if current_mask >= available_masks.size():
-			current_mask = 0
-
-		audio_loop_manager.mask_changed.emit(get_active_mask())
-
 	if Input.is_action_pressed("secondary_attack"):
 		trigger_secondaydary_attack(get_process_delta_time())
+		
+	if Input.is_action_just_pressed("mask_switch") || mask_switch_timer <= 0 && Input.is_action_just_pressed("mask_next"):
+		switch_mask(1)
+	
+	if mask_switch_timer <= 0 && Input.is_action_just_pressed("mask_previous"):
+		switch_mask(-1)
+
+func switch_mask(direction: int):
+	stop_primary_attack()
+
+	current_mask = (current_mask + direction) % available_masks.size()
+
+	audio_loop_manager.mask_changed.emit(get_active_mask())
+	
+	mask_switch_timer = mask_switch_cooldown
+
 
 func _process(delta: float) -> void:
 	check_input()
@@ -157,6 +167,9 @@ func _process(delta: float) -> void:
 
 	if current_nova_spawn_cooldown > 0:
 		current_nova_spawn_cooldown -= delta
+		
+	if mask_switch_timer > 0:
+		mask_switch_timer -= delta
 
 	animated_sprite.play(get_animation_name(current_direction, get_active_mask()))
 
