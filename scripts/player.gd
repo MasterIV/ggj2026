@@ -134,14 +134,75 @@ func get_active_mask():
 	return available_masks[current_mask]
 
 func check_input():
+	if Input.is_action_just_pressed("toggle_inventory"):
+		show_inventory()
+
 	if Input.is_action_pressed("secondary_attack"):
 		trigger_secondaydary_attack(get_process_delta_time())
-		
+
 	if Input.is_action_just_pressed("mask_switch") || mask_switch_timer <= 0 && Input.is_action_just_pressed("mask_next"):
 		switch_mask(1)
-	
+
 	if mask_switch_timer <= 0 && Input.is_action_just_pressed("mask_previous"):
 		switch_mask(-1)
+
+func show_inventory():
+	# Aqua lance
+	print("Aqua lance\n----------")
+	print(
+		Buffs.ProjectileBuffCollection.new(
+			get_buffs_by_type_and_element(Enums.AttackType.PROJECTILE, Enums.Element.AQUA),
+			Enums.Element.AQUA
+		).get_description()
+	)
+
+	print("\nWater Wall\n----------")
+	print(
+		Buffs.ProjectileBuffCollection.new(
+			get_buffs_by_type_and_element(Enums.AttackType.PROJECTILE, Enums.Element.AQUA),
+			Enums.Element.AQUA
+		).get_description()
+	)
+
+	print("\nFire Cone\n---------")
+	print(
+		Buffs.ConeBuffCollection.new(
+			get_buffs_by_type_and_element(Enums.AttackType.CONE, Enums.Element.FIRE),
+			Enums.Element.FIRE
+		).get_description()
+	)
+
+	print("\nFire Nova\n---------")
+	print(
+		Buffs.NovaBuffCollection.new(
+			get_buffs_by_type_and_element(Enums.AttackType.NOVA, Enums.Element.FIRE),
+			Enums.Element.FIRE
+		).get_description()
+	)
+
+	print("\nNature Roots\n------------")
+	print(
+		Buffs.ProjectileBuffCollection.new(
+			get_buffs_by_type_and_element(Enums.AttackType.PROJECTILE, Enums.Element.NATURE),
+			Enums.Element.NATURE
+		).get_description()
+	)
+
+	print("\nSeed Bombs\n----------")
+	print(
+		Buffs.ProjectileBuffCollection.new(
+			get_buffs_by_type_and_element(Enums.AttackType.PROJECTILE, Enums.Element.NATURE),
+			Enums.Element.NATURE
+		).get_description()
+	)
+	print(
+		Enums.NovaCollection.new(
+			get_buffs_by_type_and_element(Enums.AttackType.NOVA, Enums.Element.NATURE),
+			Enums.Element.NATURE
+		).get_description()
+	)
+
+
 
 func switch_mask(direction: int):
 	stop_primary_attack()
@@ -149,7 +210,7 @@ func switch_mask(direction: int):
 	current_mask = (current_mask + direction) % available_masks.size()
 
 	audio_loop_manager.mask_changed.emit(get_active_mask())
-	
+
 	mask_switch_timer = mask_switch_cooldown
 
 
@@ -167,7 +228,7 @@ func _process(delta: float) -> void:
 
 	if current_nova_spawn_cooldown > 0:
 		current_nova_spawn_cooldown -= delta
-		
+
 	if mask_switch_timer > 0:
 		mask_switch_timer -= delta
 

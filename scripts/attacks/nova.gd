@@ -64,7 +64,7 @@ func get_cooldown_modifier() -> float:
 	var modifier: float = 1.0
 
 	for buff in buffs:
-		modifier -= (buff as Enums.NovaBuff).cooldown_multiplier
+		modifier -= (buff as Buffs.NovaBuff).cooldown_multiplier
 
 	return modifier
 
@@ -72,7 +72,7 @@ func get_radius_modifier() -> float:
 	var modifier: float = 1.0
 
 	for buff in buffs:
-		modifier += (buff as Enums.NovaBuff).radius_multiplier
+		modifier += (buff as Buffs.NovaBuff).radius_multiplier
 
 	return modifier
 
@@ -80,6 +80,6 @@ func get_damage_modifier() -> float:
 	var modifier: float = 1.0
 
 	for buff in buffs:
-		modifier += (buff as Enums.NovaBuff).damage_multiplier
+		modifier += (buff as Buffs.NovaBuff).damage_multiplier
 
 	return modifier

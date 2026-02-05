@@ -44,7 +44,7 @@ func get_interval_modifier() -> float:
 	var modifier: float = 1.0
 
 	for buff in buffs:
-		modifier -= (buff as Enums.ConeBuff).damage_interval_multiplier
+		modifier -= (buff as Buffs.ConeBuff).damage_interval_multiplier
 
 	return modifier
 
@@ -52,6 +52,6 @@ func get_damage_modifier() -> float:
 	var modifier: float = 1.0
 
 	for buff in buffs:
-		modifier += (buff as Enums.ConeBuff).damage_multiplier
+		modifier += (buff as Buffs.ConeBuff).damage_multiplier
 
 	return modifier

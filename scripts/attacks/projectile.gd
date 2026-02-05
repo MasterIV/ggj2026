@@ -97,7 +97,7 @@ func get_piercing_modifier() -> int:
 	var modifier: int = 0
 
 	for buff in buffs[Enums.AttackType.PROJECTILE]:
-		modifier += (buff as Enums.ProjectileBuff).piercing
+		modifier += (buff as Buffs.ProjectileBuff).piercing
 
 	return modifier
 
@@ -105,7 +105,7 @@ func get_speed_modifier() -> float:
 	var modifier: float = 1.0
 
 	for buff in buffs[Enums.AttackType.PROJECTILE]:
-		modifier += (buff as Enums.ProjectileBuff).speed_multiplier
+		modifier += (buff as Buffs.ProjectileBuff).speed_multiplier
 
 	return modifier
 
@@ -113,7 +113,7 @@ func get_shots_added_modifier() -> int:
 	var modifier: int = 0
 
 	for buff in buffs[Enums.AttackType.PROJECTILE]:
-		modifier += (buff as Enums.ProjectileBuff).shots_added
+		modifier += (buff as Buffs.ProjectileBuff).shots_added
 
 	return modifier
 
@@ -121,7 +121,7 @@ func get_cooldown_modifier() -> float:
 	var modifier: float = 1.0
 
 	for buff in buffs[Enums.AttackType.PROJECTILE]:
-		modifier -= (buff as Enums.ProjectileBuff).cooldown_multiplier
+		modifier -= (buff as Buffs.ProjectileBuff).cooldown_multiplier
 
 	return modifier
 
@@ -129,6 +129,6 @@ func get_damage_modifier() -> float:
 	var modifier: float = 1.0
 
 	for buff in buffs[Enums.AttackType.PROJECTILE]:
-		modifier += (buff as Enums.ProjectileBuff).damage_multiplier
+		modifier += (buff as Buffs.ProjectileBuff).damage_multiplier
 
 	return modifier
