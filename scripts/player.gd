@@ -61,6 +61,11 @@ var buffs: Dictionary = {
 }
 
 func _on_add_buff(attack_type: Enums.AttackType, buff) -> void:
+	if buff is Enums.HealBuff:
+		print("Heal player for amount: ", buff.heal_amount)
+		take_damage(-buff.heal_amount, Enums.Element.NONE)
+		return
+
 	buffs[attack_type].append(buff)
 
 func get_buffs_by_type_and_element(attack_type: Enums.AttackType, element: Enums.Element) -> Array:

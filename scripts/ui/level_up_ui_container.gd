@@ -33,7 +33,7 @@ func setup():
 					panel_instance.description_label.text = left_buff.get_description()
 					panel_instance.rarity_label.text = left_buff.get_rarity_description()
 					panel_instance.pressed.connect(_on_upgrade_left)
-					panel_instance.texture_normal = panel_instance.aqua_panel
+					panel_instance.set_element(left_buff.damage_type)
 			1:
 				if center_buff == null:
 					panel_instance.name_label.text = "No more buffs available"
@@ -44,7 +44,7 @@ func setup():
 					panel_instance.description_label.text = center_buff.get_description()
 					panel_instance.rarity_label.text = center_buff.get_rarity_description()
 					panel_instance.pressed.connect(_on_upgrade_center)
-					panel_instance.texture_normal = panel_instance.fire_panel
+					panel_instance.set_element(center_buff.damage_type)
 			2:
 				if right_buff == null:
 					panel_instance.name_label.text = "No more buffs available"
@@ -55,38 +55,32 @@ func setup():
 					panel_instance.description_label.text = right_buff.get_description()
 					panel_instance.rarity_label.text = right_buff.get_rarity_description()
 					panel_instance.pressed.connect(_on_upgrade_right)
-					panel_instance.texture_normal = panel_instance.nature_panel
+					panel_instance.set_element(right_buff.damage_type)
+
+func _handle_buff(buff: Enums.Buff) -> void:
+	player.add_buff.emit(
+		buff.attack_type,
+		buff
+	)
 
 func _on_no_upgrade() -> void:
 	hide()
 	get_tree().paused = false
 
 func _on_upgrade_left() -> void:
-	if left_buff != null:
-		player.add_buff.emit(
-			left_buff.attack_type,
-			left_buff
-		)
+	_handle_buff(left_buff)
 
 	hide()
 	get_tree().paused = false
 
 func _on_upgrade_center() -> void:
-	if center_buff != null:
-		player.add_buff.emit(
-			center_buff.attack_type,
-			center_buff
-		)
+	_handle_buff(center_buff)
 
 	hide()
 	get_tree().paused = false
 
 func _on_upgrade_right() -> void:
-	if right_buff != null:
-		player.add_buff.emit(
-			right_buff.attack_type,
-			right_buff
-		)
+	_handle_buff(right_buff)
 
 	hide()
 	get_tree().paused = false

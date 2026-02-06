@@ -34,7 +34,8 @@ enum AttackType {
 	PROJECTILE,
 	CONE,
 	NOVA,
-	ARTILLERY
+	ARTILLERY,
+	NONE
 }
 
 func attack_type_to_string(attack_type: AttackType) -> String:
@@ -49,7 +50,7 @@ func get_random_buff_of_rarity_and_element(rarity: BuffRarity, element: Element)
 	var all_buffs = get_all_buffs()
 	var filtered_buffs = []
 	for buff in all_buffs:
-		if buff.rarety == rarity and buff.damage_type == element:
+		if buff.rarety == rarity and (buff.damage_type == element || buff.damage_type == Element.NONE):
 			filtered_buffs.append(buff)
 
 	if filtered_buffs.size() == 0 && rarity == BuffRarity.LEGENDARY:
@@ -77,6 +78,10 @@ func get_random_buff_for_element(element: Element):
 
 func get_all_buffs():
 	return [
+		# Healing potions
+		HealBuff.new("Healing Potion 5", 5, Element.NONE).rarity(BuffRarity.RARE),
+		HealBuff.new("Healing Potion 10", 10, Element.NONE).rarity(BuffRarity.LEGENDARY),
+
 		# AQUA PRIMARY
 		# Speed, Damage, Cooldown, Piercing, Projectile
 		ProjectileBuff.new("Aqua Lance Damage Boost", 0, 0.15, 0, Element.AQUA, 0, 0),
@@ -132,8 +137,8 @@ func string_to_element(element: String):
 class Buff:
 	var rarety: BuffRarity = BuffRarity.COMMON
 	var name: String
-	var damage_type: Element
-	var attack_type: AttackType
+	var damage_type: Element # technically element type, shitty name
+	var attack_type: AttackType = AttackType.NONE
 
 	func rarity(new_rarity: BuffRarity) -> Buff:
 		rarety = new_rarity
@@ -144,6 +149,22 @@ class Buff:
 
 	func get_description():
 		assert(false, "get_description() must be overridden in subclasses")
+
+class HealBuff extends Buff:
+	var heal_amount: int
+
+	func _init(new_name: String, new_heal_amount: int, element_type: Element = Enums.Element.NONE):
+		name = new_name
+		heal_amount = new_heal_amount
+		damage_type = element_type
+
+	func get_description() -> String:
+		var desc = ""
+
+		if heal_amount != 0:
+			desc += "Heals for " + str(heal_amount) + " HP\n"
+
+		return desc.strip_edges()
 
 class ProjectileBuff extends Buff:
 	var speed_multiplier: float
