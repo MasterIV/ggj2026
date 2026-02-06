@@ -11,6 +11,15 @@
 [ext_resource type="Texture2D" uid="uid://d23xhpaamh3rs" path="res://graphics/player/player_fire.png" id="6_tuyoq"]
 [ext_resource type="PackedScene" uid="uid://bqohmcx0nthpg" path="res://scenes/attacks/nature_roots_shot.tscn" id="7_d2wvv"]
 [ext_resource type="Texture2D" uid="uid://bacjm4lq5usow" path="res://graphics/player/player_nature.png" id="7_fjrip"]
+[ext_resource type="Texture2D" uid="uid://c7rw8y26qlpft" path="res://graphics/Ring_Ingame.png" id="9_3v2ag"]
+[ext_resource type="Shader" uid="uid://4unbnctav0sy" path="res://shader/cooldown_ring.gdshader" id="9_f1ej7"]
+[ext_resource type="Script" uid="uid://bct4egy273v3q" path="res://scripts/cooldown_ring.gd" id="11_oprun"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_a8ls1"]
+shader = ExtResource("9_f1ej7")
+shader_parameter/progress = 1.0
+shader_parameter/ready_color = Color(1, 0, 0, 1)
+shader_parameter/cooldown_color = Color(1, 1, 1, 1)
 
 [sub_resource type="Gradient" id="Gradient_d2wvv"]
 offsets = PackedFloat32Array(0, 0.39545456, 1)
@@ -423,13 +432,16 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Player" type="CharacterBody2D" unique_id=477181902 node_paths=PackedStringArray("animated_sprite")]
+[node name="Player" type="CharacterBody2D" unique_id=477181902 node_paths=PackedStringArray("aqua_cooldown_ring", "fire_cooldown_ring", "nature_cooldown_ring", "animated_sprite")]
 collision_layer = 10
 collision_mask = 10
 script = ExtResource("1_3vyb7")
 base_health = 30.0
 speed = 500.0
 dash_duration = 0.4
+aqua_cooldown_ring = NodePath("AquaCooldownRing")
+fire_cooldown_ring = NodePath("FireCooldownRing")
+nature_cooldown_ring = NodePath("NatureCooldownRing")
 projectile_scene = ExtResource("2_qhqgy")
 nature_seed_bomb_scene = ExtResource("3_y4r1p")
 waterwall_projectile_scene = ExtResource("3_ur7pv")
@@ -438,6 +450,39 @@ nature_cone_scene = ExtResource("4_smehm")
 nature_cone_shot = ExtResource("7_d2wvv")
 nova_scene = ExtResource("4_qlg0r")
 animated_sprite = NodePath("AnimatedSprite2D")
+
+[node name="AquaCooldownRing" type="TextureRect" parent="." unique_id=774730027 node_paths=PackedStringArray("cooldown_ring")]
+material = SubResource("ShaderMaterial_a8ls1")
+offset_left = -133.0
+offset_top = 58.0
+offset_right = 141.0
+offset_bottom = 170.0
+texture = ExtResource("9_3v2ag")
+script = ExtResource("11_oprun")
+cooldown_ring = NodePath(".")
+color = Color(0.2509804, 0.7176471, 0.7490196, 1)
+
+[node name="FireCooldownRing" type="TextureRect" parent="." unique_id=1570737577 node_paths=PackedStringArray("cooldown_ring")]
+material = SubResource("ShaderMaterial_a8ls1")
+offset_left = -133.0
+offset_top = 60.0
+offset_right = 141.0
+offset_bottom = 172.0
+texture = ExtResource("9_3v2ag")
+script = ExtResource("11_oprun")
+cooldown_ring = NodePath(".")
+color = Color(0.98039216, 0.47843137, 0.25490198, 1)
+
+[node name="NatureCooldownRing" type="TextureRect" parent="." unique_id=2091118893 node_paths=PackedStringArray("cooldown_ring")]
+material = SubResource("ShaderMaterial_a8ls1")
+offset_left = -133.0
+offset_top = 58.0
+offset_right = 141.0
+offset_bottom = 170.0
+texture = ExtResource("9_3v2ag")
+script = ExtResource("11_oprun")
+cooldown_ring = NodePath(".")
+color = Color(0.15294118, 0.7294118, 0.4627451, 1)
 
 [node name="Shadow" type="Sprite2D" parent="." unique_id=1026676182]
 position = Vector2(-2, 119)

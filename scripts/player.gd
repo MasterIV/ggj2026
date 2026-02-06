@@ -6,6 +6,10 @@ extends CharacterBody2D
 @export var dash_speed: float = 800
 @export var dash_duration: float = 0.2
 
+@export var aqua_cooldown_ring: CooldownRing
+@export var fire_cooldown_ring: CooldownRing
+@export var nature_cooldown_ring: CooldownRing
+
 # Ice Lance
 @export var projectile_scene: PackedScene
 
@@ -79,8 +83,10 @@ func _ready() -> void:
 	last_wave_spawned.connect(_on_last_wave_spawned)
 	current_health = base_health
 
-	var wave_counter = get_tree().get_first_node_in_group("wave_counter")
+	var wave_counter: Node = get_tree().get_first_node_in_group("wave_counter")
 	wave_counter.wave_spawned.connect(_on_wave_spawned)
+
+	set_mask(Enums.Element.AQUA)
 
 func _on_last_wave_spawned():
 	is_last_wave = true
@@ -136,21 +142,42 @@ func get_active_mask():
 func check_input():
 	if Input.is_action_pressed("secondary_attack"):
 		trigger_secondaydary_attack(get_process_delta_time())
-		
+
 	if Input.is_action_just_pressed("mask_switch") || mask_switch_timer <= 0 && Input.is_action_just_pressed("mask_next"):
 		switch_mask(1)
-	
+
 	if mask_switch_timer <= 0 && Input.is_action_just_pressed("mask_previous"):
 		switch_mask(-1)
 
 func switch_mask(direction: int):
 	stop_primary_attack()
 
-	current_mask = (current_mask + direction) % available_masks.size()
+	var new_index = (current_mask + direction) % available_masks.size()
+	_on_set_mask(new_index)
+
+func _on_set_mask(index: int):
+	current_mask = index
 
 	audio_loop_manager.mask_changed.emit(get_active_mask())
-	
+
 	mask_switch_timer = mask_switch_cooldown
+
+	aqua_cooldown_ring.hide()
+	fire_cooldown_ring.hide()
+	nature_cooldown_ring.hide()
+
+	match get_active_mask():
+		Enums.Element.AQUA:
+			aqua_cooldown_ring.show()
+		Enums.Element.FIRE:
+			fire_cooldown_ring.show()
+		Enums.Element.NATURE:
+			nature_cooldown_ring.show()
+
+
+func set_mask(mask_type: Enums.Element):
+	var index = available_masks.find(mask_type)
+	_on_set_mask(index)
 
 
 func _process(delta: float) -> void:
@@ -167,7 +194,7 @@ func _process(delta: float) -> void:
 
 	if current_nova_spawn_cooldown > 0:
 		current_nova_spawn_cooldown -= delta
-		
+
 	if mask_switch_timer > 0:
 		mask_switch_timer -= delta
 
@@ -325,6 +352,10 @@ func shoot_waterwall_projectile(_delta: float, projectile_prefab: PackedScene) -
 
 	current_waterwall_spawn_cooldown = cooldown
 
+	aqua_cooldown_ring.cooldown_time = current_waterwall_spawn_cooldown
+	aqua_cooldown_ring.start_cooldown()
+
+
 
 func shoot_seed_bomb_projectile(_delta: float) -> void:
 	if not nature_seed_bomb_scene:
@@ -348,6 +379,9 @@ func shoot_seed_bomb_projectile(_delta: float) -> void:
 
 	current_seed_bomb_spawn_cooldown = projectile.cooldown * projectile.get_cooldown_modifier()
 
+	nature_cooldown_ring.cooldown_time = current_seed_bomb_spawn_cooldown
+	nature_cooldown_ring.start_cooldown()
+
 
 func spawn_nova() -> void:
 	if not nova_scene || active_nova != null:
@@ -365,6 +399,10 @@ func spawn_nova() -> void:
 	update_nova_position()
 
 	current_nova_spawn_cooldown = active_nova.cooldown * active_nova.get_cooldown_modifier()
+
+	fire_cooldown_ring.cooldown_time = current_nova_spawn_cooldown
+	fire_cooldown_ring.start_cooldown()
+
 
 func _on_nova_finished():
 	active_nova = null
