@@ -1,5 +1,5 @@
 name: "godot-ci export"
-on: 
+on:
   push:
     branches:
       - main
@@ -30,6 +30,11 @@ jobs:
           EXPORT_DIR="$(readlink -f build)"
           cd $PROJECT_PATH
           godot --headless --verbose --export-release "Web" "$EXPORT_DIR/web/index.html"
+      - name: Add cache breaker
+        run: |
+          TIMESTAMP=$(date +%Y%m%d%H%M%S)
+          ls -la
+          sed -i "s|<script src=\"index.js\"></script>|<script src=\"index.js?v=$TIMESTAMP\"></script>|g" "build/web/index.html"
       - name: Deploy to GitHub Pages 🚀
         uses: JamesIves/github-pages-deploy-action@releases/v4
         with:
