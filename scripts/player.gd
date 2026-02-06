@@ -109,10 +109,10 @@ func _physics_process(delta):
 	else:
 		var direction: Vector2 = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
 
-		if Input.is_action_just_pressed("dash") and direction.length() > 0:
-			is_dashing = true
-			dash_timer = dash_duration
-			dash_direction = direction.normalized()
+		#if Input.is_action_just_pressed("dash") and direction.length() > 0:
+		#	is_dashing = true
+		#	dash_timer = dash_duration
+		#	dash_direction = direction.normalized()
 
 		velocity = direction * speed
 
