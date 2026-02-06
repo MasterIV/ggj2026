@@ -364,20 +364,19 @@ func shoot_seed_bomb_projectile(_delta: float) -> void:
 	if current_seed_bomb_spawn_cooldown > 0:
 		return
 
-	var mouse_pos: Vector2 = get_global_mouse_position()
-	var shoot_direction: Vector2 = (mouse_pos - global_position).normalized()
+	var target_pos: Vector2 = get_global_mouse_position()
 
-	var projectile: Projectile = nature_seed_bomb_scene.instantiate() as Projectile
-	projectile.damage_type = get_active_mask()
-	projectile.global_position = global_position
-	projectile.set_direction(shoot_direction)
-	projectile.buffs[Enums.AttackType.PROJECTILE] = get_buffs_by_type_and_element(Enums.AttackType.PROJECTILE, get_active_mask())
-	projectile.buffs[Enums.AttackType.NOVA] = get_buffs_by_type_and_element(Enums.AttackType.NOVA, get_active_mask())
-	projectile.buffs[Enums.AttackType.CONE] = get_buffs_by_type_and_element(Enums.AttackType.CONE, get_active_mask())
+	var artillery: Artillery = nature_seed_bomb_scene.instantiate() as Artillery
+	artillery.damage_type = get_active_mask()
+	artillery.global_position = global_position
+	artillery.set_target(global_position, target_pos)
+	artillery.buffs[Enums.AttackType.PROJECTILE] = get_buffs_by_type_and_element(Enums.AttackType.PROJECTILE, get_active_mask())
+	artillery.buffs[Enums.AttackType.NOVA] = get_buffs_by_type_and_element(Enums.AttackType.NOVA, get_active_mask())
+	artillery.buffs[Enums.AttackType.CONE] = get_buffs_by_type_and_element(Enums.AttackType.CONE, get_active_mask())
 
-	get_parent().add_child(projectile)
+	get_parent().add_child(artillery)
 
-	current_seed_bomb_spawn_cooldown = projectile.cooldown * projectile.get_cooldown_modifier()
+	current_seed_bomb_spawn_cooldown = artillery.cooldown * artillery.get_cooldown_modifier()
 
 	nature_cooldown_ring.cooldown_time = current_seed_bomb_spawn_cooldown
 	nature_cooldown_ring.start_cooldown()

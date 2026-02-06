@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://cath3df0adcgi"]
+
+[ext_resource type="Script" uid="uid://ckwrl8yqff5t8" path="res://scripts/attacks/artillery.gd" id="1_4hb7w"]
+[ext_resource type="PackedScene" uid="uid://cw1klnm6nfmmt" path="res://scenes/attacks/nature_seed_secondary.tscn" id="2_tdktt"]
+[ext_resource type="Texture2D" uid="uid://bjtf05ehm3w6" path="res://graphics/attacks/vfx_poison_seed.png" id="3_y2rsf"]
+[ext_resource type="AudioStream" uid="uid://dnjd0wijdwkbr" path="res://sound/SeedBomb.wav" id="4_3g2yh"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_6aapk"]
+radius = 33.06055
+
+[node name="Seed Bomb" type="Area2D" unique_id=1353746272]
+collision_layer = 5
+collision_mask = 5
+script = ExtResource("1_4hb7w")
+speed = 1500.0
+flight_time = 1.0
+secondary_effect_scene = ExtResource("2_tdktt")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=503715403]
+shape = SubResource("CircleShape2D_6aapk")
+
+[node name="LifetimeTimer" type="Timer" parent="." unique_id=923001922]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=88659414]
+rotation = 1.5707964
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("3_y2rsf")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1905520378]
+stream = ExtResource("4_3g2yh")
+autoplay = true
+bus = &"Sfx"
