@@ -24,44 +24,69 @@ func setup():
 		add_child(panel_instance)
 		match i:
 			0:
-				panel_instance.name_label.text = left_buff.name
-				panel_instance.description_label.text = left_buff.get_description()
-				panel_instance.pressed.connect(_on_upgrade_left)
-				panel_instance.texture_normal = panel_instance.aqua_panel
+				if left_buff == null:
+					panel_instance.name_label.text = "No more buffs available"
+					panel_instance.description_label.text = "You have unlocked all buffs for this element."
+					panel_instance.pressed.connect(_on_no_upgrade)
+				else:
+					panel_instance.name_label.text = left_buff.name
+					panel_instance.description_label.text = left_buff.get_description()
+					panel_instance.rarity_label.text = left_buff.get_rarity_description()
+					panel_instance.pressed.connect(_on_upgrade_left)
+					panel_instance.texture_normal = panel_instance.aqua_panel
 			1:
-				panel_instance.name_label.text = center_buff.name
-				panel_instance.description_label.text = center_buff.get_description()
-				panel_instance.pressed.connect(_on_upgrade_center)
-				panel_instance.texture_normal = panel_instance.fire_panel
+				if center_buff == null:
+					panel_instance.name_label.text = "No more buffs available"
+					panel_instance.description_label.text = "You have unlocked all buffs for this element."
+					panel_instance.pressed.connect(_on_no_upgrade)
+				else:
+					panel_instance.name_label.text = center_buff.name
+					panel_instance.description_label.text = center_buff.get_description()
+					panel_instance.rarity_label.text = center_buff.get_rarity_description()
+					panel_instance.pressed.connect(_on_upgrade_center)
+					panel_instance.texture_normal = panel_instance.fire_panel
 			2:
-				panel_instance.name_label.text = right_buff.name
-				panel_instance.description_label.text = right_buff.get_description()
-				panel_instance.pressed.connect(_on_upgrade_right)
-				panel_instance.texture_normal = panel_instance.nature_panel
+				if right_buff == null:
+					panel_instance.name_label.text = "No more buffs available"
+					panel_instance.description_label.text = "You have unlocked all buffs for this element."
+					panel_instance.pressed.connect(_on_no_upgrade)
+				else:
+					panel_instance.name_label.text = right_buff.name
+					panel_instance.description_label.text = right_buff.get_description()
+					panel_instance.rarity_label.text = right_buff.get_rarity_description()
+					panel_instance.pressed.connect(_on_upgrade_right)
+					panel_instance.texture_normal = panel_instance.nature_panel
+
+func _on_no_upgrade() -> void:
+	hide()
+	get_tree().paused = false
 
 func _on_upgrade_left() -> void:
-	player.add_buff.emit(
-		left_buff.attack_type,
-		left_buff
-	)
+	if left_buff != null:
+		player.add_buff.emit(
+			left_buff.attack_type,
+			left_buff
+		)
 
 	hide()
 	get_tree().paused = false
 
 func _on_upgrade_center() -> void:
-	player.add_buff.emit(
-		center_buff.attack_type,
-		center_buff
-	)
+	if center_buff != null:
+		player.add_buff.emit(
+			center_buff.attack_type,
+			center_buff
+		)
 
 	hide()
 	get_tree().paused = false
 
 func _on_upgrade_right() -> void:
-	player.add_buff.emit(
-		right_buff.attack_type,
-		right_buff
-	)
+	if right_buff != null:
+		player.add_buff.emit(
+			right_buff.attack_type,
+			right_buff
+		)
 
 	hide()
 	get_tree().paused = false

@@ -6,6 +6,13 @@ enum BuffRarity {
 	LEGENDARY
 }
 
+func rarity_to_string(rarity: BuffRarity) -> String:
+	return {
+		BuffRarity.COMMON: "common",
+		BuffRarity.RARE: "rare",
+		BuffRarity.LEGENDARY: "legendary"
+	}[rarity]
+
 enum ProjectileDirection {
 	MOUSE,
 	RANDOM
@@ -26,133 +33,86 @@ enum Element {
 enum AttackType {
 	PROJECTILE,
 	CONE,
-	NOVA
+	NOVA,
+	ARTILLERY
 }
 
-func get_random_buff_for_element(element: Element):
-	var buffs = get_all_buffs()
+func attack_type_to_string(attack_type: AttackType) -> String:
+	return {
+		AttackType.PROJECTILE: "projectile",
+		AttackType.CONE: "cone",
+		AttackType.NOVA: "nova",
+		AttackType.ARTILLERY: "artillery"
+	}[attack_type]
+
+func get_random_buff_of_rarity_and_element(rarity: BuffRarity, element: Element) -> Array:
+	var all_buffs = get_all_buffs()
 	var filtered_buffs = []
-	for buff in buffs:
-		match element:
-			Element.AQUA:
-				if buff.damage_type == Element.AQUA:
-					filtered_buffs.append(buff)
-			Element.FIRE:
-				if buff.damage_type == Element.FIRE:
-					filtered_buffs.append(buff)
-			Element.NATURE:
-				if buff.damage_type == Element.NATURE:
-					filtered_buffs.append(buff)
-	return filtered_buffs[randi() % filtered_buffs.size()]
+	for buff in all_buffs:
+		if buff.rarety == rarity and buff.damage_type == element:
+			filtered_buffs.append(buff)
+
+	if filtered_buffs.size() == 0 && rarity == BuffRarity.LEGENDARY:
+		return get_random_buff_of_rarity_and_element(BuffRarity.RARE, element)
+	elif filtered_buffs.size() == 0 && rarity == BuffRarity.RARE:
+		return get_random_buff_of_rarity_and_element(BuffRarity.COMMON, element)
+
+	return filtered_buffs
+
+func get_random_buff_for_element(element: Element):
+	var buffs: Array
+	var rand: int = randi() % 100 + 1
+
+	if rand <= 80:
+		buffs = get_random_buff_of_rarity_and_element(BuffRarity.COMMON, element)
+	elif rand <= 95:
+		buffs = get_random_buff_of_rarity_and_element(BuffRarity.RARE, element)
+	else:
+		buffs = get_random_buff_of_rarity_and_element(BuffRarity.LEGENDARY, element)
+
+	if buffs.size() == 0:
+		return null
+
+	return buffs[randi() % buffs.size()]
 
 func get_all_buffs():
 	return [
 		# AQUA PRIMARY
 		# Speed, Damage, Cooldown, Piercing, Projectile
 		ProjectileBuff.new("Aqua Lance Damage Boost", 0, 0.15, 0, Element.AQUA, 0, 0),
-		ProjectileBuff.new("Aqua Lance Damage Boost", 0, 0.15, 0, Element.AQUA, 0, 0),
-		ProjectileBuff.new("Aqua Lance Damage Boost", 0, 0.15, 0, Element.AQUA, 0, 0),
-		ProjectileBuff.new("Aqua Lance Damage Boost", 0, 0.15, 0, Element.AQUA, 0, 0),
-		ProjectileBuff.new("Aqua Lance Damage Boost", 0, 0.15, 0, Element.AQUA, 0, 0),
-		ProjectileBuff.new("Aqua Lance Damage Boost", 0, 0.15, 0, Element.AQUA, 0, 0),
 		ProjectileBuff.new("Aqua Lance Speed Boost", 0.15, 0, 0, Element.AQUA, 0, 0),
-		ProjectileBuff.new("Aqua Lance Speed Boost", 0.15, 0, 0, Element.AQUA, 0, 0),
-		ProjectileBuff.new("Aqua Lance Speed Boost", 0.15, 0, 0, Element.AQUA, 0, 0),
-		ProjectileBuff.new("Aqua Lance Speed Boost", 0.15, 0, 0, Element.AQUA, 0, 0),
-		ProjectileBuff.new("Aqua Lance Speed Boost", 0.15, 0, 0, Element.AQUA, 0, 0),
-		ProjectileBuff.new("Aqua Lance Speed Boost", 0.15, 0, 0, Element.AQUA, 0, 0),
-		ProjectileBuff.new("Aqua Lance Piercing Boost", 0, 0, 0, Element.AQUA, 1, 0).rarity(BuffRarity.RARE),
-		ProjectileBuff.new("Aqua Lance Piercing Boost", 0, 0, 0, Element.AQUA, 1, 0).rarity(BuffRarity.RARE),
 		ProjectileBuff.new("Aqua Lance Piercing Boost", 0, 0, 0, Element.AQUA, 1, 0).rarity(BuffRarity.RARE),
 		ProjectileBuff.new("Aqua Lance Shots Boost", 0, 0, 0, Element.AQUA, 0, 1).rarity(BuffRarity.LEGENDARY),
 
 		# AQUA SECONDARY
 		# Speed, Damage, Cooldown, Piercing, Projectile
-		ProjectileBuff.new("Aqua Wave Damage Boost", 0, 0.2, 0, Element.AQUA, 0, 0),
-		ProjectileBuff.new("Aqua Wave Damage Boost", 0, 0.2, 0, Element.AQUA, 0, 0),
-		ProjectileBuff.new("Aqua Wave Damage Boost", 0, 0.2, 0, Element.AQUA, 0, 0),
-		ProjectileBuff.new("Aqua Wave Damage Boost", 0, 0.2, 0, Element.AQUA, 0, 0),
-		ProjectileBuff.new("Aqua Wave Damage Boost", 0, 0.2, 0, Element.AQUA, 0, 0),
-		ProjectileBuff.new("Aqua Wave Damage Boost", 0, 0.2, 0, Element.AQUA, 0, 0),
-		ProjectileBuff.new("Aqua Wave Speed Boost", 0.2, 0, 0, Element.AQUA, 0, 0),
-		ProjectileBuff.new("Aqua Wave Speed Boost", 0.2, 0, 0, Element.AQUA, 0, 0),
-		ProjectileBuff.new("Aqua Wave Speed Boost", 0.2, 0, 0, Element.AQUA, 0, 0),
-		ProjectileBuff.new("Aqua Wave Speed Boost", 0.2, 0, 0, Element.AQUA, 0, 0),
-		ProjectileBuff.new("Aqua Wave Speed Boost", 0.2, 0, 0, Element.AQUA, 0, 0),
-		ProjectileBuff.new("Aqua Wave Speed Boost", 0.2, 0, 0, Element.AQUA, 0, 0),
+		ProjectileBuff.new("Waterwall Damage Boost", 0, 0.2, 0, Element.AQUA, 0, 0),
+		ProjectileBuff.new("Waterwall Speed Boost", 0.2, 0, 0, Element.AQUA, 0, 0),
 
 		# FIRE PRIMARY
 		# Damage, Speed
 		ConeBuff.new("Fire Blast Damage, Boost", 0.15, 0, Element.FIRE),
-		ConeBuff.new("Fire Blast Damage, Boost", 0.15, 0, Element.FIRE),
-		ConeBuff.new("Fire Blast Damage, Boost", 0.15, 0, Element.FIRE),
-		ConeBuff.new("Fire Blast Damage, Boost", 0.15, 0, Element.FIRE),
-		ConeBuff.new("Fire Blast Damage, Boost", 0.15, 0, Element.FIRE),
-		ConeBuff.new("Fire Blast Damage, Boost", 0.15, 0, Element.FIRE),
-		ConeBuff.new("Fire Blast Speed, Boost", 0, 0.15, Element.FIRE),
-		ConeBuff.new("Fire Blast Speed, Boost", 0, 0.15, Element.FIRE),
-		ConeBuff.new("Fire Blast Speed, Boost", 0, 0.15, Element.FIRE),
-		ConeBuff.new("Fire Blast Speed, Boost", 0, 0.15, Element.FIRE),
-		ConeBuff.new("Fire Blast Speed, Boost", 0, 0.15, Element.FIRE),
 		ConeBuff.new("Fire Blast Speed, Boost", 0, 0.15, Element.FIRE),
 
 		# FIRE SECONDARY
 		# Damage, Radius, Speed
 		NovaBuff.new("Fire Nova Damage Boost", 0.2, 0, 0, Element.FIRE),
-		NovaBuff.new("Fire Nova Damage Boost", 0.2, 0, 0, Element.FIRE),
-		NovaBuff.new("Fire Nova Damage Boost", 0.2, 0, 0, Element.FIRE),
-		NovaBuff.new("Fire Nova Damage Boost", 0.2, 0, 0, Element.FIRE),
-		NovaBuff.new("Fire Nova Damage Boost", 0.2, 0, 0, Element.FIRE),
-		NovaBuff.new("Fire Nova Damage Boost", 0.2, 0, 0, Element.FIRE),
 		NovaBuff.new("Fire Nova Speed Boost", 0, 0, 0.2, Element.FIRE),
-		NovaBuff.new("Fire Nova Speed Boost", 0, 0, 0.2, Element.FIRE),
-		NovaBuff.new("Fire Nova Speed Boost", 0, 0, 0.2, Element.FIRE),
-		NovaBuff.new("Fire Nova Speed Boost", 0, 0, 0.2, Element.FIRE),
-		NovaBuff.new("Fire Nova Speed Boost", 0, 0, 0.2, Element.FIRE),
-		NovaBuff.new("Fire Nova Speed Boost", 0, 0, 0.2, Element.FIRE),
-		NovaBuff.new("Fire Nova Range Boost", 0, 0.2, 0, Element.FIRE).rarity(BuffRarity.RARE),
-		NovaBuff.new("Fire Nova Range Boost", 0, 0.2, 0, Element.FIRE).rarity(BuffRarity.RARE),
 		NovaBuff.new("Fire Nova Range Boost", 0, 0.2, 0, Element.FIRE).rarity(BuffRarity.RARE),
 
 
 		# NATURE PRIMARY
 		# Speed, Damage, Cooldown, Piercing, Projectile
-		ProjectileBuff.new("Nature Roots Damage Boost", 0, 0.15, 0, Element.NATURE, 0, 0),
-		ProjectileBuff.new("Nature Roots Damage Boost", 0, 0.15, 0, Element.NATURE, 0, 0),
-		ProjectileBuff.new("Nature Roots Damage Boost", 0, 0.15, 0, Element.NATURE, 0, 0),
-		ProjectileBuff.new("Nature Roots Damage Boost", 0, 0.15, 0, Element.NATURE, 0, 0),
-		ProjectileBuff.new("Nature Roots Damage Boost", 0, 0.15, 0, Element.NATURE, 0, 0),
-		ProjectileBuff.new("Nature Roots Damage Boost", 0, 0.15, 0, Element.NATURE, 0, 0),
-		ProjectileBuff.new("Nature Roots Speed Boost", 0.15, 0, 0, Element.NATURE, 0, 0),
-		ProjectileBuff.new("Nature Roots Speed Boost", 0.15, 0, 0, Element.NATURE, 0, 0),
-		ProjectileBuff.new("Nature Roots Speed Boost", 0.15, 0, 0, Element.NATURE, 0, 0),
-		ProjectileBuff.new("Nature Roots Speed Boost", 0.15, 0, 0, Element.NATURE, 0, 0),
-		ProjectileBuff.new("Nature Roots Speed Boost", 0.15, 0, 0, Element.NATURE, 0, 0),
-		ProjectileBuff.new("Nature Roots Speed Boost", 0.15, 0, 0, Element.NATURE, 0, 0),
-		ProjectileBuff.new("Nature Roots Piercing Boost", 0, 0, 0, Element.NATURE, 1, 0).rarity(BuffRarity.RARE),
-		ProjectileBuff.new("Nature Roots Piercing Boost", 0, 0, 0, Element.NATURE, 1, 0).rarity(BuffRarity.RARE),
-		ProjectileBuff.new("Nature Roots Piercing Boost", 0, 0, 0, Element.NATURE, 1, 0).rarity(BuffRarity.RARE),
-		ProjectileBuff.new("Nature Roots Shots Boost", 0, 0, 0, Element.NATURE, 0, 1).rarity(BuffRarity.RARE),
-		ProjectileBuff.new("Nature Roots Shots Boost", 0, 0, 0, Element.NATURE, 0, 1).rarity(BuffRarity.RARE),
-		ProjectileBuff.new("Nature Roots Shots Boost", 0, 0, 0, Element.NATURE, 0, 1).rarity(BuffRarity.RARE),
+		ProjectileBuff.new("Roots Damage Boost", 0, 0.15, 0, Element.NATURE, 0, 0),
+		ProjectileBuff.new("Roots Speed Boost", 0.15, 0, 0, Element.NATURE, 0, 0),
+		ProjectileBuff.new("Roots Piercing Boost", 0, 0, 0, Element.NATURE, 1, 0).rarity(BuffRarity.RARE),
+		ProjectileBuff.new("Roots Shots Boost", 0, 0, 0, Element.NATURE, 0, 1).rarity(BuffRarity.RARE),
 
 		# NATURE SECONDARY
 		# Damage, Radius, Speed
-		NovaBuff.new("Nature Seed Bomb Damage Boost", 0.2, 0, 0, Element.NATURE),
-		NovaBuff.new("Nature Seed Bomb Damage Boost", 0.2, 0, 0, Element.NATURE),
-		NovaBuff.new("Nature Seed Bomb Damage Boost", 0.2, 0, 0, Element.NATURE),
-		NovaBuff.new("Nature Seed Bomb Damage Boost", 0.2, 0, 0, Element.NATURE),
-		NovaBuff.new("Nature Seed Bomb Damage Boost", 0.2, 0, 0, Element.NATURE),
-		NovaBuff.new("Nature Seed Bomb Damage Boost", 0.2, 0, 0, Element.NATURE),
-		NovaBuff.new("Nature Seed Bomb Radius Boost", 0, 0, 0.2, Element.NATURE),
-		NovaBuff.new("Nature Seed Bomb Radius Boost", 0, 0, 0.2, Element.NATURE),
-		NovaBuff.new("Nature Seed Bomb Radius Boost", 0, 0, 0.2, Element.NATURE),
-		NovaBuff.new("Nature Seed Bomb Radius Boost", 0, 0, 0.2, Element.NATURE),
-		NovaBuff.new("Nature Seed Bomb Radius Boost", 0, 0, 0.2, Element.NATURE),
-		NovaBuff.new("Nature Seed Bomb Radius Boost", 0, 0, 0.2, Element.NATURE),
-		ProjectileBuff.new("Nature Seed Bomb Fragments Boost", 0, 0, 0, Element.NATURE, 0, 1).rarity(BuffRarity.RARE),
-		ProjectileBuff.new("Nature Seed Bomb Fragments Boost", 0, 0, 0, Element.NATURE, 0, 1).rarity(BuffRarity.RARE),
-		ProjectileBuff.new("Nature Seed Bomb Fragments Boost", 0, 0, 0, Element.NATURE, 0, 1).rarity(BuffRarity.RARE),
+		NovaBuff.new("Seed Bomb Damage Boost", 0.2, 0, 0, Element.NATURE),
+		NovaBuff.new("Seed Bomb Radius Boost", 0, 0, 0.2, Element.NATURE),
+		ProjectileBuff.new("Seed Bomb Fragments Boost", 0, 0, 0, Element.NATURE, 0, 1).rarity(BuffRarity.RARE),
 	]
 
 func element_to_string(element: Element):
@@ -169,15 +129,27 @@ func string_to_element(element: String):
 		"nature": Element.NATURE
 	}[element]
 
-class ProjectileBuff:
+class Buff:
 	var rarety: BuffRarity = BuffRarity.COMMON
 	var name: String
+	var damage_type: Element
+	var attack_type: AttackType
+
+	func rarity(new_rarity: BuffRarity) -> Buff:
+		rarety = new_rarity
+		return self
+
+	func get_rarity_description() -> String:
+		return Enums.rarity_to_string(rarety) + " buff"
+
+	func get_description():
+		assert(false, "get_description() must be overridden in subclasses")
+
+class ProjectileBuff extends Buff:
 	var speed_multiplier: float
 	var damage_multiplier: float
 	var cooldown_multiplier: float
-	var damage_type: Element
 	var piercing: int = 0
-	var attack_type = AttackType.PROJECTILE
 	var shots_added: int = 0
 
 	func _init(new_name: String, new_speed_multiplier: float, new_damage_multiplier: float, new_cooldown_multiplier: float, new_damage_type: Element, new_piercing: int = 0, new_shots_added = 0):
@@ -188,20 +160,17 @@ class ProjectileBuff:
 		damage_type = new_damage_type
 		piercing = new_piercing
 		shots_added = new_shots_added
-
-	func rarity(new_rarity: BuffRarity) -> ProjectileBuff:
-		rarety = new_rarity
-		return self
+		attack_type = AttackType.PROJECTILE
 
 	func get_description() -> String:
 		var desc = ""
 
 		if damage_multiplier != 0:
-			desc += "Increases damage by " + str((damage_multiplier)) + ".\n"
+			desc += "Increases damage by " + str((damage_multiplier * 100)) + "%\n"
 		if speed_multiplier != 0:
-			desc += "Increases speed by " + str((speed_multiplier)) + ".\n"
+			desc += "Increases speed by " + str((speed_multiplier * 100)) + "%\n"
 		if cooldown_multiplier != 0:
-			desc += "Decreases cooldown by " + str((cooldown_multiplier)) + ".\n"
+			desc += "Decreases cooldown by " + str((cooldown_multiplier * 100)) + "%\n"
 		if piercing > 0:
 			desc += "Grants piercing through " + str(piercing) + " enemies.\n"
 		if shots_added > 0:
@@ -209,42 +178,52 @@ class ProjectileBuff:
 
 		return desc.strip_edges()
 
-class ConeBuff:
-	var rarety: BuffRarity = BuffRarity.COMMON
-	var name: String
+class ConeBuff extends Buff:
 	var damage_multiplier: float
 	var damage_interval_multiplier: float
-	var damage_type: Element
-	var attack_type = AttackType.CONE
 
 	func _init(new_name: String, new_damage_multiplier: float, new_damage_interval_multiplier: float, new_damage_type: Element):
 		name = new_name
 		damage_multiplier = new_damage_multiplier
 		damage_interval_multiplier = new_damage_interval_multiplier
 		damage_type = new_damage_type
-
-	func rarity(new_rarity: BuffRarity) -> ConeBuff:
-		rarety = new_rarity
-		return self
+		attack_type = AttackType.CONE
 
 	func get_description() -> String:
 		var desc = ""
 
 		if damage_multiplier != 0:
-			desc = "Increases damage by " + str((damage_multiplier)) + ".\n"
+			desc = "Increases damage by " + str((damage_multiplier * 100)) + "%\n"
 		if damage_interval_multiplier != 0:
-			desc += "Decreases damage interval by " + str((damage_interval_multiplier)) + ".\n"
+			desc += "Decreases damage interval by " + str((damage_interval_multiplier * 100)) + "%\n"
 
 		return desc.strip_edges()
 
-class NovaBuff:
-	var rarety: BuffRarity = BuffRarity.COMMON
-	var name: String
+class ArtilleryBuff extends Buff:
+	var speed_multiplier: float
+	var cooldown_multiplier: float
+
+	func _init(new_name: String, new_speed_multiplier: float, new_cooldown_multiplier: float, new_damage_type: Element):
+		name = new_name
+		new_speed_multiplier = new_speed_multiplier
+		new_cooldown_multiplier = new_cooldown_multiplier
+		AttackType.ARTILLERY
+
+	func get_description() -> String:
+		var desc = ""
+
+		if speed_multiplier != 0:
+			desc = "Increases projectile speed by " + str((speed_multiplier * 100)) + "%\n"
+		if cooldown_multiplier != 0:
+			desc += "Decreases cooldown by " + str((cooldown_multiplier * 100)) + "%\n"
+
+		return desc.strip_edges()
+
+
+class NovaBuff extends Buff:
 	var damage_multiplier: float
 	var radius_multiplier: float
 	var cooldown_multiplier: float
-	var damage_type: Element
-	var attack_type = AttackType.NOVA
 
 	func _init(new_name: String, new_damage_multiplier: float, new_radius_multiplier: float, new_cooldown_multiplier: float, new_damage_type: Element):
 		name = new_name
@@ -252,20 +231,17 @@ class NovaBuff:
 		radius_multiplier = new_radius_multiplier
 		cooldown_multiplier = new_cooldown_multiplier
 		damage_type = new_damage_type
-
-	func rarity(new_rarity: BuffRarity) -> NovaBuff:
-		rarety = new_rarity
-		return self
+		attack_type = AttackType.NOVA
 
 	func get_description() -> String:
 		var desc = ""
 
 		if damage_multiplier != 0:
-			desc = "Increases damage by " + str((damage_multiplier)) + ".\n"
+			desc = "Increases damage by " + str((damage_multiplier * 100)) + "%\n"
 		if radius_multiplier != 0:
-			desc += "Increases radius by " + str((radius_multiplier)) + ".\n"
+			desc += "Increases radius by " + str((radius_multiplier * 100)) + "%\n"
 		if cooldown_multiplier != 0:
-			desc += "Decreases cooldown by " + str((cooldown_multiplier)) + ".\n"
+			desc += "Decreases cooldown by " + str((cooldown_multiplier * 100)) + "%\n"
 
 		return desc.strip_edges()
 
