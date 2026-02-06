@@ -29,14 +29,6 @@ enum AttackType {
 	NOVA
 }
 
-func get_random_element() -> Enums.Element:
-	var elements: Array[Enums.Element] = [Element.AQUA, Element.FIRE, Element.NATURE]
-	return elements[randi() % elements.size()]
-
-func get_random_attack_type() -> Enums.AttackType:
-	var attack_types: Array[Enums.AttackType] = [AttackType.PROJECTILE, AttackType.CONE, AttackType.NOVA]
-	return attack_types[randi() % attack_types.size()]
-
 func get_random_buff_for_element(element: Element):
 	var buffs = get_all_buffs()
 	var filtered_buffs = []
@@ -50,22 +42,6 @@ func get_random_buff_for_element(element: Element):
 					filtered_buffs.append(buff)
 			Element.NATURE:
 				if buff.damage_type == Element.NATURE:
-					filtered_buffs.append(buff)
-	return filtered_buffs[randi() % filtered_buffs.size()]
-
-func get_random_buff_for_attack_type(attack_type: AttackType):
-	var buffs = get_all_buffs()
-	var filtered_buffs = []
-	for buff in buffs:
-		match attack_type:
-			AttackType.PROJECTILE:
-				if buff is ProjectileBuff:
-					filtered_buffs.append(buff)
-			AttackType.CONE:
-				if buff is ConeBuff:
-					filtered_buffs.append(buff)
-			AttackType.NOVA:
-				if buff is NovaBuff:
 					filtered_buffs.append(buff)
 	return filtered_buffs[randi() % filtered_buffs.size()]
 
