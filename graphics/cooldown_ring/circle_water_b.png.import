@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c8ren0jukn8n8"
-path="res://.godot/imported/circle_water_no_tilt_b.png-8c2007a03ff0b00ddb4b517388265c23.ctex"
+uid="uid://vpfdm5f0n8vi"
+path="res://.godot/imported/circle_water_b.png-ec17f2b21e33cc29ebb40804b393edae.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://graphics/circle_water_no_tilt_b.png"
-dest_files=["res://.godot/imported/circle_water_no_tilt_b.png-8c2007a03ff0b00ddb4b517388265c23.ctex"]
+source_file="res://graphics/cooldown_ring/circle_water_b.png"
+dest_files=["res://.godot/imported/circle_water_b.png-ec17f2b21e33cc29ebb40804b393edae.ctex"]
 
 [params]
 

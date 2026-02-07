@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cpdncru7d4ll7"
-path="res://.godot/imported/circle_water_w.png-ba8789ef90820bd7391cc3d1fdc72805.ctex"
+uid="uid://cmaou3jy16fx0"
+path="res://.godot/imported/circle_nature_color.png-ba50d650d948717317a9c489d55b7a43.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://graphics/circle_water_w.png"
-dest_files=["res://.godot/imported/circle_water_w.png-ba8789ef90820bd7391cc3d1fdc72805.ctex"]
+source_file="res://graphics/cooldown_ring/circle_nature_color.png"
+dest_files=["res://.godot/imported/circle_nature_color.png-ba50d650d948717317a9c489d55b7a43.ctex"]
 
 [params]
 

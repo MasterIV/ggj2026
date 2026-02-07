@@ -9,7 +9,6 @@ radius = 187.13097
 
 [node name="Nova" type="Area2D" unique_id=1516169784 node_paths=PackedStringArray("sprite", "collision_shape")]
 script = ExtResource("1_csfx1")
-end_scale = 4.0
 cooldown = 5.0
 growth_time = 0.4
 sprite = NodePath("Sprite2D")

@@ -12,16 +12,14 @@
 [ext_resource type="PackedScene" uid="uid://bqohmcx0nthpg" path="res://scenes/attacks/nature_roots_shot.tscn" id="7_d2wvv"]
 [ext_resource type="Texture2D" uid="uid://bacjm4lq5usow" path="res://graphics/player/player_nature.png" id="7_fjrip"]
 [ext_resource type="Shader" uid="uid://4unbnctav0sy" path="res://shader/cooldown_ring.gdshader" id="9_f1ej7"]
-[ext_resource type="Texture2D" uid="uid://doti8otuvoa7a" path="res://graphics/circle_water_color.png" id="10_a8ls1"]
+[ext_resource type="Texture2D" uid="uid://doti8otuvoa7a" path="res://graphics/cooldown_ring/circle_water_color.png" id="10_a8ls1"]
 [ext_resource type="Script" uid="uid://bct4egy273v3q" path="res://scripts/cooldown_ring.gd" id="11_oprun"]
-[ext_resource type="Texture2D" uid="uid://c8uu0vkocqfib" path="res://graphics/circle_fire_color.png" id="12_qfm1y"]
-[ext_resource type="Texture2D" uid="uid://cmaou3jy16fx0" path="res://graphics/circle_nature_color.png" id="13_fulsm"]
+[ext_resource type="Texture2D" uid="uid://c8uu0vkocqfib" path="res://graphics/cooldown_ring/circle_fire_color.png" id="12_qfm1y"]
+[ext_resource type="Texture2D" uid="uid://cmaou3jy16fx0" path="res://graphics/cooldown_ring/circle_nature_color.png" id="13_fulsm"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_a8ls1"]
 shader = ExtResource("9_f1ej7")
 shader_parameter/progress = 1.0
-shader_parameter/ready_color = Color(1, 0, 0, 1)
-shader_parameter/cooldown_color = Color(1, 1, 1, 1)
 
 [sub_resource type="Gradient" id="Gradient_d2wvv"]
 offsets = PackedFloat32Array(0, 0.39545456, 1)
@@ -463,7 +461,7 @@ offset_bottom = 170.0
 texture = ExtResource("10_a8ls1")
 script = ExtResource("11_oprun")
 cooldown_ring = NodePath(".")
-color = Color(1, 1, 1, 1)
+color = Color(0, 0, 0, 1)
 
 [node name="FireCooldownRing" type="TextureRect" parent="." unique_id=1570737577 node_paths=PackedStringArray("cooldown_ring")]
 material = SubResource("ShaderMaterial_a8ls1")
@@ -474,7 +472,7 @@ offset_bottom = 172.0
 texture = ExtResource("12_qfm1y")
 script = ExtResource("11_oprun")
 cooldown_ring = NodePath(".")
-color = Color(1, 1, 1, 1)
+color = Color(0, 0, 0, 1)
 
 [node name="NatureCooldownRing" type="TextureRect" parent="." unique_id=2091118893 node_paths=PackedStringArray("cooldown_ring")]
 material = SubResource("ShaderMaterial_a8ls1")
@@ -485,7 +483,7 @@ offset_bottom = 170.0
 texture = ExtResource("13_fulsm")
 script = ExtResource("11_oprun")
 cooldown_ring = NodePath(".")
-color = Color(1, 1, 1, 1)
+color = Color(0, 0, 0, 1)
 
 [node name="Shadow" type="Sprite2D" parent="." unique_id=1026676182]
 position = Vector2(-2, 119)

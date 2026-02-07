@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ckecpj10f3y4u"
-path="res://.godot/imported/circle_fire_no_tilt_w.png-a7d00f4cd70799e68020a42a50f74223.ctex"
+uid="uid://c7rw8y26qlpft"
+path="res://.godot/imported/Ring_Ingame.png-5460b85e3935cf24ffa74bf590bf4d6f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://graphics/circle_fire_no_tilt_w.png"
-dest_files=["res://.godot/imported/circle_fire_no_tilt_w.png-a7d00f4cd70799e68020a42a50f74223.ctex"]
+source_file="res://graphics/cooldown_ring/Ring_Ingame.png"
+dest_files=["res://.godot/imported/Ring_Ingame.png-5460b85e3935cf24ffa74bf590bf4d6f.ctex"]
 
 [params]
 

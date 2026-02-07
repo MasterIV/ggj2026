@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://di71qxnrka1hw"
-path="res://.godot/imported/circle_fire_no_tilt_b.png-f94858a12b2feef0488ba77098b40435.ctex"
+path="res://.godot/imported/circle_fire_no_tilt_b.png-97338d1b0176c59c90f558ca523fe2cb.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://graphics/circle_fire_no_tilt_b.png"
-dest_files=["res://.godot/imported/circle_fire_no_tilt_b.png-f94858a12b2feef0488ba77098b40435.ctex"]
+source_file="res://graphics/cooldown_ring/circle_fire_no_tilt_b.png"
+dest_files=["res://.godot/imported/circle_fire_no_tilt_b.png-97338d1b0176c59c90f558ca523fe2cb.ctex"]
 
 [params]
 
