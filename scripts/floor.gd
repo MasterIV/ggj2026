@@ -140,6 +140,7 @@ func generate_chunk_objects(start_x: int, start_y: int, chunk_objects: Array[Nod
 					occupied.append(idx)
 				var obj = obstacles_2x2.pick_random().instantiate()
 				obj.position = Vector2((start_x + x + 0.5) * tile_size, (start_y + y + 0.5) * tile_size)
+				obj.z_index = 100
 				add_child(obj)
 				chunk_objects.append(obj)
 				placed_2x2 += 1
@@ -158,6 +159,7 @@ func generate_chunk_objects(start_x: int, start_y: int, chunk_objects: Array[Nod
 				occupied.append(idx)
 				var obj = obstacles_1x1.pick_random().instantiate()
 				obj.position = Vector2((start_x + x) * tile_size, (start_y + y) * tile_size)
+				obj.z_index = 100
 				add_child(obj)
 				chunk_objects.append(obj)
 				placed_1x1 += 1
@@ -176,6 +178,7 @@ func generate_chunk_objects(start_x: int, start_y: int, chunk_objects: Array[Nod
 				occupied.append(idx)
 				var obj = decorations.pick_random().instantiate()
 				obj.position = Vector2((start_x + x) * tile_size, (start_y + y) * tile_size)
+				obj.z_index = 100
 				add_child(obj)
 				chunk_objects.append(obj)
 				placed_deco += 1
