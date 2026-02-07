@@ -3,8 +3,8 @@
 [ext_resource type="Texture2D" uid="uid://cn0hwtp5vnmvd" path="res://graphics/Stone_03.PNG" id="1_q7ku7"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3ut8a"]
-radius = 102.0
-height = 204.0
+radius = 72.0
+height = 152.0
 
 [node name="Stone3" type="StaticBody2D" unique_id=282115239 groups=["obstacle"]]
 collision_layer = 12
@@ -14,5 +14,5 @@ collision_mask = 12
 texture = ExtResource("1_q7ku7")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1671882219]
-position = Vector2(1, 4)
+position = Vector2(-2, 5)
 shape = SubResource("CapsuleShape2D_3ut8a")

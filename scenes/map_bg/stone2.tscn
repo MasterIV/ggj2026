@@ -3,8 +3,8 @@
 [ext_resource type="Texture2D" uid="uid://bdlvnloendpc0" path="res://graphics/Stone_02.PNG" id="1_tncty"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_tncty"]
-radius = 114.0
-height = 246.0
+radius = 103.0
+height = 206.0
 
 [node name="Stone2" type="StaticBody2D" unique_id=282115239 groups=["obstacle"]]
 collision_layer = 12

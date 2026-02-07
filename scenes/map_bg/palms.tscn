@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://dnbiluls0xlnt" path="res://graphics/bg_rpop_palms.PNG" id="1_clph8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2hx4n"]
-size = Vector2(256, 256)
+size = Vector2(151, 226)
 
 [node name="PlantRed" type="StaticBody2D" unique_id=282115239 groups=["obstacle"]]
 collision_layer = 12
@@ -14,5 +14,5 @@ scale = Vector2(0.31, 0.31)
 texture = ExtResource("1_clph8")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1671882219]
-position = Vector2(1, 4)
+position = Vector2(0.5, 3)
 shape = SubResource("RectangleShape2D_2hx4n")

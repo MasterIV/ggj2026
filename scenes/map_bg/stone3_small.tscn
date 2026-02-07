@@ -3,8 +3,8 @@
 [ext_resource type="Texture2D" uid="uid://cn0hwtp5vnmvd" path="res://graphics/Stone_03.PNG" id="1_2hr6g"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3ut8a"]
-radius = 102.0
-height = 204.0
+radius = 84.0
+height = 168.0
 
 [node name="Stone3" type="StaticBody2D" unique_id=282115239 groups=["obstacle"]]
 scale = Vector2(0.25, 0.25)

@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://4gb2k6a35rbc" path="res://graphics/Stone_01.PNG" id="1_jpni2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_alku6"]
-size = Vector2(214, 178)
+size = Vector2(188, 169)
 
 [node name="Stone1" type="StaticBody2D" unique_id=282115239 groups=["obstacle"]]
 scale = Vector2(0.25, 0.25)
@@ -14,5 +14,5 @@ collision_mask = 0
 texture = ExtResource("1_jpni2")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1671882219]
-position = Vector2(1, 4)
+position = Vector2(2, 8.5)
 shape = SubResource("RectangleShape2D_alku6")

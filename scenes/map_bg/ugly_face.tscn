@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://6cd454njqdct" path="res://graphics/bg_rpop_ugly_face.PNG" id="1_6pbfv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nm6pj"]
-size = Vector2(250, 326)
+size = Vector2(219, 306)
 
 [node name="UglyFace" type="StaticBody2D" unique_id=282115239 groups=["obstacle"]]
 collision_layer = 140
@@ -13,5 +13,5 @@ collision_mask = 12
 texture = ExtResource("1_6pbfv")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1671882219]
-position = Vector2(1, 4)
+position = Vector2(1.5, 0)
 shape = SubResource("RectangleShape2D_nm6pj")
