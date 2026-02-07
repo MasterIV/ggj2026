@@ -1,5 +1,7 @@
 extends Control
 
+@export var mask_panel: Node
+
 var xp: float = 0.0
 var xp_till_next: float = 400.0
 var xp_progression_multiplier: float = 1.1
@@ -16,6 +18,11 @@ func _ready() -> void:
 	player.enemy_killed.connect(_on_enemy_killed)
 	player.player_took_damage.connect(_on_player_health_change)
 	level_up_ui.hide()
+	mask_panel.hide()
+
+func _process(_delta):
+	if Input.is_action_just_pressed("toggle_mask_panel"):
+		mask_panel.visible = not mask_panel.visible
 
 func _on_enemy_killed(enemy: Enemy) -> void:
 	add_xp(int(enemy.health))

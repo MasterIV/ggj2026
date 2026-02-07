@@ -9,14 +9,23 @@
 [ext_resource type="Texture2D" uid="uid://djj2vicr0hgi7" path="res://graphics/ui/ExpMaskwater_fg.png" id="7_s2npe"]
 [ext_resource type="PackedScene" uid="uid://nts3mhd0w4n3" path="res://scenes/ui/upgrade_panel.tscn" id="8_o3bws"]
 [ext_resource type="Script" uid="uid://kauedydbotaq" path="res://scripts/ui/wave_counter.gd" id="9_3huio"]
+[ext_resource type="Texture2D" uid="uid://co4aay81n48hq" path="res://graphics/ui/mask_switch_ui/mask_switch_ui.png" id="10_crnce"]
+[ext_resource type="Texture2D" uid="uid://ce02nn2q1fit1" path="res://graphics/ui/mask_switch_ui/mask_switch_ui_small_water_default.png" id="11_x0n6o"]
+[ext_resource type="Texture2D" uid="uid://xtm6meolon4" path="res://graphics/ui/mask_switch_ui/mask_switch_ui_small_fire_active.png" id="12_aq72h"]
+[ext_resource type="Script" uid="uid://cqq80rin8i2t0" path="res://scripts/ui/mask_container.gd" id="12_oqj4c"]
+[ext_resource type="Texture2D" uid="uid://b4pweovbycino" path="res://graphics/ui/mask_switch_ui/mask_switch_ui_small_nature_default.png" id="13_oqj4c"]
+[ext_resource type="Texture2D" uid="uid://deeuvvva2gte6" path="res://graphics/ui/mask_switch_ui/mask_switch_ui_small_water_active.png" id="13_pbku6"]
+[ext_resource type="Texture2D" uid="uid://l7w3w3kjdn0" path="res://graphics/ui/mask_switch_ui/mask_switch_ui_small_nature_active.png" id="15_i3ans"]
+[ext_resource type="Texture2D" uid="uid://gjj4w4qsvp13" path="res://graphics/ui/mask_switch_ui/mask_switch_ui_small_fire_default.png" id="16_5bpyr"]
 
-[node name="GameUi" type="Control" unique_id=31394455]
+[node name="GameUi" type="Control" unique_id=31394455 node_paths=PackedStringArray("mask_panel")]
 process_mode = 3
 layout_mode = 3
 anchors_preset = 10
 anchor_right = 1.0
 grow_horizontal = 2
 script = ExtResource("1_3huio")
+mask_panel = NodePath("MaskPanel")
 
 [node name="2rows" type="VBoxContainer" parent="." unique_id=1849758625]
 layout_mode = 1
@@ -141,6 +150,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="HowToPanel" type="VBoxContainer" parent="." unique_id=926515156]
+visible = false
 layout_mode = 1
 offset_left = 25.0
 offset_top = 25.0
@@ -153,3 +163,61 @@ theme_override_font_sizes/font_size = 24
 text = "WASD : Move
 LMB : Ultimate (Cooldown!)
 RMB : Switch Mask"
+
+[node name="MaskPanel" type="Panel" parent="." unique_id=2114098227]
+layout_mode = 1
+offset_left = 25.0
+offset_top = 25.0
+offset_right = 427.0
+offset_bottom = 257.0
+
+[node name="TextureRect" type="TextureRect" parent="MaskPanel" unique_id=1374944544]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("10_crnce")
+
+[node name="MarginContainer" type="MarginContainer" parent="MaskPanel" unique_id=190445055]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 118.0
+offset_top = 64.0
+offset_right = -36.0
+offset_bottom = -72.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MaskPanel/MarginContainer" unique_id=2014919845]
+layout_mode = 2
+
+[node name="AquaMask" type="TextureRect" parent="MaskPanel/MarginContainer/HBoxContainer" unique_id=345679760]
+custom_minimum_size = Vector2(80, 96)
+layout_mode = 2
+texture = ExtResource("13_pbku6")
+script = ExtResource("12_oqj4c")
+mask_type = 1
+default_mask = ExtResource("11_x0n6o")
+active_mask = ExtResource("13_pbku6")
+
+[node name="FireMask" type="TextureRect" parent="MaskPanel/MarginContainer/HBoxContainer" unique_id=510788077]
+custom_minimum_size = Vector2(80, 96)
+layout_mode = 2
+texture = ExtResource("16_5bpyr")
+script = ExtResource("12_oqj4c")
+mask_type = 2
+default_mask = ExtResource("16_5bpyr")
+active_mask = ExtResource("12_aq72h")
+
+[node name="NatureMask" type="TextureRect" parent="MaskPanel/MarginContainer/HBoxContainer" unique_id=720242198]
+custom_minimum_size = Vector2(80, 96)
+layout_mode = 2
+texture = ExtResource("13_oqj4c")
+script = ExtResource("12_oqj4c")
+mask_type = 3
+default_mask = ExtResource("13_oqj4c")
+active_mask = ExtResource("15_i3ans")

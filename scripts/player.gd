@@ -160,6 +160,8 @@ func switch_mask(direction: int):
 	var new_index = (current_mask + direction) % available_masks.size()
 	_on_set_mask(new_index)
 
+signal mask_changed(new_mask: Enums.Element)
+
 func _on_set_mask(index: int):
 	current_mask = index
 
@@ -178,6 +180,8 @@ func _on_set_mask(index: int):
 			fire_cooldown_ring.show()
 		Enums.Element.NATURE:
 			nature_cooldown_ring.show()
+
+	mask_changed.emit(get_active_mask())
 
 
 func set_mask(mask_type: Enums.Element):
