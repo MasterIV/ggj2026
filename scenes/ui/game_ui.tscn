@@ -17,7 +17,11 @@
 [ext_resource type="Texture2D" uid="uid://deeuvvva2gte6" path="res://graphics/ui/mask_switch_ui/mask_switch_ui_small_water_active.png" id="13_pbku6"]
 [ext_resource type="Texture2D" uid="uid://l7w3w3kjdn0" path="res://graphics/ui/mask_switch_ui/mask_switch_ui_small_nature_active.png" id="15_i3ans"]
 [ext_resource type="Texture2D" uid="uid://gjj4w4qsvp13" path="res://graphics/ui/mask_switch_ui/mask_switch_ui_small_fire_default.png" id="16_5bpyr"]
+[ext_resource type="Texture2D" uid="uid://dp0j1gtk4ucqr" path="res://graphics/ui/mask_switch_ui/mask_switch_ui_water.png" id="18_5bpyr"]
 [ext_resource type="Script" uid="uid://bncoaf1jhv1kk" path="res://scripts/ui/debug.gd" id="18_i3ans"]
+[ext_resource type="Script" uid="uid://4jxdtl63kicd" path="res://scripts/ui/active_mask_container.gd" id="19_baxkn"]
+[ext_resource type="Texture2D" uid="uid://5hpiiscxisc" path="res://graphics/ui/mask_switch_ui/mask_switch_ui_fire.png" id="20_20oq5"]
+[ext_resource type="Texture2D" uid="uid://b38lyi1rkforo" path="res://graphics/ui/mask_switch_ui/mask_switch_ui_nature.png" id="21_plh64"]
 
 [node name="GameUi" type="Control" unique_id=31394455 node_paths=PackedStringArray("mask_panel", "debug_panel")]
 process_mode = 3
@@ -154,7 +158,6 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="HowToPanel" type="VBoxContainer" parent="." unique_id=926515156]
-visible = false
 layout_mode = 1
 offset_left = 25.0
 offset_top = 25.0
@@ -170,10 +173,17 @@ RMB : Switch Mask"
 
 [node name="MaskPanel" type="Panel" parent="." unique_id=2114098227]
 layout_mode = 1
-offset_left = 25.0
-offset_top = 25.0
-offset_right = 427.0
-offset_bottom = 257.0
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -423.0
+offset_top = -232.0
+offset_right = -21.0
+offset_bottom = -25.0
+grow_horizontal = 0
+grow_vertical = 0
 
 [node name="TextureRect" type="TextureRect" parent="MaskPanel" unique_id=1374944544]
 layout_mode = 1
@@ -184,22 +194,16 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("10_crnce")
 
-[node name="MarginContainer" type="MarginContainer" parent="MaskPanel" unique_id=190445055]
+[node name="AllMasksContainer" type="MarginContainer" parent="MaskPanel" unique_id=190445055]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 118.0
-offset_top = 64.0
-offset_right = -36.0
-offset_bottom = -72.0
-grow_horizontal = 2
-grow_vertical = 2
+offset_top = -90.0
+offset_right = 248.0
+offset_bottom = 6.0
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MaskPanel/MarginContainer" unique_id=2014919845]
+[node name="HBoxContainer" type="HBoxContainer" parent="MaskPanel/AllMasksContainer" unique_id=2014919845]
 layout_mode = 2
 
-[node name="AquaMask" type="TextureRect" parent="MaskPanel/MarginContainer/HBoxContainer" unique_id=345679760]
+[node name="AquaMask" type="TextureRect" parent="MaskPanel/AllMasksContainer/HBoxContainer" unique_id=345679760]
 custom_minimum_size = Vector2(80, 96)
 layout_mode = 2
 texture = ExtResource("13_pbku6")
@@ -208,7 +212,7 @@ mask_type = 1
 default_mask = ExtResource("11_x0n6o")
 active_mask = ExtResource("13_pbku6")
 
-[node name="FireMask" type="TextureRect" parent="MaskPanel/MarginContainer/HBoxContainer" unique_id=510788077]
+[node name="FireMask" type="TextureRect" parent="MaskPanel/AllMasksContainer/HBoxContainer" unique_id=510788077]
 custom_minimum_size = Vector2(80, 96)
 layout_mode = 2
 texture = ExtResource("16_5bpyr")
@@ -217,7 +221,7 @@ mask_type = 2
 default_mask = ExtResource("16_5bpyr")
 active_mask = ExtResource("12_aq72h")
 
-[node name="NatureMask" type="TextureRect" parent="MaskPanel/MarginContainer/HBoxContainer" unique_id=720242198]
+[node name="NatureMask" type="TextureRect" parent="MaskPanel/AllMasksContainer/HBoxContainer" unique_id=720242198]
 custom_minimum_size = Vector2(80, 96)
 layout_mode = 2
 texture = ExtResource("13_oqj4c")
@@ -225,6 +229,25 @@ script = ExtResource("12_oqj4c")
 mask_type = 3
 default_mask = ExtResource("13_oqj4c")
 active_mask = ExtResource("15_i3ans")
+
+[node name="ActiveMaskContainer" type="TextureRect" parent="MaskPanel" unique_id=175072507]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -240.0
+offset_top = -140.0
+offset_bottom = 140.0
+grow_horizontal = 0
+grow_vertical = 2
+scale = Vector2(0.9, 0.9)
+texture = ExtResource("18_5bpyr")
+script = ExtResource("19_baxkn")
+aqua_mask = ExtResource("18_5bpyr")
+fire_mask = ExtResource("20_20oq5")
+nature_mask = ExtResource("21_plh64")
 
 [node name="FPS" type="PanelContainer" parent="." unique_id=1499524075 node_paths=PackedStringArray("debug_label")]
 layout_mode = 1

@@ -19,7 +19,7 @@ func _ready() -> void:
 	player.enemy_killed.connect(_on_enemy_killed)
 	player.player_took_damage.connect(_on_player_health_change)
 	level_up_ui.hide()
-	mask_panel.hide()
+	mask_panel.show()
 	debug_panel.hide()
 
 func _process(_delta):
