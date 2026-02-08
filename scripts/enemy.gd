@@ -30,6 +30,7 @@ var deal_damage_cooldown: float = 1.0
 var has_player_in_range: bool = false
 var is_final_boss: bool = false
 
+var out_of_bounds = true
 @onready var enemy_sprite = $AnimatedSprite2D
 
 static func spawn(spawn_position: Vector2, target_player: CharacterBody2D, new_speed, new_health, new_damage, new_deal_damage_cooldown, new_boss, new_damage_type, new_multipliers, new_movement_pattern := Movement_pattern.STRAIGHT) -> Enemy:
@@ -79,6 +80,15 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 func move_straight(_delta: float) -> void:
+	# check out of world bounds (hardcoded hack)
+	if out_of_bounds:
+		if abs(position.x) >= 4096.0 or abs(position.y) >= 4096.0:
+			set_collision_layer_value(3, false)
+			set_collision_mask_value(3, false)
+		else:
+			set_collision_layer_value(3, true)
+			set_collision_mask_value(3, true)
+			out_of_bounds = false
 	var direction: Vector2 = player.position - position
 	direction = direction.normalized()
 	velocity = direction * speed
