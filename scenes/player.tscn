@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://bqohmcx0nthpg" path="res://scenes/attacks/nature_roots_shot.tscn" id="7_d2wvv"]
 [ext_resource type="Texture2D" uid="uid://bacjm4lq5usow" path="res://graphics/player/player_nature.png" id="7_fjrip"]
 [ext_resource type="Shader" uid="uid://4unbnctav0sy" path="res://shader/cooldown_ring.gdshader" id="9_f1ej7"]
+[ext_resource type="Texture2D" uid="uid://vpfdm5f0n8vi" path="res://graphics/cooldown_ring/circle_water_b.png" id="9_qfm1y"]
 [ext_resource type="Texture2D" uid="uid://doti8otuvoa7a" path="res://graphics/cooldown_ring/circle_water_color.png" id="10_a8ls1"]
 [ext_resource type="Script" uid="uid://bct4egy273v3q" path="res://scripts/cooldown_ring.gd" id="11_oprun"]
 [ext_resource type="Texture2D" uid="uid://c8uu0vkocqfib" path="res://graphics/cooldown_ring/circle_fire_color.png" id="12_qfm1y"]
@@ -440,9 +441,9 @@ base_health = 30.0
 speed = 500.0
 dash_speed = 1200.0
 dash_duration = 0.4
-aqua_cooldown_ring = NodePath("AquaCooldownRing")
-fire_cooldown_ring = NodePath("FireCooldownRing")
-nature_cooldown_ring = NodePath("NatureCooldownRing")
+aqua_cooldown_ring = NodePath("AquaBlack")
+fire_cooldown_ring = NodePath("FireBlack")
+nature_cooldown_ring = NodePath("NatureBlack")
 projectile_scene = ExtResource("2_qhqgy")
 nature_seed_bomb_scene = ExtResource("3_f1ej7")
 waterwall_projectile_scene = ExtResource("3_ur7pv")
@@ -452,38 +453,65 @@ nature_cone_shot = ExtResource("7_d2wvv")
 nova_scene = ExtResource("4_qlg0r")
 animated_sprite = NodePath("AnimatedSprite2D")
 
-[node name="AquaCooldownRing" type="TextureRect" parent="." unique_id=774730027 node_paths=PackedStringArray("cooldown_ring")]
+[node name="AquaBlack" type="TextureRect" parent="." unique_id=234503062 node_paths=PackedStringArray("cooldown_ring")]
+offset_left = -78.0
+offset_top = 45.0
+offset_right = 82.0
+offset_bottom = 181.0
+scale = Vector2(1.2, 1.2)
+pivot_offset = Vector2(80, 68)
+texture = ExtResource("9_qfm1y")
+script = ExtResource("11_oprun")
+cooldown_ring = NodePath("AquaCooldownRing")
+color = Color(0, 0, 0, 1)
+
+[node name="AquaCooldownRing" type="TextureRect" parent="AquaBlack" unique_id=774730027]
 material = SubResource("ShaderMaterial_a8ls1")
-offset_left = -133.0
-offset_top = 58.0
-offset_right = 141.0
-offset_bottom = 170.0
+layout_mode = 0
+offset_right = 160.0
+offset_bottom = 136.0
+pivot_offset = Vector2(80, 68)
 texture = ExtResource("10_a8ls1")
+
+[node name="FireBlack" type="TextureRect" parent="." unique_id=1078113727 node_paths=PackedStringArray("cooldown_ring")]
+offset_left = -78.0
+offset_top = 45.0
+offset_right = 82.0
+offset_bottom = 181.0
+scale = Vector2(1.2, 1.2)
+pivot_offset = Vector2(80, 68)
+texture = ExtResource("9_qfm1y")
 script = ExtResource("11_oprun")
-cooldown_ring = NodePath(".")
+cooldown_ring = NodePath("FireCooldownRing")
 color = Color(0, 0, 0, 1)
 
-[node name="FireCooldownRing" type="TextureRect" parent="." unique_id=1570737577 node_paths=PackedStringArray("cooldown_ring")]
+[node name="FireCooldownRing" type="TextureRect" parent="FireBlack" unique_id=1570737577]
 material = SubResource("ShaderMaterial_a8ls1")
-offset_left = -133.0
-offset_top = 60.0
-offset_right = 141.0
-offset_bottom = 172.0
+layout_mode = 0
+offset_right = 160.0
+offset_bottom = 136.0
+pivot_offset = Vector2(80, 68)
 texture = ExtResource("12_qfm1y")
+
+[node name="NatureBlack" type="TextureRect" parent="." unique_id=1227924917 node_paths=PackedStringArray("cooldown_ring")]
+offset_left = -78.0
+offset_top = 45.0
+offset_right = 82.0
+offset_bottom = 181.0
+scale = Vector2(1.2, 1.2)
+pivot_offset = Vector2(80, 68)
+texture = ExtResource("9_qfm1y")
 script = ExtResource("11_oprun")
-cooldown_ring = NodePath(".")
+cooldown_ring = NodePath("NatureCooldownRing")
 color = Color(0, 0, 0, 1)
 
-[node name="NatureCooldownRing" type="TextureRect" parent="." unique_id=2091118893 node_paths=PackedStringArray("cooldown_ring")]
+[node name="NatureCooldownRing" type="TextureRect" parent="NatureBlack" unique_id=2091118893]
 material = SubResource("ShaderMaterial_a8ls1")
-offset_left = -133.0
-offset_top = 58.0
-offset_right = 141.0
-offset_bottom = 170.0
+layout_mode = 0
+offset_right = 160.0
+offset_bottom = 136.0
+pivot_offset = Vector2(80, 68)
 texture = ExtResource("13_fulsm")
-script = ExtResource("11_oprun")
-cooldown_ring = NodePath(".")
-color = Color(0, 0, 0, 1)
 
 [node name="Shadow" type="Sprite2D" parent="." unique_id=1026676182]
 position = Vector2(-2, 119)
