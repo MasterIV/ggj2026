@@ -17,15 +17,19 @@
 [ext_resource type="Texture2D" uid="uid://deeuvvva2gte6" path="res://graphics/ui/mask_switch_ui/mask_switch_ui_small_water_active.png" id="13_pbku6"]
 [ext_resource type="Texture2D" uid="uid://l7w3w3kjdn0" path="res://graphics/ui/mask_switch_ui/mask_switch_ui_small_nature_active.png" id="15_i3ans"]
 [ext_resource type="Texture2D" uid="uid://gjj4w4qsvp13" path="res://graphics/ui/mask_switch_ui/mask_switch_ui_small_fire_default.png" id="16_5bpyr"]
+[ext_resource type="Script" uid="uid://bncoaf1jhv1kk" path="res://scripts/ui/debug.gd" id="18_i3ans"]
 
-[node name="GameUi" type="Control" unique_id=31394455 node_paths=PackedStringArray("mask_panel")]
+[node name="GameUi" type="Control" unique_id=31394455 node_paths=PackedStringArray("mask_panel", "debug_panel")]
 process_mode = 3
 layout_mode = 3
-anchors_preset = 10
+anchors_preset = 15
 anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("1_3huio")
 mask_panel = NodePath("MaskPanel")
+debug_panel = NodePath("FPS")
 
 [node name="2rows" type="VBoxContainer" parent="." unique_id=1849758625]
 layout_mode = 1
@@ -221,3 +225,28 @@ script = ExtResource("12_oqj4c")
 mask_type = 3
 default_mask = ExtResource("13_oqj4c")
 active_mask = ExtResource("15_i3ans")
+
+[node name="FPS" type="PanelContainer" parent="." unique_id=1499524075 node_paths=PackedStringArray("debug_label")]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 25.0
+offset_top = -105.0
+offset_right = 275.0
+offset_bottom = -25.0
+grow_vertical = 0
+script = ExtResource("18_i3ans")
+debug_label = NodePath("MarginContainer/Label")
+
+[node name="MarginContainer" type="MarginContainer" parent="FPS" unique_id=709505210]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="FPS/MarginContainer" unique_id=232220882]
+layout_mode = 2
+theme = ExtResource("1_u2dgd")
+text = "Active enemies: 0
+Obstacles: 0
+Projectiles: 0
+FPS: 60
+Static Memory: 400"
