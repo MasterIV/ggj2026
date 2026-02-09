@@ -17,8 +17,9 @@ void fragment() {
 	vec4 color;
 	if (normalized_angle <= fill_threshold) {
 		// This part is in cooldown - convert to grayscale
-		float gray = dot(tex.rgb, vec3(0.299, 0.587, 0.114));  // Luminance calculation
-		color = vec4(gray, gray, gray, tex.a);
+		 float gray = dot(tex.rgb, vec3(0.299, 0.587, 0.114));  // Luminance calculation
+		 color = vec4(gray, gray, gray, tex.a);
+		//discard;
 	} else {
 		// This part is ready - show original color
 		color = tex;
