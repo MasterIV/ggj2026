@@ -39,14 +39,15 @@ var _player_stats_request: HTTPRequest
 var _health_request: HTTPRequest
 
 func _ready() -> void:
-	_setup_http_requests()
-	_load_or_create_player_id()
-	_create_session_id()
-
 	if OS.has_feature("editor"):
 		api_base_url = "http://localhost:8000"
 	else:
 		api_base_url = "https://ranking.elbe.games"
+
+	_setup_http_requests()
+	_load_or_create_player_id()
+	_create_session_id()
+
 
 func _setup_http_requests() -> void:
 	_submit_request = HTTPRequest.new()
