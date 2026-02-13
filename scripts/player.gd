@@ -51,6 +51,8 @@ var audio_loop_manager: AudioLoopManager
 
 var killed_enemies: Array[Enemy] = []
 
+var ranking_integration: RankingIntegration
+
 @export var mask_switch_cooldown: float = 0.3  # Minimum time between switches
 var mask_switch_timer: float = 0.0
 
@@ -58,6 +60,7 @@ var buffs: Dictionary = {
 	Enums.AttackType.PROJECTILE: [],
 	Enums.AttackType.CONE: [],
 	Enums.AttackType.NOVA: [],
+	Enums.AttackType.ARTILLERY: [],
 }
 
 func _on_add_buff(attack_type: Enums.AttackType, buff) -> void:
@@ -93,10 +96,19 @@ func _ready() -> void:
 
 	set_mask(Enums.Element.AQUA)
 
+	ranking_integration = get_tree().get_first_node_in_group("ranking_integration")
+
 func _on_last_wave_spawned():
 	is_last_wave = true
 
 func _on_enemy_killed(enemy: Enemy):
+
+	if enemy.boss:
+		if enemy.is_final_boss:
+			ranking_integration.on_boss_killed("final_boss")
+		else:
+			ranking_integration.on_boss_killed(str(enemy.damage_type) + "_" + str(enemy.health))
+
 	killed_enemies.append(enemy)
 
 	#var remaining_enemies = get_tree().get_nodes_in_group("enemy")
@@ -501,6 +513,8 @@ func take_damage(damage: float, _element: Enums.Element):
 		die()
 
 func win():
+	ranking_integration.end_game("victory", killed_enemies.size(), buffs[Enums.AttackType.PROJECTILE].size(), buffs[Enums.AttackType.CONE].size(), buffs[Enums.AttackType.NOVA].size(), buffs[Enums.AttackType.ARTILLERY].size())
+
 	Global.global_state.post_result(current_wave)
 	get_tree().change_scene_to_file("res://scenes/ui/win.tscn")
 
@@ -508,5 +522,7 @@ func _on_wave_spawned(current: int, _max: int):
 	current_wave = current
 
 func die():
+	ranking_integration.end_game("defeat", killed_enemies.size(), buffs[Enums.AttackType.PROJECTILE].size(), buffs[Enums.AttackType.CONE].size(), buffs[Enums.AttackType.NOVA].size(), buffs[Enums.AttackType.ARTILLERY].size())
+
 	Global.global_state.post_result(current_wave)
 	get_tree().change_scene_to_file("res://scenes/ui/game_over.tscn")

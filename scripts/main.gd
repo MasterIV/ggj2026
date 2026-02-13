@@ -4,6 +4,8 @@ var spawn_distance: float = 2500.0
 var spawn_timer: float = 0.0
 var quit_dialog: ConfirmationDialog
 
+var ranking_integration: RankingIntegration
+
 var current_wave = 0
 var waves = []
 
@@ -15,14 +17,19 @@ func _ready() -> void:
 
 	var wave_counter = get_tree().get_first_node_in_group("wave_counter")
 	wave_counter.wave_spawned.emit(0, len(waves))
-	
+
 	spawn_timer = waves[0].delay
+
+	ranking_integration = get_tree().get_first_node_in_group("ranking_integration")
+	ranking_integration.start_game()
 
 func _process(delta: float) -> void:
 	spawn_timer = spawn_timer - delta
 	if current_wave < len(waves) && spawn_timer < 0:
 		spawn_wave(waves[current_wave])
-				
+
+		ranking_integration.add_score(1, "wave_spawned")
+
 		var wave_counter = get_tree().get_first_node_in_group("wave_counter")
 		wave_counter.wave_spawned.emit(current_wave + 1, len(waves))
 

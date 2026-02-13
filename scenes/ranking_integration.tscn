@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://chlfuuxc8ns61"]
+
+[ext_resource type="Script" uid="uid://b6wrcnoibvk8h" path="res://scripts/ranking_service/ranking_integration.gd" id="1_vqur8"]
+
+[node name="RankingIntegration" type="Node" unique_id=1051377593 groups=["ranking_integration"]]
+script = ExtResource("1_vqur8")

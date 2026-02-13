@@ -22,6 +22,7 @@
 [ext_resource type="PackedScene" uid="uid://bk5ckww227ujy" path="res://scenes/map_bg/stone3_small.tscn" id="16_ryguw"]
 [ext_resource type="PackedScene" uid="uid://bjwimdqslbxil" path="res://scenes/map_bg/plant_leaf_small.tscn" id="17_ryguw"]
 [ext_resource type="PackedScene" uid="uid://euek8qhgq80b" path="res://scenes/map_bg/plant_plant_small.tscn" id="18_d13ii"]
+[ext_resource type="PackedScene" uid="uid://chlfuuxc8ns61" path="res://scenes/ranking_integration.tscn" id="23_d13ii"]
 
 [node name="Main" type="Node2D" unique_id=1385162834]
 script = ExtResource("1_7mycd")
@@ -45,3 +46,5 @@ speed = 600.0
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=2042211497]
 
 [node name="GameUi" parent="CanvasLayer" unique_id=31394455 instance=ExtResource("11_dg77c")]
+
+[node name="RankingIntegration" parent="." unique_id=1051377593 instance=ExtResource("23_d13ii")]

@@ -4,7 +4,8 @@ const SAVE_PATH := "user://savegame.cfg"
 
 var data := {
 	"best_score": 0,
-	"last_score": 0
+	"last_score": 0,
+	"player_id": ""
 }
 
 func save_data():
@@ -12,7 +13,7 @@ func save_data():
 	for key in data:
 		config.set_value("game", key, data[key])
 	config.save(SAVE_PATH)
-	
+
 	# Flush to IndexedDB on web builds
 	if OS.has_feature("web"):
 		_sync_web_filesystem()
@@ -22,6 +23,14 @@ func load_data():
 	if config.load(SAVE_PATH) == OK:
 		for key in data:
 			data[key] = config.get_value("game", key, data[key])
+
+func get_player_id() -> String:
+	# check if data["player_id"] exists otherwise return null
+	return data["player_id"]
+
+func set_player_id(player_id: String):
+	data["player_id"] = player_id
+	save_data()
 
 func set_score(score: int):
 	data["last_score"] = score

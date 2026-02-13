@@ -4,11 +4,14 @@
 [ext_resource type="Texture2D" uid="uid://dmlqvvcr08rdv" path="res://graphics/ui/LoseScreen_BG_OneElement.jpg" id="2_tbwuq"]
 [ext_resource type="Theme" uid="uid://crrpqjxyqtyb7" path="res://misc_assets/ui_theme.tres" id="3_7m3ot"]
 [ext_resource type="AudioStream" uid="uid://b47e1d28scpy3" path="res://sound/StandardLoop.mp3" id="4_racf3"]
+[ext_resource type="PackedScene" uid="uid://chlfuuxc8ns61" path="res://scenes/ranking_integration.tscn" id="5_o6b8n"]
 
-[node name="Lost" type="Node2D" unique_id=1937525899 node_paths=PackedStringArray("label_last_wave_result", "label_best_wave_result")]
+[node name="Lost" type="Node2D" unique_id=1937525899 node_paths=PackedStringArray("label_last_wave_result", "label_best_wave_result", "label_global_best_wave_result", "hide_if_offline")]
 script = ExtResource("1_tbwuq")
-label_last_wave_result = NodePath("CanvasLayer/ColorRect/VBoxContainer/Label2")
-label_best_wave_result = NodePath("CanvasLayer/ColorRect/VBoxContainer/Label4")
+label_last_wave_result = NodePath("CanvasLayer/ColorRect/VBoxContainer/Last Result")
+label_best_wave_result = NodePath("CanvasLayer/ColorRect/VBoxContainer/HBoxContainer/VBoxContainer/Local Best")
+label_global_best_wave_result = NodePath("CanvasLayer/ColorRect/VBoxContainer/HBoxContainer/VBoxContainer2/Global Best")
+hide_if_offline = [NodePath("CanvasLayer/ColorRect/VBoxContainer/HBoxContainer/VBoxContainer/Label3"), NodePath("CanvasLayer/ColorRect/VBoxContainer/HBoxContainer/VBoxContainer2")]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=207741611]
 
@@ -45,7 +48,7 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 offset_left = -263.0
-offset_top = -480.0
+offset_top = -579.0
 offset_right = 263.0
 offset_bottom = -210.0
 grow_horizontal = 2
@@ -77,7 +80,7 @@ text = "Waves survived"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Label2" type="Label" parent="CanvasLayer/ColorRect/VBoxContainer" unique_id=1234084330]
+[node name="Last Result" type="Label" parent="CanvasLayer/ColorRect/VBoxContainer" unique_id=1234084330]
 layout_mode = 2
 theme = ExtResource("3_7m3ot")
 theme_override_font_sizes/font_size = 48
@@ -85,15 +88,51 @@ text = "0"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Label3" type="Label" parent="CanvasLayer/ColorRect/VBoxContainer" unique_id=1108779280]
+[node name="Label3" type="Label" parent="CanvasLayer/ColorRect/VBoxContainer" unique_id=1713611401]
 layout_mode = 2
 theme = ExtResource("3_7m3ot")
 theme_override_font_sizes/font_size = 48
-text = "Best result"
+text = "Best results"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Label4" type="Label" parent="CanvasLayer/ColorRect/VBoxContainer" unique_id=309179910]
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/ColorRect/VBoxContainer" unique_id=367380823]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/ColorRect/VBoxContainer/HBoxContainer" unique_id=74443029]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label3" type="Label" parent="CanvasLayer/ColorRect/VBoxContainer/HBoxContainer/VBoxContainer" unique_id=1108779280]
+layout_mode = 2
+theme = ExtResource("3_7m3ot")
+theme_override_font_sizes/font_size = 48
+text = "You"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Local Best" type="Label" parent="CanvasLayer/ColorRect/VBoxContainer/HBoxContainer/VBoxContainer" unique_id=309179910]
+layout_mode = 2
+theme = ExtResource("3_7m3ot")
+theme_override_font_sizes/font_size = 48
+text = "10"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="CanvasLayer/ColorRect/VBoxContainer/HBoxContainer" unique_id=1414596270]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label3" type="Label" parent="CanvasLayer/ColorRect/VBoxContainer/HBoxContainer/VBoxContainer2" unique_id=843214050]
+layout_mode = 2
+theme = ExtResource("3_7m3ot")
+theme_override_font_sizes/font_size = 48
+text = "Global"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Global Best" type="Label" parent="CanvasLayer/ColorRect/VBoxContainer/HBoxContainer/VBoxContainer2" unique_id=337269016]
 layout_mode = 2
 theme = ExtResource("3_7m3ot")
 theme_override_font_sizes/font_size = 48
@@ -107,5 +146,7 @@ volume_db = -6.0
 autoplay = true
 bus = &"Music"
 parameters/looping = true
+
+[node name="RankingIntegration" parent="." unique_id=1051377593 instance=ExtResource("5_o6b8n")]
 
 [connection signal="pressed" from="CanvasLayer/Button" to="." method="_on_button_pressed"]
