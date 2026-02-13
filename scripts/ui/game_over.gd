@@ -13,7 +13,7 @@ func _ready() -> void:
 	var ranking_integration: RankingIntegration = get_tree().get_first_node_in_group("ranking_integration")
 
 	ranking_integration.global_best_loaded.connect(_on_global_best_loaded)
-	ranking_integration.local_best_loaded.connect(_on_local_best_loaded)
+	#ranking_integration.local_best_loaded.connect(_on_local_best_loaded)
 	ranking_integration.health_changed.connect(_on_health_changed)
 
 	ranking_integration.show_leaderboard()
@@ -34,6 +34,9 @@ func _on_health_changed(new_health: bool):
 			ui_element.hide()
 
 func _on_global_best_loaded(waves: int):
+	if waves < Global.global_state.get_best_result():
+		waves = Global.global_state.get_best_result() # compensate for score post request is too slow
+
 	label_global_best_wave_result.text = str(waves)
 
 func _on_local_best_loaded(waves: int):
