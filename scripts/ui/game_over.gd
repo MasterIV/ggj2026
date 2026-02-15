@@ -10,6 +10,12 @@ func _ready() -> void:
 	label_best_wave_result.text = str(Global.global_state.get_best_result())
 	label_global_best_wave_result.text = "load ..."
 
+	# access results from run
+	var level_end_data: Global.LevelEndData = Global.global_state.level_end_data
+	var waves_spawned: int = Global.global_state.get_last_result()
+	var enemies_defeated: int = level_end_data.enemies_defeated
+	var bosses_defeated: int = level_end_data.bosses_defeated
+
 	var ranking_integration: RankingIntegration = get_tree().get_first_node_in_group("ranking_integration")
 
 	ranking_integration.global_best_loaded.connect(_on_global_best_loaded)
