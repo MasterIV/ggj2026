@@ -63,7 +63,10 @@ var buffs: Dictionary = {
 	Enums.AttackType.ARTILLERY: [],
 }
 
-func _on_add_buff(attack_type: Enums.AttackType, buff) -> void:
+func _on_add_buff(attack_type: Enums.AttackType, buff: Enums.Buff) -> void:
+
+	ranking_integration.on_powerup_collected(buff.name)
+
 	if buff is Enums.HealBuff:
 		print("Heal player for amount: ", buff.heal_amount)
 		take_damage(-buff.heal_amount, Enums.Element.NONE)
@@ -82,7 +85,7 @@ signal last_wave_spawned()
 signal enemy_killed(enemy: Enemy)
 signal player_took_damage(damage: float, health_current: float, health_max: float)
 signal player_died(killed_enemies: Array[Enemy])
-signal add_buff(attack_type: Enums.AttackType, buff)
+signal add_buff(attack_type: Enums.AttackType, buff: Enums.Buff)
 
 func _ready() -> void:
 	audio_loop_manager = get_tree().get_first_node_in_group("audio_loop_manager")
@@ -513,16 +516,21 @@ func take_damage(damage: float, _element: Enums.Element):
 		die()
 
 func win():
-	ranking_integration.end_game("victory", killed_enemies.size(), buffs[Enums.AttackType.PROJECTILE].size(), buffs[Enums.AttackType.CONE].size(), buffs[Enums.AttackType.NOVA].size(), buffs[Enums.AttackType.ARTILLERY].size())
-
-	Global.global_state.post_result(current_wave)
+	send_end_game_ranking("victory", true)
 	get_tree().change_scene_to_file("res://scenes/ui/win.tscn")
 
 func _on_wave_spawned(current: int, _max: int):
 	current_wave = current
 
 func die():
-	ranking_integration.end_game("defeat", killed_enemies.size(), buffs[Enums.AttackType.PROJECTILE].size(), buffs[Enums.AttackType.CONE].size(), buffs[Enums.AttackType.NOVA].size(), buffs[Enums.AttackType.ARTILLERY].size())
+	send_end_game_ranking("defeat", false)
+	get_tree().change_scene_to_file("res://scenes/ui/game_over.tscn")
+
+func send_end_game_ranking(result: String, final_boss_defeated: bool):
+	var bosses_defeated: int = killed_enemies.count(func(e): return e.boss)
+	var enemies_defeated: int = killed_enemies.size() - bosses_defeated
 
 	Global.global_state.post_result(current_wave)
-	get_tree().change_scene_to_file("res://scenes/ui/game_over.tscn")
+	Global.global_state.set_level_end_data(result, enemies_defeated, bosses_defeated, final_boss_defeated)
+
+	ranking_integration.end_game(result, enemies_defeated, bosses_defeated, buffs[Enums.AttackType.PROJECTILE].size(), buffs[Enums.AttackType.CONE].size(), buffs[Enums.AttackType.NOVA].size(), buffs[Enums.AttackType.ARTILLERY].size(), final_boss_defeated)

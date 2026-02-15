@@ -70,11 +70,13 @@ func on_powerup_collected(powerup_type: String) -> void:
 
 
 ## Call this when the game ends
-func end_game(result: String, enemies_defeated: int, upgrades_collected_projectile: int, upgrades_collected_cone: int, upgrades_collected_nova: int, upgrades_collected_artillery: int) -> void:
+func end_game(result: String, enemies_defeated: int, bosses_defeated: int, upgrades_collected_projectile: int, upgrades_collected_cone: int, upgrades_collected_nova: int, upgrades_collected_artillery: int, final_boss_defeated: bool) -> void:
 	# You can include any game-specific metadata
 	var metadata := {
 		"result": result,
 		"enemies_defeated": enemies_defeated,
+		"bosses_defeated": bosses_defeated,
+		"final_boss_defeated": final_boss_defeated,
 		"upgrades_collected": {
 			"projectile": upgrades_collected_projectile,
 			"cone": upgrades_collected_cone,
