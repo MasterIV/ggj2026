@@ -104,13 +104,19 @@ func _ready() -> void:
 func _on_last_wave_spawned():
 	is_last_wave = true
 
+var enemies_killed: int = 0
+var bossed_killed: int = 0
+
 func _on_enemy_killed(enemy: Enemy):
 
 	if enemy.boss:
+		bossed_killed += 1
 		if enemy.is_final_boss:
 			ranking_integration.on_boss_killed("final_boss")
 		else:
 			ranking_integration.on_boss_killed(str(enemy.damage_type) + "_" + str(enemy.health))
+	else:
+		enemies_killed += 1
 
 	killed_enemies.append(enemy)
 
@@ -527,10 +533,7 @@ func die():
 	get_tree().change_scene_to_file("res://scenes/ui/game_over.tscn")
 
 func send_end_game_ranking(result: String, final_boss_defeated: bool):
-	var bosses_defeated: int = killed_enemies.count(func(e): return e.boss)
-	var enemies_defeated: int = killed_enemies.size() - bosses_defeated
-
 	Global.global_state.post_result(current_wave)
-	Global.global_state.set_level_end_data(result, enemies_defeated, bosses_defeated, final_boss_defeated)
+	Global.global_state.set_level_end_data(result, enemies_killed, bossed_killed, final_boss_defeated)
 
-	ranking_integration.end_game(result, enemies_defeated, bosses_defeated, buffs[Enums.AttackType.PROJECTILE].size(), buffs[Enums.AttackType.CONE].size(), buffs[Enums.AttackType.NOVA].size(), buffs[Enums.AttackType.ARTILLERY].size(), final_boss_defeated)
+	ranking_integration.end_game(result, enemies_killed, bossed_killed, buffs[Enums.AttackType.PROJECTILE].size(), buffs[Enums.AttackType.CONE].size(), buffs[Enums.AttackType.NOVA].size(), buffs[Enums.AttackType.ARTILLERY].size(), final_boss_defeated)

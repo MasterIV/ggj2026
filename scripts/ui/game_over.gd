@@ -1,6 +1,11 @@
 extends Node2D
 
+# last round
 @export var label_last_wave_result: Label
+@export var label_enemies_killed_result: Label
+@export var label_bosses_killed_result: Label
+
+# best panel
 @export var label_best_wave_result: Label
 @export var label_global_best_wave_result: Label
 @export var hide_if_offline: Array[Node]
@@ -12,9 +17,8 @@ func _ready() -> void:
 
 	# access results from run
 	var level_end_data: Global.LevelEndData = Global.global_state.level_end_data
-	var waves_spawned: int = Global.global_state.get_last_result()
-	var enemies_defeated: int = level_end_data.enemies_defeated
-	var bosses_defeated: int = level_end_data.bosses_defeated
+	label_enemies_killed_result.text = str(level_end_data.enemies_defeated)
+	label_bosses_killed_result.text = str(level_end_data.bosses_defeated)
 
 	var ranking_integration: RankingIntegration = get_tree().get_first_node_in_group("ranking_integration")
 

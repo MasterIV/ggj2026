@@ -1,17 +1,19 @@
 [gd_scene format=3 uid="uid://cus8c2uu76qp1"]
 
 [ext_resource type="Script" uid="uid://cx3agsye861ik" path="res://scripts/ui/game_over.gd" id="1_tbwuq"]
-[ext_resource type="Texture2D" uid="uid://dmlqvvcr08rdv" path="res://graphics/ui/LoseScreen_BG_OneElement.jpg" id="2_tbwuq"]
+[ext_resource type="Texture2D" uid="uid://dq2gnp5oekxbo" path="res://graphics/ui/EndScreen_Stats.jpg" id="2_o6b8n"]
 [ext_resource type="Theme" uid="uid://crrpqjxyqtyb7" path="res://misc_assets/ui_theme.tres" id="3_7m3ot"]
 [ext_resource type="AudioStream" uid="uid://b47e1d28scpy3" path="res://sound/StandardLoop.mp3" id="4_racf3"]
 [ext_resource type="PackedScene" uid="uid://chlfuuxc8ns61" path="res://scenes/ranking_integration.tscn" id="5_o6b8n"]
 
-[node name="Lost" type="Node2D" unique_id=1937525899 node_paths=PackedStringArray("label_last_wave_result", "label_best_wave_result", "label_global_best_wave_result", "hide_if_offline")]
+[node name="Lost" type="Node2D" unique_id=1937525899 node_paths=PackedStringArray("label_last_wave_result", "label_enemies_killed_result", "label_bosses_killed_result", "label_best_wave_result", "label_global_best_wave_result", "hide_if_offline")]
 script = ExtResource("1_tbwuq")
-label_last_wave_result = NodePath("CanvasLayer/ColorRect/VBoxContainer/Last Result")
-label_best_wave_result = NodePath("CanvasLayer/ColorRect/VBoxContainer/HBoxContainer/VBoxContainer/Local Best")
-label_global_best_wave_result = NodePath("CanvasLayer/ColorRect/VBoxContainer/HBoxContainer/VBoxContainer2/Global Best")
-hide_if_offline = [NodePath("CanvasLayer/ColorRect/VBoxContainer/HBoxContainer/VBoxContainer/Label3"), NodePath("CanvasLayer/ColorRect/VBoxContainer/HBoxContainer/VBoxContainer2")]
+label_last_wave_result = NodePath("CanvasLayer/VBoxContainer/GridContainer/Waves spawned")
+label_enemies_killed_result = NodePath("CanvasLayer/VBoxContainer/GridContainer/Enemies killed")
+label_bosses_killed_result = NodePath("CanvasLayer/VBoxContainer/GridContainer/Bosses killed")
+label_best_wave_result = NodePath("CanvasLayer/VBoxContainer2/HBoxContainer/VBoxContainer/Local Best")
+label_global_best_wave_result = NodePath("CanvasLayer/VBoxContainer2/HBoxContainer/VBoxContainer2/Global Best")
+hide_if_offline = [NodePath("CanvasLayer/VBoxContainer2")]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=207741611]
 
@@ -21,7 +23,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("2_tbwuq")
+texture = ExtResource("2_o6b8n")
 expand_mode = 3
 
 [node name="Button" type="Button" parent="CanvasLayer" unique_id=1590065051]
@@ -41,100 +43,158 @@ theme = ExtResource("3_7m3ot")
 theme_override_font_sizes/font_size = 64
 text = "REPLAY"
 
-[node name="ColorRect" type="ColorRect" parent="CanvasLayer" unique_id=1504127821]
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -263.0
-offset_top = -579.0
-offset_right = 263.0
-offset_bottom = -210.0
-grow_horizontal = 2
-grow_vertical = 0
-color = Color(0, 0, 0, 0.39215687)
-
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/ColorRect" unique_id=1785094264]
-layout_mode = 1
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer" unique_id=1785094264]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -263.0
-offset_top = -135.0
+offset_top = -240.0
 offset_right = 263.0
-offset_bottom = 135.0
+offset_bottom = 30.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme = ExtResource("3_7m3ot")
 
-[node name="Label" type="Label" parent="CanvasLayer/ColorRect/VBoxContainer" unique_id=1554520526]
+[node name="GridContainer" type="GridContainer" parent="CanvasLayer/VBoxContainer" unique_id=332399623]
 layout_mode = 2
+size_flags_vertical = 3
+columns = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/VBoxContainer/GridContainer" unique_id=1554520526]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 6
 theme = ExtResource("3_7m3ot")
+theme_override_colors/font_color = Color(0.96862745, 0.74509805, 0.3254902, 1)
 theme_override_font_sizes/font_size = 48
-text = "Waves survived"
-horizontal_alignment = 1
+text = "Waves spawned"
 vertical_alignment = 1
 
-[node name="Last Result" type="Label" parent="CanvasLayer/ColorRect/VBoxContainer" unique_id=1234084330]
+[node name="Waves spawned" type="Label" parent="CanvasLayer/VBoxContainer/GridContainer" unique_id=1234084330]
 layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 6
 theme = ExtResource("3_7m3ot")
+theme_override_colors/font_color = Color(0.96862745, 0.74509805, 0.3254902, 1)
 theme_override_font_sizes/font_size = 48
 text = "0"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Label3" type="Label" parent="CanvasLayer/ColorRect/VBoxContainer" unique_id=1713611401]
+[node name="Last Result2" type="Label" parent="CanvasLayer/VBoxContainer/GridContainer" unique_id=484833173]
 layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 6
 theme = ExtResource("3_7m3ot")
+theme_override_colors/font_color = Color(0.96862745, 0.74509805, 0.3254902, 1)
 theme_override_font_sizes/font_size = 48
-text = "Best results"
+text = "Enemies killed"
+vertical_alignment = 1
+
+[node name="Enemies killed" type="Label" parent="CanvasLayer/VBoxContainer/GridContainer" unique_id=1838859819]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 6
+theme = ExtResource("3_7m3ot")
+theme_override_colors/font_color = Color(0.96862745, 0.74509805, 0.3254902, 1)
+theme_override_font_sizes/font_size = 48
+text = "0"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/ColorRect/VBoxContainer" unique_id=367380823]
+[node name="Last Result4" type="Label" parent="CanvasLayer/VBoxContainer/GridContainer" unique_id=531901404]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 6
+theme = ExtResource("3_7m3ot")
+theme_override_colors/font_color = Color(0.96862745, 0.74509805, 0.3254902, 1)
+theme_override_font_sizes/font_size = 48
+text = "Bosses killed"
+vertical_alignment = 1
+
+[node name="Bosses killed" type="Label" parent="CanvasLayer/VBoxContainer/GridContainer" unique_id=2059198692]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 6
+theme = ExtResource("3_7m3ot")
+theme_override_colors/font_color = Color(0.96862745, 0.74509805, 0.3254902, 1)
+theme_override_font_sizes/font_size = 48
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="CanvasLayer" unique_id=102958601]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -278.0
+offset_top = 65.0
+offset_right = 278.0
+offset_bottom = 335.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("3_7m3ot")
+
+[node name="Label3" type="Label" parent="CanvasLayer/VBoxContainer2" unique_id=1439267060]
+layout_mode = 2
+theme = ExtResource("3_7m3ot")
+theme_override_colors/font_color = Color(0.96862745, 0.74509805, 0.3254902, 1)
+theme_override_font_sizes/font_size = 48
+text = "Best results waves spawned"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/VBoxContainer2" unique_id=338374138]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/ColorRect/VBoxContainer/HBoxContainer" unique_id=74443029]
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/VBoxContainer2/HBoxContainer" unique_id=451586497]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Label3" type="Label" parent="CanvasLayer/ColorRect/VBoxContainer/HBoxContainer/VBoxContainer" unique_id=1108779280]
+[node name="Label3" type="Label" parent="CanvasLayer/VBoxContainer2/HBoxContainer/VBoxContainer" unique_id=1770057582]
 layout_mode = 2
 theme = ExtResource("3_7m3ot")
+theme_override_colors/font_color = Color(0.96862745, 0.74509805, 0.3254902, 1)
 theme_override_font_sizes/font_size = 48
 text = "You"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Local Best" type="Label" parent="CanvasLayer/ColorRect/VBoxContainer/HBoxContainer/VBoxContainer" unique_id=309179910]
+[node name="Local Best" type="Label" parent="CanvasLayer/VBoxContainer2/HBoxContainer/VBoxContainer" unique_id=1272411984]
 layout_mode = 2
 theme = ExtResource("3_7m3ot")
+theme_override_colors/font_color = Color(0.96862745, 0.74509805, 0.3254902, 1)
 theme_override_font_sizes/font_size = 48
 text = "10"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="CanvasLayer/ColorRect/VBoxContainer/HBoxContainer" unique_id=1414596270]
+[node name="VBoxContainer2" type="VBoxContainer" parent="CanvasLayer/VBoxContainer2/HBoxContainer" unique_id=476402889]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Label3" type="Label" parent="CanvasLayer/ColorRect/VBoxContainer/HBoxContainer/VBoxContainer2" unique_id=843214050]
+[node name="Label3" type="Label" parent="CanvasLayer/VBoxContainer2/HBoxContainer/VBoxContainer2" unique_id=278094045]
 layout_mode = 2
 theme = ExtResource("3_7m3ot")
+theme_override_colors/font_color = Color(0.96862745, 0.74509805, 0.3254902, 1)
 theme_override_font_sizes/font_size = 48
 text = "Global"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Global Best" type="Label" parent="CanvasLayer/ColorRect/VBoxContainer/HBoxContainer/VBoxContainer2" unique_id=337269016]
+[node name="Global Best" type="Label" parent="CanvasLayer/VBoxContainer2/HBoxContainer/VBoxContainer2" unique_id=909863835]
 layout_mode = 2
 theme = ExtResource("3_7m3ot")
+theme_override_colors/font_color = Color(0.96862745, 0.74509805, 0.3254902, 1)
 theme_override_font_sizes/font_size = 48
 text = "10"
 horizontal_alignment = 1

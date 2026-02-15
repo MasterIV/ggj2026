@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://c8s33d0c3a11n"]
 
 [ext_resource type="Script" uid="uid://c4sqb25g07mpa" path="res://scripts/ui/credits.gd" id="1_iiocm"]
-[ext_resource type="Texture2D" uid="uid://i3o8mbs5vpnj" path="res://graphics/ui/WinScreen_BG_OneElement.jpg" id="2_iiocm"]
+[ext_resource type="Texture2D" uid="uid://nselt6c8wsrs" path="res://graphics/ui/EndScreen_BossDef.jpg" id="2_hs3yd"]
 [ext_resource type="Theme" uid="uid://crrpqjxyqtyb7" path="res://misc_assets/ui_theme.tres" id="3_tylv2"]
 [ext_resource type="AudioStream" uid="uid://b47e1d28scpy3" path="res://sound/StandardLoop.mp3" id="4_yxbqr"]
 
@@ -16,7 +16,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("2_iiocm")
+texture = ExtResource("2_hs3yd")
 expand_mode = 3
 
 [node name="Button" type="Button" parent="CanvasLayer" unique_id=1590065051]
